@@ -11,27 +11,8 @@
 		2BE260AA2F4A29CC00DBFA07 /* MindLearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2606A2F4A29CC00DBFA07 /* MindLearnApp.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2B8054862EB5664F0019C9BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2B8054702EB5664E0019C9BA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2B8054772EB5664E0019C9BA;
-			remoteInfo = "Slayken Learn";
-		};
-		2B8054902EB5664F0019C9BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2B8054702EB5664E0019C9BA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2B8054772EB5664E0019C9BA;
-			remoteInfo = "Slayken Learn";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		2B580CAC2F4B56F800F7E299 /* MindLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MindLearn.app; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app"; sourceTree = "<absolute>"; };
-		2B580CAD2F4B56F800F7E299 /* MindLearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MindLearnTests.xctest; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app/PlugIns/MindLearnTests.xctest"; sourceTree = "<absolute>"; };
-		2B580CAE2F4B56F800F7E299 /* MindLearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MindLearnUITests.xctest; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearnUITests-Runner.app/PlugIns/MindLearnUITests.xctest"; sourceTree = "<absolute>"; };
+		2BC6D1232F4B6165007BB258 /* MindLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MindLearn.app; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app"; sourceTree = "<absolute>"; };
 		2BE260592F4A29CC00DBFA07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BE2606A2F4A29CC00DBFA07 /* MindLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindLearnApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,20 +27,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		2B8054752EB5664E0019C9BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B8054822EB5664F0019C9BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B80548C2EB5664F0019C9BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -100,48 +67,8 @@
 			packageProductDependencies = (
 			);
 			productName = "Slayken Learn";
-			productReference = 2B580CAC2F4B56F800F7E299 /* MindLearn.app */;
+			productReference = 2BC6D1232F4B6165007BB258 /* MindLearn.app */;
 			productType = "com.apple.product-type.application";
-		};
-		2B8054842EB5664F0019C9BA /* MindLearnTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2B80549C2EB5664F0019C9BA /* Build configuration list for PBXNativeTarget "MindLearnTests" */;
-			buildPhases = (
-				2B8054812EB5664F0019C9BA /* Sources */,
-				2B8054822EB5664F0019C9BA /* Frameworks */,
-				2B8054832EB5664F0019C9BA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2B8054872EB5664F0019C9BA /* PBXTargetDependency */,
-			);
-			name = MindLearnTests;
-			packageProductDependencies = (
-			);
-			productName = "Slayken LearnTests";
-			productReference = 2B580CAD2F4B56F800F7E299 /* MindLearnTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		2B80548E2EB5664F0019C9BA /* MindLearnUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2B80549F2EB5664F0019C9BA /* Build configuration list for PBXNativeTarget "MindLearnUITests" */;
-			buildPhases = (
-				2B80548B2EB5664F0019C9BA /* Sources */,
-				2B80548C2EB5664F0019C9BA /* Frameworks */,
-				2B80548D2EB5664F0019C9BA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2B8054912EB5664F0019C9BA /* PBXTargetDependency */,
-			);
-			name = MindLearnUITests;
-			packageProductDependencies = (
-			);
-			productName = "Slayken LearnUITests";
-			productReference = 2B580CAE2F4B56F800F7E299 /* MindLearnUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -155,14 +82,6 @@
 				TargetAttributes = {
 					2B8054772EB5664E0019C9BA = {
 						CreatedOnToolsVersion = 26.0.1;
-					};
-					2B8054842EB5664F0019C9BA = {
-						CreatedOnToolsVersion = 26.0.1;
-						TestTargetID = 2B8054772EB5664E0019C9BA;
-					};
-					2B80548E2EB5664F0019C9BA = {
-						CreatedOnToolsVersion = 26.0.1;
-						TestTargetID = 2B8054772EB5664E0019C9BA;
 					};
 				};
 			};
@@ -181,8 +100,6 @@
 			projectRoot = "";
 			targets = (
 				2B8054772EB5664E0019C9BA /* MindLearn */,
-				2B8054842EB5664F0019C9BA /* MindLearnTests */,
-				2B80548E2EB5664F0019C9BA /* MindLearnUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,20 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BE2608C2F4A29CC00DBFA07 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B8054832EB5664F0019C9BA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B80548D2EB5664F0019C9BA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,34 +124,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B8054812EB5664F0019C9BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B80548B2EB5664F0019C9BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2B8054872EB5664F0019C9BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2B8054772EB5664E0019C9BA /* MindLearn */;
-			targetProxy = 2B8054862EB5664F0019C9BA /* PBXContainerItemProxy */;
-		};
-		2B8054912EB5664F0019C9BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2B8054772EB5664E0019C9BA /* MindLearn */;
-			targetProxy = 2B8054902EB5664F0019C9BA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2B8054972EB5664F0019C9BA /* Debug */ = {
@@ -440,90 +316,6 @@
 			};
 			name = Release;
 		};
-		2B80549D2EB5664F0019C9BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HN763R468M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tufancakir.Slayken-LearnTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MindLearn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MindLearn";
-			};
-			name = Debug;
-		};
-		2B80549E2EB5664F0019C9BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HN763R468M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tufancakir.Slayken-LearnTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MindLearn.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MindLearn";
-			};
-			name = Release;
-		};
-		2B8054A02EB5664F0019C9BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HN763R468M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tufancakir.Slayken-LearnUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Slayken Learn";
-			};
-			name = Debug;
-		};
-		2B8054A12EB5664F0019C9BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HN763R468M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tufancakir.Slayken-LearnUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Slayken Learn";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -541,24 +333,6 @@
 			buildConfigurations = (
 				2B80549A2EB5664F0019C9BA /* Debug */,
 				2B80549B2EB5664F0019C9BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2B80549C2EB5664F0019C9BA /* Build configuration list for PBXNativeTarget "MindLearnTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B80549D2EB5664F0019C9BA /* Debug */,
-				2B80549E2EB5664F0019C9BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2B80549F2EB5664F0019C9BA /* Build configuration list for PBXNativeTarget "MindLearnUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B8054A02EB5664F0019C9BA /* Debug */,
-				2B8054A12EB5664F0019C9BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
