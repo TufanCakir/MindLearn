@@ -1,0 +1,288 @@
+[
+    {
+        "id": "vision_001",
+        "title": "Objekterkennung mit Vision",
+        "description":
+            "Lerne, wie du mit dem Vision-Framework Bilder analysierst und Objekte erkennst.",
+        "steps": [
+            "Importiere Vision und CoreML.",
+            "Lade ein ML-Modell für die Bildklassifizierung.",
+            "Erstelle eine VNCoreMLRequest und führe sie auf einem Bild aus."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7B2CBF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport CoreML\nimport UIKit\n\nfunc detectObjects(in image: UIImage) {\n    guard let model = try? VNCoreMLModel(for: MobileNetV2().model) else {\n        print(\"❌ ML-Modell konnte nicht geladen werden\")\n        return\n    }\n\n    let request = VNCoreMLRequest(model: model) { request, _ in\n        if let results = request.results as? [VNClassificationObservation],\n           let topResult = results.first {\n            print(\"✅ Erkanntes Objekt: \\(topResult.identifier) – Vertrauen: \\(Int(topResult.confidence * 100))%\")\n        }\n    }\n\n    guard let cgImage = image.cgImage else { return }\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n}\n\n/ Beispielaufruf (z. B. in einem SwiftUI-View):\n/ detectObjects(in: UIImage(named: \"example.jpg\")!)",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#7B2CBF"
+    },
+    {
+        "id": "vision_002",
+        "title": "Gesichtserkennung mit Vision",
+        "description":
+            "Erkenne Gesichter in einem Bild und erhalte deren Positionen mittels VNDetectFaceRectanglesRequest.",
+        "steps": [
+            "Importiere Vision und UIKit.",
+            "Erstelle eine VNDetectFaceRectanglesRequest.",
+            "Führe den Request mit VNImageRequestHandler aus."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#560BAD",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc detectFaces(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNDetectFaceRectanglesRequest { request, _ in\n        if let faces = request.results as? [VNFaceObservation] {\n            print(\"👤 Gefundene Gesichter: \\(faces.count)\")\n            for (i, face) in faces.enumerated() {\n                print(\"- Gesicht \\(i+1): BoundingBox = \\(face.boundingBox)\")\n            }\n        }\n    }\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#560BAD"
+    },
+    {
+        "id": "vision_003",
+        "title": "Gesichtslandmarken (Augen, Mund, Nase)",
+        "description":
+            "Erkenne präzise Landmarken eines Gesichts – Augen, Nase, Mund – für AR-Effekte oder Filter.",
+        "steps": [
+            "Verwende VNDetectFaceLandmarksRequest.",
+            "Erhalte FaceObservation und LandmarkPoints.",
+            "Konvertiere die Koordinaten aus dem Normalized-Space."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#3A0CA3",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc detectFaceLandmarks(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNDetectFaceLandmarksRequest { request, _ in\n        guard let results = request.results as? [VNFaceObservation] else { return }\n\n        for face in results {\n            if let landmarks = face.landmarks {\n                print(\"👁 Linkes Auge: \\(landmarks.leftEye?.normalizedPoints ?? [])\")\n                print(\"👁 Rechtes Auge: \\(landmarks.rightEye?.normalizedPoints ?? [])\")\n                print(\"👄 Mund: \\(landmarks.outerLips?.normalizedPoints ?? [])\")\n            }\n        }\n    }\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#3A0CA3"
+    },
+    {
+        "id": "vision_004",
+        "title": "Barcode- und QR-Code-Scan",
+        "description":
+            "Scanne Barcodes oder QR-Codes in Bildern mit Vision – perfekt für Scanner-Apps.",
+        "steps": [
+            "Nutze VNDetectBarcodesRequest.",
+            "Erhalte VNBarcodeObservation mit Payload.",
+            "Gib Barcode-Text und Typ aus."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#4895EF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc scanBarcode(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNDetectBarcodesRequest { request, _ in\n        if let codes = request.results as? [VNBarcodeObservation] {\n            for code in codes {\n                print(\"📦 Typ: \\(code.symbology.rawValue)\")\n                print(\"🔍 Inhalt: \\(code.payloadStringValue ?? \"Kein Inhalt\")\")\n            }\n        }\n    }\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#4895EF"
+    },
+    {
+        "id": "vision_005",
+        "title": "Konturerkennung (Objektumrisse)",
+        "description":
+            "Finde Kanten und Konturen in Bildern – ideal für Zeichnungen, Scans oder Bildanalyse.",
+        "steps": [
+            "Verwende VNDetectContoursRequest.",
+            "Aktiviere refineOptions für detaillierte Konturen.",
+            "Lese die gefundenen VNContours aus."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#4CC9F0",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc detectContours(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNDetectContoursRequest()\n    request.maximumImageDimension = 512\n    request.contrastAdjustment = 1.0\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n\n    if let observation = request.results?.first as? VNContoursObservation {\n        print(\"✏️ Konturen gefunden: \\(observation.contourCount)\")\n    }\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#4CC9F0"
+    },
+    {
+        "id": "vision_006",
+        "title": "Bild-Tracking in Echtzeit (für AR)",
+        "description":
+            "Lerne, wie du ein bestimmtes Bild erfasst und seine Position Frame-für-Frame verfolgst.",
+        "steps": [
+            "Nutze VNTrackImageRequest.",
+            "Starte Tracking mit einem Initial-Bild.",
+            "Verwende VNSequenceRequestHandler für Video-Frames."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#5E60CE",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nlet sequenceHandler = VNSequenceRequestHandler()\nvar lastObservation: VNDetectedObjectObservation?\n\nfunc trackObject(pixelBuffer: CVPixelBuffer) {\n    guard let observation = lastObservation else { return }\n\n    let request = VNTrackObjectRequest(detectedObjectObservation: observation) { request, _ in\n        if let result = request.results?.first as? VNDetectedObjectObservation {\n            lastObservation = result\n            print(\"🎯 Tracking Box: \\(result.boundingBox)\")\n        }\n    }\n\n    try? sequenceHandler.perform([request], on: pixelBuffer)\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#5E60CE"
+    },
+    {
+        "id": "vision_007",
+        "title": "Handpose-Erkennung (Finger & Gesten)",
+        "description":
+            "Analysiere Hände und Finger-Landmarks – ideal für Gesten, Steuerung oder AR-Interaktionen.",
+        "steps": [
+            "Nutze VNDetectHumanHandPoseRequest.",
+            "Analysiere Fingerpunkte wie Daumen, Zeigefinger usw.",
+            "Konvertiere Normalized Points in Bildschirm-Koordinaten."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#F72585",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc detectHandPose(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNDetectHumanHandPoseRequest()\n    request.maximumHandCount = 2\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n\n    if let observations = request.results {\n        for hand in observations {\n            if let thumb = try? hand.recognizedPoints(.thumb)[.tip] {\n                print(\"👍 Daumenspitze: \\(thumb.location)\")\n            }\n        }\n    }\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#F72585"
+    },
+    {
+        "id": "vision_008",
+        "title": "Texterkennung (OCR)",
+        "description":
+            "Extrahiere Text aus Bildern oder Scans – ideal für Dokumentscanner oder Übersetzungsapps.",
+        "steps": [
+            "Nutze VNRecognizeTextRequest.",
+            "Definiere RecognitionLevel (fast/accurate).",
+            "Lies Textzeilen aus VNRecognizedTextObservation."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc recognizeText(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNRecognizeTextRequest { request, _ in\n        if let results = request.results as? [VNRecognizedTextObservation] {\n            let lines = results.compactMap { $0.topCandidates(1).first?.string }\n            print(\"📄 Text:\")\n            lines.forEach { print($0) }\n        }\n    }\n\n    request.recognitionLevel = .accurate\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#7209B7"
+    },
+    {
+        "id": "vision_009",
+        "title": "Menschenerkennung & Körper-Tracking",
+        "description":
+            "Erkenne Personen im Bild und analysiere ihre Pose – perfekt für Fitness-Tracking oder Bewegungserkennung.",
+        "steps": [
+            "Nutze VNDetectHumanBodyPoseRequest.",
+            "Erhalte Landmark-Punkte wie Schultern, Knie, Hüfte.",
+            "Verarbeite Pose-Vektoren für KI oder Animation."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#4361EE",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc detectBodyPose(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNDetectHumanBodyPoseRequest { request, _ in\n        if let results = request.results as? [VNHumanBodyPoseObservation] {\n            for pose in results {\n                if let recognized = try? pose.recognizedPoints(.all) {\n                    print(\"🧍 Körperpunkte: \\(recognized.keys)\")\n                }\n            }\n        }\n    }\n\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n    try? handler.perform([request])\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#4361EE"
+    },
+    {
+        "id": "vision_010",
+        "title": "Bild-Saliency & Fokus-Erkennung",
+        "description":
+            "Erkenne automatisch die wichtigsten Bildbereiche – ideal für automatisches Zuschneiden oder Bildanalyse.",
+        "steps": [
+            "Nutze VNGenerateAttentionBasedSaliencyImageRequest.",
+            "Erhalte Heatmap-Artige Wichtigkeitszonen.",
+            "Lese VNSaliencyImageObservation aus."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#4895EF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc detectSaliency(in image: UIImage) {\n    guard let cgImage = image.cgImage else { return }\n\n    let request = VNGenerateAttentionBasedSaliencyImageRequest()\n    let handler = VNImageRequestHandler(cgImage: cgImage)\n\n    try? handler.perform([request])\n\n    if let result = request.results?.first as? VNSaliencyImageObservation {\n        print(\"🔥 Wichtige Regionen: \\(result.salientObjects ?? [])\")\n    }\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#4895EF"
+    },
+    {
+        "id": "vision_011",
+        "title": "Bildähnlichkeit messen (FeaturePrint)",
+        "description":
+            "Berechne, wie ähnlich zwei Bilder sind – ideal für Duplicate-Finder oder Bildsuche.",
+        "steps": [
+            "Erzeuge FeaturePrints mit VNGenerateImageFeaturePrintRequest.",
+            "Vergleiche zwei FeaturePrints via distance().",
+            "Niedrige Werte = hohe Ähnlichkeit."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#4CC9F0",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import Vision\nimport UIKit\n\nfunc compareImages(_ img1: UIImage, _ img2: UIImage) {\n    guard let cg1 = img1.cgImage, let cg2 = img2.cgImage else { return }\n\n    let req1 = VNGenerateImageFeaturePrintRequest()\n    let req2 = VNGenerateImageFeaturePrintRequest()\n\n    let h1 = VNImageRequestHandler(cgImage: cg1)\n    let h2 = VNImageRequestHandler(cgImage: cg2)\n\n    try? h1.perform([req1])\n    try? h2.perform([req2])\n\n    if let fp1 = req1.results?.first as? VNFeaturePrintObservation,\n       let fp2 = req2.results?.first as? VNFeaturePrintObservation {\n        var distance: Float = 0\n        try? fp1.computeDistance(&distance, to: fp2)\n        print(\"🖼 Ähnlichkeit: \\(distance)\")\n    }\n}",
+        "category": "Vision",
+        "categoryIcon": "vision.pro",
+        "categoryIconColor": "#4CC9F0"
+    }
+]
