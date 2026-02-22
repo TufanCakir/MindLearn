@@ -1,0 +1,95 @@
+[
+    {
+        "id": "kids_math_001",
+        "title": "1 + 1 verstehen",
+        "description": "Einfach rechnen lernen.",
+        "icon": "plus.circle.fill",
+
+        "steps": [
+            "1 Apfel + 1 Apfel zählen.",
+            "Beide zusammenlegen.",
+            "Jetzt sind es 2 Äpfel.",
+            "Also: 1 + 1 = 2."
+        ],
+
+        "colors": {
+            "backgroundColors": [
+                "#FF9F0A",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+
+        "code": "Beispiel:\n🍎 + 🍎 = 🍎🍎\n1 + 1 = 2",
+
+        "category": "Kinder Lernen",
+        "categoryIcon": "figure.and.child.holdinghands",
+        "categoryIconColor": "#FF9F0A"
+    },
+
+    {
+        "id": "kids_english_001",
+        "title": "Tiere Englisch lernen",
+        "description": "Einfache Tier Wörter.",
+        "icon": "globe",
+
+        "steps": [
+            "Elefant = Elephant",
+            "Hund = Dog",
+            "Katze = Cat",
+            "Vogel = Bird"
+        ],
+
+        "colors": {
+            "backgroundColors": [
+                "#34C759",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+
+        "code":
+            "Deutsch → Englisch\nElefant = Elephant\nHaus = House\nAuto = Car",
+
+        "category": "Kinder Lernen",
+        "categoryIcon": "text.book.closed.fill",
+        "categoryIconColor": "#34C759"
+    },
+
+    {
+        "id": "kids_colors_001",
+        "title": "Farben Englisch",
+        "description": "Farben verstehen.",
+        "icon": "paintpalette.fill",
+
+        "steps": [
+            "Rot = Red",
+            "Blau = Blue",
+            "Grün = Green",
+            "Gelb = Yellow"
+        ],
+
+        "colors": {
+            "backgroundColors": [
+                "#AF52DE",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+
+        "code": "RED ❤️\nBLUE 💙\nGREEN 💚",
+
+        "category": "Kinder Lernen",
+        "categoryIcon": "paintpalette.fill",
+        "categoryIconColor": "#AF52DE"
+    }
+]

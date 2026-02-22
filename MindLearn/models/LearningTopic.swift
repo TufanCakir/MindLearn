@@ -38,6 +38,10 @@ struct ColorInfo: Codable {
 
 enum LearningTopicFile: String, CaseIterable {
     
+    case basicsLearning = "basicsLearningData"
+
+    case schoolBasics = "schoolBasicsData"
+
     case general = "generallyData"
 
     case swiftUI = "learningTopics"

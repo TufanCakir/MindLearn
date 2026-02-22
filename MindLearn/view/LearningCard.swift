@@ -42,15 +42,15 @@ struct LearningCard: View {
             background
 
             if let icon = topic.icon {
-
-                Text(icon)
+                Image(systemName: icon)
                     .font(.system(size: iconSize))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(.primary)
                     .padding(14)
                     .opacity(0.9)
             }
 
             content
-
         }
         .frame(height: cardHeight)
 
@@ -65,8 +65,6 @@ struct LearningCard: View {
             ),
             value: isPressed
         )
-
-        .scaleEffect(isPressed ? 0.97 : 1)
 
         .sheet(isPresented: $showShareSheet) {
 

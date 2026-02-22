@@ -13,23 +13,66 @@ actor SyntaxHighlighter {
 
     private init() {}
 
-    private let keywordRegex = try! NSRegularExpression(
+    // MARK: Swift Keywords
 
-        pattern:
+    private let swiftKeywordRegex =
+        try! NSRegularExpression(
 
-            "\\b(import|struct|class|func|let|var|if|else|return|async|await|View|NavigationStack|Button|Text|VStack|HStack|ZStack)\\b"
+            pattern:
 
-    )
+                "\\b(import|struct|class|func|let|var|if|else|return|async|await|View|NavigationStack|Button|Text|VStack|HStack|ZStack)\\b"
+
+        )
+
+    // MARK: HTML TAGS
+
+    private let htmlTagRegex =
+        try! NSRegularExpression(
+            pattern: "</?[a-zA-Z0-9\\-]+[^>]*>"
+        )
+
+    // MARK: Attributes (href= src= etc)
+
+    private let htmlAttributeRegex =
+        try! NSRegularExpression(
+            pattern:
+                "\\b(href|src|class|id|style|type|name|content|rel|alt|width|height)\\b"
+        )
+
+    private let cssRegex =
+        try! NSRegularExpression(
+            pattern:
+                "\\b(display|flex|grid|color|background|padding|margin|position|width|height|gap|justify-content|align-items)\\b"
+        )
+
+    private let jsRegex =
+        try! NSRegularExpression(
+            pattern:
+                "\\b(function|const|let|var|return|document|console|log|onclick|alert)\\b"
+        )
+
+    private let jsonKeyRegex =
+        try! NSRegularExpression(
+            pattern:
+                "\"[^\"]+\"(?=\\s*:)"
+        )
+
+    // MARK: Strings
 
     private let stringRegex =
         try! NSRegularExpression(
             pattern: "\".*?\""
         )
 
+    // MARK: Comments Swift + HTML
+
     private let commentRegex =
         try! NSRegularExpression(
-            pattern: "//.*"
+            pattern: "(//.*)|<!--.*?-->",
+            options: [.dotMatchesLineSeparators]
         )
+
+    // MARK: Highlight
 
     func highlight(
         _ code: String
@@ -37,12 +80,52 @@ actor SyntaxHighlighter {
 
         var attr = AttributedString(code)
 
+        // Swift
+
         apply(
-            keywordRegex,
+            swiftKeywordRegex,
             color: .blue,
             to: &attr,
             code: code
         )
+
+        // HTML Tags
+
+        apply(
+            htmlTagRegex,
+            color: .pink,
+            to: &attr,
+            code: code
+        )
+
+        // HTML Attributes
+
+        apply(
+            htmlAttributeRegex,
+            color: .cyan,
+            to: &attr,
+            code: code
+        )
+
+        // CSS
+
+        apply(
+            cssRegex,
+            color: .green,
+            to: &attr,
+            code: code
+        )
+
+        // JavaScript
+
+        apply(
+            jsRegex,
+            color: .yellow,
+            to: &attr,
+            code: code
+        )
+
+        // Strings
 
         apply(
             stringRegex,
@@ -50,6 +133,8 @@ actor SyntaxHighlighter {
             to: &attr,
             code: code
         )
+
+        // Comments
 
         apply(
             commentRegex,
@@ -60,6 +145,8 @@ actor SyntaxHighlighter {
 
         return attr
     }
+
+    // MARK: Apply Regex
 
     private func apply(
 

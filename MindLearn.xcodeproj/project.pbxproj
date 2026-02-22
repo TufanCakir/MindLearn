@@ -29,9 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2BA6C2962F4A8FA200D56AD3 /* MindLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MindLearn.app; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app"; sourceTree = "<absolute>"; };
-		2BA6C2972F4A8FA200D56AD3 /* MindLearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MindLearnTests.xctest; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app/PlugIns/MindLearnTests.xctest"; sourceTree = "<absolute>"; };
-		2BA6C2982F4A8FA200D56AD3 /* MindLearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MindLearnUITests.xctest; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearnUITests-Runner.app/PlugIns/MindLearnUITests.xctest"; sourceTree = "<absolute>"; };
+		2B580CAC2F4B56F800F7E299 /* MindLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MindLearn.app; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app"; sourceTree = "<absolute>"; };
+		2B580CAD2F4B56F800F7E299 /* MindLearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MindLearnTests.xctest; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app/PlugIns/MindLearnTests.xctest"; sourceTree = "<absolute>"; };
+		2B580CAE2F4B56F800F7E299 /* MindLearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MindLearnUITests.xctest; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearnUITests-Runner.app/PlugIns/MindLearnUITests.xctest"; sourceTree = "<absolute>"; };
 		2BE260592F4A29CC00DBFA07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BE2606A2F4A29CC00DBFA07 /* MindLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindLearnApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +100,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Slayken Learn";
-			productReference = 2BA6C2962F4A8FA200D56AD3 /* MindLearn.app */;
+			productReference = 2B580CAC2F4B56F800F7E299 /* MindLearn.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2B8054842EB5664F0019C9BA /* MindLearnTests */ = {
@@ -120,7 +120,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Slayken LearnTests";
-			productReference = 2BA6C2972F4A8FA200D56AD3 /* MindLearnTests.xctest */;
+			productReference = 2B580CAD2F4B56F800F7E299 /* MindLearnTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		2B80548E2EB5664F0019C9BA /* MindLearnUITests */ = {
@@ -140,7 +140,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Slayken LearnUITests";
-			productReference = 2BA6C2982F4A8FA200D56AD3 /* MindLearnUITests.xctest */;
+			productReference = 2B580CAE2F4B56F800F7E299 /* MindLearnUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
