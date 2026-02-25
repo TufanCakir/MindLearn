@@ -21,9 +21,7 @@
         },
         "code":
             "import SwiftUI\nimport MetalKit\n\nstruct MetalBackgroundView: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.clearColor = MTLClearColor(red: 0.2, green: 0.0, blue: 0.4, alpha: 1)\n        view.framebufferOnly = true\n        return view\n    }\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n}\n\nstruct MetalExampleView: View {\n    var body: some View {\n        MetalBackgroundView()\n            .ignoresSafeArea()\n            .overlay(\n                Text(\"Metal Shader! 🔥\")\n                    .font(.largeTitle)\n                    .foregroundColor(.white)\n                    .shadow(radius: 10)\n            )\n    }\n}\n\n#Preview {\n    MetalExampleView()\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#7209B7"
+        "category": "Metal"
     },
     {
         "id": "metal_002",
@@ -47,9 +45,7 @@
         },
         "code":
             "import MetalKit\n\nclass MetalPipeline: NSObject {\n    let device: MTLDevice\n    let commandQueue: MTLCommandQueue\n    let pipelineState: MTLRenderPipelineState\n\n    override init() {\n        self.device = MTLCreateSystemDefaultDevice()!\n        self.commandQueue = device.makeCommandQueue()!\n\n        let library = device.makeDefaultLibrary()!\n        let vertex = library.makeFunction(name: \"vertex_main\")!\n        let fragment = library.makeFunction(name: \"fragment_main\")!\n\n        let descriptor = MTLRenderPipelineDescriptor()\n        descriptor.vertexFunction = vertex\n        descriptor.fragmentFunction = fragment\n        descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm\n\n        self.pipelineState = try! device.makeRenderPipelineState(descriptor: descriptor)\n    }\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#3A0CA3"
+        "category": "Metal"
     },
     {
         "id": "metal_003",
@@ -72,9 +68,7 @@
         },
         "code":
             "struct Vertex { var position: SIMD3<Float> }\n\nclass MetalTriangleRenderer: NSObject, MTKViewDelegate {\n    let pipeline: MetalPipeline\n    let vertexBuffer: MTLBuffer\n\n    init(view: MTKView) {\n        self.pipeline = MetalPipeline()\n        let vertices = [\n            Vertex(position: [-0.5, -0.5, 0]),\n            Vertex(position: [ 0.5, -0.5, 0]),\n            Vertex(position: [ 0.0,  0.5, 0])\n        ]\n        self.vertexBuffer = pipeline.device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * 3)\n        super.init()\n        view.delegate = self\n    }\n\n    func draw(in view: MTKView) {\n        guard let drawable = view.currentDrawable,\n              let descriptor = view.currentRenderPassDescriptor else { return }\n\n        let commandBuffer = pipeline.commandQueue.makeCommandBuffer()!\n        let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)!\n\n        encoder.setRenderPipelineState(pipeline.pipelineState)\n        encoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)\n        encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)\n\n        encoder.endEncoding()\n        commandBuffer.present(drawable)\n        commandBuffer.commit()\n    }\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#4361EE"
+        "category": "Metal"
     },
     {
         "id": "metal_004",
@@ -98,9 +92,7 @@
         },
         "code":
             "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut { float4 position [[position]]; float2 uv; };\n\nfragment float4 fragment_main(VertexOut in [[stage_in]], constant float &time [[buffer(1)]]) {\n    float r = 0.5 + 0.5 * sin(time + in.uv.x * 4.0);\n    float g = 0.5 + 0.5 * sin(time + in.uv.y * 4.0);\n    float b = 0.8;\n    return float4(r, g, b, 1);\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#4CC9F0"
+        "category": "Metal"
     },
     {
         "id": "metal_005",
@@ -124,9 +116,7 @@
         },
         "code":
             "class TimeUniform {\n    var time: Float = 0\n}\n\n/ In draw(in:)\nvar t = TimeUniform()\nt.time += 0.016\nencoder.setFragmentBytes(&t, length: MemoryLayout<TimeUniform>.stride, index: 1)",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#7209B7"
+        "category": "Metal"
     },
     {
         "id": "metal_006",
@@ -149,9 +139,7 @@
         },
         "code":
             "let textureLoader = MTKTextureLoader(device: device)\nlet texture = try! textureLoader.newTexture(name: \"background\", scaleFactor: 1.0, bundle: .main)",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#560BAD"
+        "category": "Metal"
     },
     {
         "id": "metal_007",
@@ -175,9 +163,7 @@
         },
         "code":
             "#include <metal_stdlib>\nusing namespace metal;\n\nkernel void compute_add(device float *data [[buffer(0)]], uint id [[thread_position_in_grid]]) {\n    data[id] = data[id] + 1.0;\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#B5179E"
+        "category": "Metal"
     },
     {
         "id": "metal_008",
@@ -201,9 +187,7 @@
         },
         "code":
             "float random(float2 st) {\n    return fract(sin(dot(st.xy, float2(12.9898,78.233))) * 43758.5453123);\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    float n = random(in.uv * 10.0);\n    return float4(n, n, n, 1);\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#F72585"
+        "category": "Metal"
     },
     {
         "id": "metal_009",
@@ -227,9 +211,7 @@
         },
         "code":
             "/ Pseudocode – Gaussian Blur\nfragment float4 fragment_main(VertexOut in [[stage_in]], texture2d<float> tex [[texture(0)]]) {\n    float2 uv = in.uv;\n    float3 col = float3(0);\n    float kernel[9] = {0.05, 0.09, 0.12, 0.15, 0.16, 0.15, 0.12, 0.09, 0.05};\n\n    for (int i = -4; i <= 4; i++) {\n        col += tex.sample(sampler(address::clamp_to_edge), uv + float2(i) * 0.002).rgb * kernel[i+4];\n    }\n    return float4(col, 1);\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#4895EF"
+        "category": "Metal"
     },
     {
         "id": "metal_010",
@@ -252,9 +234,7 @@
         },
         "code":
             "struct AnimatedMetalView: View {\n    @State private var time: Float = 0\n\n    var body: some View {\n        TimelineView(.animation) { _ in\n            MetalBackgroundView(time: time)\n                .onAppear { time += 0.016 }\n        }\n    }\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#3A0CA3"
+        "category": "Metal"
     },
     {
         "id": "metal_011",
@@ -278,9 +258,7 @@
         },
         "code":
             "view.depthStencilPixelFormat = .depth32Float\n\nlet depthDesc = MTLDepthStencilDescriptor()\ndepthDesc.isDepthWriteEnabled = true\ndepthDesc.depthCompareFunction = .less\ndepthState = device.makeDepthStencilState(descriptor: depthDesc)",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#4361EE"
+        "category": "Metal"
     },
     {
         "id": "metal_012",
@@ -303,9 +281,7 @@
         },
         "code":
             "encoder.setVertexBuffer(instanceBuffer, offset: 0, index: 1)\nencoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3, instanceCount: 200)",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#7209B7"
+        "category": "Metal"
     },
     {
         "id": "metal_013",
@@ -329,9 +305,7 @@
         },
         "code":
             "/ compute shader (update)\nkernel void updateParticles(device Particle *particles [[buffer(0)]], uint id [[thread_position_in_grid]]) {\n    particles[id].position += particles[id].velocity * 0.016;\n    particles[id].velocity.y -= 0.01; / gravity\n}",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#B5179E"
+        "category": "Metal"
     },
     {
         "id": "metal_014",
@@ -355,9 +329,7 @@
         },
         "code":
             "/ fullscreen quad\ndrawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)\n\n/ fragment shader\nreturn float4(tex.sample(sampler, in.uv).rgb * 1.2, 1); / simple brightening",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#F72585"
+        "category": "Metal"
     },
     {
         "id": "metal_015",
@@ -381,8 +353,6 @@
         },
         "code":
             "let shader = CustomMaterial.SurfaceShader(named: \"custom_hologram\", in: .main)\nlet material = try! CustomMaterial(surfaceShader: shader)\nentity.model?.materials = [material]",
-        "category": "Metal",
-        "categoryIcon": "cpu",
-        "categoryIconColor": "#4895EF"
+        "category": "Metal"
     }
 ]

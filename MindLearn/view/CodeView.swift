@@ -1,6 +1,6 @@
 //
 //  CodeView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -16,28 +16,47 @@ struct CodeView: View {
 
     var body: some View {
 
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
 
             header
 
-            ScrollView([.vertical, .horizontal]) {
+            ScrollView(.vertical) {
 
-                Text(highlighted)
-                    .font(.system(.body, design: .monospaced))
-                    .textSelection(.enabled)
-                    .padding(18)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                ScrollView(.horizontal, showsIndicators: true) {
+
+                    Text(highlighted)
+                        .font(.system(.body, design: .monospaced))
+                        .textSelection(.enabled)
+                        .padding(18)
+                        .frame(
+                            maxWidth: .infinity,
+                            alignment: .leading
+                        )
+                }
             }
+            .scrollIndicators(.visible)
         }
-        .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .background(
+            RoundedRectangle(
+                cornerRadius: 16,
+                style: .continuous
+            )
+            .fill(Color(.secondarySystemGroupedBackground))
+        )
         .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color(.separator), lineWidth: 1)
+            RoundedRectangle(
+                cornerRadius: 16,
+                style: .continuous
+            )
+            .stroke(Color(.separator), lineWidth: 1)
         )
         .overlay(copyOverlay, alignment: .topTrailing)
         .task(id: code) {
-            highlighted = await SyntaxHighlighter.shared.highlight(code)
+
+            highlighted =
+                await SyntaxHighlighter
+                .shared
+                .highlight(code)
         }
     }
 }
@@ -49,37 +68,54 @@ extension CodeView {
 
         HStack {
 
-            Label(language.displayName, systemImage: language.icon)
-                .font(.caption.bold())
-                .foregroundStyle(.primary)
+            Label(
+                language.displayName,
+                systemImage: language.icon
+            )
+            .font(.caption.weight(.semibold))
 
             Spacer()
 
             Button {
+
                 UIPasteboard.general.string = code
 
-                withAnimation(.spring()) { showCopied = true }
+                withAnimation(
+                    .spring(
+                        response: 0.35,
+                        dampingFraction: 0.7
+                    )
+                ) {
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    withAnimation { showCopied = false }
+                    showCopied = true
+                }
+
+                DispatchQueue.main.asyncAfter(
+                    deadline: .now() + 1.3
+                ) {
+
+                    withAnimation(.easeOut) {
+                        showCopied = false
+                    }
                 }
 
             } label: {
-                Label("Kopieren", systemImage: "doc.on.doc")
-                    .font(.caption2.bold())
-                    .foregroundStyle(.primary)
+
+                Label(
+                    "Kopieren",
+                    systemImage: "doc.on.doc"
+                )
+                .font(.caption2.weight(.semibold))
             }
             .buttonStyle(.plain)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-        .background(Color(.tertiarySystemGroupedBackground))
-        .overlay(
-            Rectangle()
-                .frame(height: 1)
-                .foregroundStyle(Color(.separator)),
-            alignment: .bottom
-        )
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(.ultraThinMaterial)
+        .overlay(alignment: .bottom) {
+
+            Divider()
+        }
     }
 }
 
@@ -89,19 +125,26 @@ extension CodeView {
     fileprivate var copyOverlay: some View {
 
         Group {
+
             if showCopied {
-                Label("Kopiert", systemImage: "checkmark.circle.fill")
-                    .font(.caption.bold())
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(Color(.systemBackground))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(.separator), lineWidth: 1)
-                    )
-                    .cornerRadius(10)
-                    .padding(10)
-                    .transition(.scale.combined(with: .opacity))
+
+                Label(
+                    "Kopiert",
+                    systemImage: "checkmark.circle.fill"
+                )
+                .font(.caption.bold())
+                .padding(.horizontal, 12)
+                .padding(.vertical, 7)
+                .background(.thinMaterial)
+                .clipShape(
+                    Capsule(style: .continuous)
+                )
+                .shadow(radius: 5)
+                .padding(12)
+                .transition(
+                    .move(edge: .top)
+                        .combined(with: .opacity)
+                )
             }
         }
     }

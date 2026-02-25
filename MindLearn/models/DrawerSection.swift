@@ -1,6 +1,6 @@
 //
 //  DrawerSection.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -23,8 +23,6 @@ struct DrawerSection: Identifiable, Codable {
     let code: String
 
     let category: String
-    let categoryIcon: String?
-    let categoryIconColor: String?
 }
 
 struct DrawerColor: Codable {
@@ -37,7 +35,7 @@ struct DrawerColor: Codable {
 
 enum DrawerDataFile: String, CaseIterable {
 
-    case swiftUI = "drawerSections"
+    case swiftUI = "drawerSwiftUIData"
     case swiftData = "drawerSwiftData"
     case swiftDataModel = "drawerSwiftDataModel"
     case metal = "drawerMetalData"

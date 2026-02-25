@@ -21,9 +21,7 @@
             },
             "code":
                 "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct ARCubeView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let arView = ARView(frame: .zero)\n        let anchor = AnchorEntity(plane: .horizontal)\n        let box = ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: .blue, isMetallic: true)])\n        anchor.addChild(box)\n        arView.scene.addAnchor(anchor)\n        return arView\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARCubeView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#5E5CE6"
+            "category": "ARKit"
         },
         {
             "id": "arkit_002",
@@ -47,9 +45,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARPlaneDetectionView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let config = ARWorldTrackingConfiguration()\n        config.planeDetection = [.horizontal]\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARPlaneDetectionView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#5E5CE6"
+            "category": "ARKit"
         },
         {
             "id": "arkit_003",
@@ -73,9 +69,7 @@
             },
             "code":
                 "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct ARModelView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let anchor = AnchorEntity(plane: .horizontal)\n\n        let _ = ModelEntity.loadAsync(named: \"toy_robot.usdz\").sink { _ in } receiveValue: { model in\n            anchor.addChild(model)\n            view.scene.addAnchor(anchor)\n        }\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARModelView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#5E5CE6"
+            "category": "ARKit"
         },
         {
             "id": "arkit_004",
@@ -99,9 +93,7 @@
             },
             "code":
                 "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct ARTapPlaceView: UIViewRepresentable {\n    class Coordinator: NSObject {\n        var view: ARView!\n        init(view: ARView) { self.view = view }\n        @objc func handleTap(_ sender: UITapGestureRecognizer) {\n            let location = sender.location(in: view)\n            if let result = view.raycast(from: location, allowing: .existingPlaneInfinite, alignment: .horizontal).first {\n                let anchor = AnchorEntity(world: result.worldTransform)\n                let sphere = ModelEntity(mesh: .generateSphere(radius: 0.05), materials: [SimpleMaterial(color: .red, isMetallic: false)])\n                anchor.addChild(sphere)\n                view.scene.addAnchor(anchor)\n            }\n        }\n    }\n\n    func makeCoordinator() -> Coordinator { Coordinator(view: arView) }\n    private let arView = ARView(frame: .zero)\n\n    func makeUIView(context: Context) -> ARView {\n        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap))\n        arView.addGestureRecognizer(tap)\n        return arView\n    }\n\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARTapPlaceView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#5E5CE6"
+            "category": "ARKit"
         },
         {
             "id": "arkit_005",
@@ -125,9 +117,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARLightingView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        view.automaticallyConfigureSession = true\n        view.environment.lighting.resource = .automatic\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARLightingView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#7B78FF"
+            "category": "ARKit"
         },
         {
             "id": "arkit_006",
@@ -151,9 +141,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARBodyTrackingView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let config = ARBodyTrackingConfiguration()\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARBodyTrackingView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#3A86FF"
+            "category": "ARKit"
         },
         {
             "id": "arkit_007",
@@ -177,9 +165,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARFaceTrackingView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let config = ARFaceTrackingConfiguration()\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARFaceTrackingView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#FF006E"
+            "category": "ARKit"
         },
         {
             "id": "arkit_008",
@@ -203,9 +189,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARLiDARView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let config = ARWorldTrackingConfiguration()\n        config.sceneDepth = .automatic\n        config.environmentTexturing = .automatic\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARLiDARView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#4CC9F0"
+            "category": "ARKit"
         },
         {
             "id": "arkit_009",
@@ -229,9 +213,7 @@
             },
             "code":
                 "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct ARParticlesView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let anchor = AnchorEntity(plane: .horizontal)\n        let sphere = ModelEntity(mesh: .generateSphere(radius: 0.05))\n        sphere.components.set(ParticleEmitterComponent())\n        anchor.addChild(sphere)\n        view.scene.addAnchor(anchor)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARParticlesView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#F72585"
+            "category": "ARKit"
         },
         {
             "id": "arkit_010",
@@ -255,9 +237,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARPhysicsView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n\n        let anchor = AnchorEntity(world: .zero)\n        view.scene.addAnchor(anchor)\n\n        let box = ModelEntity(mesh: .generateBox(size: 0.1))\n        box.components[PhysicsBodyComponent.self] = .init(massProperties: .default, material: .default, mode: .dynamic)\n        box.components[CollisionComponent.self] = .init(shapes: [.generateBox(size: [0.1,0.1,0.1])])\n\n        anchor.addChild(box)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARPhysicsView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#7209B7"
+            "category": "ARKit"
         },
         {
             "id": "arkit_011",
@@ -281,9 +261,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARHandTrackingView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let config = ARHandTrackingConfiguration()\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARHandTrackingView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#4ECDC4"
+            "category": "ARKit"
         },
         {
             "id": "arkit_012",
@@ -307,9 +285,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARObjectTrackingView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: \"AR Resources\", bundle: .main) else { return view }\n        let config = ARObjectScanningConfiguration()\n        config.maximumNumberOfTrackedObjects = 1\n        config.providedReferenceObjects = referenceObjects\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARObjectTrackingView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#FFD166"
+            "category": "ARKit"
         },
         {
             "id": "arkit_013",
@@ -333,9 +309,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARImageTrackingView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        guard let images = ARReferenceImage.referenceImages(inGroupNamed: \"AR Resources\", bundle: .main) else { return view }\n        let config = ARImageTrackingConfiguration()\n        config.trackingImages = images\n        config.maximumNumberOfTrackedImages = 1\n        view.session.run(config)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARImageTrackingView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#06D6A0"
+            "category": "ARKit"
         },
         {
             "id": "arkit_014",
@@ -359,9 +333,7 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARPortalView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let anchor = AnchorEntity(plane: .horizontal)\n\n        / Portal Rahmen\n        let frame = ModelEntity(mesh: .generateBox(size: [0.8, 2.0, 0.1]), materials: [SimpleMaterial(color: .purple, isMetallic: false)])\n        frame.position = [0, 1, 0]\n        anchor.addChild(frame)\n\n        view.scene.addAnchor(anchor)\n        return view\n    }\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARPortalView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#8338EC"
+            "category": "ARKit"
         },
         {
             "id": "arkit_015",
@@ -385,8 +357,6 @@
             },
             "code":
                 "import SwiftUI\nimport ARKit\nimport RealityKit\n\nstruct ARMeasureView: UIViewRepresentable {\n    class Coordinator {\n        var startPoint: SIMD3<Float>? = nil\n    }\n\n    func makeCoordinator() -> Coordinator { Coordinator() }\n\n    func makeUIView(context: Context) -> ARView {\n        let view = ARView(frame: .zero)\n        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(handleTap(_:)))\n        view.addGestureRecognizer(tap)\n        return view\n    }\n\n    @objc func handleTap(_ sender: UITapGestureRecognizer) {}\n\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\n#Preview { ARMeasureView() }",
-            "category": "ARKit",
-            "categoryIcon": "arkit",
-            "categoryIconColor": "#118AB2"
+            "category": "ARKit"
         }
     ]

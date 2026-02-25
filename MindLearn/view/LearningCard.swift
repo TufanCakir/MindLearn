@@ -1,6 +1,6 @@
 //
 //  LearningCard.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -11,124 +11,200 @@ struct LearningCard: View {
 
     let topic: LearningTopic
 
-    // MARK: Storage
-
-    @AppStorage("favoriteIDs")
-    private var favoriteIDs = ""
-
+    @ObservedObject private var favoritesStore = FavoritesStore.shared
     @State private var showShareSheet = false
-    @State private var isPressed = false
 
-    @Environment(\.horizontalSizeClass)
-    private var sizeClass
-
-    // MARK: Favorites Cache
-
-    private var favorites: Set<String> {
-
-        Set(
-            favoriteIDs
-                .split(separator: ",")
-                .map(String.init)
-        )
-    }
-
-    // MARK: Body
+    @Environment(\.horizontalSizeClass) private var sizeClass
 
     var body: some View {
-
-        ZStack(alignment: .topTrailing) {
-
+        ZStack {
             background
-
-            if let icon = topic.icon {
-                Image(systemName: icon)
-                    .font(.system(size: iconSize))
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(.primary)
-                    .padding(14)
-                    .opacity(0.9)
-            }
-
             content
         }
         .frame(height: cardHeight)
-
-        .scaleEffect(
-            isPressed ? 0.97 : 1
-        )
-
-        .animation(
-            .spring(
-                response: 0.35,
-                dampingFraction: 0.7
-            ),
-            value: isPressed
-        )
-
         .sheet(isPresented: $showShareSheet) {
+            ShareSheet(activityItems: [topic.code])
+        }
+    }
+}
 
-            ShareSheet(
-                activityItems: [
-                    topic.code
-                ]
+struct PressableCardStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.97 : 1)
+            .animation(
+                .spring(response: 0.35, dampingFraction: 0.75),
+                value: configuration.isPressed
             )
-        }
     }
 }
 
-// MARK: Content
+//
+// MARK: CONTENT
+//
 
 extension LearningCard {
 
-    fileprivate var content: some View {
-
-        VStack(alignment: .leading) {
-
-            Spacer(minLength: 0)
-
+    private var content: some View {
+        return VStack(alignment: .leading, spacing: 14) {
+            headerRow
+            Spacer()
             Text(topic.title)
-
                 .font(titleFont)
-
                 .lineLimit(2)
-
             Text(topic.description)
-
                 .font(descriptionFont)
-
-                .foregroundStyle(.primary)
-
+                .foregroundStyle(.secondary)
                 .lineLimit(2)
-
-            HStack {
-
-                Spacer()
-
-                shareButton
-
-            }
-
+            footerRow
         }
-        .padding(16)
+        .padding(18)
     }
 }
 
-// MARK: Background
+//
+// MARK: HEADER
+//
+
+extension LearningCard {
+    
+    private var headerRow: some View {
+        return HStack {
+            iconBadge
+            Spacer()
+            favoriteButton
+        }
+    }
+    
+    private var iconBadge: some View {
+        // ⭐ Category Mapping
+        let style =
+        CategoryStyle.style(
+            for: topic.category
+        )
+        
+        // ⭐ optional Override falls icon existiert
+        let icon =
+        topic.icon ?? style.icon
+        
+        return VStack {
+            Image(systemName: icon)
+                .font(
+                    .system(
+                        size: iconSize,
+                        weight: .semibold
+                    )
+                )
+                .foregroundStyle(
+                    style.color
+                )
+        }
+        .symbolRenderingMode(.hierarchical)
+        .padding(12)
+        .background(
+            RoundedRectangle(
+                cornerRadius: 14,
+                style: .continuous
+            )
+            .fill(
+                style.color.opacity(0.15)
+            )
+        )
+    }
+}
+
+//
+// MARK: FAVORITE
+//
+
 extension LearningCard {
 
-    fileprivate var background: some View {
+    private var favoriteButton: some View {
+        let isFavorite =
+            favoritesStore.favorites.contains(topic.id)
 
-        RoundedRectangle(
-            cornerRadius: 20,
+        return Button {
+            withAnimation(
+                .spring(
+                    response: 0.35,
+                    dampingFraction: 0.6
+                )
+            ) {
+                favoritesStore.toggle(id: topic.id)
+            }
+        } label: {
+            Image(
+                systemName:
+                    isFavorite
+                    ? "star.fill"
+                    : "star"
+            )
+            .font(.headline)
+            .foregroundStyle(
+                isFavorite
+                    ? .yellow
+                    : .secondary
+            )
+            .padding(10)
+            .background(.thinMaterial)
+            .clipShape(Circle())
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+//
+// MARK: FOOTER
+//
+
+extension LearningCard {
+
+    private var footerRow: some View {
+        return HStack {
+            Spacer()
+            Button {
+                showShareSheet = true
+            } label: {
+                Label(
+                    "Teilen",
+                    systemImage:
+                        "square.and.arrow.up"
+                )
+                .font(actionFont)
+            }
+            .buttonStyle(.bordered)
+        }
+    }
+}
+
+//
+// MARK: BACKGROUND ⭐
+//
+
+extension LearningCard {
+
+    private var background: some View {
+        return RoundedRectangle(
+            cornerRadius: 22,
             style: .continuous
         )
-        .fill(Color(.secondarySystemGroupedBackground))
-
+        .fill(
+            LinearGradient(
+                colors: [
+                    Color(
+                        .secondarySystemGroupedBackground
+                    ),
+                    Color(
+                        .tertiarySystemGroupedBackground
+                    ),
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
         .overlay(
-
             RoundedRectangle(
-                cornerRadius: 20,
+                cornerRadius: 22,
                 style: .continuous
             )
             .stroke(
@@ -136,94 +212,55 @@ extension LearningCard {
                 lineWidth: 1
             )
         )
-
         .shadow(
             color: .black.opacity(0.12),
-            radius: 8,
-            y: 4
+            radius: 10,
+            y: 6
         )
-    }
-
-    fileprivate var shareButton: some View {
-
-        Button {
-
-            showShareSheet = true
-
-        } label: {
-
-            Image(
-                systemName:
-                    "square.and.arrow.up"
-            )
-            .font(actionFont)
-        }
-        .buttonStyle(.plain)
     }
 }
 
-// MARK: Layout
+//
+// MARK: LAYOUT
+//
 
 extension LearningCard {
 
-    fileprivate var cardHeight: CGFloat {
+    private var cardHeight: CGFloat {
 
         sizeClass == .regular
-            ? 240
-            : 205
+            ? 250
+            : 210
     }
 
-    fileprivate var iconSize: CGFloat {
+    private var iconSize: CGFloat {
 
         sizeClass == .regular
-            ? 42
-            : 32
+            ? 34
+            : 28
     }
 
-    fileprivate var titleFont: Font {
+    private var titleFont: Font {
 
         sizeClass == .regular
             ? .title3.bold()
             : .headline.bold()
     }
 
-    fileprivate var descriptionFont: Font {
+    private var descriptionFont: Font {
 
         sizeClass == .regular
             ? .subheadline
             : .caption
     }
 
-    fileprivate var actionFont: Font {
+    private var actionFont: Font {
 
         sizeClass == .regular
             ? .footnote.bold()
             : .caption.bold()
     }
 }
-
-// MARK: Favorites
-
-extension LearningCard {
-
-    fileprivate func toggleFavorite() {
-
-        var set = favorites
-
-        if set.contains(topic.id) {
-
-            set.remove(topic.id)
-
-        } else {
-
-            set.insert(topic.id)
-        }
-
-        favoriteIDs =
-            set.sorted().joined(separator: ",")
-    }
-}
-
 // MARK: ShareSheet
 
 struct ShareSheet:

@@ -21,9 +21,7 @@
         },
         "code":
             "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct RealityKitView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let arView = ARView(frame: .zero)\n        let config = ARWorldTrackingConfiguration()\n        config.environmentTexturing = .automatic\n        arView.session.run(config)\n\n        / 🔹 Beispiel-Objekt (3D-Box)\n        let box = ModelEntity(mesh: .generateBox(size: 0.1))\n        box.model?.materials = [SimpleMaterial(color: .cyan, isMetallic: true)]\n\n        let anchor = AnchorEntity(world: [0, 0, -0.3])\n        anchor.addChild(box)\n        arView.scene.addAnchor(anchor)\n\n        return arView\n    }\n\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\nstruct RealityKitExampleView: View {\n    var body: some View {\n        RealityKitView()\n            .ignoresSafeArea()\n            .overlay(\n                Text(\"RealityKit 3D 🌐\")\n                    .font(.title)\n                    .foregroundColor(.white)\n                    .padding(),\n                alignment: .top\n            )\n    }\n}\n\n#Preview {\n    RealityKitExampleView()\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4895EF"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_002",
@@ -47,9 +45,7 @@
         },
         "code":
             "import SwiftUI\nimport RealityKit\n\nstruct USDZModelView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity(world: [0,0,-0.5])\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { USDZModelView() }",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4361EE"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_003",
@@ -73,9 +69,7 @@
         },
         "code":
             "if let model = try? await ModelEntity(named: \"character\") {\n    if let animation = model.availableAnimations.first {\n        model.playAnimation(animation.repeat())\n    }\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#3A0CA3"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_004",
@@ -99,9 +93,7 @@
         },
         "code":
             "let light = DirectionalLight()\nlight.light.intensity = 30000\nlight.light.color = .white\nlet lightAnchor = AnchorEntity(world: [0,1,0])\nlightAnchor.addChild(light)",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#7209B7"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_005",
@@ -125,9 +117,7 @@
         },
         "code":
             "let sphere = ModelEntity(mesh: .generateSphere(radius: 0.1))\nsphere.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))\nsphere.components.set(PhysicsBodyComponent(massProperties: .default, material: .default, mode: .dynamic))",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#560BAD"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_006",
@@ -151,9 +141,7 @@
         },
         "code":
             "let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap))\narView.addGestureRecognizer(tap)\n\n@objc func handleTap(_ sender: UITapGestureRecognizer) {\n   let location = sender.location(in: arView)\n   if let result = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .any).first {\n      print(\"Treffer!\", result.worldTransform)\n   }\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4CC9F0"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_007",
@@ -177,9 +165,7 @@
         },
         "code":
             "var material = PhysicallyBasedMaterial()\nmaterial.baseColor = .init(tint: .purple)\nmaterial.emissiveColor = .init(tint: .cyan, intensity: 2)\nentity.model?.materials = [material]",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#F72585"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_008",
@@ -203,9 +189,7 @@
         },
         "code":
             "entity.transform.translation.y += 0.01\nentity.transform.scale = [1.2,1.2,1.2]\nentity.transform.rotation = simd_quatf(angle: .pi/4, axis: [0,1,0])",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#B5179E"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_009",
@@ -229,9 +213,7 @@
         },
         "code":
             "let subscription = arView.scene.subscribe(to: CollisionEvents.Began.self) { event in\n    print(\"💥 Kollision zwischen\", event.entityA, event.entityB)\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#3F37C9"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_010",
@@ -255,9 +237,7 @@
         },
         "code":
             "import RealityKit\nimport SwiftUI\n\nstruct NewRealityView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity()\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { NewRealityView() }",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4895EF"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_002",
@@ -281,9 +261,7 @@
         },
         "code":
             "import SwiftUI\nimport RealityKit\n\nstruct USDZModelView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity(world: [0,0,-0.5])\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { USDZModelView() }",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4361EE"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_003",
@@ -307,9 +285,7 @@
         },
         "code":
             "if let model = try? await ModelEntity(named: \"character\") {\n    if let animation = model.availableAnimations.first {\n        model.playAnimation(animation.repeat())\n    }\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#3A0CA3"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_004",
@@ -333,9 +309,7 @@
         },
         "code":
             "let light = DirectionalLight()\nlight.light.intensity = 30000\nlight.light.color = .white\nlet lightAnchor = AnchorEntity(world: [0,1,0])\nlightAnchor.addChild(light)",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#7209B7"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_005",
@@ -359,9 +333,7 @@
         },
         "code":
             "let sphere = ModelEntity(mesh: .generateSphere(radius: 0.1))\nsphere.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))\nsphere.components.set(PhysicsBodyComponent(massProperties: .default, material: .default, mode: .dynamic))",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#560BAD"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_006",
@@ -385,9 +357,7 @@
         },
         "code":
             "let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap))\narView.addGestureRecognizer(tap)\n\n@objc func handleTap(_ sender: UITapGestureRecognizer) {\n   let location = sender.location(in: arView)\n   if let result = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .any).first {\n      print(\"Treffer!\", result.worldTransform)\n   }\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4CC9F0"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_007",
@@ -411,9 +381,7 @@
         },
         "code":
             "var material = PhysicallyBasedMaterial()\nmaterial.baseColor = .init(tint: .purple)\nmaterial.emissiveColor = .init(tint: .cyan, intensity: 2)\nentity.model?.materials = [material]",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#F72585"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_008",
@@ -437,9 +405,7 @@
         },
         "code":
             "entity.transform.translation.y += 0.01\nentity.transform.scale = [1.2,1.2,1.2]\nentity.transform.rotation = simd_quatf(angle: .pi/4, axis: [0,1,0])",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#B5179E"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_009",
@@ -463,9 +429,7 @@
         },
         "code":
             "let subscription = arView.scene.subscribe(to: CollisionEvents.Began.self) { event in\n    print(\"💥 Kollision zwischen\", event.entityA, event.entityB)\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#3F37C9"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_010",
@@ -489,9 +453,7 @@
         },
         "code":
             "import RealityKit\nimport SwiftUI\n\nstruct NewRealityView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity()\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { NewRealityView() }",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4895EF"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_011",
@@ -515,9 +477,7 @@
         },
         "code":
             "let light = DirectionalLight()\nlight.light.intensity = 40000\nlight.shadow = DirectionalLightComponent.Shadow(maxDistance: 5, depthBias: 1)\nlet anchor = AnchorEntity(world: [0,1,0])\nanchor.addChild(light)",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4895EF"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_012",
@@ -541,9 +501,7 @@
         },
         "code":
             "let texture = try! await TextureResource.load(named: \"sky.hdr\")\nlet environment = try! await EnvironmentResource(texture: texture)\narView.environment.scene = environment",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#4361EE"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_013",
@@ -567,9 +525,7 @@
         },
         "code":
             "let direction = normalize(target.position(relativeTo: nil) - entity.position(relativeTo: nil))\nentity.transform.rotation = simd_quatf(from: [0,0,1], to: direction)",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#3A0CA3"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_014",
@@ -593,9 +549,7 @@
         },
         "code":
             "config.sceneReconstruction = .mesh\n\narView.session.delegate = context.coordinator\n\nfunc session(_ session: ARSession, didAdd anchors: [ARAnchor]) {\n   for a in anchors {\n       if let mesh = a as? ARMeshAnchor {\n           let entity = ModelEntity(mesh: .init(mesh: mesh.geometry, device: arView.device!))\n           arView.scene.addAnchor(AnchorEntity(anchor: mesh))\n       }\n   }\n}",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#7209B7"
+        "category": "RealityKit"
     },
     {
         "id": "realitykit_015",
@@ -619,8 +573,6 @@
         },
         "code":
             "let force = SIMD3<Float>(0, 2, -3)\nsphere.physicsBody?.applyImpulse(force, relativeTo: nil)",
-        "category": "RealityKit",
-        "categoryIcon": "rotate.3d",
-        "categoryIconColor": "#F72585"
+        "category": "RealityKit"
     }
 ]

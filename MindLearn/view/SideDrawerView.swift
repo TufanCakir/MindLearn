@@ -1,6 +1,6 @@
 //
 //  SideDrawerView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -11,6 +11,9 @@ struct SideDrawerView: View {
 
     @Binding var showDrawer: Bool
 
+    @State private var selectedCategory: String = "Alle"
+    @State private var categories: [DrawerCategoryItem] = []
+
     var body: some View {
 
         VStack(spacing: 0) {
@@ -19,22 +22,153 @@ struct SideDrawerView: View {
 
             Divider()
 
-            DrawerListView()
+            categoryTabs  // ⭐ NEU
+
+            Divider()
+
+            DrawerListView(selectedCategory: selectedCategory)  // ⭐ gefiltert
 
             closeButton
         }
-
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity,
             alignment: .top
         )
+        .background(Color(.systemGroupedBackground))
+        .task { await loadCategories() }  // ⭐ NEU
+    }
+}
 
-        .background(
-            Color(.systemGroupedBackground)
+// MARK: - Category Model
+
+struct DrawerCategoryItem: Identifiable {
+
+    let id = UUID()
+    let name: String
+
+    var style: CategoryStyle {
+
+        CategoryStyle.style(for: name)
+    }
+}
+
+// MARK: - Category Tabs
+
+extension SideDrawerView {
+
+    private var categoryTabs: some View {
+
+        ScrollView(.horizontal, showsIndicators: false) {
+
+            HStack(spacing: 10) {
+
+                ForEach(categories) { item in
+
+                    categoryButton(item)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+        }
+        .background(.ultraThinMaterial)
+    }
+
+    private func categoryButton(
+        _ item: DrawerCategoryItem
+    ) -> some View {
+
+        let selected = selectedCategory == item.name
+
+        let style = item.style
+        let color = style.color
+
+        return Button {
+
+            withAnimation(.spring()) {
+
+                selectedCategory = item.name
+            }
+
+        } label: {
+
+            HStack(spacing: 8) {
+
+                Image(systemName: style.icon)
+                    .font(.caption.bold())
+                    .foregroundStyle(
+                        selected ? color : .primary
+                    )
+
+                Text(item.name)
+                    .font(.caption.bold())
+                    .foregroundStyle(
+                        selected ? color : .primary
+                    )
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background {
+
+                Capsule()
+                    .fill(
+
+                        selected
+                            ? color.opacity(0.22)
+                            : Color.secondary.opacity(0.12)
+                    )
+            }
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Load Categories
+
+extension SideDrawerView {
+
+    private func loadCategories() async {
+
+        let sections =
+            DrawerSectionLoader.shared
+            .loadAll(DrawerDataFile.allCases)
+
+        let uniqueCategories = Set(
+
+            sections.map {
+
+                $0.category
+                    .trimmingCharacters(
+                        in: .whitespacesAndNewlines
+                    )
+            }
         )
 
-        .padding(.top, 50)
+        var result: [DrawerCategoryItem] = [
+
+            DrawerCategoryItem(
+                name: "Alle"
+            )
+        ]
+
+        result +=
+            uniqueCategories
+
+            .map {
+
+                DrawerCategoryItem(
+                    name: $0
+                )
+            }
+
+            .sorted {
+
+                $0.name.localizedStandardCompare(
+                    $1.name
+                ) == .orderedAscending
+            }
+
+        categories = result
     }
 }
 

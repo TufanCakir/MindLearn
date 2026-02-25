@@ -1,6 +1,6 @@
 //
 //  OnboardingView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -10,93 +10,188 @@ import SwiftUI
 struct OnboardingView: View {
 
     var onFinish: () -> Void
+
     @State private var page = 0
 
     var body: some View {
 
-        VStack {
+        ZStack {
 
-            TabView(selection: $page) {
+            background
 
-                // MARK: Page 1
+            VStack(spacing: 0) {
 
-                OnboardingPage(
-                    icon: .asset("mindlearn_logo_dark"),
-                    title: "MindLearn",
-                    text:
-                        """
-                        MindLearn ist eine schnelle, saubere und moderne Lern-App.
+                TabView(selection: $page) {
 
-                        Perfekt für Studenten, Schulen und Technik-Interessierte,
-                        die Programmieren verstehen und neue Technologien lernen möchten.
-                        """
-                )
-                .tag(0)
+                    // MARK: Page 1
 
-                // MARK: Page 2
+                    OnboardingPage(
 
-                OnboardingPage(
-                    icon: .system("laptopcomputer"),
-                    title: "Viele Technologien",
-                    text:
-                        """
-                        Lerne SwiftUI, HTML, JSON, ARKit,
-                        SwiftData und viele weitere Frameworks.
+                        icon: .system("book"),
 
-                        Klare Beispiele und verständliche Schritte
-                        helfen dir schneller zu lernen.
-                        """
-                )
-                .tag(1)
+                        title: "MindLearn",
 
-                // MARK: Page 3
+                        text:
+                            """
+                            Moderne Lernplattform für Entwickler,
+                            Schüler und Lernende jeden Alters.
 
-                OnboardingPage(
-                    icon: .system("sparkles"),
-                    title: "Modern Lernen",
-                    text:
-                        """
-                        Sauberes Design, echte Code-Beispiele
-                        und praxisnahe Projekte.
+                            Klare Inhalte verbinden Theorie
+                            mit praxisnahen Beispielen.
+                            """
+                    )
+                    .tag(0)
 
-                        MindLearn hilft dir,
-                        Programmieren einfacher zu verstehen
-                        und direkt anzuwenden.
-                        """
-                )
-                .tag(2)
+                    // MARK: Page 2
+
+                    OnboardingPage(
+
+                        icon: .system("laptopcomputer"),
+
+                        title: "Sprachen & Frameworks",
+
+                        text:
+                            """
+                            Swift, SwiftUI, HTML, JSON,
+                            ARKit, RealityKit, WidgetKit
+                            und viele weitere Technologien.
+
+                            Von Grundlagen bis Profi-Level.
+                            """
+                    )
+                    .tag(1)
+
+                    // MARK: Page 3
+
+                    OnboardingPage(
+
+                        icon: .system("graduationcap.fill"),
+
+                        title: "Schule & Kinder Lernen",
+
+                        text:
+                            """
+                            Mathematik, Sprache,
+                            Lernstrategien und Programmieren.
+
+                            Spielerisch lernen —
+                            schnell verstehen.
+                            """
+                    )
+                    .tag(2)
+
+                }
+                .tabViewStyle(.page(indexDisplayMode: .always))
+                .animation(.smooth, value: page)
+
+                bottomBar
             }
+        }
+    }
+}
 
-            .tabViewStyle(.page(indexDisplayMode: .automatic))
-            .animation(.easeInOut, value: page)
+//
+// MARK: - Background
+//
+
+extension OnboardingView {
+
+    private var background: some View {
+
+        LinearGradient(
+
+            colors: [
+
+                .blue.opacity(0.18),
+                .purple.opacity(0.14),
+                .pink.opacity(0.08),
+                .clear,
+            ],
+
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+    }
+}
+
+//
+// MARK: - Bottom Button
+//
+
+extension OnboardingView {
+
+    private var bottomBar: some View {
+
+        VStack(spacing: 14) {
 
             Button(action: advance) {
 
-                Text(
-                    page < 2
-                        ? "Weiter"
-                        : "MindLearn starten"
-                )
+                HStack {
 
-                .frame(maxWidth: .infinity)
+                    Spacer()
+
+                    Text(
+                        page < 2
+                            ? "Weiter"
+                            : "Loslegen"
+                    )
+                    .fontWeight(.semibold)
+
+                    Image(
+                        systemName:
+
+                            page < 2
+                            ? "arrow.right"
+                            : "checkmark"
+                    )
+
+                    Spacer()
+                }
             }
 
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
-            .padding()
-        }
 
-        .safeAreaInset(edge: .bottom) {
+            if page < 2 {
 
-            Color.clear.frame(height: 8)
+                Button("Überspringen") {
+
+                    onFinish()
+
+                }
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+            }
         }
+        .padding(.horizontal)
+        .padding(.top, 12)
+        .padding(.bottom, 24)
+
+        .background(.ultraThinMaterial)
     }
+}
+
+//
+// MARK: - Navigation
+//
+
+extension OnboardingView {
 
     private func advance() {
 
         if page < 2 {
 
-            page += 1
+            withAnimation(
+
+                .spring(
+                    response: 0.45,
+                    dampingFraction: 0.85
+                )
+            ) {
+
+                page += 1
+            }
 
         } else {
 

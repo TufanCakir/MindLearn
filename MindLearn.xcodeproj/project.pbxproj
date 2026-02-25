@@ -12,9 +12,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2BC6D1232F4B6165007BB258 /* MindLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MindLearn.app; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app"; sourceTree = "<absolute>"; };
 		2BE260592F4A29CC00DBFA07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BE2606A2F4A29CC00DBFA07 /* MindLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindLearnApp.swift; sourceTree = "<group>"; };
+		2BF825A32F4E861100966714 /* MindLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MindLearn.app; path = "/Users/tufancakir/Desktop/MindLearn/build/Debug-iphoneos/MindLearn.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -67,7 +67,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Slayken Learn";
-			productReference = 2BC6D1232F4B6165007BB258 /* MindLearn.app */;
+			productReference = 2BF825A32F4E861100966714 /* MindLearn.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -270,7 +270,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tufancakir.MindLearn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -303,7 +303,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tufancakir.MindLearn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;

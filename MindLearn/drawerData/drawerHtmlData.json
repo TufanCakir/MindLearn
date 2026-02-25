@@ -22,8 +22,6 @@
             "code":
                 "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Button Beispiel</title>\n</head>\n<body>\n    <button>Click me</button>\n</body>\n</html>",
             "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
         },
         {
             "id": "html_002",
@@ -47,9 +45,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Textgrößen Beispiel</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <h2>Hello World</h2>\n    <h3>Hello World!</h3>\n    <h4>Hello World.</h4>\n    <h5>Hello World.</h5>\n    <h6>Hello World!</h6>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_003",
@@ -72,9 +68,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Bilder Beispiel</title>\n</head>\n<body>\n    <img src=\"bild.png\" alt=\"Ein Beispielbild\" width=\"300\">\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_004",
@@ -97,9 +91,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Links Beispiel</title>\n</head>\n<body>\n    <a href=\"https:/example.com\" target=\"_blank\">Besuche Example</a>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_005",
@@ -123,9 +115,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Listen Beispiel</title>\n</head>\n<body>\n    <ul>\n        <li>Hund</li>\n        <li>Katze</li>\n        <li>Maus</li>\n    </ul>\n    <ol>\n        <li>Erster Punkt</li>\n        <li>Zweiter Punkt</li>\n    </ol>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_006",
@@ -149,9 +139,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Tabelle Beispiel</title>\n</head>\n<body>\n    <table border=\"1\">\n        <tr>\n            <th>Name</th>\n            <th>Alter</th>\n        </tr>\n        <tr>\n            <td>Anna</td>\n            <td>23</td>\n        </tr>\n    </table>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_007",
@@ -201,9 +189,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>CSS Basics</title>\n    <style>\n        p {\n            color: cyan;\n            font-size: 20px;\n        }\n    </style>\n</head>\n<body>\n    <p>Hallo CSS!</p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_009",
@@ -226,9 +212,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Farben Beispiel</title>\n    <style>\n        body {\n            background-color: #7209B7;\n            color: white;\n        }\n    </style>\n</head>\n<body>\n    <p>Farben machen HTML lebendig!</p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_010",
@@ -252,9 +236,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Flexbox Beispiel</title>\n    <style>\n        .container {\n            display: flex;\n            gap: 10px;\n        }\n        .box {\n            background: cyan;\n            padding: 20px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"box\">1</div>\n        <div class=\"box\">2</div>\n        <div class=\"box\">3</div>\n    </div>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_011",
@@ -277,9 +259,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Formular Beispiel</title>\n</head>\n<body>\n    <form>\n        <label>Name:</label>\n        <input type=\"text\" placeholder=\"Gib deinen Namen ein\">\n        <button>Absenden</button>\n    </form>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_012",
@@ -303,9 +283,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Media Beispiel</title>\n</head>\n<body>\n    <audio controls>\n        <source src=\"audio.mp3\" type=\"audio/mpeg\">\n    </audio>\n    <video width=\"300\" controls>\n        <source src=\"video.mp4\" type=\"video/mp4\">\n    </video>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_013",
@@ -329,9 +307,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<title>Inline Styles</title>\n</head>\n<body>\n    <p style=\"color: cyan; font-size: 20px;\">Dieser Text nutzt Inline CSS.</p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_014",
@@ -354,9 +330,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n    <!-- Das ist ein Kommentar -->\n    <p>Hello World</p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_015",
@@ -379,9 +353,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Head Metadaten</title>\n</head>\n<body>\n    <p>Head Bereich konfiguriert!</p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_016",
@@ -405,9 +377,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n    <p><b>Fett</b> und <i>Kursiv</i> und <u>Unterstrichen</u></p>\n    <p><strong>Wichtiger Hinweis!</strong></p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_017",
@@ -431,9 +401,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<style>\n#header { color: cyan; }\n.box { background: purple; padding: 10px; }\n</style>\n</head>\n<body>\n    <h1 id=\"header\">Hallo ID</h1>\n    <div class=\"box\">Ich bin eine Box</div>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_018",
@@ -457,9 +425,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\" target=\"_blank\">\n    <img src=\"bild.png\" width=\"200\">\n</a>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_019",
@@ -483,9 +449,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\"https:/example.com\" width=\"300\" height=\"200\"></iframe>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_020",
@@ -509,9 +473,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n<header>Header Bereich</header>\n<main>Hauptinhalt</main>\n<footer>Footer Bereich</footer>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_021",
@@ -534,9 +496,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\">\n    <button style=\"padding:10px;\">Go!</button>\n</a>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_022",
@@ -559,9 +519,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.responsive {\n    width: 100%;\n    max-width: 300px;\n    height: auto;\n}\n</style>\n</head>\n<body>\n    <img src=\"bild.png\" class=\"responsive\">\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_023",
@@ -585,9 +543,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<body>\n<form>\n    <input type=\"text\" placeholder=\"Name\" required minlength=\"3\">\n    <input type=\"text\" placeholder=\"Nur Zahlen\" pattern=\"[0-9]+\">\n    <button>Absenden</button>\n</form>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_024",
@@ -611,9 +567,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<style>\nnav {\n    display: flex;\n    gap: 20px;\n    background: #7209B7;\n    padding: 10px;\n}\nnav a {\n    color: white;\n    text-decoration: none;\n}\n</style>\n</head>\n<body>\n<nav>\n    <a href=\"#\">Home</a>\n    <a href=\"#\">About</a>\n    <a href=\"#\">Kontakt</a>\n</nav>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_025",
@@ -637,9 +591,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n}\n.item {\n    background: cyan;\n    padding: 20px;\n}\n</style>\n</head>\n<body>\n<div class=\"grid\">\n    <div class=\"item\">1</div>\n    <div class=\"item\">2</div>\n    <div class=\"item\">3</div>\n</div>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_026",
@@ -663,9 +615,7 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<style>\np { font-size: 20px; }\n\n@media screen and (max-width: 600px) {\n    p { font-size: 14px; color: yellow; }\n}\n</style>\n</head>\n<body>\n<p>Ich passe mich der Bildschirmgröße an!</p>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         },
         {
             "id": "html_027",
@@ -689,8 +639,6 @@
             },
             "code":
                 "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.box {\n    width: 100px;\n    height: 100px;\n    background: cyan;\n    animation: move 2s infinite alternate;\n}\n@keyframes move {\n    from { transform: translateX(0); }\n    to { transform: translateX(200px); }\n}\n</style>\n</head>\n<body>\n<div class=\"box\"></div>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "category": "HTML"
         }
     ]

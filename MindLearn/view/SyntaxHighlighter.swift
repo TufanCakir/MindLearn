@@ -1,6 +1,6 @@
 //
 //  SyntaxHighlighter.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -13,64 +13,64 @@ actor SyntaxHighlighter {
 
     private init() {}
 
-    // MARK: Swift Keywords
+    // MARK: Regex Cache
 
-    private let swiftKeywordRegex =
-        try! NSRegularExpression(
+    private enum Regex {
 
-            pattern:
+        static let swift =
+            try! NSRegularExpression(
 
-                "\\b(import|struct|class|func|let|var|if|else|return|async|await|View|NavigationStack|Button|Text|VStack|HStack|ZStack)\\b"
+                pattern:
+                    "\\b(import|struct|class|actor|enum|protocol|extension|func|init|let|var|if|else|guard|return|async|await|private|public|internal|static|override)\\b"
+            )
 
-        )
+        static let jsonKey =
+            try! NSRegularExpression(
+                pattern: "\"[^\"]+\"(?=\\s*:)"
+            )
 
-    // MARK: HTML TAGS
+        static let htmlTag =
+            try! NSRegularExpression(
+                pattern: "</?[a-zA-Z0-9\\-]+[^>]*>"
+            )
 
-    private let htmlTagRegex =
-        try! NSRegularExpression(
-            pattern: "</?[a-zA-Z0-9\\-]+[^>]*>"
-        )
+        static let htmlAttribute =
+            try! NSRegularExpression(
 
-    // MARK: Attributes (href= src= etc)
+                pattern:
+                    "\\b(href|src|class|id|style|type|name|rel|alt|width|height)\\b"
+            )
 
-    private let htmlAttributeRegex =
-        try! NSRegularExpression(
-            pattern:
-                "\\b(href|src|class|id|style|type|name|content|rel|alt|width|height)\\b"
-        )
+        static let css =
+            try! NSRegularExpression(
 
-    private let cssRegex =
-        try! NSRegularExpression(
-            pattern:
-                "\\b(display|flex|grid|color|background|padding|margin|position|width|height|gap|justify-content|align-items)\\b"
-        )
+                pattern:
+                    "\\b(display|flex|grid|color|background|padding|margin|position|width|height|gap)\\b"
+            )
 
-    private let jsRegex =
-        try! NSRegularExpression(
-            pattern:
-                "\\b(function|const|let|var|return|document|console|log|onclick|alert)\\b"
-        )
+        static let js =
+            try! NSRegularExpression(
 
-    private let jsonKeyRegex =
-        try! NSRegularExpression(
-            pattern:
-                "\"[^\"]+\"(?=\\s*:)"
-        )
+                pattern:
+                    "\\b(function|const|let|var|return|document|console|log|useState|useEffect)\\b"
+            )
 
-    // MARK: Strings
+        static let string =
+            try! NSRegularExpression(
+                pattern: "\"([^\"\\\\]|\\\\.)*\""
+            )
 
-    private let stringRegex =
-        try! NSRegularExpression(
-            pattern: "\".*?\""
-        )
+        static let comment =
+            try! NSRegularExpression(
 
-    // MARK: Comments Swift + HTML
+                pattern: "(//.*?$)|(/\\*.*?\\*/)|<!--.*?-->",
 
-    private let commentRegex =
-        try! NSRegularExpression(
-            pattern: "(//.*)|<!--.*?-->",
-            options: [.dotMatchesLineSeparators]
-        )
+                options: [
+                    .anchorsMatchLines,
+                    .dotMatchesLineSeparators,
+                ]
+            )
+    }
 
     // MARK: Highlight
 
@@ -80,99 +80,71 @@ actor SyntaxHighlighter {
 
         var attr = AttributedString(code)
 
-        // Swift
+        guard !code.isEmpty else {
 
-        apply(
-            swiftKeywordRegex,
-            color: .blue,
-            to: &attr,
-            code: code
-        )
+            return attr
+        }
 
-        // HTML Tags
+        // PRIORITY ORDER ⭐⭐⭐⭐⭐
 
-        apply(
-            htmlTagRegex,
-            color: .pink,
-            to: &attr,
-            code: code
-        )
+        apply(Regex.comment, .gray, &attr, code)
 
-        // HTML Attributes
+        apply(Regex.string, .orange, &attr, code)
 
-        apply(
-            htmlAttributeRegex,
-            color: .cyan,
-            to: &attr,
-            code: code
-        )
+        apply(Regex.jsonKey, .mint, &attr, code)
 
-        // CSS
+        apply(Regex.swift, .blue, &attr, code)
 
-        apply(
-            cssRegex,
-            color: .green,
-            to: &attr,
-            code: code
-        )
+        apply(Regex.htmlTag, .pink, &attr, code)
 
-        // JavaScript
+        apply(Regex.htmlAttribute, .cyan, &attr, code)
 
-        apply(
-            jsRegex,
-            color: .yellow,
-            to: &attr,
-            code: code
-        )
+        apply(Regex.css, .green, &attr, code)
 
-        // Strings
-
-        apply(
-            stringRegex,
-            color: .orange,
-            to: &attr,
-            code: code
-        )
-
-        // Comments
-
-        apply(
-            commentRegex,
-            color: .gray,
-            to: &attr,
-            code: code
-        )
+        apply(Regex.js, .yellow, &attr, code)
 
         return attr
     }
 
-    // MARK: Apply Regex
+    // MARK: Apply Engine ⭐ FAST
 
     private func apply(
 
         _ regex: NSRegularExpression,
-        color: Color,
-        to attr: inout AttributedString,
-        code: String
+
+        _ color: Color,
+
+        _ attr: inout AttributedString,
+
+        _ code: String
 
     ) {
 
-        let range =
-            NSRange(
-                code.startIndex..<code.endIndex,
-                in: code
-            )
+        let nsRange = NSRange(
+
+            code.startIndex..<code.endIndex,
+
+            in: code
+        )
 
         regex.enumerateMatches(
+
             in: code,
-            range: range
+
+            range: nsRange
+
         ) { match, _, _ in
 
             guard
+
                 let match,
+
                 let r = Range(
+
                     match.range,
+
                     in: code
+
                 ),
 
                 let lower =

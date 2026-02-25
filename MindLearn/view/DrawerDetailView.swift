@@ -1,6 +1,6 @@
 //
 //  DrawerDetailView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -11,22 +11,21 @@ struct DrawerDetailView: View {
 
     let section: DrawerSection
 
-    private var isPad: Bool {
+    @Environment(\.colorScheme) private var colorScheme
 
-        UIDevice.current
-            .userInterfaceIdiom == .pad
+    private var isPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
     }
 
     private var maxWidth: CGFloat {
-
-        isPad ? 700 : .infinity
+        isPad ? 720 : .infinity
     }
 
     var body: some View {
 
         ScrollView {
 
-            VStack(spacing: 26) {
+            VStack(spacing: 32) {
 
                 heroHeader
 
@@ -36,177 +35,142 @@ struct DrawerDetailView: View {
 
                 codeSection
 
+                Spacer(minLength: 30)
             }
-            .padding(.bottom, 30)
+            .frame(maxWidth: maxWidth)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 24)
         }
-
         .background(background)
-
         .navigationTitle(section.title)
-
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
+//
+// MARK: Background
+//
+
 extension DrawerDetailView {
 
-    fileprivate var background: some View {
-
+    private var background: some View {
         Color(.systemGroupedBackground)
             .ignoresSafeArea()
     }
 }
 
+//
+// MARK: Hero ⭐ verbessert
+//
+
 extension DrawerDetailView {
 
-    fileprivate var heroHeader: some View {
+    private var heroHeader: some View {
 
         ZStack(alignment: .bottomLeading) {
 
-            Color(.systemGroupedBackground)
-                .ignoresSafeArea()
-
             RoundedRectangle(
-                cornerRadius: 22
-            )
-            .fill(.ultraThinMaterial)
-            .opacity(0.25)
-
-            VStack(alignment: .leading) {
-
-                Spacer()
-
-                Text(section.title)
-
-                    .font(
-                        .system(
-                            .title,
-                            design: .rounded
-                        )
-                        .bold()
-                    )
-
-                    .shadow(radius: 6)
-
-            }
-            .padding()
-
-        }
-
-        .frame(height: isPad ? 260 : 200)
-
-        .clipShape(
-
-            RoundedRectangle(
-                cornerRadius: 22,
+                cornerRadius: 28,
                 style: .continuous
             )
-        )
+            .fill(.ultraThinMaterial)
 
+            VStack(alignment: .leading, spacing: 12) {
+
+                Image(systemName: "doc.text")
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(.blue)
+
+                Text(section.title)
+                    .font(.system(.title, design: .rounded).bold())
+                    .multilineTextAlignment(.leading)
+            }
+            .padding(24)
+        }
+        .frame(height: isPad ? 220 : 180)
         .shadow(
-            color: .black.opacity(0.35),
-            radius: 14,
-            y: 8
+            color: .black.opacity(0.15),
+            radius: 12,
+            y: 6
         )
-
         .padding(.horizontal)
     }
 }
 
+//
+// MARK: Description
+//
+
 extension DrawerDetailView {
 
     @ViewBuilder
-    fileprivate var descriptionSection: some View {
+    private var descriptionSection: some View {
 
         if !section.description.isEmpty {
 
-            Text(section.description)
+            VStack(alignment: .leading, spacing: 10) {
 
-                .font(.body)
+                Text("Beschreibung")
+                    .font(.headline)
 
-                .lineSpacing(5)
-
-                .frame(
-                    maxWidth: maxWidth,
-                    alignment: .leading
-                )
-
-                .padding(.horizontal)
+                Text(section.description)
+                    .font(.body)
+                    .lineSpacing(5)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal)
         }
     }
 }
 
+//
+// MARK: Steps ⭐ modernisiert
+//
+
 extension DrawerDetailView {
 
     @ViewBuilder
-    fileprivate var stepsSection: some View {
+    private var stepsSection: some View {
 
         if !section.steps.isEmpty {
 
-            VStack(
-                alignment: .leading,
-                spacing: 14
-            ) {
+            VStack(alignment: .leading, spacing: 18) {
 
                 Text("Schritte")
-
                     .font(.headline)
-
                     .padding(.horizontal)
 
-                ForEach(
+                ForEach(Array(section.steps.enumerated()), id: \.offset) {
+                    index,
+                    step in
 
-                    Array(
-                        section.steps.enumerated()
-                    ),
+                    HStack(alignment: .top, spacing: 14) {
 
-                    id: \.offset
-
-                ) { index, step in
-
-                    HStack(alignment: .top) {
-
-                        Text("\(index+1)")
-
+                        Text("\(index + 1)")
                             .font(.caption.bold())
-
-                            .frame(
-                                width: 26,
-                                height: 26
-                            )
-
+                            .frame(width: 28, height: 28)
                             .background(
                                 Circle()
-                                    .fill(Color.blue)
+                                    .fill(.blue.gradient)
                             )
+                            .foregroundStyle(.white)
 
                         Text(step)
-
-                            .fixedSize(
-                                horizontal: false,
-                                vertical: true
-                            )
+                            .font(.body)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
-
-                    .padding()
-
-                    .frame(
-                        maxWidth: maxWidth,
-                        alignment: .leading
-                    )
-
+                    .padding(18)
                     .background(
-
                         RoundedRectangle(
-                            cornerRadius: 14
+                            cornerRadius: 18,
+                            style: .continuous
                         )
-
-                        .fill(
-                            Color.white
-                                .opacity(0.06)
-                        )
+                        .fill(Color(.secondarySystemGroupedBackground))
                     )
-
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color(.separator), lineWidth: 1)
+                    )
                     .padding(.horizontal)
                 }
             }
@@ -214,37 +178,29 @@ extension DrawerDetailView {
     }
 }
 
+//
+// MARK: Code Section ⭐ cleaner
+//
+
 extension DrawerDetailView {
 
-    fileprivate var codeSection: some View {
+    private var codeSection: some View {
 
-        VStack(
-            alignment: .leading,
-            spacing: 10
-        ) {
+        VStack(alignment: .leading, spacing: 14) {
 
             Text("Code-Beispiel")
-
                 .font(.headline)
-
                 .padding(.horizontal)
 
-            CodeView(
-                code: section.code
-            )
-
-            .frame(
-                maxWidth: maxWidth
-            )
-
-            .clipShape(
-
-                RoundedRectangle(
-                    cornerRadius: 16
+            CodeView(code: section.code)
+                .frame(maxWidth: maxWidth)
+                .clipShape(
+                    RoundedRectangle(
+                        cornerRadius: 18,
+                        style: .continuous
+                    )
                 )
-            )
-
-            .padding(.horizontal)
+                .padding(.horizontal)
         }
     }
 }

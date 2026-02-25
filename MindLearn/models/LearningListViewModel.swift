@@ -1,12 +1,13 @@
 //
 //  LearningListViewModel.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
 
 internal import Combine
 import Foundation
+import SwiftUI
 
 @MainActor
 final class LearningListViewModel: ObservableObject {
@@ -29,18 +30,8 @@ final class LearningListViewModel: ObservableObject {
         static let all = "Alle"
     }
 
-    // MARK: Dependencies
-
-    private(set)
-        var favorites: Set<String>
-
     // MARK: Init
-
-    init(
-        favorites: Set<String>
-    ) {
-
-        self.favorites = favorites
+    init() {
 
         loadTopics()
     }
@@ -113,6 +104,25 @@ extension LearningListViewModel {
     }
 }
 
+// MARK: Category Color
+
+extension LearningListViewModel {
+    
+    func colorForCategory(
+        _ category: String
+    ) -> Color {
+        
+        guard category != Category.all else {
+            return .accentColor
+        }
+
+        // Use the color associated with the category style.
+        return CategoryStyle
+            .style(for: category)
+            .color
+    }
+}
+
 // MARK: Loading
 
 extension LearningListViewModel {
@@ -150,14 +160,3 @@ extension LearningListViewModel {
     }
 }
 
-// MARK: Favorites
-
-extension LearningListViewModel {
-
-    func updateFavorites(
-        _ newFavorites: Set<String>
-    ) {
-
-        favorites = newFavorites
-    }
-}

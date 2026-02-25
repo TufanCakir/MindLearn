@@ -1,6 +1,6 @@
 //
 //  LearningTopic.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -24,8 +24,6 @@ struct LearningTopic: Identifiable, Codable {
     let code: String
 
     let category: String
-    let categoryIcon: String?
-    let categoryIconColor: String?
 }
 
 struct ColorInfo: Codable {
@@ -37,18 +35,15 @@ struct ColorInfo: Codable {
 // MARK: - JSON Files (Typsicher)
 
 enum LearningTopicFile: String, CaseIterable {
+
+    case school = "schoolData"
+    case children = "childrenData"
     
-    case basicsLearning = "basicsLearningData"
-
-    case schoolBasics = "schoolBasicsData"
-
     case general = "generallyData"
 
-    case swiftUI = "learningTopics"
+    case swiftUI = "SwiftUIData"
 
     case metal = "metalData"
-    case metalShader = "metalShaderData"
-    case metalApp = "metalAppData"
 
     case reactNative = "reactNativeData"
 

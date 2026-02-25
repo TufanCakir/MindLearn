@@ -1,6 +1,6 @@
 //
 //  DrawerListView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -9,7 +9,19 @@ import SwiftUI
 
 struct DrawerListView: View {
 
+    let selectedCategory: String
     @State private var sections: [DrawerSection] = []
+
+    private var filteredSections: [DrawerSection] {
+
+        guard selectedCategory != "Alle" else { return sections }
+
+        return sections.filter {
+            $0.category.trimmingCharacters(in: .whitespacesAndNewlines)
+            ==
+            selectedCategory.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
 
     var body: some View {
 
@@ -24,7 +36,6 @@ struct DrawerListView: View {
                 content
             }
         }
-
         .task {
 
             await loadSections()
@@ -32,96 +43,144 @@ struct DrawerListView: View {
     }
 }
 
-// MARK: - Content
-
 extension DrawerListView {
 
     private var content: some View {
 
         ScrollView {
 
-            LazyVStack(spacing: 14) {
+            LazyVStack(spacing: 16) {
 
-                ForEach(sections) { section in
+                ForEach(filteredSections) { section in
 
                     NavigationLink {
 
-                        DrawerDetailView(
-                            section: section
-                        )
+                        DrawerDetailView(section: section)
 
                     } label: {
 
                         drawerCard(section)
                     }
-
                     .buttonStyle(.plain)
                 }
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.top, 8)
+            .padding(.bottom, 20)
         }
-
-        .background(
-            Color(.systemGroupedBackground)
-        )
     }
 }
 
-// MARK: - Card
+//
+// MARK: CARD ⭐
+//
 
 extension DrawerListView {
-
+    
     private func drawerCard(
         _ section: DrawerSection
     ) -> some View {
-
-        VStack(alignment: .leading, spacing: 8) {
-
-            Text(section.title)
-                .font(.headline.weight(.semibold))
-
-            Text(section.description)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
-        }
-
-        .padding(18)
-
-        .frame(
-            maxWidth: .infinity,
-            alignment: .leading
+        
+        // ⭐ Category Mapping
+        let style =
+        CategoryStyle.style(
+            for: section.category
         )
-
-        .background {
-
+        
+        return HStack(spacing: 14) {
+            
+            //
+            // ICON BADGE ⭐
+            //
+            
+            Image(systemName: style.icon)
+            
+                .font(.headline)
+            
+                .foregroundStyle(style.color)
+            
+                .frame(width: 40, height: 40)
+            
+                .background(
+                    
+                    RoundedRectangle(
+                        cornerRadius: 12,
+                        style: .continuous
+                    )
+                    
+                    .fill(
+                        style.color.opacity(0.15)
+                    )
+                )
+            
+            //
+            // TEXT
+            //
+            
+            VStack(
+                alignment: .leading,
+                spacing: 6
+            ) {
+                
+                Text(section.title)
+                
+                    .font(.headline)
+                
+                    .lineLimit(1)
+                
+                Text(section.description)
+                
+                    .font(.subheadline)
+                
+                    .foregroundStyle(.secondary)
+                
+                    .lineLimit(2)
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+            
+                .font(.caption.weight(.semibold))
+            
+                .foregroundStyle(.tertiary)
+        }
+        
+        .padding(16)
+        
+        .background(
+            
             RoundedRectangle(
-                cornerRadius: 18,
+                cornerRadius: 20,
                 style: .continuous
             )
-
-            .fill(.thinMaterial)
-        }
-
-        .overlay {
-
+            
+            .fill(.ultraThinMaterial)
+        )
+        
+        .overlay(
+            
             RoundedRectangle(
-                cornerRadius: 18
+                cornerRadius: 20
             )
-
-            .strokeBorder(
-                .quaternary
+            
+            .stroke(
+                Color(.separator),
+                lineWidth: 1
             )
-        }
-
+        )
+        
         .shadow(
-            radius: 6,
-            y: 3
+            color: .black.opacity(0.08),
+            radius: 8,
+            y: 4
         )
     }
 }
 
-// MARK: - Empty
+//
+// MARK: EMPTY ⭐
+//
 
 extension DrawerListView {
 
@@ -133,11 +192,12 @@ extension DrawerListView {
 
             systemImage: "book.closed",
 
-            description: Text(
-                "Keine Inhalte gefunden."
-            )
-        )
+            description:
 
+                Text(
+                    "Keine Inhalte gefunden."
+                )
+        )
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity
@@ -145,7 +205,9 @@ extension DrawerListView {
     }
 }
 
-// MARK: - Load
+//
+// MARK: LOAD ⭐
+//
 
 extension DrawerListView {
 
@@ -170,7 +232,9 @@ extension DrawerListView {
     }
 }
 
-// MARK: - Helpers
+//
+// MARK: HELPERS
+//
 
 extension Array {
 
@@ -189,6 +253,3 @@ extension Array {
     }
 }
 
-#Preview {
-    DrawerListView()
-}

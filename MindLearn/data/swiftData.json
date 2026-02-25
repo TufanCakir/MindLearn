@@ -22,8 +22,6 @@
         "code":
             "var name: String? = \"Tufan\"\nif let unwrapped = name { print(unwrapped) }",
         "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF6D2D"
     },
     {
         "id": "struct_001",
@@ -47,9 +45,7 @@
         },
         "code":
             "struct User {\n    var name: String\n    var age: Int\n\n    func greet() {\n        print(\"Hallo, \\(name)!\")\n    }\n}\n\nlet person = User(name: \"Tufan\", age: 30)\nperson.greet()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF6D2D"
+        "category": "Swift"
     },
     {
         "id": "class_001",
@@ -73,9 +69,7 @@
         },
         "code":
             "class Animal {\n    var name: String\n    init(name: String) { self.name = name }\n    func makeSound() { print(\"🐾 Geräusch\") }\n}\n\nclass Dog: Animal {\n    override func makeSound() { print(\"🐶 Wuff!\") }\n}\n\nlet dog = Dog(name: \"Bello\")\ndog.makeSound()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF6D2D"
+        "category": "Swift"
     },
     {
         "id": "enum_001",
@@ -99,9 +93,7 @@
         },
         "code":
             "enum Direction {\n    case north, south, east, west\n}\n\nlet move = Direction.north\n\nswitch move {\ncase .north: print(\"⬆️ Norden\")\ncase .south: print(\"⬇️ Süden\")\ncase .east: print(\"➡️ Osten\")\ncase .west: print(\"⬅️ Westen\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#5E5CE6"
+        "category": "Swift"
     },
     {
         "id": "protocol_001",
@@ -125,9 +117,7 @@
         },
         "code":
             "protocol Greetable {\n    func greet()\n}\n\nstruct Person: Greetable {\n    var name: String\n    func greet() { print(\"Hallo, \\(name)!\") }\n}\n\nlet me = Person(name: \"Tufan\")\nme.greet()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "extension_001",
@@ -150,9 +140,7 @@
         },
         "code":
             "extension String {\n    var isLong: Bool { self.count > 5 }\n}\n\nprint(\"Hallo\".isLong) / false\nprint(\"Hallo Welt\".isLong) / true",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9500"
+        "category": "Swift"
     },
     {
         "id": "error_001",
@@ -176,9 +164,7 @@
         },
         "code":
             "enum LoginError: Error {\n    case wrongPassword\n}\n\nfunc login(password: String) throws {\n    if password != \"1234\" { throw LoginError.wrongPassword }\n    print(\"✅ Eingeloggt\")\n}\n\ndo {\n    try login(password: \"0000\")\n} catch {\n    print(\"Fehler: \\(error)\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF3B30"
+        "category": "Swift"
     },
     {
         "id": "closure_001",
@@ -202,9 +188,7 @@
         },
         "code":
             "func fetchData(completion: (String) -> Void) {\n    completion(\"📦 Daten geladen\")\n}\n\nfetchData { message in\n    print(message)\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9F0A"
+        "category": "Swift"
     },
     {
         "id": "generics_001",
@@ -228,9 +212,7 @@
         },
         "code":
             "func swapValues<T>(_ a: inout T, _ b: inout T) {\n    let temp = a\n    a = b\n    b = temp\n}\n\nvar x = 5\nvar y = 10\nswapValues(&x, &y)\nprint(x, y) / 10 5",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#BF5AF2"
+        "category": "Swift"
     },
     {
         "id": "asyncawait_001",
@@ -254,9 +236,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AsyncAwaitExampleView: View {\n    @State private var joke = \"Lade Witz...\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(joke)\n                .multilineTextAlignment(.center)\n                .padding()\n\n            Button(\"Neuen Witz laden\") {\n                Task { await loadJoke() }\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n    }\n\n    func loadJoke() async {\n        guard let url = URL(string: \"https:/official-joke-api.appspot.com/random_joke\") else { return }\n        do {\n            let (data, _) = try await URLSession.shared.data(from: url)\n            if let decoded = try? JSONDecoder().decode(Joke.self, from: data) {\n                joke = \"\\(decoded.setup)\\n\\n💬 \\(decoded.punchline)\"\n            }\n        } catch {\n            joke = \"Fehler beim Laden 😅\"\n        }\n    }\n}\n\nstruct Joke: Codable {\n    let setup: String\n    let punchline: String\n}\n\n#Preview { AsyncAwaitExampleView() }",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "debugging_001",
@@ -280,9 +260,7 @@
         },
         "code":
             "struct User {\n    var name: String\n    var level: Int\n}\n\nlet player = User(name: \"Tufan\", level: 42)\n\nprint(\"🧠 Spielername:\", player.name)\ndump(player)\n\nfunc logMessage(_ message: String, file: String = #file, line: Int = #line, function: String = #function) {\n    print(\"[LOG] \\(message) — in \\(function) (Zeile \\(line))\")\n}\n\nlogMessage(\"Spiel gestartet\")",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "errorhandling_002",
@@ -306,9 +284,7 @@
         },
         "code":
             "enum LoginError: Error {\n    case emptyUsername\n    case wrongPassword\n}\n\nfunc login(username: String, password: String) throws {\n    guard !username.isEmpty else { throw LoginError.emptyUsername }\n    guard password == \"1234\" else { throw LoginError.wrongPassword }\n    print(\"✅ Willkommen, \\(username)\")\n}\n\ndo {\n    try login(username: \"Tufan\", password: \"0000\")\n} catch LoginError.emptyUsername {\n    print(\"❌ Kein Benutzername angegeben.\")\n} catch LoginError.wrongPassword {\n    print(\"🚫 Falsches Passwort.\")\n} catch {\n    print(\"🔴 Unbekannter Fehler: \\(error)\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF3B30"
+        "category": "Swift"
     },
     {
         "id": "logging_001",
@@ -332,9 +308,7 @@
         },
         "code":
             "import Foundation\n\nenum LogLevel: String {\n    case info = \"ℹ️\"\n    case warning = \"⚠️\"\n    case error = \"🛑\"\n}\n\nfunc log(_ message: String, level: LogLevel = .info) {\n    let date = ISO8601DateFormatter().string(from: Date())\n    print(\"\\(level.rawValue) [\\(date)] - \\(message)\")\n}\n\nlog(\"App gestartet\", level: .info)\nlog(\"Verbindung langsam\", level: .warning)\nlog(\"Server nicht erreichbar\", level: .error)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9500"
+        "category": "Swift"
     },
     {
         "id": "profiling_001",
@@ -358,9 +332,7 @@
         },
         "code":
             "import Foundation\n\nlet startTime = CFAbsoluteTimeGetCurrent()\n\n/ Beispiel: Aufwändige Schleife\nvar result = 0\nfor i in 0..<1_000_000 {\n    result += i\n}\n\nlet endTime = CFAbsoluteTimeGetCurrent()\nlet elapsed = endTime - startTime\n\nprint(\"✅ Ergebnis: \\(result)\")\nprint(String(format: \"⏱ Laufzeit: %.5f Sekunden\", elapsed))",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "benchmark_001",
@@ -384,9 +356,7 @@
         },
         "code":
             "import Foundation\n\nlet numbers = Array(0...1_000_000)\nlet numberSet = Set(numbers)\n\nlet target = 999_999\n\nlet startArray = CFAbsoluteTimeGetCurrent()\nlet _ = numbers.contains(target)\nlet endArray = CFAbsoluteTimeGetCurrent()\n\nlet startSet = CFAbsoluteTimeGetCurrent()\nlet _ = numberSet.contains(target)\nlet endSet = CFAbsoluteTimeGetCurrent()\n\nprint(String(format: \"🔍 Array-Suche: %.5f s\", endArray - startArray))\nprint(String(format: \"⚡️ Set-Suche: %.5f s\", endSet - startSet))",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "memory_001",
@@ -409,9 +379,7 @@
         },
         "code":
             "import Foundation\n\nstruct PlayerStruct {\n    var name: String\n    var score: Int\n}\n\nclass PlayerClass {\n    var name: String\n    var score: Int\n    init(name: String, score: Int) {\n        self.name = name\n        self.score = score\n    }\n}\n\nvar structA = PlayerStruct(name: \"Tufan\", score: 100)\nvar structB = structA / Kopie\nstructB.score = 200\nprint(\"Struct A Score: \\(structA.score) – Struct B Score: \\(structB.score)\")\n\nlet classA = PlayerClass(name: \"Tufan\", score: 100)\nlet classB = classA / Referenz\nclassB.score = 200\nprint(\"Class A Score: \\(classA.score) – Class B Score: \\(classB.score)\")",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9500"
+        "category": "Swift"
     },
     {
         "id": "cli_001",
@@ -435,9 +403,7 @@
         },
         "code":
             "import Foundation\n\nlet args = CommandLine.arguments\n\nif args.count < 2 {\n    print(\"⚙️ Nutzung: swift main.swift <Name>\")\n} else {\n    let name = args[1]\n    print(\"👋 Hallo, \\(name)! Willkommen in Swift CLI!\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "cli_002",
@@ -461,9 +427,7 @@
         },
         "code":
             "import Foundation\n\nlet fileURL = URL(fileURLWithPath: \"output.txt\")\nlet text = \"🚀 Swift CLI schreibt in Dateien!\"\n\ndo {\n    try text.write(to: fileURL, atomically: true, encoding: .utf8)\n    let content = try String(contentsOf: fileURL)\n    print(\"📄 Dateiinhalt: \\n\\(content)\")\n} catch {\n    print(\"❌ Fehler beim Datei-Zugriff: \\(error)\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "cli_003",
@@ -487,9 +451,7 @@
         },
         "code":
             "import Foundation\n\nstruct User: Codable {\n    let name: String\n    let age: Int\n}\n\nlet jsonString = \"\"\"{\n    \\\"name\\\": \\\"Tufan\\\",\n    \\\"age\\\": 30\n}\"\"\"\n\nlet data = Data(jsonString.utf8)\n\nif let user = try? JSONDecoder().decode(User.self, from: data) {\n    print(\"✅ Name: \\(user.name), Alter: \\(user.age)\")\n}\n\nif let jsonData = try? JSONEncoder().encode(user),\n   let jsonString = String(data: jsonData, encoding: .utf8) {\n    print(\"\\n📦 JSON Ausgabe:\\n\\(jsonString)\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9500"
+        "category": "Swift"
     },
     {
         "id": "networking_001",
@@ -513,9 +475,7 @@
         },
         "code":
             "import Foundation\n\nguard let url = URL(string: \"https:/jsonplaceholder.typicode.com/posts/1\") else {\n    fatalError(\"❌ Ungültige URL\")\n}\n\nlet task = URLSession.shared.dataTask(with: url) { data, _, error in\n    if let error = error {\n        print(\"🚫 Fehler: \\(error)\")\n        return\n    }\n    if let data = data, let text = String(data: data, encoding: .utf8) {\n        print(\"✅ Antwort:\\n\\(text)\")\n    }\n}\n\ntask.resume()\n\nRunLoop.main.run() / Für CLI-Programme nötig",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "networking_002",
@@ -539,9 +499,7 @@
         },
         "code":
             "import Foundation\n\nstruct Post: Codable {\n    let id: Int\n    let title: String\n    let body: String\n}\n\nguard let url = URL(string: \"https:/jsonplaceholder.typicode.com/posts/1\") else {\n    fatalError(\"❌ Ungültige URL\")\n}\n\nURLSession.shared.dataTask(with: url) { data, _, error in\n    guard let data = data else { return }\n    do {\n        let post = try JSONDecoder().decode(Post.self, from: data)\n        print(\"📝 Titel: \\(post.title)\")\n        print(\"💬 Inhalt: \\(post.body)\")\n    } catch {\n        print(\"🚫 JSON-Fehler: \\(error)\")\n    }\n}.resume()\n\nRunLoop.main.run()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "networking_003",
@@ -565,9 +523,7 @@
         },
         "code":
             "import Foundation\n\nstruct User: Codable {\n    let id: Int\n    let name: String\n    let email: String\n}\n\nfunc fetchUser() async throws {\n    let url = URL(string: \"https:/jsonplaceholder.typicode.com/users/1\")!\n    let (data, _) = try await URLSession.shared.data(from: url)\n    let user = try JSONDecoder().decode(User.self, from: data)\n    print(\"👤 Nutzer: \\(user.name) – 📧 \\(user.email)\")\n}\n\nTask {\n    do {\n        try await fetchUser()\n    } catch {\n        print(\"🚫 Fehler: \\(error)\")\n    }\n}\n\nRunLoop.main.run()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9500"
+        "category": "Swift"
     },
     {
         "id": "concurrency_001",
@@ -591,9 +547,7 @@
         },
         "code":
             "import Foundation\n\nfunc fetchNumbers() async -> [Int] {\n    await withTaskGroup(of: Int.self) { group in\n        for i in 1...5 {\n            group.addTask {\n                try? await Task.sleep(for: .seconds(Double.random(in: 0.5...2)))\n                print(\"✅ Task \\(i) fertig\")\n                return i * 10\n            }\n        }\n        var results: [Int] = []\n        for await number in group { results.append(number) }\n        return results\n    }\n}\n\nTask {\n    let numbers = await fetchNumbers()\n    print(\"📦 Ergebnisse:\", numbers)\n}\n\nRunLoop.main.run()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "actor_001",
@@ -617,9 +571,7 @@
         },
         "code":
             "import Foundation\n\nactor ScoreManager {\n    private(set) var score = 0\n    func add(points: Int) {\n        score += points\n    }\n}\n\nlet manager = ScoreManager()\n\nTask {\n    await manager.add(points: 10)\n    await manager.add(points: 5)\n    print(\"🏆 Aktueller Score: \\(await manager.score)\")\n}\n\nRunLoop.main.run()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "taskcancel_001",
@@ -643,9 +595,7 @@
         },
         "code":
             "import Foundation\n\nlet task = Task {\n    for i in 1...10 {\n        try Task.checkCancellation()\n        print(\"⏳ Schritt \\(i)\")\n        try await Task.sleep(for: .seconds(0.5))\n    }\n    print(\"✅ Fertig!\")\n}\n\nTask {\n    try await Task.sleep(for: .seconds(2))\n    print(\"🚫 Task wird abgebrochen\")\n    task.cancel()\n}\n\nRunLoop.main.run()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF3B30"
+        "category": "Swift"
     },
     {
         "id": "swift_051",
@@ -669,9 +619,7 @@
         },
         "code":
             "func greet(_ name: String?) {\n    guard let name = name else {\n        print(\"❌ Kein Name vorhanden\")\n        return\n    }\n    print(\"👋 Hallo, \\(name)\")\n}\n\ngreet(nil)\ngreet(\"Tufan\")",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF6D2D"
+        "category": "Swift"
     },
     {
         "id": "swift_052",
@@ -695,9 +643,7 @@
         },
         "code":
             "struct Rectangle {\n    var width: Double\n    var height: Double\n\n    var area: Double {\n        width * height\n    }\n}\n\nlet r = Rectangle(width: 10, height: 4)\nprint(r.area)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9F0A"
+        "category": "Swift"
     },
     {
         "id": "swift_053",
@@ -721,9 +667,7 @@
         },
         "code":
             "var score: Int = 0 {\n    willSet { print(\"➡️ Neuer Wert: \\(newValue)\") }\n    didSet  { print(\"⬅️ Alter Wert: \\(oldValue)\") }\n}\n\nscore = 20\nscore = 50",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#5E5CE6"
+        "category": "Swift"
     },
     {
         "id": "swift_054",
@@ -747,9 +691,7 @@
         },
         "code":
             "struct MathUtils {\n    static let pi = 3.1415\n    static func square(_ x: Int) -> Int { x * x }\n}\n\nprint(MathUtils.pi)\nprint(MathUtils.square(12))",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "swift_055",
@@ -772,9 +714,7 @@
         },
         "code":
             "struct Counter {\n    var value = 0\n    mutating func add() { value += 1 }\n}\n\nvar c = Counter()\nc.add()\nprint(c.value)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF375F"
+        "category": "Swift"
     },
     {
         "id": "swift_056",
@@ -798,9 +738,7 @@
         },
         "code":
             "struct DataLoader {\n    lazy var bigData: [Int] = {\n        print(\"📦 Lade große Daten…\")\n        return Array(0...1_000_000)\n    }()\n}\n\nvar loader = DataLoader()\nprint(loader.bigData.count)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9500"
+        "category": "Swift"
     },
     {
         "id": "swift_057",
@@ -824,9 +762,7 @@
         },
         "code":
             "let numbers = [1, 2, 3, 4, 5]\n\nprint(numbers.map { $0 * 2 })\nprint(numbers.filter { $0 % 2 == 0 })\nprint(numbers.reduce(0, +))",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#BF5AF2"
+        "category": "Swift"
     },
     {
         "id": "swift_058",
@@ -850,9 +786,7 @@
         },
         "code":
             "struct ScoreBoard {\n    var scores = [\"A\": 10, \"B\": 20]\n    subscript(player: String) -> Int? {\n        get { scores[player] }\n        set { scores[player] = newValue }\n    }\n}\n\nvar s = ScoreBoard()\ns[\"A\"] = 99\nprint(s[\"A\"]!)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF3B30"
+        "category": "Swift"
     },
     {
         "id": "swift_059",
@@ -876,9 +810,7 @@
         },
         "code":
             "enum Status { case success(Int), error(String) }\nlet response = Status.success(200)\n\nif case let .success(code) = response {\n    print(\"✅ Code: \\(code)\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "Swift"
     },
     {
         "id": "swift_060",
@@ -902,9 +834,7 @@
         },
         "code":
             "struct User {\n    let name: String\n    init?(name: String) {\n        guard !name.isEmpty else { return nil }\n        self.name = name\n    }\n}\n\nlet good = User(name: \"Tufan\")\nlet bad = User(name: \"\")\nprint(good)\nprint(bad)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "swift_061",
@@ -928,9 +858,7 @@
         },
         "code":
             "enum CalcError: Error { case divisionByZero }\n\nfunc divide(_ a: Double, _ b: Double) -> Result<Double, CalcError> {\n    guard b != 0 else { return .failure(.divisionByZero) }\n    return .success(a / b)\n}\n\nlet result = divide(10, 0)\n\nswitch result {\ncase .success(let value): print(\"Ergebnis: \\(value)\")\ncase .failure(let error): print(\"Fehler: \\(error)\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9F0A"
+        "category": "Swift"
     },
     {
         "id": "swift_062",
@@ -954,9 +882,7 @@
         },
         "code":
             "class Enemy {\n    init() { print(\"👹 Enemy erscheint\") }\n    deinit { print(\"💀 Enemy wurde zerstört\") }\n}\n\nfunc battle() {\n    let enemy = Enemy()\n    print(\"⚔️ Kampf…\")\n}\n\nbattle() / danach verschwindet enemy → deinit wird aufgerufen",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF3B30"
+        "category": "Swift"
     },
     {
         "id": "swift_063",
@@ -980,9 +906,7 @@
         },
         "code":
             "import Foundation\n\n@propertyWrapper\nstruct UserDefault<T> {\n    let key: String\n    let defaultValue: T\n\n    var wrappedValue: T {\n        get { UserDefaults.standard.object(forKey: key) as? T ?? defaultValue }\n        set { UserDefaults.standard.set(newValue, forKey: key) }\n    }\n}\n\nstruct Settings {\n    @UserDefault(key: \"volume\", defaultValue: 50)\n    var volume: Int\n}\n\nvar s = Settings()\ns.volume = 80\nprint(s.volume)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#5E5CE6"
+        "category": "Swift"
     },
     {
         "id": "swift_064",
@@ -1005,9 +929,7 @@
         },
         "code":
             "class Person {\n    var name: String\n    weak var pet: Pet?\n    init(name: String) { self.name = name }\n}\n\nclass Pet {\n    var name: String\n    unowned var owner: Person\n    init(name: String, owner: Person) { self.name = name; self.owner = owner }\n}\n\nvar p: Person? = Person(name: \"Tufan\")\nvar dog: Pet? = Pet(name: \"Rex\", owner: p!)\np?.pet = dog\n\np = nil / kein Memory Leak dank weak/unowned",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "swift_065",
@@ -1032,7 +954,5 @@
         "code":
             "struct Player { let name: String; let score: Int }\n\nlet users = [\n    Player(name: \"Tufan\", score: 100),\n    Player(name: \"Alex\", score: 300)\n]\n\nfunc printValues<T>(_ array: [T], keyPath: KeyPath<T, Any>) {\n    array.forEach { print($0[keyPath: keyPath]) }\n}\n\nprintValues(users, keyPath: \\Player.name)\nprintValues(users, keyPath: \\Player.score)",
         "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#BF5AF2"
     }
 ]

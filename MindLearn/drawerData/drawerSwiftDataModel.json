@@ -21,9 +21,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n/ 1️⃣ Datenmodell definieren\n@Model\nclass Note {\n    var title: String\n    var createdAt: Date\n\n    init(title: String, createdAt: Date = .now) {\n        self.title = title\n        self.createdAt = createdAt\n    }\n}\n\n/ 2️⃣ Haupt-App mit ModelContainer\n@main\nstruct NotesApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n        .modelContainer(for: Note.self)\n    }\n}\n\n/ 3️⃣ Daten in SwiftUI anzeigen und speichern\nstruct ContentView: View {\n    @Environment(\\.modelContext) private var context\n    @Query private var notes: [Note]\n    @State private var newTitle = \"\"\n\n    var body: some View {\n        NavigationStack {\n            VStack(spacing: 20) {\n                TextField(\"Neue Notiz\", text: $newTitle)\n                    .textFieldStyle(.roundedBorder)\n                    .padding()\n\n                Button(\"Speichern\") {\n                    let note = Note(title: newTitle)\n                    context.insert(note)\n                    try? context.save()\n                    newTitle = \"\"\n                }\n                .buttonStyle(.borderedProminent)\n\n                List(notes) { note in\n                    VStack(alignment: .leading) {\n                        Text(note.title)\n                            .font(.headline)\n                        Text(note.createdAt, style: .date)\n                            .font(.caption)\n                            .foregroundColor(.gray)\n                    }\n                }\n            }\n            .navigationTitle(\"SwiftData Notizen\")\n        }\n    }\n}\n\n#Preview { ContentView() }",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#0000FF"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_002",
@@ -47,9 +45,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass Category {\n    var name: String\n    @Relationship(deleteRule: .cascade) var items: [Item] = []\n    init(name: String) { self.name = name }\n}\n\n@Model\nclass Item {\n    var title: String\n    init(title: String) { self.title = title }\n}\n\nstruct CategoryListView: View {\n    @Environment(\\.modelContext) private var context\n    @Query private var categories: [Category]\n    @State private var newCategory = \"\"\n\n    var body: some View {\n        VStack(spacing: 12) {\n            TextField(\"Kategorie\", text: $newCategory)\n                .textFieldStyle(.roundedBorder)\n\n            Button(\"Hinzufügen\") {\n                let cat = Category(name: newCategory)\n                context.insert(cat)\n                try? context.save()\n                newCategory = \"\"\n            }\n            .buttonStyle(.borderedProminent)\n\n            List(categories) { cat in\n                NavigationLink(destination: ItemListView(category: cat)) {\n                    Text(cat.name)\n                }\n            }\n        }\n        .padding()\n    }\n}\n\nstruct ItemListView: View {\n    @Environment(\\.modelContext) private var context\n    @Bindable var category: Category\n    @State private var newItem = \"\"\n\n    var body: some View {\n        VStack(spacing: 12) {\n            TextField(\"Neuer Eintrag\", text: $newItem)\n                .textFieldStyle(.roundedBorder)\n\n            Button(\"Speichern\") {\n                category.items.append(Item(title: newItem))\n                try? context.save()\n                newItem = \"\"\n            }\n            .buttonStyle(.borderedProminent)\n\n            List(category.items) { item in\n                Text(item.title)\n            }\n        }\n        .padding()\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#560BAD"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_003",
@@ -73,9 +69,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass Product {\n    var title: String\n    init(_ title: String) { self.title = title }\n}\n\nstruct ProductSearchView: View {\n    @Environment(\\.modelContext) private var context\n    @State private var query = \"\"\n\n    @Query private var products: [Product]\n\n    init() {\n        _products = Query(sort: \\Product.title)\n    }\n\n    var filtered: [Product] {\n        if query.isEmpty { return products }\n        return products.filter { $0.title.lowercased().contains(query.lowercased()) }\n    }\n\n    var body: some View {\n        VStack(spacing: 12) {\n            TextField(\"Suche\", text: $query)\n                .textFieldStyle(.roundedBorder)\n\n            List(filtered) { product in\n                Text(product.title)\n            }\n\n            Button(\"Beispiel hinzufügen\") {\n                context.insert(Product(\"Item \\(Int.random(in: 1...99))\"))\n                try? context.save()\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#B5179E"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_004",
@@ -99,9 +93,7 @@
         },
         "code":
             "import SwiftData\n\n@Model\nclass Player {\n    var name: String\n    var level: Int / 🆕 neues Feld\n    var xp: Int = 0 / 🆕 Default -> automatische Migration\n\n    init(name: String, level: Int = 1) {\n        self.name = name\n        self.level = level\n    }\n}\n\n/ Keine zusätzliche Konfiguration nötig – SwiftData migriert automatisch.",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#3A0CA3"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_005",
@@ -125,9 +117,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass TaskItem {\n    var title: String\n    init(_ title: String) { self.title = title }\n}\n\nstruct UndoExampleView: View {\n    @Environment(\\.modelContext) private var context\n    @Environment(\\.undoManager) private var undoManager\n    @Query private var tasks: [TaskItem]\n    @State private var title = \"\"\n\n    var body: some View {\n        VStack(spacing: 10) {\n            TextField(\"Neue Aufgabe\", text: $title)\n                .textFieldStyle(.roundedBorder)\n\n            Button(\"Speichern\") {\n                context.insert(TaskItem(title))\n                try? context.save()\n            }\n            .buttonStyle(.borderedProminent)\n\n            HStack {\n                Button(\"↩️ Undo\") { undoManager?.undo() }\n                Button(\"↪️ Redo\") { undoManager?.redo() }\n            }\n\n            List(tasks) { task in\n                Text(task.title)\n            }\n        }\n        .padding()\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_006",
@@ -151,9 +141,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass LogEntry {\n    var message: String\n    init(_ message: String) { self.message = message }\n}\n\nstruct PerformanceView: View {\n    @Environment(\\.modelContext) private var context\n    @Query private var logs: [LogEntry]\n\n    var body: some View {\n        VStack(spacing: 12) {\n            Button(\"100 Einträge hinzufügen\") {\n                for i in 1...100 {\n                    context.insert(LogEntry(\"Entry #\\(i)\"))\n                }\n                try? context.save()\n            }\n            .buttonStyle(.borderedProminent)\n\n            Button(\"Alles löschen\") {\n                logs.forEach { context.delete($0) }\n                try? context.save()\n            }\n            .buttonStyle(.bordered)\n\n            List(logs) { log in\n                Text(log.message)\n            }\n        }\n        .padding()\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#7209B7"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_007",
@@ -177,9 +165,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass Message {\n    var text: String\n    var createdAt: Date = .now\n    init(_ text: String) { self.text = text }\n}\n\nstruct MessageListView: View {\n    @Query(sort: \\Message.createdAt, order: .reverse, fetchLimit: 20)\n    private var recentMessages: [Message]\n\n    var body: some View {\n        List(recentMessages) { msg in\n            Text(msg.text)\n        }\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#4895EF"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_008",
@@ -203,9 +189,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass LogEntry {\n    var text: String\n    init(_ text: String) { self.text = text }\n}\n\nstruct AsyncInsertView: View {\n    @Environment(\\.modelContext) private var context\n\n    var body: some View {\n        Button(\"1000 Einträge async speichern\") {\n            Task {\n                for i in 0..<1000 {\n                    context.insert(LogEntry(\"Entry #\\(i)\"))\n                }\n                try? context.save()\n            }\n        }\n        .buttonStyle(.borderedProminent)\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#30D158"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_009",
@@ -229,9 +213,7 @@
         },
         "code":
             "import SwiftData\n\n@Model\nclass Player {\n    var name: String\n    @Relationship(inverse: \\Event.players) var events: [Event] = []\n    init(_ name: String) { self.name = name }\n}\n\n@Model\nclass Event {\n    var title: String\n    @Relationship var players: [Player] = []\n    init(_ title: String) { self.title = title }\n}\n\n/ Eintragen\nevent.players.append(player)\nplayer.events.append(event)",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#F72585"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_010",
@@ -255,9 +237,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass UserProfile {\n    var username: String = \"\"\n    var bio: String = \"\"\n}\n\nstruct EditProfileView: View {\n    @Bindable var user: UserProfile\n\n    var body: some View {\n        Form {\n            TextField(\"Benutzername\", text: $user.username)\n            TextField(\"Bio\", text: $user.bio)\n        }\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#3A0CA3"
+        "category": "SwiftData"
     },
     {
         "id": "swiftdata_011",
@@ -281,8 +261,6 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass Savegame {\n    var stage: Int\n    var level: Int\n    var xp: Int\n    init(stage: Int, level: Int, xp: Int) {\n        self.stage = stage\n        this.level = level\n        this.xp = xp\n    }\n}\n\nstruct ExportView: View {\n    @Query private var saves: [Savegame]\n\n    var body: some View {\n        Button(\"JSON Exportieren\") {\n            if let first = saves.first {\n                let dict: [String: Any] = [\n                    \"stage\": first.stage,\n                    \"level\": first.level,\n                    \"xp\": first.xp\n                ]\n                if let json = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted) {\n                    print(String(decoding: json, as: UTF8.self))\n                }\n            }\n        }\n        .buttonStyle(.borderedProminent)\n    }\n}",
-        "category": "SwiftData",
-        "categoryIcon": "swiftdata",
-        "categoryIconColor": "#B5179E"
+        "category": "SwiftData"
     }
 ]

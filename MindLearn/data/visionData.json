@@ -21,9 +21,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet image = UIImage(named: \"text_image\")!\nlet cgImage = image.cgImage!\n\nlet request = VNRecognizeTextRequest { request, _ in\n    guard let results = request.results as? [VNRecognizedTextObservation] else { return }\n    for observation in results {\n        if let top = observation.topCandidates(1).first {\n            print(\"📄 Erkannter Text: \\(top.string)\")\n        }\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: cgImage)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#5E5CE6"
+            "category": "Vision"
         },
         {
             "id": "vision_002",
@@ -47,9 +45,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet image = UIImage(named: \"person\")!\nlet cgImage = image.cgImage!\n\nlet request = VNDetectFaceRectanglesRequest { req, _ in\n    guard let faces = req.results as? [VNFaceObservation] else { return }\n    for face in faces {\n        print(\"😀 Gesicht erkannt: \\(face.boundingBox)\")\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: cgImage)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#4B7BFF"
+            "category": "Vision"
         },
         {
             "id": "vision_003",
@@ -73,9 +69,7 @@
             },
             "code":
                 "import Vision\nimport CoreML\n\nlet model = try! VNCoreMLModel(for: YOLOv3().model)\nlet request = VNRecognizedObjectRequest(model: model) { req, _ in\n    guard let results = req.results as? [VNRecognizedObjectObservation] else { return }\n    for obj in results {\n        let label = obj.labels.first?.identifier ?? \"?\"\n        let confidence = obj.labels.first?.confidence ?? 0\n        print(\"🏷 Objekt: \\(label) – \\(confidence)\")\n    }\n}",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#00A8E8"
+            "category": "Vision"
         },
         {
             "id": "vision_004",
@@ -99,9 +93,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet request = VNDetectBarcodesRequest { req, _ in\n    guard let barcodes = req.results as? [VNBarcodeObservation] else { return }\n    for code in barcodes {\n        print(\"🔍 Barcode: \\(code.payloadStringValue ?? \"?\")\")\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"qr\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#28CD41"
+            "category": "Vision"
         },
         {
             "id": "vision_005",
@@ -125,9 +117,7 @@
             },
             "code":
                 "import Vision\n\nlet request = VNDetectHumanHandPoseRequest { req, _ in\n    guard let hands = req.results as? [VNHumanHandPoseObservation] else { return }\n    for hand in hands {\n        if let thumb = try? hand.recognizedPoint(.thumbTip) {\n            print(\"👍 Daumen erkannt: \\(thumb.location)\")\n        }\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"hand\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#FF9F0A"
+            "category": "Vision"
         },
         {
             "id": "vision_006",
@@ -151,9 +141,7 @@
             },
             "code":
                 "import Vision\n\nlet request = VNDetectHumanBodyPoseRequest { req, _ in\n    guard let poses = req.results as? [VNHumanBodyPoseObservation] else { return }\n    for pose in poses {\n        if let leftHand = try? pose.recognizedPoint(.leftWrist) {\n            print(\"✋ Linkes Handgelenk: \\(leftHand.location)\")\n        }\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"body\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#FF453A"
+            "category": "Vision"
         },
         {
             "id": "vision_007",
@@ -177,9 +165,7 @@
             },
             "code":
                 "import Vision\n\nlet request = VNGenerateAttentionBasedSaliencyImageRequest { req, _ in\n    if let result = req.results?.first as? VNSaliencyImageObservation {\n        print(\"🔥 Wichtigste Region: \\(result.boundingBox)\")\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"scene\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#AD51FF"
+            "category": "Vision"
         },
         {
             "id": "vision_008",
@@ -203,9 +189,7 @@
             },
             "code":
                 "import Vision\n\nlet request = VNRecognizeTextRequest { req, _ in\n    for result in (req.results as? [VNRecognizedTextObservation]) ?? [] {\n        if let text = result.topCandidates(1).first?.string {\n            print(\"🌍 Text erkannt: \\(text)\")\n        }\n    }\n}\n\nrequest.recognitionLanguages = [\"de-DE\", \"en-US\", \"tr-TR\"]\nrequest.usesLanguageCorrection = true\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"text_multi\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#32ADE6"
+            "category": "Vision"
         },
         {
             "id": "vision_009",
@@ -228,9 +212,7 @@
             },
             "code":
                 "import Vision\n\nlet request = VNDetectContoursRequest { req, _ in\n    guard let obs = req.results?.first as? VNContoursObservation else { return }\n    print(\"🌀 Gesamt-Linien: \\(obs.contourCount)\")\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"shape\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#FFD60A"
+            "category": "Vision"
         },
         {
             "id": "vision_010",
@@ -254,9 +236,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet request = VNDetectFaceLandmarksRequest { req, _ in\n    guard let faces = req.results as? [VNFaceObservation] else { return }\n    for face in faces {\n        if let landmarks = face.landmarks?.leftEye {\n            print(\"👁 Linkes Auge Punkte: \\(landmarks.normalizedPoints.count)\")\n        }\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"face\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#F03E53"
+            "category": "Vision"
         },
         {
             "id": "vision_011",
@@ -280,9 +260,7 @@
             },
             "code":
                 "import Vision\nimport AVFoundation\n\nlet initial = VNDetectedObjectObservation(boundingBox: CGRect(x: 0.4, y: 0.4, width: 0.2, height: 0.2))\n\nlet request = VNTrackObjectRequest(detectedObjectObservation: initial)\nrequest.trackingLevel = .accurate\n\nfunc handleFrame(_ buffer: CVPixelBuffer) {\n    let handler = VNImageRequestHandler(cvPixelBuffer: buffer)\n    try? handler.perform([request])\n\n    if let result = request.results?.first as? VNDetectedObjectObservation {\n        print(\"🎯 Position: \\(result.boundingBox)\")\n    }\n}",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#7C3AED"
+            "category": "Vision"
         },
         {
             "id": "vision_012",
@@ -306,9 +284,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet request = VNDetectDocumentSegmentationRequest { req, _ in\n    guard let result = req.results?.first as? VNDocumentSegmentationObservation else { return }\n    print(\"📄 Dokument erkannt mit \\(result.points.count) Punkten\")\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"doc\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#0A84FF"
+            "category": "Vision"
         },
         {
             "id": "vision_013",
@@ -332,9 +308,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet request = VNGeneratePersonSegmentationRequest()\nrequest.qualityLevel = .accurate\nrequest.outputPixelFormat = kCVPixelFormatType_OneComponent8\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"person\")!.cgImage!)\ntry? handler.perform([request])\n\nif let mask = request.results?.first as? VNPixelBufferObservation {\n    print(\"🧍 Maske erzeugt: \\(mask.pixelBuffer)\")\n}",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#34C759"
+            "category": "Vision"
         },
         {
             "id": "vision_014",
@@ -358,9 +332,7 @@
             },
             "code":
                 "import Vision\nimport CoreML\n\nlet model = try! VNCoreMLModel(for: DeepLabV3().model)\nlet request = VNCoreMLRequest(model: model) { req, _ in\n    if let result = req.results?.first as? VNPixelBufferObservation {\n        print(\"🖼 Segmentation PixelBuffer: \\(result.pixelBuffer)\")\n    }\n}\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"scene\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#FF3B30"
+            "category": "Vision"
         },
         {
             "id": "vision_015",
@@ -384,9 +356,7 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nlet request = VNDetectTextRectanglesRequest { req, _ in\n    guard let boxes = req.results as? [VNTextObservation] else { return }\n    for box in boxes {\n        print(\"🟦 Textblock gefunden: \\(box.boundingBox)\")\n    }\n}\nrequest.reportCharacterBoxes = true\n\nlet handler = VNImageRequestHandler(cgImage: UIImage(named: \"document\")!.cgImage!)\ntry? handler.perform([request])",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#FF9F0A"
+            "category": "Vision"
         },
         {
             "id": "vision_016",
@@ -410,8 +380,6 @@
             },
             "code":
                 "import Vision\nimport UIKit\n\nfunc featurePrint(from image: UIImage) -> VNFeaturePrintObservation? {\n    let req = VNGenerateImageFeaturePrintRequest()\n    let handler = VNImageRequestHandler(cgImage: image.cgImage!)\n    try? handler.perform([req])\n    return req.results?.first as? VNFeaturePrintObservation\n}\n\nlet img1 = UIImage(named: \"photo1\")!\nlet img2 = UIImage(named: \"photo2\")!\n\nif let f1 = featurePrint(from: img1), let f2 = featurePrint(from: img2) {\n    var distance: Float = 0\n    try? f1.computeDistance(&distance, to: f2)\n    print(\"🔎 Ähnlichkeit: \\(distance)\")\n}",
-            "category": "Vision",
-            "categoryIcon": "vision.pro",
-            "categoryIconColor": "#7C3AED"
+            "category": "Vision"
         }
     ]

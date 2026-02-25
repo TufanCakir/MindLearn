@@ -21,9 +21,7 @@
         },
         "code":
             "import SwiftUI\nimport SpriteKit\n\nclass FireScene: SKScene {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        / 🔥 Beispiel: Feuerpartikel laden\n        if let node = SKEmitterNode(fileNamed: \"FireParticle.sks\") {\n            node.position = CGPoint(x: size.width / 2, y: size.height / 2)\n            addChild(node)\n        }\n    }\n}\n\nstruct SpriteKitExampleView: View {\n    var scene: SKScene {\n        let scene = FireScene()\n        scene.size = CGSize(width: 400, height: 600)\n        scene.scaleMode = .resizeFill\n        return scene\n    }\n\n    var body: some View {\n        SpriteView(scene: scene)\n            .ignoresSafeArea()\n            .overlay(\n                Text(\"SpriteKit 🔥\")\n                    .font(.title)\n                    .foregroundColor(.white)\n                    .shadow(radius: 8),\n                alignment: .top\n            )\n    }\n}\n\n#Preview {\n    SpriteKitExampleView()\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F72585"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_002",
@@ -47,9 +45,7 @@
         },
         "code":
             "import SpriteKit\n\nclass HeroScene: SKScene {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        let atlas = SKTextureAtlas(named: \"Hero\")\n        var frames: [SKTexture] = []\n\n        for i in 1...6 {\n            frames.append(atlas.textureNamed(\"hero_\\(i)\"))\n        }\n\n        let sprite = SKSpriteNode(texture: frames.first)\n        sprite.position = CGPoint(x: size.width / 2, y: size.height / 2)\n        addChild(sprite)\n\n        let animation = SKAction.repeatForever(\n            SKAction.animate(with: frames, timePerFrame: 0.08)\n        )\n        sprite.run(animation)\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F72585"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_003",
@@ -73,9 +69,7 @@
         },
         "code":
             "import SpriteKit\n\nstruct PhysicsCategory {\n    static let player: UInt32 = 1\n    static let enemy: UInt32 = 2\n}\n\nclass PhysicsScene: SKScene, SKPhysicsContactDelegate {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n        physicsWorld.contactDelegate = self\n\n        let player = SKSpriteNode(color: .cyan, size: CGSize(width: 40, height: 40))\n        player.position = CGPoint(x: 200, y: 400)\n        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)\n        player.physicsBody?.categoryBitMask = PhysicsCategory.player\n        player.physicsBody?.contactTestBitMask = PhysicsCategory.enemy\n        addChild(player)\n\n        let enemy = SKSpriteNode(color: .red, size: CGSize(width: 40, height: 40))\n        enemy.position = CGPoint(x: 200, y: 100)\n        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)\n        enemy.physicsBody?.categoryBitMask = PhysicsCategory.enemy\n        addChild(enemy)\n    }\n\n    func didBegin(_ contact: SKPhysicsContact) {\n        print(\"💥 Kollision erkannt!\")\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#B5179E"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_004",
@@ -99,9 +93,7 @@
         },
         "code":
             "import SpriteKit\n\nclass ExplosionScene: SKScene {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        let explosion = SKEmitterNode(fileNamed: \"Explosion.sks\")!\n        explosion.position = CGPoint(x: size.width / 2, y: size.height / 2)\n        addChild(explosion)\n\n        run(SKAction.sequence([\n            SKAction.wait(forDuration: 2),\n            SKAction.run { explosion.removeFromParent() }\n        ]))\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#560BAD"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_005",
@@ -125,9 +117,7 @@
         },
         "code":
             "import SpriteKit\n\nclass TouchMoveScene: SKScene {\n    let hero = SKSpriteNode(color: .yellow, size: CGSize(width: 50, height: 50))\n\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n        hero.position = CGPoint(x: size.width/2, y: size.height/2)\n        addChild(hero)\n    }\n\n    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {\n        guard let touch = touches.first else { return }\n        let location = touch.location(in: self)\n\n        let move = SKAction.move(to: location, duration: 0.3)\n        move.timingMode = .easeOut\n\n        hero.run(move)\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#7209B7"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_006",
@@ -151,9 +141,7 @@
         },
         "code":
             "import SpriteKit\n\nclass ParallaxScene: SKScene {\n    var layers: [SKSpriteNode] = []\n\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        for i in 0..<3 {\n            let layer = SKSpriteNode(imageNamed: \"layer_\\(i)\")\n            layer.position = CGPoint(x: size.width/2, y: size.height/2)\n            layer.zPosition = CGFloat(i) * -1\n            addChild(layer)\n            layers.append(layer)\n        }\n    }\n\n    override func update(_ currentTime: TimeInterval) {\n        for (i, layer) in layers.enumerated() {\n            layer.position.x -= CGFloat(i + 1)\n            if layer.position.x < -layer.size.width {\n                layer.position.x += layer.size.width * 2\n            }\n        }\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A0CA3"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_007",
@@ -177,9 +165,7 @@
         },
         "code":
             "import SpriteKit\n\nclass ShaderScene: SKScene {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        let node = SKSpriteNode(color: .white, size: CGSize(width: 200, height: 200))\n        node.position = CGPoint(x: size.width/2, y: size.height/2)\n\n        let shader = SKShader(source:\n        \"void main() {\\n\" +\n        \" vec2 uv = v_tex_coord;\\n\" +\n        \" float glow = sin(u_time + uv.x * 10.0) * 0.5 + 0.5;\\n\" +\n        \" gl_FragColor = vec4(glow, 0.2, 1.0, 1.0);\\n\" +\n        \"}\")\n\n        node.shader = shader\n        addChild(node)\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4895EF"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_008",
@@ -203,9 +189,7 @@
         },
         "code":
             "import SpriteKit\n\nclass CameraScene: SKScene {\n    let cam = SKCameraNode()\n\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n        camera = cam\n        addChild(cam)\n\n        let target = CGPoint(x: 400, y: 400)\n        let move = SKAction.move(to: target, duration: 2.0)\n        cam.run(move)\n\n        cam.setScale(1.2)  / Zoom\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_009",
@@ -229,9 +213,7 @@
         },
         "code":
             "import SpriteKit\n\nclass RunnerScene: SKScene {\n    var ground: SKSpriteNode!\n\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        ground = SKSpriteNode(imageNamed: \"ground\")\n        ground.position = CGPoint(x: size.width/2, y: 100)\n        addChild(ground)\n    }\n\n    override func update(_ currentTime: TimeInterval) {\n        ground.position.x -= 5\n        if ground.position.x < -ground.size.width {\n            ground.position.x += ground.size.width * 2\n        }\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A0CA3"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_010",
@@ -255,9 +237,7 @@
         },
         "code":
             "import SpriteKit\n\nclass HealthBarScene: SKScene {\n    let hpBar = SKSpriteNode(color: .green, size: CGSize(width: 200, height: 20))\n\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        let cam = SKCameraNode()\n        camera = cam\n        addChild(cam)\n\n        hpBar.position = CGPoint(x: 0, y: 300)   / Kamera-Koordinaten\n        cam.addChild(hpBar)\n    }\n\n    func updateHP(_ percent: CGFloat) {\n        hpBar.xScale = percent\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#B5179E"
+        "category": "SpriteKit"
     },
     {
         "id": "spritekit_011",
@@ -281,8 +261,6 @@
         },
         "code":
             "import SpriteKit\n\nclass SoundScene: SKScene {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n\n        / Treffer Sound\n        run(SKAction.playSoundFileNamed(\"hit.wav\", waitForCompletion: false))\n\n        / Musik (loop)\n        let music = SKAudioNode(fileNamed: \"bgm.mp3\")\n        music.autoplayLooped = true\n        addChild(music)\n    }\n}",
-        "category": "SpriteKit",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#560BAD"
+        "category": "SpriteKit"
     }
 ]

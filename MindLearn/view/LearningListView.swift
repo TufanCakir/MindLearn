@@ -1,6 +1,6 @@
 //
 //  LearningListView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -12,27 +12,59 @@ struct LearningListView: View {
     @Environment(\.horizontalSizeClass)
     private var sizeClass
 
-    @StateObject private var vm =
-        LearningListViewModel(
-            favorites:
-                Set(
-                    UserDefaults.standard
-                        .string(forKey: "favoriteIDs")?
-                        .split(separator: ",")
-                        .map(String.init) ?? []
-                )
-        )
+    @StateObject
+    private var vm =
+        LearningListViewModel()
 
     var body: some View {
 
+        VStack(spacing: 0) {
+
+            stickyHeader
+
+            Divider()
+
+            contentScroll
+        }
+
+        .background(
+            Color(.systemGroupedBackground)
+                .ignoresSafeArea()
+        )
+    }
+}
+
+extension LearningListView {
+
+    private var stickyHeader: some View {
+
+        VStack(spacing: 14) {
+
+            searchBar
+
+            categoryTabs
+        }
+
+        .padding(.horizontal, horizontalPadding)
+        .padding(.vertical, 14)
+
+        .background(.ultraThinMaterial)
+
+        .shadow(
+            color: .black.opacity(0.08),
+            radius: 8,
+            y: 4
+        )
+    }
+}
+
+extension LearningListView {
+
+    private var contentScroll: some View {
+
         ScrollView {
 
-            LazyVStack(
-                spacing: 18,
-                pinnedViews: []
-            ) {
-
-                filterArea
+            VStack {
 
                 if vm.filteredTopics.isEmpty {
 
@@ -46,13 +78,10 @@ struct LearningListView: View {
                     )
                 }
             }
-
-            .padding(.top,8)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 16)
         }
-
-        .navigationTitle("Lernen")
-
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.visible)
     }
 }
 
@@ -67,31 +96,30 @@ struct LearningGrid: View {
         LazyVGrid(
 
             columns: gridLayout,
-            spacing: 18
+            spacing: 30
 
         ) {
 
             ForEach(topics) { topic in
-
                 NavigationLink {
-
-                    LearningDetailView(
-                        topic: topic
-                    )
-
+                    LearningDetailView(topic: topic)
                 } label: {
-
-                    LearningCard(
-                        topic: topic
-                    )
+                    LearningCard(topic: topic)
                 }
-
-                .buttonStyle(.plain)
+                .buttonStyle(PressableCardStyle())
             }
         }
 
-        .padding(.horizontal,16)
-        .padding(.bottom,20)
+        .frame(
+            maxWidth: 900
+        )
+
+        .frame(
+            maxWidth: .infinity
+        )
+
+        .padding(.horizontal, 16)
+        .padding(.bottom, 28)
     }
 }
 
@@ -104,46 +132,17 @@ extension LearningListView {
 
 extension LearningListView {
 
-    private var filterArea: some View {
-
-        VStack(spacing: 14) {
-
-            searchBar
-
-            categoryTabs
-        }
-
-        .padding(.horizontal,horizontalPadding)
-
-        .padding(.vertical,12)
-
-        .background {
-
-            RoundedRectangle(
-                cornerRadius: 18,
-                style: .continuous
-            )
-
-            .fill(.ultraThinMaterial)
-        }
-
-        .padding(.horizontal,horizontalPadding)
-    }
-}
-
-extension LearningListView {
-
     private var searchBar: some View {
 
-        HStack(spacing:10) {
+        HStack(spacing: 10) {
 
-            Image(systemName:"magnifyingglass")
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(.secondary)
 
             TextField(
                 "Suche…",
-                text:$vm.searchText
+                text: $vm.searchText
             )
-
             .textInputAutocapitalization(.never)
             .disableAutocorrection(true)
 
@@ -151,11 +150,12 @@ extension LearningListView {
 
                 Button {
 
-                    vm.searchText=""
+                    vm.searchText = ""
 
                 } label: {
 
-                    Image(systemName:"xmark.circle.fill")
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.secondary)
                 }
             }
         }
@@ -165,8 +165,8 @@ extension LearningListView {
         .background {
 
             RoundedRectangle(
-                cornerRadius:14,
-                style:.continuous
+                cornerRadius: 14,
+                style: .continuous
             )
             .fill(.thinMaterial)
         }
@@ -177,15 +177,16 @@ extension LearningListView {
 
     private var categoryTabs: some View {
 
-        ScrollView(.horizontal,showsIndicators:false){
+        ScrollView(.horizontal, showsIndicators: false) {
 
-            HStack(spacing:10){
+            HStack(spacing: 10) {
 
-                ForEach(vm.categories,id:\.self){
+                ForEach(vm.categories, id: \.self) {
 
                     categoryButton($0)
                 }
             }
+            .padding(.vertical, 2)
         }
     }
 }
@@ -199,6 +200,13 @@ extension LearningListView {
         let selected =
             vm.selectedCategory == category
 
+        let style =
+            CategoryStyle.style(
+                for: category
+            )
+
+        let color = style.color
+
         return Button {
 
             withAnimation(.spring()) {
@@ -208,25 +216,47 @@ extension LearningListView {
 
         } label: {
 
-            Text(category)
+            HStack(spacing: 8) {
 
-                .font(.caption.bold())
+                Image(systemName: style.icon)
 
-                .padding(.horizontal,14)
-                .padding(.vertical,8)
+                    .font(.caption.bold())
 
-                .background {
+                    .foregroundStyle(
 
-                    Capsule()
+                        selected
+                            ? color
+                            : .primary
+                    )
 
-                        .fill(
+                Text(category)
 
-                            selected
-                            ? Color.accentColor.opacity(0.25)
+                    .font(.caption.bold())
+
+                    .foregroundStyle(
+
+                        selected
+                            ? color
+                            : .primary
+                    )
+            }
+
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+
+            .background {
+
+                Capsule()
+
+                    .fill(
+
+                        selected
+
+                            ? color.opacity(0.25)
 
                             : Color.secondary.opacity(0.12)
-                        )
-                }
+                    )
+            }
         }
         .buttonStyle(.plain)
     }
@@ -234,19 +264,21 @@ extension LearningListView {
 
 extension LearningListView {
     fileprivate var gridLayout: [GridItem] {
+
         sizeClass == .regular
-        ? [
-            GridItem(
-                .adaptive(
-                    minimum: 320,
-                    maximum: 420
-                ),
-                spacing: 18
-            )
-        ]
-        : [
-            GridItem(.flexible())
-        ]
+            ? [
+                GridItem(
+                    .adaptive(
+                        minimum: 320,
+                        maximum: 420
+                    ),
+                    spacing: 20
+                )
+            ]
+
+            : [
+                GridItem(.flexible())
+            ]
     }
 }
 
@@ -258,16 +290,16 @@ extension LearningListView {
 
             "Keine Ergebnisse",
 
-            systemImage:"magnifyingglass",
+            systemImage: "magnifyingglass",
 
-            description:Text(
+            description: Text(
                 "Versuche andere Suchbegriffe."
             )
         )
 
         .frame(
-            maxWidth:.infinity,
-            minHeight:260
+            maxWidth: .infinity,
+            minHeight: 260
         )
     }
 }
@@ -275,4 +307,3 @@ extension LearningListView {
 #Preview {
     LearningListView()
 }
-

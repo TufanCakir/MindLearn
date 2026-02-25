@@ -1,6 +1,6 @@
 //
 //  LearningDetailView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -12,21 +12,18 @@ struct LearningDetailView: View {
     let topic: LearningTopic
 
     private var isPad: Bool {
-
-        UIDevice.current
-            .userInterfaceIdiom == .pad
+        UIDevice.current.userInterfaceIdiom == .pad
     }
 
-    private var maxWidth: CGFloat {
-
-        isPad ? 680 : .infinity
+    private var contentWidth: CGFloat {
+        isPad ? 720 : .infinity
     }
 
     var body: some View {
 
         ScrollView {
 
-            VStack(spacing: 24) {
+            VStack(spacing: 28) {
 
                 heroHeader
 
@@ -36,219 +33,245 @@ struct LearningDetailView: View {
 
                 codeSection
 
+                Spacer(minLength: 20)
             }
-            .frame(
-                maxWidth: .infinity
-            )
-            .padding(.bottom, 30)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 18)
         }
-
         .background(background)
-
         .navigationTitle(topic.title)
-
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
+// MARK: Background
+
 extension LearningDetailView {
 
-    fileprivate var background: some View {
+    private var background: some View {
 
         Color(.systemGroupedBackground)
             .ignoresSafeArea()
     }
 }
 
+//
+// MARK: HERO HEADER
+//
+
 extension LearningDetailView {
 
-    fileprivate var heroHeader: some View {
+    private var heroHeader: some View {
 
         ZStack(alignment: .bottomLeading) {
 
-            Color(.systemGroupedBackground)
-                .ignoresSafeArea()
-
             RoundedRectangle(
-                cornerRadius: 22
+                cornerRadius: 28,
+                style: .continuous
             )
             .fill(.ultraThinMaterial)
-            .opacity(0.25)
 
-            VStack(alignment: .leading) {
+            LinearGradient(
+                colors: [
+                    .clear,
+                    .black.opacity(0.15),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .clipShape(
+                RoundedRectangle(
+                    cornerRadius: 28,
+                    style: .continuous
+                )
+            )
 
-                Spacer()
+            VStack(alignment: .leading, spacing: 8) {
 
                 Text(topic.title)
-
                     .font(
                         .system(
                             .title,
                             design: .rounded
                         )
-                        .bold()
+                        .weight(.bold)
                     )
-
-                    .shadow(radius: 6)
-
             }
-            .padding()
-
-        }
-        .frame(height: isPad ? 260 : 200)
-
-        .clipShape(
-            RoundedRectangle(
-                cornerRadius: 22,
-                style: .continuous
+            .frame(
+                maxWidth: contentWidth
             )
-        )
-
-        .shadow(
-            color: .black.opacity(0.35),
-            radius: 14,
-            y: 8
-        )
-
-        .padding(.horizontal)
+            .frame(height: isPad ? 220 : 180)
+            .padding(.horizontal)
+            .shadow(
+                color: .black.opacity(0.12),
+                radius: 12,
+                y: 8
+            )
+        }
     }
 }
+
+//
+// MARK: DESCRIPTION
+//
 
 extension LearningDetailView {
 
     @ViewBuilder
-    fileprivate var descriptionSection: some View {
+    private var descriptionSection: some View {
 
         if !topic.description.isEmpty {
 
-            Text(topic.description)
+            VStack(alignment: .leading, spacing: 10) {
 
-                .font(.body)
+                Text("Beschreibung")
+                    .font(.headline)
 
-                .lineSpacing(5)
-
-                .frame(
-                    maxWidth: maxWidth,
-                    alignment: .leading
-                )
-
-                .padding(.horizontal)
+                Text(topic.description)
+                    .font(.body)
+                    .lineSpacing(6)
+            }
+            .sectionCard(width: contentWidth)
         }
     }
 }
 
+//
+// MARK: STEPS
+//
+
 extension LearningDetailView {
 
     @ViewBuilder
-    fileprivate var stepsSection: some View {
+    private var stepsSection: some View {
 
         if !topic.steps.isEmpty {
 
             VStack(
                 alignment: .leading,
-                spacing: 14
+                spacing: 16
             ) {
 
                 Text("Schritte")
-
                     .font(.headline)
 
-                    .padding(.horizontal)
+                VStack(spacing: 14) {
 
-                ForEach(
+                    ForEach(
+                        Array(topic.steps.enumerated()),
+                        id: \.offset
+                    ) { index, step in
 
-                    Array(
-                        topic.steps.enumerated()
-                    ),
+                        HStack(
+                            alignment: .top,
+                            spacing: 16
+                        ) {
 
-                    id: \.offset
+                            stepNumber(index + 1)
 
-                ) { index, step in
-
-                    HStack(alignment: .top) {
-
-                        Text("\(index+1)")
-
-                            .font(.caption.bold())
-
-                            .frame(
-                                width: 26,
-                                height: 26
+                            Text(step)
+                                .fixedSize(
+                                    horizontal: false,
+                                    vertical: true
+                                )
+                        }
+                        .padding(18)
+                        .background(
+                            RoundedRectangle(
+                                cornerRadius: 18,
+                                style: .continuous
                             )
-
-                            .background(
-                                Circle()
-                                    .fill(
-                                        Color.blue
-                                    )
+                            .fill(
+                                Color(
+                                    .secondarySystemGroupedBackground
+                                )
                             )
-
-                        Text(step)
-
-                            .fixedSize(
-                                horizontal: false,
-                                vertical: true
-                            )
-
+                        )
                     }
-
-                    .padding()
-
-                    .frame(
-                        maxWidth: maxWidth,
-                        alignment: .leading
-                    )
-
-                    .background(
-
-                        RoundedRectangle(
-                            cornerRadius: 14
-                        )
-
-                        .fill(
-                            Color.white
-                                .opacity(0.06)
-                        )
-                    )
-
-                    .padding(.horizontal)
                 }
             }
+            .sectionCard(width: contentWidth)
         }
+    }
+
+    private func stepNumber(
+        _ number: Int
+    ) -> some View {
+
+        Text("\(number)")
+            .font(.caption.bold())
+            .frame(width: 30, height: 30)
+            .background(
+                Circle()
+                    .fill(.blue.gradient)
+            )
+            .foregroundStyle(.white)
     }
 }
 
+//
+// MARK: CODE
+//
+
 extension LearningDetailView {
 
-    fileprivate var codeSection: some View {
+    private var codeSection: some View {
 
         VStack(
             alignment: .leading,
-            spacing: 8
+            spacing: 12
         ) {
 
             Text("Code-Beispiel")
-
                 .font(.headline)
-
-                .padding(.horizontal)
 
             CodeView(
                 code: topic.code
             )
+        }
+        .sectionCard(width: contentWidth)
+    }
+}
 
+//
+// MARK: Section Card Modifier ⭐
+//
+
+extension View {
+
+    func sectionCard(
+        width: CGFloat
+    ) -> some View {
+
+        self
             .frame(
-                maxWidth: maxWidth
+                maxWidth: width,
+                alignment: .leading
             )
-
-            .clipShape(
+            .padding(.horizontal)
+            .padding(18)
+            .background(
 
                 RoundedRectangle(
-                    cornerRadius: 16
+                    cornerRadius: 20,
+                    style: .continuous
+                )
+                .fill(
+                    Color(
+                        .secondarySystemGroupedBackground
+                    )
                 )
             )
+            .overlay(
 
-            .padding(.horizontal)
-        }
+                RoundedRectangle(
+                    cornerRadius: 20,
+                    style: .continuous
+                )
+                .stroke(
+                    Color(.separator),
+                    lineWidth: 1
+                )
+            )
     }
 }

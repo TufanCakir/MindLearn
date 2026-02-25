@@ -21,9 +21,7 @@
         },
         "code":
             "import Foundation\n\n/ ✅ Konstanten mit let\nlet maxSpeed = 120\n\n/ ✅ Variablen mit var\nvar currentSpeed = 80\n\n/ Werte ändern\ncurrentSpeed = 100\n\n/ Ausgabe\nprint(\"Aktuelle Geschwindigkeit: \\(currentSpeed) km/h\")",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F72585"
+        "category": "Swift"
     },
     {
         "id": "swift_002",
@@ -48,9 +46,7 @@
         },
         "code":
             "import Foundation\n\nlet zahl: Int = 42\nlet preis: Double = 19.99\nlet name: String = \"Tufan\"\nlet istAktiv: Bool = true\n\nprint(zahl, preis, name, istAktiv)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#B5179E"
+        "category": "Swift"
     },
     {
         "id": "swift_003",
@@ -74,9 +70,7 @@
         },
         "code":
             "var username: String? = \"Tufan\"\n\nif let name = username {\n    print(\"Hallo, \\(name)\")\n} else {\n    print(\"Kein Name vorhanden\")\n}\n\n/ Default-Wert\nprint(username ?? \"Unbekannt\")",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#7209B7"
+        "category": "Swift"
     },
     {
         "id": "swift_004",
@@ -100,9 +94,7 @@
         },
         "code":
             "let alter = 20\n\nif alter >= 18 {\n    print(\"Du bist volljährig\")\n} else {\n    print(\"Du bist minderjährig\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A0CA3"
+        "category": "Swift"
     },
     {
         "id": "swift_005",
@@ -126,9 +118,7 @@
         },
         "code":
             "func begruessen(name: String) -> String {\n    return \"Hallo, \\(name)!\"\n}\n\nlet text = begruessen(name: \"Tufan\")\nprint(text)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4895EF"
+        "category": "Swift"
     },
     {
         "id": "swift_006",
@@ -152,9 +142,7 @@
         },
         "code":
             "let namen = [\"Anna\", \"Markus\", \"Tufan\"]\n\nfor name in namen {\n    print(\"Hallo \\(name)\")\n}\n\nprint(namen[0])",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "Swift"
     },
     {
         "id": "swift_007",
@@ -178,9 +166,7 @@
         },
         "code":
             "var spieler: [String : Int] = [\n    \"Leben\": 100,\n    \"Mana\": 50\n]\n\nprint(spieler[\"Leben\"] ?? 0)\n\nspieler[\"Gold\"] = 200\nprint(spieler)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "Swift"
     },
     {
         "id": "swift_008",
@@ -204,9 +190,7 @@
         },
         "code":
             "enum Element {\n    case feuer\n    case wasser\n    case blitz\n}\n\nlet typ = Element.feuer\n\nswitch typ {\ncase .feuer:  print(\"🔥 Feuer!\")\ncase .wasser: print(\"💧 Wasser!\")\ncase .blitz:  print(\"⚡️ Blitz!\")\n}",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF6D2D"
+        "category": "Swift"
     },
     {
         "id": "swift_009",
@@ -230,9 +214,7 @@
         },
         "code":
             "struct Spieler {\n    var name: String\n    var leben: Int\n}\n\nvar hero = Spieler(name: \"Tufan\", leben: 120)\nprint(hero)\n\nhero.leben = 150\nprint(hero)",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3F37C9"
+        "category": "Swift"
     },
     {
         "id": "swift_010",
@@ -256,9 +238,7 @@
         },
         "code":
             "class Enemy {\n    var hp: Int\n\n    init(hp: Int) {\n        self.hp = hp\n    }\n\n    func attack() {\n        print(\"Der Gegner greift an!\")\n    }\n}\n\nlet boss = Enemy(hp: 300)\nboss.attack()",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#560BAD"
+        "category": "Swift"
     },
     {
         "id": "swift_011",
@@ -282,8 +262,6 @@
         },
         "code":
             "let begruessung = { (name: String) -> String in\n    return \"Hallo, \\(name)\"\n}\n\nprint(begruessung(\"Tufan\"))\n\nfunc ausführen(_ block: () -> Void) {\n    block()\n}\n\nausführen { print(\"Closure ausgeführt!\") }",
-        "category": "Swift",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "Swift"
     }
 ]

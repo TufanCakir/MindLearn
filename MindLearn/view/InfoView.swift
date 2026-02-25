@@ -1,6 +1,6 @@
 //
 //  InfoView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -18,51 +18,108 @@ struct InfoView: View {
     }
 
     var body: some View {
-        List {
-            headerSection
 
-            ForEach(content.sections) { section in
-                infoSection(section)
+        ScrollView {
+
+            VStack(spacing: 24) {
+
+                header
+
+                ForEach(content.sections) { section in
+                    infoCard(section)
+                }
+
+                Spacer(minLength: 24)
             }
+            .padding(.vertical)
         }
-        .listStyle(.insetGrouped)
+        .background(
+            Color(.systemGroupedBackground)
+                .ignoresSafeArea()
+        )
         .navigationTitle(content.title)
         .navigationBarTitleDisplayMode(.inline)
     }
+}
 
-    private var headerSection: some View {
-        Section {
-            VStack(spacing: 8) {
-                Image("mindlearn_logo_dark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 64, height: 64)
-                    .padding(12)
-                    .background(
-                        Circle()
-                            .fill(.thinMaterial)
-                    )
+//
+// MARK: - Header
+//
 
-                Text(content.subtitle)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 8)
+extension InfoView {
+
+    private var header: some View {
+
+        VStack(spacing: 14) {
+
+            Image(systemName: "book")
+                .font(.system(size: 42))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(.primary)
+                .padding(18)
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+
+            Text(content.subtitle)
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
         }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 12)
     }
+}
 
-    private func infoSection(_ section: InfoSection) -> some View {
-        Section(section.title) {
+//
+// MARK: - Info Card
+//
+
+extension InfoView {
+
+    private func infoCard(
+        _ section: InfoSection
+    ) -> some View {
+
+        VStack(alignment: .leading, spacing: 10) {
+
+            Text(section.title)
+                .font(.headline)
+
             Text(section.text)
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
         }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+
+        .background(
+
+            RoundedRectangle(
+                cornerRadius: 18,
+                style: .continuous
+            )
+            .fill(Color(.secondarySystemGroupedBackground))
+        )
+
+        .overlay(
+            RoundedRectangle(
+                cornerRadius: 18,
+                style: .continuous
+            )
+            .stroke(
+                Color(.separator),
+                lineWidth: 1
+            )
+        )
+
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    InfoView()
+    NavigationStack {
+        InfoView()
+    }
 }

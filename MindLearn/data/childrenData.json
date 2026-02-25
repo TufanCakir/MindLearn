@@ -1,0 +1,186 @@
+[
+    {
+        "id": "kids_math_002",
+        "title": "Zahlen bis 10",
+        "description": "Zählen lernen mit Spaß.",
+        "steps": [
+            "Finger benutzen.",
+            "Langsam laut zählen.",
+            "Vorwärts zählen.",
+            "Rückwärts zählen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#64D2FF",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "1 2 3 4 5 6 7 8 9 10\n🎉 Du kannst zählen!",
+        "category": "Children"
+    },
+    {
+        "id": "kids_color_001",
+        "title": "Farben lernen",
+        "description": "Grundfarben erkennen.",
+        "steps": [
+            "Rot zeigen.",
+            "Blau finden.",
+            "Gelb vergleichen.",
+            "Farben laut sagen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FF375F",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "🔴 Rot\n🔵 Blau\n🟡 Gelb\n🟢 Grün",
+        "category": "Children"
+    },
+    {
+        "id": "kids_reading_001",
+        "title": "Erste Wörter lesen",
+        "description": "Kurze Wörter verstehen.",
+        "steps": [
+            "Buchstaben einzeln lesen.",
+            "Laut aussprechen.",
+            "Zusammenziehen.",
+            "Wort erkennen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#5E5CE6",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "M A M A → MAMA\nH A U S → HAUS",
+        "category": "Children"
+    },
+    {
+        "id": "kids_shapes_001",
+        "title": "Formen erkennen",
+        "description": "Geometrische Formen lernen.",
+        "steps": [
+            "Kreis zeigen.",
+            "Quadrat finden.",
+            "Dreieck vergleichen.",
+            "Im Raum suchen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#BF5AF2",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "⚪ Kreis\n⬜ Quadrat\n🔺 Dreieck",
+        "category": "Children"
+    },
+    {
+        "id": "kids_time_001",
+        "title": "Uhrzeit verstehen",
+        "description": "Erste Uhrzeiten lernen.",
+        "steps": [
+            "Kleine Uhr anschauen.",
+            "Stunden zählen.",
+            "Zeiger beobachten.",
+            "Beispiele üben."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#30D158",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "🕒 3 Uhr = Nachmittag spielen.",
+        "category": "Children"
+    },
+    {
+        "id": "kids_math_003",
+        "title": "Minus rechnen",
+        "description": "Wegnehmen verstehen.",
+        "steps": [
+            "3 Bonbons zählen.",
+            "Eins wegnehmen.",
+            "Rest zählen.",
+            "Antwort sagen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FF453A",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "🍬🍬🍬 - 🍬 = 🍬🍬\n3 - 1 = 2",
+        "category": "Children"
+    },
+    {
+        "id": "kids_memory_001",
+        "title": "Gedächtnis trainieren",
+        "description": "Merkspiele für Kinder.",
+        "steps": [
+            "5 Dinge anschauen.",
+            "Augen schließen.",
+            "Erinnern.",
+            "Kontrollieren."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FFD60A",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "🧠 Spiel:\nApfel\nAuto\nBall\nKatze\nHaus",
+        "category": "Children"
+    },
+    {
+        "id": "kids_polite_001",
+        "title": "Höflich sein",
+        "description": "Gute Wörter lernen.",
+        "steps": [
+            "Bitte sagen.",
+            "Danke sagen.",
+            "Hallo begrüßen.",
+            "Tschüss sagen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FF9F0A",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "😊 Bitte\n🙏 Danke\n👋 Hallo",
+        "category": "Children"
+    }
+]

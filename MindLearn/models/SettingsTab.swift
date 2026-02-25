@@ -1,6 +1,6 @@
 //
 //  SettingsTab.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //

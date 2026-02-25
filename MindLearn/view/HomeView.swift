@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -15,26 +15,134 @@ struct HomeView: View {
 
         NavigationStack {
 
-            ZStack(alignment: .leading) {
+            ZStack {
 
                 background
-
                 mainContent
-
-                if showDrawer {
-
-                    dimOverlay
-                }
-
-                if showDrawer {
-
-                    drawer
-                }
-
-                topBar
+                overlayLayer
+                drawerLayer
             }
 
-            .toolbar(.hidden)
+            .navigationTitle("Lernen")
+
+            .navigationBarTitleDisplayMode(.inline)
+
+            .toolbar {
+
+                ToolbarItem(
+                    placement: .topBarLeading
+                ) {
+
+                    Button {
+
+                        toggleDrawer()
+
+                    } label: {
+
+                        Image(
+                            systemName:
+                                showDrawer
+                                ? "xmark"
+                                : "line.3.horizontal"
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension HomeView {
+
+    private var overlayLayer: some View {
+
+        Group {
+
+            if showDrawer {
+
+                Color.black.opacity(0.35)
+
+                    .ignoresSafeArea()
+
+                    .transition(.opacity)
+
+                    .onTapGesture {
+
+                        closeDrawer()
+                    }
+            }
+        }
+        .animation(
+            .easeInOut(duration: 0.2),
+            value: showDrawer
+        )
+    }
+}
+
+extension HomeView {
+
+    private var drawerLayer: some View {
+
+        GeometryReader { geo in
+
+            SideDrawerView(
+                showDrawer: $showDrawer
+            )
+
+            .frame(
+                width: min(
+                    geo.size.width * 0.82,
+                    360
+                )
+            )
+
+            .offset(
+                x: showDrawer ? 0 : -400
+            )
+
+            .transition(.move(edge: .leading))
+
+            .gesture(
+
+                DragGesture()
+
+                    .onEnded { value in
+
+                        if value.translation.width < -80 {
+
+                            closeDrawer()
+                        }
+                    }
+            )
+        }
+    }
+}
+
+extension HomeView {
+
+    private func toggleDrawer() {
+
+        withAnimation(
+            .spring(
+                response: 0.42,
+                dampingFraction: 0.85
+            )
+        ) {
+
+            showDrawer.toggle()
+        }
+    }
+
+    private func closeDrawer() {
+
+        withAnimation(
+            .spring(
+                response: 0.42,
+                dampingFraction: 0.85
+            )
+        ) {
+
+            showDrawer = false
         }
     }
 }
@@ -60,136 +168,26 @@ extension HomeView {
 
             .disabled(showDrawer)
 
-            .blur(radius: showDrawer ? 6 : 0)
+            .scaleEffect(
+                showDrawer ? 0.94 : 1,
+                anchor: .leading
+            )
 
-            .scaleEffect(showDrawer ? 0.96 : 1)
+            .offset(
+                x: showDrawer ? 260 : 0
+            )
+
+            .blur(
+                radius: showDrawer ? 4 : 0
+            )
 
             .animation(
                 .spring(
-                    response: 0.45,
-                    dampingFraction: 0.85
+                    response: 0.42,
+                    dampingFraction: 0.88
                 ),
                 value: showDrawer
             )
-    }
-}
-
-// MARK: - Overlay
-
-extension HomeView {
-
-    private var dimOverlay: some View {
-
-        Color.black.opacity(0.35)
-
-            .ignoresSafeArea()
-
-            .transition(.opacity)
-
-            .onTapGesture {
-
-                closeDrawer()
-            }
-    }
-}
-
-// MARK: - Drawer
-
-extension HomeView {
-
-    private var drawer: some View {
-
-        GeometryReader { geo in
-
-           SideDrawerView(
-               showDrawer: $showDrawer
-           )
-
-           .frame(
-               width: min(
-                   geo.size.width * 0.85,
-                   360
-               )
-           )
-        }
-    }
-}
-
-// MARK: - Top Bar
-
-extension HomeView {
-
-    private var topBar: some View {
-
-        VStack {
-
-            HStack {
-
-                Button {
-
-                    toggleDrawer()
-                        
-                } label: {
-
-                    Image(
-                        systemName:
-                            showDrawer
-                            ? "xmark"
-                            : "line.3.horizontal"
-                    )
-
-                    .font(.title2.weight(.semibold))
-
-                    .padding()
-
-                    .background(.ultraThinMaterial)
-
-                    .clipShape(
-                        RoundedRectangle(
-                            cornerRadius: 14,
-                            style: .continuous
-                        )
-                    )
-                }
-            }
-
-            .padding()
-            .padding(.top,30)
-            .ignoresSafeArea(edges:.top)
-
-            Spacer()
-        }
-    }
-}
-
-// MARK: - Actions
-
-extension HomeView {
-
-    private func toggleDrawer() {
-
-        withAnimation(
-            .spring(
-                response: 0.45,
-                dampingFraction: 0.8
-            )
-        ) {
-
-            showDrawer.toggle()
-        }
-    }
-
-    private func closeDrawer() {
-
-        withAnimation(
-            .spring(
-                response: 0.45,
-                dampingFraction: 0.8
-            )
-        ) {
-
-            showDrawer = false
-        }
     }
 }
 

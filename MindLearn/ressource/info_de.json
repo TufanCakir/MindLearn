@@ -1,26 +1,37 @@
 {
     "title": "Mindlearn",
     "subtitle": "Modern lernen. Schnell verstehen. Sauber programmieren.",
+
     "sections": [
+
         {
             "title": "Moderne Lernplattform",
             "text":
-                "Mindlearn ist eine moderne Lern-App für Entwickler und alle, die Programmieren verstehen und verbessern möchten. Inhalte sind klar strukturiert, leicht verständlich und direkt praxisnah aufgebaut."
+                "Mindlearn ist eine moderne Lern-App für Entwickler, Schüler und Lernende jeden Alters. Inhalte sind klar strukturiert, leicht verständlich aufgebaut und verbinden Theorie mit praxisnahen Beispielen."
         },
+
         {
-            "title": "Viele Programmiersprachen",
+            "title": "Viele Programmiersprachen & Frameworks",
             "text":
-                "Egal ob Swift, SwiftUI, HTML, JSON oder weitere Technologien – Mindlearn bietet eine große Auswahl an Programmiersprachen und Frameworks. Neue Inhalte werden kontinuierlich erweitert."
+                "Lerne zahlreiche Programmiersprachen und moderne Frameworks wie Swift, SwiftUI, HTML, JSON, ARKit, RealityKit, WidgetKit und vieles mehr. Mindlearn wird kontinuierlich erweitert und bietet sowohl Grundlagen als auch fortgeschrittene Themen für echte Praxisprojekte."
         },
+
+        {
+            "title": "Schule & Kinder Lernen",
+            "text":
+                "Neben Programmieren unterstützt Mindlearn auch schulisches Lernen und kindgerechte Inhalte. Von einfachen Rechenübungen über Sprachtraining bis hin zu Lernstrategien hilft die App Schülern und Kindern dabei, Wissen spielerisch und verständlich aufzubauen."
+        },
+
         {
             "title": "Schnell & sauber entwickelt",
             "text":
                 "Die App wurde vollständig nativ mit Swift und SwiftUI entwickelt und nutzt moderne Apple Technologien. Dadurch ist Mindlearn extrem schnell, stabil und perfekt an iOS angepasst."
         },
+
         {
             "title": "Einfach lernen",
             "text":
-                "Mindlearn wurde entwickelt, um Lernen einfacher zu machen. Klare Schritt-für-Schritt Erklärungen, Code-Beispiele und moderne Designs helfen dabei, neue Konzepte schneller zu verstehen und direkt anzuwenden."
+                "Mindlearn wurde entwickelt, um Lernen einfacher zu machen. Klare Schritt-für-Schritt Erklärungen, Code-Beispiele und modernes Design helfen dabei, neue Konzepte schneller zu verstehen und direkt anzuwenden."
         }
     ]
 }

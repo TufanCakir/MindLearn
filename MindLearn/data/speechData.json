@@ -1,315 +1,290 @@
-[
-    {
-        "id": "speech_001",
-        "title": "Spracherkennung (Speech Framework)",
-        "description":
-            "Nutze Apples Speech API, um gesprochene Sprache in Text umzuwandeln.",
-        "steps": [
-            "Speech importieren und SFSpeechRecognizer erstellen.",
-            "Mikrofonzugriff anfordern.",
-            "AudioSession starten und Texterkennung aktivieren."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#30D158",
-                "#000000"
+    [
+        {
+            "id": "speech_001",
+            "title": "Spracherkennung (Speech Framework)",
+            "description":
+                "Nutze Apples Speech API, um gesprochene Sprache in Text umzuwandeln.",
+            "steps": [
+                "Speech importieren und SFSpeechRecognizer erstellen.",
+                "Mikrofonzugriff anfordern.",
+                "AudioSession starten und Texterkennung aktivieren."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import Speech\n\nlet recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\nSFSpeechRecognizer.requestAuthorization { status in\n    if status == .authorized {\n        let request = SFSpeechURLRecognitionRequest(url: URL(filePath: \"audio.m4a\"))\n        recognizer.recognitionTask(with: request) { result, _ in\n            if let text = result?.bestTranscription.formattedString {\n                print(\"🗣 Erkannt: \\(text)\")\n            }\n        }\n    } else {\n        print(\"🚫 Kein Zugriff auf Spracherkennung\")\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "import Speech\n\nlet recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\nSFSpeechRecognizer.requestAuthorization { status in\n    if status == .authorized {\n        let request = SFSpeechURLRecognitionRequest(url: URL(filePath: \"audio.m4a\"))\n        recognizer.recognitionTask(with: request) { result, _ in\n            if let text = result?.bestTranscription.formattedString {\n                print(\"🗣 Erkannt: \\(text)\")\n            }\n        }\n    } else {\n        print(\"🚫 Kein Zugriff auf Spracherkennung\")\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#30D158"
-    },
-    {
-        "id": "speech_002",
-        "title": "Live-Spracherkennung (Mikrofon-Input)",
-        "description":
-            "Erkenne Sprache live über das Mikrofon und konvertiere sie in Text.",
-        "steps": [
-            "SFSpeechAudioBufferRecognitionRequest nutzen.",
-            "AudioSession konfigurieren (Record, Measurement).",
-            "AudioEngine starten und Input in den RecognitionRequest streamen.",
-            "Transkription laufend aktualisieren."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#0A84FF",
-                "#000000"
+        {
+            "id": "speech_002",
+            "title": "Live-Spracherkennung (Mikrofon-Input)",
+            "description":
+                "Erkenne Sprache live über das Mikrofon und konvertiere sie in Text.",
+            "steps": [
+                "SFSpeechAudioBufferRecognitionRequest nutzen.",
+                "AudioSession konfigurieren (Record, Measurement).",
+                "AudioEngine starten und Input in den RecognitionRequest streamen.",
+                "Transkription laufend aktualisieren."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0A84FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import AVFoundation\nimport Speech\n\nclass SpeechLiveRecognizer {\n    private let audioEngine = AVAudioEngine()\n    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\n    private var request: SFSpeechAudioBufferRecognitionRequest?\n    private var task: SFSpeechRecognitionTask?\n\n    func start() throws {\n        SFSpeechRecognizer.requestAuthorization { status in\n            guard status == .authorized else { return }\n        }\n\n        let session = AVAudioSession.sharedInstance()\n        try session.setCategory(.record, mode: .measurement, options: .duckOthers)\n        try session.setActive(true)\n\n        request = SFSpeechAudioBufferRecognitionRequest()\n\n        let input = audioEngine.inputNode\n        input.installTap(onBus: 0, bufferSize: 1024, format: input.outputFormat(forBus: 0)) { buffer, _ in\n            self.request?.append(buffer)\n        }\n\n        audioEngine.prepare()\n        try audioEngine.start()\n\n        task = recognizer.recognitionTask(with: request!) { result, error in\n            if let text = result?.bestTranscription.formattedString {\n                print(\"🎙 Live: \\(text)\")\n            }\n        }\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "import AVFoundation\nimport Speech\n\nclass SpeechLiveRecognizer {\n    private let audioEngine = AVAudioEngine()\n    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\n    private var request: SFSpeechAudioBufferRecognitionRequest?\n    private var task: SFSpeechRecognitionTask?\n\n    func start() throws {\n        SFSpeechRecognizer.requestAuthorization { status in\n            guard status == .authorized else { return }\n        }\n\n        let session = AVAudioSession.sharedInstance()\n        try session.setCategory(.record, mode: .measurement, options: .duckOthers)\n        try session.setActive(true)\n\n        request = SFSpeechAudioBufferRecognitionRequest()\n\n        let input = audioEngine.inputNode\n        input.installTap(onBus: 0, bufferSize: 1024, format: input.outputFormat(forBus: 0)) { buffer, _ in\n            self.request?.append(buffer)\n        }\n\n        audioEngine.prepare()\n        try audioEngine.start()\n\n        task = recognizer.recognitionTask(with: request!) { result, error in\n            if let text = result?.bestTranscription.formattedString {\n                print(\"🎙 Live: \\(text)\")\n            }\n        }\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#0A84FF"
-    },
-    {
-        "id": "speech_003",
-        "title": "Offline-Spracherkennung prüfen",
-        "description":
-            "Prüfe, ob dein Gerät Offline-Spracherkennung unterstützt.",
-        "steps": [
-            "SFSpeechRecognizer.supportsOnDeviceRecognition nutzen.",
-            "Ideal für Privatsphäre & schnelle Verarbeitung.",
-            "Nur in bestimmten Sprachen verfügbar."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF9500",
-                "#000000"
+        {
+            "id": "speech_003",
+            "title": "Offline-Spracherkennung prüfen",
+            "description":
+                "Prüfe, ob dein Gerät Offline-Spracherkennung unterstützt.",
+            "steps": [
+                "SFSpeechRecognizer.supportsOnDeviceRecognition nutzen.",
+                "Ideal für Privatsphäre & schnelle Verarbeitung.",
+                "Nur in bestimmten Sprachen verfügbar."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF9500",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import Speech\n\nlet recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\n\nif recognizer.supportsOnDeviceRecognition {\n    print(\"📴 Offline-Erkennung verfügbar!\")\n} else {\n    print(\"☁️ Nur Online-Erkennung möglich\")\n}",
+            "category": "Speech"
         },
-        "code":
-            "import Speech\n\nlet recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\n\nif recognizer.supportsOnDeviceRecognition {\n    print(\"📴 Offline-Erkennung verfügbar!\")\n} else {\n    print(\"☁️ Nur Online-Erkennung möglich\")\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#FF9500"
-    },
-    {
-        "id": "speech_004",
-        "title": "Sprach-Segment-Analyse (Wörter & Zeitstempel)",
-        "description":
-            "Analysiere jedes erkannte Wort mit Zeitstempeln – perfekt für Untertitel / Karaoke.",
-        "steps": [
-            "Auf result.bestTranscription.segments zugreifen.",
-            "Segment enthält: Wort, Offset, Dauer.",
-            "Kann live aktualisiert werden."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#30D158",
-                "#000000"
+        {
+            "id": "speech_004",
+            "title": "Sprach-Segment-Analyse (Wörter & Zeitstempel)",
+            "description":
+                "Analysiere jedes erkannte Wort mit Zeitstempeln – perfekt für Untertitel / Karaoke.",
+            "steps": [
+                "Auf result.bestTranscription.segments zugreifen.",
+                "Segment enthält: Wort, Offset, Dauer.",
+                "Kann live aktualisiert werden."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import Speech\n\nlet recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\nlet request = SFSpeechURLRecognitionRequest(url: URL(filePath: \"audio.m4a\"))\n\nrecognizer.recognitionTask(with: request) { result, _ in\n    guard let segments = result?.bestTranscription.segments else { return }\n\n    for segment in segments {\n        print(\"🗣 Wort: \\(segment.substring)\")\n        print(\"⏱ Startzeit: \\(segment.timestamp)\")\n        print(\"⏳ Dauer: \\(segment.duration)\")\n        print(\"---\")\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "import Speech\n\nlet recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\nlet request = SFSpeechURLRecognitionRequest(url: URL(filePath: \"audio.m4a\"))\n\nrecognizer.recognitionTask(with: request) { result, _ in\n    guard let segments = result?.bestTranscription.segments else { return }\n\n    for segment in segments {\n        print(\"🗣 Wort: \\(segment.substring)\")\n        print(\"⏱ Startzeit: \\(segment.timestamp)\")\n        print(\"⏳ Dauer: \\(segment.duration)\")\n        print(\"---\")\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#30D158"
-    },
-    {
-        "id": "speech_005",
-        "title": "Spracherkennung abbrechen / pausieren",
-        "description":
-            "Stoppe oder pausiere laufende Erkennung – wichtig für UI-Control (Record, Stop).",
-        "steps": [
-            "AudioEngine stoppen.",
-            "RecognitionTask canceln.",
-            "Request beenden oder zurücksetzen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF2D55",
-                "#000000"
+        {
+            "id": "speech_005",
+            "title": "Spracherkennung abbrechen / pausieren",
+            "description":
+                "Stoppe oder pausiere laufende Erkennung – wichtig für UI-Control (Record, Stop).",
+            "steps": [
+                "AudioEngine stoppen.",
+                "RecognitionTask canceln.",
+                "Request beenden oder zurücksetzen."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF2D55",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "func stopRecognition() {\n    audioEngine.stop()\n    audioEngine.inputNode.removeTap(onBus: 0)\n    request?.endAudio()\n    task?.cancel()\n    print(\"🛑 Erkennung gestoppt\")\n}",
+            "category": "Speech"
         },
-        "code":
-            "func stopRecognition() {\n    audioEngine.stop()\n    audioEngine.inputNode.removeTap(onBus: 0)\n    request?.endAudio()\n    task?.cancel()\n    print(\"🛑 Erkennung gestoppt\")\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#FF2D55"
-    },
-    {
-        "id": "speech_006",
-        "title": "Spracherkennung in SwiftUI integrieren",
-        "description":
-            "Ein komplettes SwiftUI Beispiel: Button → Start/Stop → Live Text.",
-        "steps": [
-            "ObservableObject für Speech-Manager.",
-            "Live-Text als Published Property.",
-            "SwiftUI Button steuert Aufnahme."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#61DAFB",
-                "#000000"
+        {
+            "id": "speech_006",
+            "title": "Spracherkennung in SwiftUI integrieren",
+            "description":
+                "Ein komplettes SwiftUI Beispiel: Button → Start/Stop → Live Text.",
+            "steps": [
+                "ObservableObject für Speech-Manager.",
+                "Live-Text als Published Property.",
+                "SwiftUI Button steuert Aufnahme."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#61DAFB",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "class SpeechManager: NSObject, ObservableObject {\n    @Published var text = \"Sag etwas…\"\n    / Starte hier AudioEngine & Task (aus speech_002)\n}\n\nstruct SpeechView: View {\n    @StateObject private var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 40) {\n            Text(speech.text)\n                .font(.title2)\n                .foregroundColor(.white)\n                .padding()\n\n            Button(\"🎤 Start\") {\n                try? speech.start()\n            }\n            .buttonStyle(.borderedProminent)\n        }\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "class SpeechManager: NSObject, ObservableObject {\n    @Published var text = \"Sag etwas…\"\n    / Starte hier AudioEngine & Task (aus speech_002)\n}\n\nstruct SpeechView: View {\n    @StateObject private var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 40) {\n            Text(speech.text)\n                .font(.title2)\n                .foregroundColor(.white)\n                .padding()\n\n            Button(\"🎤 Start\") {\n                try? speech.start()\n            }\n            .buttonStyle(.borderedProminent)\n        }\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#61DAFB"
-    },
-    {
-        "id": "speech_007",
-        "title": "Speech → Commands (Befehle erkennen)",
-        "description":
-            "Erkenne Befehle wie „Attack“, „Heal“, „Next Level“ – perfekt für dein Slayken-Gameplay!",
-        "steps": [
-            "Nach jedem Transkript auf Schlüsselwörter prüfen.",
-            "Mehrere Synonyme unterstützen.",
-            "Aktionen in der App triggern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#0A84FF",
-                "#000000"
+        {
+            "id": "speech_007",
+            "title": "Speech → Commands (Befehle erkennen)",
+            "description": "Erkenne Befehle wie „Attack“, „Heal“, „Next Level!",
+            "steps": [
+                "Nach jedem Transkript auf Schlüsselwörter prüfen.",
+                "Mehrere Synonyme unterstützen.",
+                "Aktionen in der App triggern."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0A84FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "func handleSpeechCommand(_ text: String) {\n    let lower = text.lowercased()\n\n    if lower.contains(\"attack\") || lower.contains(\"angriff\") {\n        print(\"⚔️ Attack ausgelöst!\")\n    }\n    if lower.contains(\"heal\") || lower.contains(\"heilen\") {\n        print(\"💚 Heal ausgelöst!\")\n    }\n    if lower.contains(\"next\") || lower.contains(\"weiter\") {\n        print(\"➡️ Next Level!\")\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "func handleSpeechCommand(_ text: String) {\n    let lower = text.lowercased()\n\n    if lower.contains(\"attack\") || lower.contains(\"angriff\") {\n        print(\"⚔️ Attack ausgelöst!\")\n    }\n    if lower.contains(\"heal\") || lower.contains(\"heilen\") {\n        print(\"💚 Heal ausgelöst!\")\n    }\n    if lower.contains(\"next\") || lower.contains(\"weiter\") {\n        print(\"➡️ Next Level!\")\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#0A84FF"
-    },
-    {
-        "id": "speech_008",
-        "title": "Sprache aufnehmen & automatisch transkribieren",
-        "description":
-            "Nimm deine Stimme als .m4a auf und lasse nach der Aufnahme die komplette Datei transkribieren.",
-        "steps": [
-            "AVAudioRecorder einrichten, um Sprache aufzunehmen.",
-            "Aufnahme stoppen → Datei an Speech API übergeben.",
-            "Ergebnis anzeigen oder speichern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#30D158",
-                "#000000"
+        {
+            "id": "speech_008",
+            "title": "Sprache aufnehmen & automatisch transkribieren",
+            "description":
+                "Nimm deine Stimme als .m4a auf und lasse nach der Aufnahme die komplette Datei transkribieren.",
+            "steps": [
+                "AVAudioRecorder einrichten, um Sprache aufzunehmen.",
+                "Aufnahme stoppen → Datei an Speech API übergeben.",
+                "Ergebnis anzeigen oder speichern."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import AVFoundation\nimport Speech\n\nclass VoiceRecorder: NSObject, ObservableObject {\n    private var recorder: AVAudioRecorder?\n    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\n\n    func startRecording() throws {\n        let url = URL.documentsDirectory.appending(path: \"voice.m4a\")\n        let settings: [String:Any] = [\n            AVFormatIDKey: kAudioFormatMPEG4AAC,\n            AVSampleRateKey: 44100,\n            AVNumberOfChannelsKey: 1\n        ]\n        recorder = try AVAudioRecorder(url: url, settings: settings)\n        recorder?.record()\n    }\n\n    func stopAndTranscribe() {\n        recorder?.stop()\n        guard let url = recorder?.url else { return }\n\n        let request = SFSpeechURLRecognitionRequest(url: url)\n        recognizer.recognitionTask(with: request) { result, _ in\n            if let text = result?.bestTranscription.formattedString {\n                print(\"📄 Transkript: \\(text)\")\n            }\n        }\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "import AVFoundation\nimport Speech\n\nclass VoiceRecorder: NSObject, ObservableObject {\n    private var recorder: AVAudioRecorder?\n    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: \"de-DE\"))!\n\n    func startRecording() throws {\n        let url = URL.documentsDirectory.appending(path: \"voice.m4a\")\n        let settings: [String:Any] = [\n            AVFormatIDKey: kAudioFormatMPEG4AAC,\n            AVSampleRateKey: 44100,\n            AVNumberOfChannelsKey: 1\n        ]\n        recorder = try AVAudioRecorder(url: url, settings: settings)\n        recorder?.record()\n    }\n\n    func stopAndTranscribe() {\n        recorder?.stop()\n        guard let url = recorder?.url else { return }\n\n        let request = SFSpeechURLRecognitionRequest(url: url)\n        recognizer.recognitionTask(with: request) { result, _ in\n            if let text = result?.bestTranscription.formattedString {\n                print(\"📄 Transkript: \\(text)\")\n            }\n        }\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#30D158"
-    },
-    {
-        "id": "speech_009",
-        "title": "Keyword Spotting (Wake Words)",
-        "description":
-            "Erkenne Schlüsselwörter live – z. B. 'Hey Slayken', 'Attack', 'Spirit', 'Heal'. Perfekt für Voice-Control im Game.",
-        "steps": [
-            "Live Spracherkennung aktivieren.",
-            "Laufend neuesten Textpuffer prüfen.",
-            "Keywords triggern Aktionen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF9500",
-                "#000000"
+        {
+            "id": "speech_009",
+            "title": "Keyword Spotting (Wake Words)",
+            "description":
+                "Erkenne Schlüsselwörter live – z. B. 'Hey Slayken', 'Attack', 'Spirit', 'Heal'. Perfekt für Voice-Control im Game.",
+            "steps": [
+                "Live Spracherkennung aktivieren.",
+                "Laufend neuesten Textpuffer prüfen.",
+                "Keywords triggern Aktionen."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF9500",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "func detectKeywords(_ text: String) {\n    let t = text.lowercased()\n\n    if t.contains(\"hey slayken\") {\n        print(\"🟡 Wake Word erkannt: Hey Slayken!\")\n    }\n    if t.contains(\"attack\") || t.contains(\"angriff\") {\n        print(\"⚔️ Attack Voice Command\")\n    }\n    if t.contains(\"heal\") || t.contains(\"heilen\") {\n        print(\"💚 Heal Voice Command\")\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "func detectKeywords(_ text: String) {\n    let t = text.lowercased()\n\n    if t.contains(\"hey slayken\") {\n        print(\"🟡 Wake Word erkannt: Hey Slayken!\")\n    }\n    if t.contains(\"attack\") || t.contains(\"angriff\") {\n        print(\"⚔️ Attack Voice Command\")\n    }\n    if t.contains(\"heal\") || t.contains(\"heilen\") {\n        print(\"💚 Heal Voice Command\")\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#FF9500"
-    },
-    {
-        "id": "speech_010",
-        "title": "Automatische Satztrennung (Punkt-Erkennung)",
-        "description":
-            "Analysiere erkannte Sprache und teile sie sauber in Sätze auf – ideal für Chatbots, Story-Modus oder Notizen.",
-        "steps": [
-            "Transkript live analysieren.",
-            "Auf Satzende-Wörter prüfen.",
-            "Satzliste aktualisieren."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#0A84FF",
-                "#000000"
+        {
+            "id": "speech_010",
+            "title": "Automatische Satztrennung (Punkt-Erkennung)",
+            "description":
+                "Analysiere erkannte Sprache und teile sie sauber in Sätze auf – ideal für Chatbots, Story-Modus oder Notizen.",
+            "steps": [
+                "Transkript live analysieren.",
+                "Auf Satzende-Wörter prüfen.",
+                "Satzliste aktualisieren."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0A84FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "func splitIntoSentences(_ text: String) -> [String] {\n    let delimiters = [\".\", \"?\", \"!\"]\n    var sentences: [String] = []\n    var buffer = \"\"\n\n    for char in text {\n        buffer.append(char)\n        if delimiters.contains(String(char)) {\n            sentences.append(buffer.trimmingCharacters(in: .whitespaces))\n            buffer = \"\"\n        }\n    }\n    return sentences\n}",
+            "category": "Speech"
         },
-        "code":
-            "func splitIntoSentences(_ text: String) -> [String] {\n    let delimiters = [\".\", \"?\", \"!\"]\n    var sentences: [String] = []\n    var buffer = \"\"\n\n    for char in text {\n        buffer.append(char)\n        if delimiters.contains(String(char)) {\n            sentences.append(buffer.trimmingCharacters(in: .whitespaces))\n            buffer = \"\"\n        }\n    }\n    return sentences\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#0A84FF"
-    },
-    {
-        "id": "speech_011",
-        "title": "Einfache Emotionserkennung über Stimme (Tonhöhe)",
-        "description":
-            "Analysiere die Tonhöhe des Mikrofon-Signals, um simple Emotionen wie Stress, Lautstärke oder Freude zu erkennen.",
-        "steps": [
-            "AudioEngine Input analysieren.",
-            "Amplitude & Frequenz messen.",
-            "Thresholds definieren für 'laut', 'leise', 'stressig'."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF2D55",
-                "#000000"
+        {
+            "id": "speech_011",
+            "title": "Einfache Emotionserkennung über Stimme (Tonhöhe)",
+            "description":
+                "Analysiere die Tonhöhe des Mikrofon-Signals, um simple Emotionen wie Stress, Lautstärke oder Freude zu erkennen.",
+            "steps": [
+                "AudioEngine Input analysieren.",
+                "Amplitude & Frequenz messen.",
+                "Thresholds definieren für 'laut', 'leise', 'stressig'."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF2D55",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import AVFoundation\n\nfunc analyzeTone(_ buffer: AVAudioPCMBuffer) {\n    let rms = sqrt(buffer.floatChannelData![0].reduce(0) { $0 + $1*$1 } / Float(buffer.frameLength))\n\n    if rms > 0.25 {\n        print(\"😡 Laut / Stressig\")\n    } else if rms < 0.05 {\n        print(\"😴 Sehr leise / ruhig\")\n    } else {\n        print(\"🙂 Normal gesprochen\")\n    }\n}",
+            "category": "Speech"
         },
-        "code":
-            "import AVFoundation\n\nfunc analyzeTone(_ buffer: AVAudioPCMBuffer) {\n    let rms = sqrt(buffer.floatChannelData![0].reduce(0) { $0 + $1*$1 } / Float(buffer.frameLength))\n\n    if rms > 0.25 {\n        print(\"😡 Laut / Stressig\")\n    } else if rms < 0.05 {\n        print(\"😴 Sehr leise / ruhig\")\n    } else {\n        print(\"🙂 Normal gesprochen\")\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#FF2D55"
-    },
-    {
-        "id": "speech_012",
-        "title": "Voice UI – Sprachbefehle triggern SwiftUI Buttons",
-        "description":
-            "Verknüpfe Sprachbefehle automatisch mit SwiftUI UI Aktionen – wie ein Voice Controller für dein Game.",
-        "steps": [
-            "SpeechManager veröffentlicht den erkannten Text.",
-            "SwiftUI prüft live auf Voice-Trigger.",
-            "Buttons führen Aktionen automatisch aus."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#61DAFB",
-                "#000000"
+        {
+            "id": "speech_012",
+            "title": "Voice UI – Sprachbefehle triggern SwiftUI Buttons",
+            "description":
+                "Verknüpfe Sprachbefehle automatisch mit SwiftUI UI Aktionen – wie ein Voice Controller für dein Game.",
+            "steps": [
+                "SpeechManager veröffentlicht den erkannten Text.",
+                "SwiftUI prüft live auf Voice-Trigger.",
+                "Buttons führen Aktionen automatisch aus."
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
-        },
-        "code":
-            "struct VoiceUIExample: View {\n    @StateObject var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Text(\"Befehl: \\(speech.text)\")\n                .foregroundColor(.white)\n\n            Button(\"⚔️ Attack\") {\n                print(\"Attack gedrückt\")\n            }\n            .onChange(of: speech.text) { text in\n                if text.lowercased().contains(\"attack\") {\n                    print(\"⚔️ Voice Attack ausgelöst!\")\n                }\n            }\n\n            Button(\"💚 Heal\") {\n                print(\"Heal gedrückt\")\n            }\n            .onChange(of: speech.text) { text in\n                if text.lowercased().contains(\"heal\") {\n                    print(\"💚 Voice Heal ausgelöst!\")\n                }\n            }\n        }\n        .padding()\n    }\n}",
-        "category": "Speech",
-        "categoryIcon": "microphone",
-        "categoryIconColor": "#61DAFB"
-    }
-]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#61DAFB",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "struct VoiceUIExample: View {\n    @StateObject var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Text(\"Befehl: \\(speech.text)\")\n                .foregroundColor(.white)\n\n            Button(\"⚔️ Attack\") {\n                print(\"Attack gedrückt\")\n            }\n            .onChange(of: speech.text) { text in\n                if text.lowercased().contains(\"attack\") {\n                    print(\"⚔️ Voice Attack ausgelöst!\")\n                }\n            }\n\n            Button(\"💚 Heal\") {\n                print(\"Heal gedrückt\")\n            }\n            .onChange(of: speech.text) { text in\n                if text.lowercased().contains(\"heal\") {\n                    print(\"💚 Voice Heal ausgelöst!\")\n                }\n            }\n        }\n        .padding()\n    }\n}",
+            "category": "Speech",
+        }
+    ]

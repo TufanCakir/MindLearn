@@ -1,26 +1,37 @@
 {
     "title": "Mindlearn",
-    "subtitle": "Learn modern. Understand faster. Build cleaner code.",
+    "subtitle": "Learn modern. Understand faster. Build clean code.",
+
     "sections": [
+
         {
             "title": "Modern Learning Platform",
             "text":
-                "Mindlearn is a modern learning app designed for developers and anyone who wants to understand and improve their programming skills. Content is clearly structured, easy to follow, and focused on real-world practice."
+                "Mindlearn is a modern learning app designed for developers, students, and learners of all ages. Content is clearly structured, easy to understand, and combines theory with practical real-world examples."
         },
+
         {
-            "title": "Multiple Programming Languages",
+            "title": "Programming Languages & Frameworks",
             "text":
-                "From Swift and SwiftUI to HTML, JSON, and more — Mindlearn offers a wide range of programming languages and technologies. New learning content is continuously added and expanded."
+                "Learn a wide range of programming languages and modern frameworks including Swift, SwiftUI, HTML, JSON, ARKit, RealityKit, WidgetKit, and more. Mindlearn is continuously expanding and offers both beginner fundamentals and advanced topics for real projects."
         },
+
         {
-            "title": "Fast & Native Experience",
+            "title": "School & Kids Learning",
             "text":
-                "Built entirely with Swift and SwiftUI, Mindlearn uses modern Apple technologies to deliver a fast, stable, and seamless iOS experience."
+                "In addition to programming, Mindlearn also supports school education and child-friendly learning content. From basic math exercises and language learning to study strategies, the app helps students and children build knowledge in a fun and easy way."
         },
+
+        {
+            "title": "Fast & Cleanly Built",
+            "text":
+                "The app is fully developed natively using Swift and SwiftUI and takes advantage of modern Apple technologies. This makes Mindlearn extremely fast, stable, and perfectly optimized for iOS."
+        },
+
         {
             "title": "Learn with Ease",
             "text":
-                "Mindlearn is designed to make learning simple and effective. Step-by-step explanations, practical code examples, and a modern interface help you understand new concepts quickly and apply them immediately."
+                "Mindlearn is designed to make learning simple and enjoyable. Step-by-step explanations, practical code examples, and modern design help you understand new concepts faster and apply them immediately."
         }
     ]
 }

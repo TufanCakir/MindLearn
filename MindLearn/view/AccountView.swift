@@ -1,6 +1,6 @@
 //
 //  AccountView.swift
-//  Slayken Learn
+//  MindLearn
 //
 //  Created by Tufan Cakir on 21.02.26.
 //
@@ -9,22 +9,28 @@ import SwiftUI
 
 struct AccountView: View {
 
-    // MARK: - Environment
+    // MARK: Environment
+
     @EnvironmentObject private var themeManager: ThemeManager
 
-    // MARK: - Storage
+    // MARK: Storage
+
     @AppStorage("username") private var username = ""
+
     @AppStorage("language")
     private var language =
         Locale.current.language.languageCode?.identifier ?? "en"
 
-    // MARK: - Localization
+    // MARK: Localization
+
     private var text: AccountLocalization {
         Bundle.main.loadAccountLocalization(language: language)
     }
 
-    // MARK: - Computed
+    // MARK: Initials
+
     private var initials: String {
+
         let letters =
             username
             .split(separator: " ")
@@ -32,92 +38,314 @@ struct AccountView: View {
             .compactMap(\.first)
 
         return letters.isEmpty
-            ? "?" : letters.map { String($0).uppercased() }.joined()
+            ? "?"
+            : letters.map { String($0).uppercased() }.joined()
     }
 
-    // MARK: - Body
+    // MARK: Body
+
     var body: some View {
-        Form {
-            profileSection
-            languageSection
-            appSection
-            aboutSection
+
+        ScrollView {
+
+            VStack {
+
+                profileHeader
+
+                settingsCard {
+
+                    languageSection
+
+                    aboutSection
+
+                }
+
+            }
+            .padding()
         }
+
+        .background(Color(.systemGroupedBackground))
+        .shadow(
+            color: .black.opacity(0.06),
+            radius: 12,
+            y: 6
+        )
+
         .navigationTitle(text.title)
+
         .navigationBarTitleDisplayMode(.inline)
-        .environment(\.locale, Locale(identifier: language))
-        .scrollDismissesKeyboard(.interactively)
+
+        .environment(
+            \.locale,
+            Locale(identifier: language)
+        )
     }
 }
 
+//
+// MARK: Profile Hero ⭐⭐⭐⭐⭐
+//
+
 extension AccountView {
-    private var profileSection: some View {
-        Section {
-            VStack(spacing: 12) {
 
-                Circle()
-                    .fill(.tint)
-                    .frame(width: 72, height: 72)
-                    .overlay {
-                        Text(initials)
-                            .font(.title.bold())
-                            .foregroundStyle(.white)
-                    }
-                    .accessibilityHidden(true)
+    private var profileHeader: some View {
 
-                TextField(text.profileNamePlaceholder, text: $username)
-                    .textFieldStyle(.roundedBorder)
-                    .submitLabel(.done)
+        VStack(spacing: 16) {
+
+            Circle()
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            .accentColor,
+                            .accentColor.opacity(0.65),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .frame(width: 86, height: 86)
+
+                .overlay {
+
+                    Text(initials)
+                        .font(.title.bold())
+                        .foregroundStyle(.white)
+                }
+
+                .shadow(radius: 8, y: 4)
+
+            VStack(spacing: 6) {
+
+                TextField(
+                    text.profileNamePlaceholder,
+                    text: $username
+                )
+                .textFieldStyle(.roundedBorder)
 
                 Text(text.profileLocal)
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 8)
+
         }
+
+        .frame(maxWidth: .infinity)
+
+        .padding(22)
+
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.ultraThinMaterial)
+        )
+
+        .padding(.horizontal)
     }
+}
+
+//
+// MARK: Settings Card ⭐
+//
+
+extension AccountView {
+
+    private func settingsCard<Content: View>(
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+
+        VStack(spacing: 0) {
+
+            content()
+        }
+
+        .padding(.vertical, 8)
+
+        .background(
+
+            RoundedRectangle(
+                cornerRadius: 22,
+                style: .continuous
+            )
+            .fill(
+                Color(.secondarySystemGroupedBackground)
+            )
+        )
+
+        .background(
+            RoundedRectangle(
+                cornerRadius: 22,
+                style: .continuous
+            )
+            .fill(Color(.secondarySystemGroupedBackground))
+        )
+
+        .shadow(
+            color: .black.opacity(0.05),
+            radius: 8,
+            y: 4
+        )
+
+        .padding(.horizontal)
+    }
+}
+
+//
+// MARK: Language
+//
+
+extension AccountView {
 
     private var languageSection: some View {
-        Section(text.languageSection) {
-            Picker(text.languagePicker, selection: $language) {
-                Text(text.languageDE).tag("de")
-                Text(text.languageEN).tag("en")
+
+        VStack(alignment: .leading, spacing: 12) {
+
+            Label(
+                text.languageSection,
+                systemImage: "globe"
+            )
+            .font(.headline)
+
+            Picker(
+                text.languagePicker,
+                selection: $language
+            ) {
+
+                Text(text.languageDE)
+                    .tag("de")
+
+                Text(text.languageEN)
+                    .tag("en")
             }
             .pickerStyle(.segmented)
-        }
-    }
 
-    private var appSection: some View {
-        Section(text.appSection) {
-            NavigationLink {
-                AppearanceView()
-            } label: {
-                Label(text.appearance, systemImage: "moon")
-            }
         }
+        .padding()
     }
+}
+
+//
+// MARK: About
+//
+
+extension AccountView {
 
     private var aboutSection: some View {
-        Section(text.aboutSection) {
-            NavigationLink {
-                InfoView()
-            } label: {
-                Label("Taenttra", systemImage: "cpu")
+        VStack(alignment: .leading, spacing: 16) {
+
+            // About App Section
+            VStack(alignment: .leading, spacing: 0) {
+                Text(text.aboutSection)
+                    .font(.headline)
+                    .padding(.horizontal)
+                    .padding(.top, 12)
+
+                Divider()
+                    .padding(.horizontal)
+
+                NavigationLink {
+                    InfoView()
+                } label: {
+                    HStack {
+                        Label("MindLearn", systemImage: "book")
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.footnote)
+                            .foregroundStyle(.tertiary)
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 12)
+                }
+
+                Divider()
+                    .padding(.horizontal)
+
+                HStack {
+                    Label(Bundle.main.appVersionString, systemImage: "number")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+
+                Divider()
+                    .padding(.horizontal)
+
+                HStack {
+                    Label(text.builtWith, systemImage: "applelogo")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+
+                Spacer(minLength: 0)
+                    .frame(height: 4)
             }
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            )
 
-            Label(Bundle.main.appVersionString, systemImage: "number")
-                .foregroundStyle(.secondary)
+            // System Section
+            VStack(alignment: .leading, spacing: 0) {
+                Text("System")
+                    .font(.headline)
+                    .padding(.horizontal)
+                    .padding(.top, 12)
 
-            Label(text.builtWith, systemImage: "applelogo")
-                .foregroundStyle(.secondary)
+                Divider()
+                    .padding(.horizontal)
+
+                HStack {
+                    Label(
+                        "\(Bundle.systemName) \(Bundle.systemVersion)",
+                        systemImage: "gear"
+                    )
+                    .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+
+                Divider()
+                    .padding(.horizontal)
+
+                HStack {
+                    Label(Bundle.deviceModel, systemImage: "ipad.and.iphone")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+
+                Divider()
+                    .padding(.horizontal)
+
+                HStack {
+                    Label(Bundle.compatibility, systemImage: "checkmark.shield")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+
+                Spacer(minLength: 0)
+                    .frame(height: 4)
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            )
         }
+        .padding()
     }
 }
 
 #Preview {
+
     PreviewRoot {
+
         NavigationStack {
+
             AccountView()
         }
     }

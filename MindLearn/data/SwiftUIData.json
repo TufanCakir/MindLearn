@@ -21,9 +21,7 @@
         },
         "code":
             "struct ContentView: View {\n @State private var name = \"\" \n var body: some View { TextField(\"Name\", text: $name) } }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0000FF"
+        "category": "SwiftUI"
     },
     {
         "id": "create_view_001",
@@ -48,8 +46,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct MyFirstView: View {\n    let bgColors = [Color(\"#F5F5F5\"), Color(\"#E0E0E0\")]\n    let textColors = [Color.black, Color.gray]\n\n    var body: some View {\n        ZStack {\n            LinearGradient(gradient: Gradient(colors: bgColors), startPoint: .top, endPoint: .bottom)\n                .ignoresSafeArea()\n            Text(\"Hallo SwiftUI!\")\n                .font(.title)\n                .foregroundColor(textColors.randomElement() ?? .black)\n                .padding()\n        }\n    }\n}\n\n#Preview {\n    MyFirstView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "create_view_002",
@@ -72,8 +69,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct DynamicBackgroundView: View {\n    let gradientColors = [Color.red, Color.orange, Color.yellow]\n    \n    var body: some View {\n        ZStack {\n            LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing)\n                .ignoresSafeArea()\n            Text(\"Dynamischer Hintergrund\")\n                .font(.headline)\n                .foregroundColor(.white)\n                .padding()\n        }\n    }\n}\n\n#Preview {\n    DynamicBackgroundView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "list_001",
@@ -97,8 +93,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct SimpleListView: View {\n    let fruits = [\"Apfel\", \"Banane\", \"Orange\", \"Traube\"]\n\n    var body: some View {\n        List(fruits, id: \\.self) { fruit in\n            Text(fruit)\n        }\n        .navigationTitle(\"Früchte\")\n    }\n}\n\n#Preview {\n    NavigationStack { SimpleListView() }\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "navigation_001",
@@ -122,7 +117,6 @@
         "code":
             "import SwiftUI\n\nstruct NavigationExampleView: View {\n    var body: some View {\n        NavigationStack {\n            VStack {\n                Text(\"Home Screen\")\n                    .font(.largeTitle)\n                NavigationLink(\"Zur Detailseite\", destination: DetailView())\n                    .buttonStyle(.borderedProminent)\n            }\n            .navigationTitle(\"Navigation\")\n        }\n    }\n}\n\nstruct DetailView: View {\n    var body: some View {\n        Text(\"Hallo Detailseite!\")\n            .font(.title)\n    }\n}\n\n#Preview {\n    NavigationExampleView()\n}",
         "category": "SwiftUI",
-        "categoryIcon": "swift"
     },
     {
         "id": "textfield_001",
@@ -145,8 +139,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct TextFieldExampleView: View {\n    @State private var name = \"\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            TextField(\"Dein Name\", text: $name)\n                .textFieldStyle(.roundedBorder)\n                .padding()\n\n            Text(\"Hallo, \\(name)\")\n                .font(.headline)\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    TextFieldExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "button_001",
@@ -169,8 +162,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ButtonExampleView: View {\n    var body: some View {\n        Button(action: {\n            print(\"Button wurde gedrückt!\")\n        }) {\n            Text(\"Klick mich\")\n                .padding()\n                .background(Color.red)\n                .foregroundColor(.white)\n                .cornerRadius(8)\n        }\n    }\n}\n\n#Preview {\n    ButtonExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "tabbar_001",
@@ -194,8 +186,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct TabBarExampleView: View {\n    var body: some View {\n        TabView {\n            Text(\"🏠 Home\")\n                .tabItem {\n                    Image(systemName: \"house.fill\")\n                    Text(\"Home\")\n                }\n\n            Text(\"⚙️ Einstellungen\")\n                .tabItem {\n                    Image(systemName: \"gear\")\n                    Text(\"Settings\")\n                }\n        }\n    }\n}\n\n#Preview {\n    TabBarExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "toggle_001",
@@ -220,7 +211,6 @@
         "code":
             "import SwiftUI\n\nstruct ToggleExampleView: View {\n    @State private var isDarkMode = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Toggle(\"Dark Mode\", isOn: $isDarkMode)\n                .padding()\n\n            Text(isDarkMode ? \"🌙 Dark Mode\" : \"☀️ Light Mode\")\n                .font(.title)\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    ToggleExampleView()\n}",
         "category": "SwiftUI",
-        "categoryIcon": "swift"
     },
     {
         "id": "slider_001",
@@ -244,8 +234,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct SliderExampleView: View {\n    @State private var volume: Double = 50\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Lautstärke: \\(Int(volume))%\")\n                .font(.headline)\n\n            Slider(value: $volume, in: 0...100)\n                .padding()\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    SliderExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "alert_001",
@@ -269,8 +258,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AlertExampleView: View {\n    @State private var showAlert = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Button(\"Zeige Alert\") {\n                showAlert = true\n            }\n            .alert(\"Achtung!\", isPresented: $showAlert) {\n                Button(\"OK\", role: .cancel) {}\n                Button(\"Löschen\", role: .destructive) {}\n            } message: {\n                Text(\"Diese Aktion kann nicht rückgängig gemacht werden.\")\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    AlertExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "sheet_001",
@@ -294,8 +282,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct SheetExampleView: View {\n    @State private var showSheet = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Button(\"Sheet öffnen\") {\n                showSheet = true\n            }\n            .sheet(isPresented: $showSheet) {\n                VStack(spacing: 20) {\n                    Text(\"Hallo aus dem Sheet!\")\n                        .font(.title)\n                    Button(\"Schließen\") {\n                        showSheet = false\n                    }\n                }\n                .padding()\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    SheetExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "animation_001",
@@ -319,8 +306,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AnimationExampleView: View {\n    @State private var isExpanded = false\n\n    var body: some View {\n        VStack(spacing: 40) {\n            Circle()\n                .fill(isExpanded ? .orange : .blue)\n                .frame(width: isExpanded ? 200 : 100, height: isExpanded ? 200 : 100)\n                .animation(.spring(), value: isExpanded)\n\n            Button(\"Animate\") {\n                isExpanded.toggle()\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    AnimationExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "gesture_001",
@@ -344,8 +330,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct GestureExampleView: View {\n    @State private var offset = CGSize.zero\n\n    var body: some View {\n        Circle()\n            .fill(.green)\n            .frame(width: 100, height: 100)\n            .offset(offset)\n            .gesture(\n                DragGesture()\n                    .onChanged { value in offset = value.translation }\n                    .onEnded { _ in withAnimation { offset = .zero } }\n            )\n            .padding()\n    }\n}\n\n#Preview {\n    GestureExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "progress_001",
@@ -368,8 +353,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ProgressExampleView: View {\n    @State private var progress = 0.3\n\n    var body: some View {\n        VStack(spacing: 20) {\n            ProgressView(value: progress)\n                .padding()\n\n            Button(\"Mehr Fortschritt\") {\n                withAnimation { progress = min(progress + 0.1, 1.0) }\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    ProgressExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "appstorage_001",
@@ -393,8 +377,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AppStorageExampleView: View {\n    @AppStorage(\"username\") private var username = \"Gast\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Willkommen, \\(username)!\")\n                .font(.headline)\n\n            TextField(\"Neuer Name\", text: $username)\n                .textFieldStyle(.roundedBorder)\n                .padding()\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    AppStorageExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "json_001",
@@ -418,8 +401,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct Fruit: Codable, Identifiable {\n    let id = UUID()\n    let name: String\n}\n\nfunc loadFruits() -> [Fruit] {\n    guard let url = Bundle.main.url(forResource: \"fruits\", withExtension: \"json\"),\n          let data = try? Data(contentsOf: url) else {\n        return []\n    }\n    return (try? JSONDecoder().decode([Fruit].self, from: data)) ?? []\n}\n\nstruct JSONExampleView: View {\n    let fruits = loadFruits()\n\n    var body: some View {\n        List(fruits) { fruit in\n            Text(fruit.name)\n        }\n    }\n}\n\n#Preview {\n    JSONExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "haptics_001",
@@ -442,8 +424,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct HapticsExampleView: View {\n    var body: some View {\n        Button(\"Haptik testen\") {\n            let generator = UIImpactFeedbackGenerator(style: .medium)\n            generator.impactOccurred()\n        }\n        .padding()\n        .background(Color.red)\n        .foregroundColor(.white)\n        .cornerRadius(10)\n    }\n}\n\n#Preview {\n    HapticsExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "userdefaults_001",
@@ -467,7 +448,6 @@
         "code":
             "import SwiftUI\n\nstruct UserDefaultsExampleView: View {\n    @State private var username = UserDefaults.standard.string(forKey: \"username\") ?? \"Gast\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Willkommen, \\(username)!\")\n                .font(.headline)\n\n            TextField(\"Neuer Name\", text: $username)\n                .textFieldStyle(.roundedBorder)\n                .padding()\n\n            Button(\"Speichern\") {\n                UserDefaults.standard.set(username, forKey: \"username\")\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    UserDefaultsExampleView()\n}",
         "category": "SwiftUI",
-        "categoryIcon": "swift"
     },
     {
         "id": "asyncimage_001",
@@ -491,8 +471,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AsyncImageExampleView: View {\n    var body: some View {\n        AsyncImage(url: URL(string: \"https:/picsum.photos/300\")) { image in\n            image.resizable().scaledToFit().cornerRadius(12)\n        } placeholder: {\n            ProgressView()\n        }\n        .frame(width: 200, height: 200)\n        .padding()\n    }\n}\n\n#Preview {\n    AsyncImageExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "mapkit_001",
@@ -516,8 +495,7 @@
         },
         "code":
             "import SwiftUI\nimport MapKit\n\nstruct MapExampleView: View {\n    @State private var region = MKCoordinateRegion(\n        center: CLLocationCoordinate2D(latitude: 48.137, longitude: 11.575),\n        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)\n    )\n\n    var body: some View {\n        Map(coordinateRegion: $region, annotationItems: [AnnotationItem()]) { item in\n            MapPin(coordinate: item.coordinate, tint: .blue)\n        }\n        .ignoresSafeArea()\n    }\n}\n\nstruct AnnotationItem: Identifiable {\n    let id = UUID()\n    let coordinate = CLLocationCoordinate2D(latitude: 48.137, longitude: 11.575)\n}\n\n#Preview {\n    MapExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "camera_001",
@@ -541,8 +519,7 @@
         },
         "code":
             "import SwiftUI\nimport PhotosUI\n\nstruct CameraExampleView: View {\n    @State private var selectedImage: PhotosPickerItem?\n    @State private var image: Image?\n\n    var body: some View {\n        VStack(spacing: 20) {\n            if let image = image {\n                image\n                    .resizable()\n                    .scaledToFit()\n                    .frame(height: 300)\n                    .cornerRadius(12)\n            } else {\n                Rectangle().fill(.gray.opacity(0.3)).frame(height: 300).cornerRadius(12)\n            }\n\n            PhotosPicker(selection: $selectedImage, matching: .images) {\n                Label(\"Foto aufnehmen oder wählen\", systemImage: \"camera\")\n            }\n            .onChange(of: selectedImage) { newItem in\n                Task {\n                    if let data = try? await newItem?.loadTransferable(type: Data.self),\n                       let uiImage = UIImage(data: data) {\n                        image = Image(uiImage: uiImage)\n                    }\n                }\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    CameraExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "coredata_001",
@@ -566,8 +543,7 @@
         },
         "code":
             "import SwiftUI\nimport CoreData\n\nstruct CoreDataExampleView: View {\n    @Environment(\\.managedObjectContext) private var viewContext\n    @FetchRequest(\n        sortDescriptors: [NSSortDescriptor(keyPath: \\Item.timestamp, ascending: true)],\n        animation: .default)\n    private var items: FetchedResults<Item>\n\n    var body: some View {\n        NavigationStack {\n            List {\n                ForEach(items) { item in\n                    Text(item.timestamp!, formatter: dateFormatter)\n                }\n                .onDelete(perform: deleteItems)\n            }\n            .navigationTitle(\"Core Data\")\n            .toolbar {\n                ToolbarItem(placement: .navigationBarTrailing) {\n                    Button(action: addItem) {\n                        Label(\"Add\", systemImage: \"plus\")\n                    }\n                }\n            }\n        }\n    }\n\n    private func addItem() {\n        let newItem = Item(context: viewContext)\n        newItem.timestamp = Date()\n        try? viewContext.save()\n    }\n\n    private func deleteItems(offsets: IndexSet) {\n        for index in offsets { viewContext.delete(items[index]) }\n        try? viewContext.save()\n    }\n}\n\nprivate let dateFormatter: DateFormatter = {\n    let formatter = DateFormatter()\n    formatter.dateStyle = .short\n    formatter.timeStyle = .short\n    return formatter\n}()\n\n#Preview {\n    CoreDataExampleView().environment(\\.managedObjectContext, PersistenceController.preview.container.viewContext)\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "charts_001",
@@ -591,8 +567,7 @@
         },
         "code":
             "import SwiftUI\nimport Charts\n\nstruct Sales: Identifiable {\n    let id = UUID()\n    let month: String\n    let amount: Double\n}\n\nstruct ChartsExampleView: View {\n    let data = [\n        Sales(month: \"Jan\", amount: 120),\n        Sales(month: \"Feb\", amount: 200),\n        Sales(month: \"Mär\", amount: 150)\n    ]\n\n    var body: some View {\n        Chart(data) { item in\n            BarMark(\n                x: .value(\"Monat\", item.month),\n                y: .value(\"Verkäufe\", item.amount)\n            )\n            .foregroundStyle(.orange)\n        }\n        .frame(height: 300)\n        .padding()\n    }\n}\n\n#Preview {\n    ChartsExampleView()\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift"
+        "category": "SwiftUI"
     },
     {
         "id": "observableobject_001",
@@ -616,9 +591,7 @@
         },
         "code":
             "import SwiftUI\n\nclass CounterViewModel: ObservableObject {\n    @Published var count = 0\n    func increment() { count += 1 }\n}\n\nstruct CounterView: View {\n    @StateObject private var vm = CounterViewModel()\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Zähler: \\(vm.count)\")\n                .font(.largeTitle)\n            Button(\"+1\") { vm.increment() }\n                .buttonStyle(.borderedProminent)\n        }\n    }\n}\n\n#Preview { CounterView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
+        "category": "SwiftUI"
     },
     {
         "id": "matchedgeometryeffect_001",
@@ -642,9 +615,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct MatchedGeometryExampleView: View {\n    @Namespace private var ns\n    @State private var expanded = false\n\n    var body: some View {\n        VStack {\n            if expanded {\n                RoundedRectangle(cornerRadius: 25)\n                    .fill(.pink)\n                    .matchedGeometryEffect(id: \"card\", in: ns)\n                    .frame(width: 300, height: 300)\n            } else {\n                RoundedRectangle(cornerRadius: 25)\n                    .fill(.pink)\n                    .matchedGeometryEffect(id: \"card\", in: ns)\n                    .frame(width: 100, height: 100)\n            }\n        }\n        .onTapGesture {\n            withAnimation(.spring()) { expanded.toggle() }\n        }\n    }\n}\n\n#Preview { MatchedGeometryExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF2D55"
+        "category": "SwiftUI"
     },
     {
         "id": "observableobject_002",
@@ -668,9 +639,7 @@
         },
         "code":
             "import SwiftUI\n\nclass UserSettings: ObservableObject {\n    @Published var username = \"Gast\"\n}\n\nstruct RootView: View {\n    @StateObject private var settings = UserSettings()\n\n    var body: some View {\n        NavigationStack {\n            VStack(spacing: 20) {\n                TextField(\"Name\", text: $settings.username)\n                    .textFieldStyle(.roundedBorder)\n                    .padding()\n                NavigationLink(\"Zur Profilseite\", destination: ProfileView())\n            }\n        }\n        .environmentObject(settings)\n    }\n}\n\nstruct ProfileView: View {\n    @EnvironmentObject var settings: UserSettings\n\n    var body: some View {\n        Text(\"Willkommen, \\(settings.username)!\")\n            .font(.largeTitle)\n    }\n}\n\n#Preview { RootView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#30D158"
+        "category": "SwiftUI"
     },
     {
         "id": "timelineview_001",
@@ -694,9 +663,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct TimelineClockView: View {\n    var body: some View {\n        TimelineView(.animation) { context in\n            VStack(spacing: 20) {\n                Text(context.date, style: .time)\n                    .font(.largeTitle)\n                    .monospacedDigit()\n\n                Circle()\n                    .trim(from: 0, to: CGFloat(Calendar.current.component(.second, from: context.date)) / 60)\n                    .stroke(.orange, style: StrokeStyle(lineWidth: 8, lineCap: .round))\n                    .frame(width: 120, height: 120)\n                    .rotationEffect(.degrees(-90))\n                    .animation(.easeInOut, value: context.date)\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { TimelineClockView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9F0A"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftdata_001",
@@ -720,9 +687,7 @@
         },
         "code":
             "import SwiftUI\nimport SwiftData\n\n@Model\nclass Note {\n    var title: String\n    var createdAt: Date\n    init(title: String) {\n        self.title = title\n        self.createdAt = Date()\n    }\n}\n\nstruct SwiftDataExampleView: View {\n    @Environment(\\.modelContext) private var context\n    @Query(sort: \\Note.createdAt) private var notes: [Note]\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Button(\"Neue Notiz speichern\") {\n                let note = Note(title: \"Neue Notiz – \\(Date())\")\n                context.insert(note)\n            }\n            List(notes) { note in\n                Text(note.title)\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    SwiftDataExampleView()\n        .modelContainer(for: Note.self)\n}",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#BF5AF2"
+        "category": "SwiftUI"
     },
     {
         "id": "swift_044",
@@ -746,9 +711,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct DatePickerExampleView: View {\n    @State private var selectedDate = Date()\n\n    var body: some View {\n        VStack(spacing: 20) {\n            DatePicker(\"Wähle ein Datum\", selection: $selectedDate, displayedComponents: .date)\n                .datePickerStyle(.graphical)\n                .padding()\n\n            Text(\"Gewähltes Datum: \\(selectedDate.formatted(date: .abbreviated, time: .omitted))\")\n                .font(.headline)\n        }\n        .padding()\n    }\n}\n\n#Preview { DatePickerExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SwiftUI"
     },
     {
         "id": "swift_045",
@@ -771,9 +734,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct StepperExampleView: View {\n    @State private var value = 0\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Stepper(\"Wert: \\(value)\", value: $value, in: 0...10)\n                .padding()\n            Text(\"Aktueller Wert: \\(value)\")\n                .font(.headline)\n        }\n        .padding()\n    }\n}\n\n#Preview { StepperExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F72585"
+        "category": "SwiftUI"
     },
     {
         "id": "swift_046",
@@ -797,9 +758,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ToggleAnimationView: View {\n    @State private var isOn = false\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Circle()\n                .fill(isOn ? Color.green : Color.gray)\n                .frame(width: 100, height: 100)\n                .scaleEffect(isOn ? 1.2 : 1.0)\n                .animation(.spring(response: 0.4, dampingFraction: 0.6), value: isOn)\n\n            Toggle(\"Animation aktivieren\", isOn: $isOn)\n                .padding()\n        }\n        .padding()\n    }\n}\n\n#Preview { ToggleAnimationView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A86FF"
+        "category": "SwiftUI"
     },
     {
         "id": "swift_047",
@@ -823,9 +782,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AsyncImageAdvancedView: View {\n    let imageURL = URL(string: \"https:/picsum.photos/400\")!\n    @State private var loaded = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            AsyncImage(url: imageURL) { phase in\n                switch phase {\n                case .empty:\n                    ProgressView()\n                case .success(let image):\n                    image.resizable()\n                        .scaledToFit()\n                        .cornerRadius(12)\n                        .opacity(loaded ? 1 : 0)\n                        .onAppear { withAnimation(.easeIn(duration: 0.5)) { loaded = true } }\n                case .failure:\n                    Image(systemName: \"xmark.octagon.fill\")\n                        .font(.largeTitle)\n                        .foregroundColor(.red)\n                @unknown default:\n                    EmptyView()\n                }\n            }\n            .frame(width: 250, height: 250)\n        }\n        .padding()\n    }\n}\n\n#Preview { AsyncImageAdvancedView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9F1C"
+        "category": "SwiftUI"
     },
     {
         "id": "swift_048",
@@ -849,9 +806,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AnimatedTabBarView: View {\n    @State private var selectedTab = 0\n\n    var body: some View {\n        TabView(selection: $selectedTab) {\n            Text(\"🏠 Home Screen\")\n                .tabItem { Label(\"Home\", systemImage: \"house.fill\") }\n                .tag(0)\n\n            Text(\"🔍 Suche\")\n                .tabItem { Label(\"Suche\", systemImage: \"magnifyingglass\") }\n                .tag(1)\n\n            Text(\"👤 Profil\")\n                .tabItem { Label(\"Profil\", systemImage: \"person.circle.fill\") }\n                .tag(2)\n        }\n        .tint(.purple)\n        .animation(.easeInOut, value: selectedTab)\n    }\n}\n\n#Preview { AnimatedTabBarView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#7209B7"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_049",
@@ -875,9 +830,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct GridExampleView: View {\n    let columns = [GridItem(.flexible()), GridItem(.flexible())]\n\n    var body: some View {\n        ScrollView {\n            LazyVGrid(columns: columns, spacing: 20) {\n                ForEach(1..<9) { i in\n                    RoundedRectangle(cornerRadius: 12)\n                        .fill(.purple.opacity(0.7))\n                        .frame(height: 100)\n                        .overlay(Text(\"Item \\(i)\").foregroundColor(.white))\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { GridExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#6A4C93"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_050",
@@ -901,9 +854,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ScrollReaderView: View {\n    var body: some View {\n        ScrollViewReader { proxy in\n            VStack(spacing: 20) {\n                Button(\"Zu Item 30 springen\") {\n                    withAnimation { proxy.scrollTo(30) }\n                }\n\n                ScrollView {\n                    VStack(spacing: 10) {\n                        ForEach(1..<50) { i in\n                            Text(\"Item \\(i)\")\n                                .id(i)\n                                .frame(maxWidth: .infinity)\n                                .padding()\n                                .background(.blue.opacity(0.3))\n                                .cornerRadius(8)\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n\n#Preview { ScrollReaderView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_051",
@@ -927,9 +878,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ToolbarExampleView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Toolbar Beispiel\")\n                .navigationTitle(\"Start\")\n                .toolbar {\n                    ToolbarItem(placement: .navigationBarTrailing) {\n                        Button(action: {}) { Image(systemName: \"gear\") }\n                    }\n                    ToolbarItem(placement: .navigationBarLeading) {\n                        Button(action: {}) { Image(systemName: \"bell\") }\n                    }\n                }\n        }\n    }\n}\n\n#Preview { ToolbarExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4361EE"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_052",
@@ -953,9 +902,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ConfirmationDialogExampleView: View {\n    @State private var showDialog = false\n\n    var body: some View {\n        Button(\"Optionen öffnen\") { showDialog = true }\n            .confirmationDialog(\"Aktion wählen\", isPresented: $showDialog) {\n                Button(\"Löschen\", role: .destructive) {}\n                Button(\"Umbenennen\") {}\n                Button(\"Abbrechen\", role: .cancel) {}\n            }\n            .padding()\n    }\n}\n\n#Preview { ConfirmationDialogExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F72585"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_053",
@@ -979,9 +926,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct SwipeActionsExampleView: View {\n    @State private var items = [\"Alpha\", \"Beta\", \"Gamma\"]\n\n    var body: some View {\n        List {\n            ForEach(items, id: \\.self) { item in\n                Text(item)\n                    .swipeActions(edge: .trailing) {\n                        Button(role: .destructive) { } label: {\n                            Label(\"Löschen\", systemImage: \"trash\")\n                        }\n                    }\n            }\n        }\n    }\n}\n\n#Preview { SwipeActionsExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A0CA3"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_054",
@@ -1005,9 +950,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct SearchExampleView: View {\n    @State private var query = \"\"\n    let items = [\"Apple\", \"Banana\", \"Cherry\", \"Date\"]\n\n    var body: some View {\n        List(filtered) { item in\n            Text(item)\n        }\n        .searchable(text: $query, prompt: \"Suchen…\")\n    }\n\n    var filtered: [String] {\n        query.isEmpty ? items : items.filter { $0.localizedCaseInsensitiveContains(query) }\n    }\n}\n\n#Preview { SearchExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_055",
@@ -1031,9 +974,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct BadgeExampleView: View {\n    var body: some View {\n        TabView {\n            Text(\"Home\")\n                .tabItem { Label(\"Home\", systemImage: \"house\") }\n                .badge(3)\n\n            Text(\"Nachrichten\")\n                .tabItem { Label(\"Chat\", systemImage: \"message\") }\n                .badge(\"Neu\")\n        }\n    }\n}\n\n#Preview { BadgeExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3F37C9"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_056",
@@ -1057,9 +998,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct AsyncTaskExampleView: View {\n    @State private var text = \"Lade…\"\n\n    var body: some View {\n        Text(text)\n            .task {\n                async let first = fetchTitle()\n                async let second = fetchSubtitle()\n                text = await \"\\(first) – \\(second)\"\n            }\n            .padding()\n    }\n\n    func fetchTitle() async -> String { \"Titel\" }\n    func fetchSubtitle() async -> String { \"Untertitel\" }\n}\n\n#Preview { AsyncTaskExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4895EF"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_057",
@@ -1083,9 +1022,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct OnChangeExampleView: View {\n    @State private var text = \"\"\n    @State private var status = \"Noch nichts eingegeben\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            TextField(\"Tippe etwas…\", text: $text)\n                .textFieldStyle(.roundedBorder)\n\n            Text(status)\n                .font(.headline)\n                .foregroundColor(.purple)\n        }\n        .padding()\n        .onChange(of: text) { newValue in\n            status = newValue.isEmpty ? \"Leeres Feld\" : \"Eingabe: \\(newValue)\"\n        }\n    }\n}\n\n#Preview { OnChangeExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#7209B7"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_058",
@@ -1109,9 +1046,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ShimmerView: View {\n    @State private var move = false\n\n    var shimmer: LinearGradient {\n        LinearGradient(\n            colors: [.white.opacity(0.3), .white, .white.opacity(0.3)],\n            startPoint: .leading,\n            endPoint: .trailing\n        )\n    }\n\n    var body: some View {\n        ZStack {\n            RoundedRectangle(cornerRadius: 12)\n                .fill(.gray.opacity(0.3))\n                .frame(height: 120)\n\n            shimmer\n                .frame(width: 200)\n                .offset(x: move ? 150 : -150)\n                .mask(RoundedRectangle(cornerRadius: 12).frame(height: 120))\n                .animation(.linear(duration: 1.2).repeatForever(autoreverses: false), value: move)\n        }\n        .onAppear { move = true }\n        .padding()\n    }\n}\n\n#Preview { ShimmerView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F15BB5"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_059",
@@ -1135,9 +1070,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ShareSheetView: UIViewControllerRepresentable {\n    let items: [Any]\n    func makeUIViewController(context: Context) -> UIActivityViewController {\n        UIActivityViewController(activityItems: items, applicationActivities: nil)\n    }\n    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}\n}\n\nstruct ShareExampleView: View {\n    @State private var showSheet = false\n\n    var body: some View {\n        Button(\"Teilen\") { showSheet = true }\n            .sheet(isPresented: $showSheet) {\n                ShareSheetView(items: [\"Hallo aus SwiftUI!\"])\n            }\n            .padding()\n    }\n}\n\n#Preview { ShareExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#5E60CE"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_060",
@@ -1161,9 +1094,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct DragDropExampleView: View {\n    @State private var offset = CGSize.zero\n\n    var body: some View {\n        Circle()\n            .fill(.blue)\n            .frame(width: 120, height: 120)\n            .offset(offset)\n            .gesture(\n                DragGesture()\n                    .onChanged { value in offset = value.translation }\n                    .onEnded { _ in withAnimation { offset = .zero } }\n            )\n            .padding()\n    }\n}\n\n#Preview { DragDropExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_061",
@@ -1187,9 +1118,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct NeonModifier: ViewModifier {\n    func body(content: Content) -> some View {\n        content\n            .padding()\n            .background(.purple)\n            .foregroundColor(.white)\n            .cornerRadius(12)\n            .shadow(color: .purple.opacity(0.6), radius: 10)\n    }\n}\n\nextension View {\n    func neonStyle() -> some View { self.modifier(NeonModifier()) }\n}\n\nstruct ModifierExampleView: View {\n    var body: some View {\n        Text(\"Custom Modifier\")\n            .neonStyle()\n    }\n}\n\n#Preview { ModifierExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A0CA3"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_062",
@@ -1213,9 +1142,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct MaskClipExampleView: View {\n    var body: some View {\n        Image(\"example\")\n            .resizable()\n            .scaledToFit()\n            .frame(height: 250)\n            .clipShape(Circle())\n            .overlay(Circle().stroke(.purple, lineWidth: 6))\n            .shadow(radius: 10)\n            .padding()\n    }\n}\n\n#Preview { MaskClipExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#7209B7"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_063",
@@ -1239,9 +1166,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct MGEDetailView: View {\n    @Namespace private var ns\n    @State private var showDetail = false\n\n    var body: some View {\n        VStack {\n            if showDetail {\n                RoundedRectangle(cornerRadius: 20)\n                    .fill(.pink)\n                    .matchedGeometryEffect(id: \"card\", in: ns)\n                    .frame(width: 320, height: 320)\n            } else {\n                RoundedRectangle(cornerRadius: 20)\n                    .fill(.pink)\n                    .matchedGeometryEffect(id: \"card\", in: ns)\n                    .frame(width: 120, height: 120)\n            }\n        }\n        .onTapGesture { withAnimation(.spring()) { showDetail.toggle() } }\n    }\n}\n\n#Preview { MGEDetailView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F72585"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_064",
@@ -1265,9 +1190,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct RefreshExampleView: View {\n    @State private var items = [\"Apple\", \"Banana\", \"Orange\"]\n\n    var body: some View {\n        List(items, id: \\.self) { Text($0) }\n            .refreshable {\n                try? await Task.sleep(nanoseconds: 1_000_000_000)\n                items.append(\"Neu: \\(Date())\")\n            }\n    }\n}\n\n#Preview { RefreshExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4895EF"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_065",
@@ -1291,9 +1214,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ParallaxExampleView: View {\n    var body: some View {\n        ScrollView {\n            GeometryReader { geo in\n                let y = geo.frame(in: .global).minY\n                Image(\"example\")\n                    .resizable()\n                    .scaledToFill()\n                    .frame(height: y > 0 ? 300 + y : 300)\n                    .clipped()\n            }\n            .frame(height: 300)\n\n            VStack(spacing: 20) {\n                ForEach(1..<20) { i in\n                    Text(\"Inhalt \\(i)\")\n                        .padding()\n                        .frame(maxWidth: .infinity)\n                        .background(.purple.opacity(0.2))\n                        .cornerRadius(10)\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { ParallaxExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#560BAD"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_066",
@@ -1317,9 +1238,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct DiamondShape: Shape {\n    func path(in rect: CGRect) -> Path {\n        var p = Path()\n        let midX = rect.midX\n        let midY = rect.midY\n        p.move(to: CGPoint(x: midX, y: rect.minY))\n        p.addLine(to: CGPoint(x: rect.maxX, y: midY))\n        p.addLine(to: CGPoint(x: midX, y: rect.maxY))\n        p.addLine(to: CGPoint(x: rect.minX, y: midY))\n        p.closeSubpath()\n        return p\n    }\n}\n\nstruct ShapeExampleView: View {\n    var body: some View {\n        DiamondShape()\n            .fill(.blue)\n            .frame(width: 200, height: 200)\n            .padding()\n    }\n}\n\n#Preview { ShapeExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#3A86FF"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_067",
@@ -1343,9 +1262,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct TransformAnimationView: View {\n    @State private var animate = false\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Image(systemName: \"star.fill\")\n                .font(.system(size: 80))\n                .foregroundColor(.yellow)\n                .rotationEffect(.degrees(animate ? 360 : 0))\n                .scaleEffect(animate ? 1.4 : 1)\n                .opacity(animate ? 1 : 0.5)\n                .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: animate)\n\n            Button(\"Start Animation\") { animate.toggle() }\n        }\n        .padding()\n    }\n}\n\n#Preview { TransformAnimationView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#F77F00"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_068",
@@ -1369,9 +1286,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct ScrollTransitionExampleView: View {\n    var body: some View {\n        ScrollView {\n            ForEach(0..<20) { i in\n                Text(\"Eintrag \\(i)\")\n                    .font(.largeTitle)\n                    .frame(maxWidth: .infinity)\n                    .padding()\n                    .background(.red.opacity(0.3))\n                    .cornerRadius(12)\n                    .scrollTransition(.interactive) { content, phase in\n                        content\n                            .opacity(phase.isIdentity ? 1 : 0.2)\n                            .scaleEffect(phase.isIdentity ? 1 : 0.8)\n                    }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { ScrollTransitionExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#E5383B"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_069",
@@ -1395,9 +1310,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct CanvasExampleView: View {\n    var body: some View {\n        Canvas { context, size in\n            let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)\n            let gradient = Gradient(colors: [.blue, .purple])\n            context.fill(Path(rect), with: .linearGradient(gradient, startPoint: .top, endPoint: .bottom))\n\n            var circle = Path()\n            circle.addEllipse(in: CGRect(x: size.width/2 - 50, y: size.height/2 - 50, width: 100, height: 100))\n            context.stroke(circle, with: .color(.white), lineWidth: 4)\n        }\n        .frame(height: 250)\n        .cornerRadius(12)\n        .padding()\n    }\n}\n\n#Preview { CanvasExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4CC9F0"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_070",
@@ -1421,9 +1334,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct BlurBackgroundExampleView: View {\n    var body: some View {\n        ZStack {\n            Image(\"example\")\n                .resizable()\n                .scaledToFill()\n                .ignoresSafeArea()\n\n            VStack(spacing: 20) {\n                Text(\"Glassmorphism Panel\")\n                    .font(.title2)\n                    .bold()\n                Text(\"Modern iOS Style\")\n                    .foregroundColor(.white.opacity(0.8))\n            }\n            .padding(30)\n            .background(.ultraThinMaterial)\n            .cornerRadius(20)\n            .shadow(radius: 20)\n            .padding()\n        }\n    }\n}\n\n#Preview { BlurBackgroundExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#5E60CE"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_071",
@@ -1447,9 +1358,7 @@
         },
         "code":
             "import SwiftUI\nimport AVKit\n\nstruct VideoPlayerExampleView: View {\n    private let url = URL(string: \"https:/www.apple.com/105/media/us/iphone-15-pro/2023/29bb7999-545b-44d4-a2e5-743ffb391d4b/films/product/iphone-15-pro-product-tpl-cc-us-2023_1280x720h.mp4\")!\n\n    var body: some View {\n        VideoPlayer(player: AVPlayer(url: url))\n            .frame(height: 260)\n            .cornerRadius(16)\n            .padding()\n    }\n}\n\n#Preview { VideoPlayerExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#E63946"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_072",
@@ -1473,9 +1382,7 @@
         },
         "code":
             "import SwiftUI\n\nstruct GeometryReaderExampleView: View {\n    var body: some View {\n        GeometryReader { geo in\n            VStack(spacing: 20) {\n                Text(\"Breite: \\(Int(geo.size.width))\")\n                Text(\"Höhe: \\(Int(geo.size.height))\")\n                RoundedRectangle(cornerRadius: 12)\n                    .fill(.orange)\n                    .frame(width: geo.size.width * 0.6, height: 80)\n            }\n            .frame(maxWidth: .infinity, maxHeight: .infinity)\n        }\n    }\n}\n\n#Preview { GeometryReaderExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#FF9F1C"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_073",
@@ -1499,16 +1406,13 @@
         },
         "code":
             "import SwiftUI\n\nstruct HorizontalScrollExampleView: View {\n    var body: some View {\n        ScrollView(.horizontal, showsIndicators: false) {\n            LazyHStack(spacing: 20) {\n                ForEach(1..<10) { i in\n                    RoundedRectangle(cornerRadius: 16)\n                        .fill(.blue.opacity(0.7))\n                        .frame(width: 180, height: 120)\n                        .overlay(Text(\"Card \\(i)\").foregroundColor(.white).bold())\n                        .shadow(radius: 10)\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { HorizontalScrollExampleView() }",
-        "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#4361EE"
+        "category": "SwiftUI"
     },
     {
         "id": "swiftui_074",
         "title": "NavigationSplitView (iPad Layout)",
         "description":
             "Erstelle moderne Sidebar Layouts für iPad und macOS mit NavigationSplitView.",
-        "icon": "📚",
         "steps": [
             "NavigationSplitView verwenden.",
             "Sidebar Liste definieren.",
@@ -1527,7 +1431,5 @@
         "code":
             "import SwiftUI\n\nstruct SplitViewExample: View {\n    @State private var selection: String? = \"Swift\"\n\n    let items = [\"Swift\", \"SwiftUI\", \"Metal\"]\n\n    var body: some View {\n        NavigationSplitView {\n            List(items, selection: $selection) { item in\n                Text(item)\n            }\n        } detail: {\n            Text(selection ?? \"Keine Auswahl\")\n                .font(.largeTitle)\n        }\n    }\n}\n\n#Preview {\n    SplitViewExample()\n}",
         "category": "SwiftUI",
-        "categoryIcon": "swift",
-        "categoryIconColor": "#0A84FF"
     }
 ]
