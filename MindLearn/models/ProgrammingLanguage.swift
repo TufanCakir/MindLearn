@@ -30,12 +30,12 @@ enum ProgrammingLanguage: String, CaseIterable, Identifiable, Codable {
 
     var icon: String {
         switch self {
-        case .swiftUI: "rectangle.stack"
+        case .swiftUI: "swift"
         case .swift: "swift"
         case .html: "chevron.left.forwardslash.chevron.right"
         case .json: "curlybraces"
         case .reactNative: "atom"
-        case .swiftData: "externaldrive.connected.to.line.below"
+        case .swiftData: "swiftdata"
         }
     }
 

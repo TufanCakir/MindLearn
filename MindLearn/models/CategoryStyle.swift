@@ -27,25 +27,25 @@ extension CategoryStyle {
 
             return .init(
                 icon: "arkit",
-                color: Color(hex: "#5E5CE6") ?? .indigo
+                color: Color(hex: "#5856D6") ?? .indigo
             )
 
-        // MARK: RealityKit ⭐ NEW
+        // MARK: RealityKit
 
         case "RealityKit":
 
             return .init(
                 icon: "cube.transparent.fill",
-                color: Color(hex: "#7B78FF") ?? .indigo
+                color: Color(hex: "#32ADE6") ?? .cyan
             )
 
-        // MARK: SpriteKit ⭐ NEW
+        // MARK: SpriteKit
 
         case "SpriteKit":
 
             return .init(
                 icon: "gamecontroller.fill",
-                color: Color(hex: "#FF375F") ?? .pink
+                color: Color(hex: "#FF2D55") ?? .pink
             )
 
         // MARK: SwiftUI
@@ -54,25 +54,25 @@ extension CategoryStyle {
 
             return .init(
                 icon: "swift",
-                color: Color(hex: "#FF375F") ?? .pink
+                color: Color(hex: "#0A84FF") ?? .blue
             )
 
-        // MARK: Swift ⭐ ADD THIS
+        // MARK: Swift
 
         case "Swift":
 
             return .init(
                 icon: "swift",
-                color: Color(hex: "#FF5F1F") ?? .orange
+                color: Color(hex: "#FF6B1A") ?? .orange
             )
 
-        // MARK: SwiftDataModel ⭐ NEW
+        // MARK: SwiftData
 
         case "SwiftData":
 
             return .init(
                 icon: "swiftdata",
-                color: Color(hex: "#30D158") ?? .green
+                color: Color(hex: "#34C759") ?? .green
             )
 
         // MARK: Metal
@@ -81,7 +81,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "cpu.fill",
-                color: Color(hex: "#BF5AF2") ?? .purple
+                color: Color(hex: "#8E8E93") ?? .gray
             )
 
         // MARK: Vision
@@ -90,7 +90,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "vision.pro",
-                color: Color(hex: "#64D2FF") ?? .cyan
+                color: Color(hex: "#00C7BE") ?? .cyan
             )
 
         // MARK: WidgetKit
@@ -99,7 +99,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "widget.large",
-                color: Color(hex: "#FFD60A") ?? .yellow
+                color: Color(hex: "#AF52DE") ?? .purple
             )
 
         // MARK: HealthKit
@@ -108,7 +108,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "heart.fill",
-                color: Color(hex: "#FF453A") ?? .red
+                color: Color(hex: "#FF3B30") ?? .red
             )
 
         // MARK: Speech
@@ -117,7 +117,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "microphone.fill",
-                color: Color(hex: "#FF9F0A") ?? .orange
+                color: Color(hex: "#BF5AF2") ?? .purple
             )
 
         // MARK: HTML
@@ -125,8 +125,8 @@ extension CategoryStyle {
         case "HTML":
 
             return .init(
-                icon: "chevron.left.slash.chevron.right",
-                color: Color(hex: "#FF6A00") ?? .orange
+                icon: "chevron.left.forwardslash.chevron.right",
+                color: Color(hex: "#E44D26") ?? .orange
             )
 
         // MARK: JSON
@@ -135,7 +135,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "curlybraces",
-                color: Color(hex: "#64D2FF") ?? .cyan
+                color: Color(hex: "#5AC8FA") ?? .cyan
             )
 
         // MARK: React Native
@@ -144,7 +144,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "atom",
-                color: Color(hex: "#61DAFB") ?? .cyan
+                color: Color(hex: "#00AEEF") ?? .cyan
             )
 
         // MARK: School
@@ -153,7 +153,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "graduationcap.fill",
-                color: Color(hex: "#0A84FF") ?? .blue
+                color: Color(hex: "#007AFF") ?? .blue
             )
 
         // MARK: Kids
@@ -162,7 +162,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "figure.child",
-                color: Color(hex: "#FF9F0A") ?? .orange
+                color: Color(hex: "#FFCC00") ?? .yellow
             )
 
         // MARK: Completely
@@ -171,7 +171,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "swift",
-                color: Color(hex: "#FF5F1F") ?? .orange
+                color: Color(hex: "#FF6B1A") ?? .orange
             )
 
         // MARK: General
@@ -180,7 +180,7 @@ extension CategoryStyle {
 
             return .init(
                 icon: "book.fill",
-                color: Color(hex: "#8E8E93") ?? .gray
+                color: Color(hex: "#6E6E73") ?? .gray
             )
 
         // MARK: Default

@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-
-    // MARK: Storage
-
     @AppStorage("language")
     private var language =
         Locale.current.language.languageCode?.identifier ?? "en"
@@ -24,185 +21,167 @@ struct SettingsView: View {
     @AppStorage("largeLearningCards")
     private var largeLearningCards = false
 
-    // MARK: Localization
-
     private var text: AppLocalization {
         Bundle.main.appLocalization(language: language)
     }
 
-    // MARK: Body
-
     var body: some View {
-
         ScrollView {
-
-            VStack {
-
-                VStack(spacing: 20) {
-
-                    settingsCard {
-                        languageSection
-                    }
-
-                    settingsCard {
-                        appearanceSection
-                    }
-
-                    settingsCard {
-                        accessibilitySection
-                    }
-
-                    settingsCard {
-                        aboutSection
-                    }
-                }
-                .padding(.vertical)
+            VStack(spacing: 18) {
+                languageSection
+                appSection
+                accessibilitySection
+                aboutSection
+                systemSection
             }
+            .padding(.horizontal)
+            .padding(.vertical, 18)
         }
-
-        .background(Color(.systemGroupedBackground))
-
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(text.settings.title)
-
         .navigationBarTitleDisplayMode(.inline)
-
-        .environment(
-            \.locale,
-            Locale(identifier: language)
-        )
+        .environment(\.locale, Locale(identifier: language))
     }
 }
 
-// MARK: Settings Card
+// MARK: - Sections
 
 extension SettingsView {
-
-    private func settingsCard<Content: View>(
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-
-        VStack(spacing: 0) {
-
-            content()
-        }
-
-        .padding(.vertical, 8)
-
-        .background(
-
-            RoundedRectangle(
-                cornerRadius: 22,
-                style: .continuous
-            )
-            .fill(
-                Color(.secondarySystemGroupedBackground)
-            )
-        )
-
-        .background(
-            RoundedRectangle(
-                cornerRadius: 22,
-                style: .continuous
-            )
-            .fill(Color(.secondarySystemGroupedBackground))
-        )
-
-        .shadow(
-            color: .black.opacity(0.05),
-            radius: 8,
-            y: 4
-        )
-
-        .padding(.horizontal)
-    }
-}
-
-//
-// MARK: Language
-//
-
-extension SettingsView {
-
     private var languageSection: some View {
-
-        VStack(alignment: .leading, spacing: 6) {
-
-            Label(
-                text.settings.languageSection,
-                systemImage: "globe"
-            )
-            .font(.headline)
-
-            Picker(
-                text.settings.languagePicker,
-                selection: $language
-            ) {
-
-                Text(text.settings.languageDE)
-                    .tag("de")
-
-                Text(text.settings.languageEN)
-                    .tag("en")
+        SettingsSection(
+            title: text.settings.languageSection,
+            systemImage: "globe"
+        ) {
+            Picker(text.settings.languagePicker, selection: $language) {
+                Text(text.settings.languageDE).tag("de")
+                Text(text.settings.languageEN).tag("en")
             }
             .pickerStyle(.segmented)
-
         }
-        .padding()
     }
-}
 
-// MARK: Appearance
-
-extension SettingsView {
-
-    private var appearanceSection: some View {
-        NavigationLink {
-            AppearanceView()
-        } label: {
-            HStack {
-                Label(text.settings.appearance, systemImage: "paintpalette")
-                Spacer()
-
+    private var appSection: some View {
+        SettingsSection(
+            title: text.settings.appearance,
+            systemImage: "paintpalette"
+        ) {
+            NavigationLink {
+                AppearanceView()
+            } label: {
+                SettingsRow(
+                    title: text.settings.appearance,
+                    systemImage: "paintpalette.fill",
+                    value: nil,
+                    showsChevron: true
+                )
             }
-            .padding()
+            .buttonStyle(.plain)
         }
-        .buttonStyle(.plain)
     }
-}
-
-// MARK: Accessibility
-
-extension SettingsView {
 
     private var accessibilitySection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Label(
-                text.accessibility.settingsTitle,
-                systemImage: "accessibility"
-            )
-            .font(.headline)
+        SettingsSection(
+            title: text.accessibility.settingsTitle,
+            systemImage: "accessibility"
+        ) {
+            VStack(spacing: 0) {
+                accessibilityToggle(
+                    title: text.accessibility.enhancedLabels,
+                    hint: text.accessibility.enhancedLabelsHint,
+                    isOn: $enhancedAccessibilityLabels
+                )
 
-            accessibilityToggle(
-                title: text.accessibility.enhancedLabels,
-                hint: text.accessibility.enhancedLabelsHint,
-                isOn: $enhancedAccessibilityLabels
-            )
+                SettingsDivider()
 
-            accessibilityToggle(
-                title: text.accessibility.reduceMotion,
-                hint: text.accessibility.reduceMotionHint,
-                isOn: $reduceAppMotion
-            )
+                accessibilityToggle(
+                    title: text.accessibility.reduceMotion,
+                    hint: text.accessibility.reduceMotionHint,
+                    isOn: $reduceAppMotion
+                )
 
-            accessibilityToggle(
-                title: text.accessibility.largeCards,
-                hint: text.accessibility.largeCardsHint,
-                isOn: $largeLearningCards
-            )
+                SettingsDivider()
+
+                accessibilityToggle(
+                    title: text.accessibility.largeCards,
+                    hint: text.accessibility.largeCardsHint,
+                    isOn: $largeLearningCards
+                )
+            }
         }
-        .padding()
     }
 
+    private var aboutSection: some View {
+        SettingsSection(
+            title: text.settings.aboutSection,
+            systemImage: "info.circle"
+        ) {
+            VStack(spacing: 0) {
+                NavigationLink {
+                    InfoView()
+                } label: {
+                    SettingsRow(
+                        title: "MindLearn",
+                        systemImage: "book.fill",
+                        value: nil,
+                        showsChevron: true
+                    )
+                }
+                .buttonStyle(.plain)
+
+                SettingsDivider()
+
+                SettingsRow(
+                    title: Bundle.main.appVersionString,
+                    systemImage: "number",
+                    value: nil
+                )
+
+                SettingsDivider()
+
+                SettingsRow(
+                    title: text.settings.builtWith,
+                    systemImage: "applelogo",
+                    value: nil
+                )
+            }
+        }
+    }
+
+    private var systemSection: some View {
+        SettingsSection(
+            title: text.settings.system,
+            systemImage: "gearshape"
+        ) {
+            VStack(spacing: 0) {
+                SettingsRow(
+                    title: Bundle.systemName,
+                    systemImage: "gear",
+                    value: Bundle.systemVersion
+                )
+
+                SettingsDivider()
+
+                SettingsRow(
+                    title: Bundle.deviceModel,
+                    systemImage: "ipad.and.iphone",
+                    value: nil
+                )
+
+                SettingsDivider()
+
+                SettingsRow(
+                    title: Bundle.compatibility,
+                    systemImage: "checkmark.shield",
+                    value: nil
+                )
+            }
+        }
+    }
+}
+
+// MARK: - Controls
+
+extension SettingsView {
     private func accessibilityToggle(
         title: String,
         hint: String,
@@ -212,141 +191,101 @@ extension SettingsView {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.body)
+                    .foregroundStyle(.primary)
 
                 Text(hint)
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
+            .padding(.vertical, 10)
         }
+        .tint(.accentColor)
         .accessibilityHint(hint)
     }
 }
 
-//
-// MARK: About
-//
+// MARK: - Reusable Settings UI
 
-extension SettingsView {
+private struct SettingsSection<Content: View>: View {
+    let title: String
+    let systemImage: String
+    @ViewBuilder let content: Content
 
-    private var aboutSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label(title, systemImage: systemImage)
+                .font(.headline)
+                .foregroundStyle(.primary)
+                .accessibilityAddTraits(.isHeader)
 
-            // About App Section
-            VStack(alignment: .leading, spacing: 0) {
-                Text(text.settings.aboutSection)
-                    .font(.headline)
-                    .padding(.horizontal)
-                    .padding(.top, 12)
-
-                Divider()
-                    .padding(.horizontal)
-
-                NavigationLink {
-                    InfoView()
-                } label: {
-                    HStack {
-                        Label("MindLearn", systemImage: "book")
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.footnote)
-                            .foregroundStyle(.tertiary)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 12)
-                }
-
-                Divider()
-                    .padding(.horizontal)
-
-                HStack {
-                    Label(Bundle.main.appVersionString, systemImage: "number")
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-
-                Divider()
-                    .padding(.horizontal)
-
-                HStack {
-                    Label(text.settings.builtWith, systemImage: "applelogo")
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-
-                Spacer(minLength: 0)
-                    .frame(height: 4)
+            VStack(spacing: 0) {
+                content
             }
-            .background(
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(Color(.secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(Color(.secondarySystemGroupedBackground))
-            )
-
-            // System Section
-            VStack(alignment: .leading, spacing: 0) {
-                Text(text.settings.system)
-                    .font(.headline)
-                    .padding(.horizontal)
-                    .padding(.top, 12)
-
-                Divider()
-                    .padding(.horizontal)
-
-                HStack {
-                    Label(
-                        "\(Bundle.systemName) \(Bundle.systemVersion)",
-                        systemImage: "gear"
-                    )
-                    .foregroundStyle(.secondary)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-
-                Divider()
-                    .padding(.horizontal)
-
-                HStack {
-                    Label(Bundle.deviceModel, systemImage: "ipad.and.iphone")
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-
-                Divider()
-                    .padding(.horizontal)
-
-                HStack {
-                    Label(Bundle.compatibility, systemImage: "checkmark.shield")
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-
-                Spacer(minLength: 0)
-                    .frame(height: 4)
-            }
-            .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(Color(.secondarySystemGroupedBackground))
+                    .stroke(Color(.separator).opacity(0.35), lineWidth: 1)
             )
         }
-        .padding()
+    }
+}
+
+private struct SettingsRow: View {
+    let title: String
+    let systemImage: String
+    let value: String?
+    var showsChevron = false
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: systemImage)
+                .font(.body)
+                .foregroundStyle(Color.accentColor)
+                .frame(width: 28, height: 28)
+                .background(Color.accentColor.opacity(0.12))
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                )
+
+            Text(title)
+                .font(.body)
+                .foregroundStyle(.primary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Spacer(minLength: 12)
+
+            if let value {
+                Text(value)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            }
+
+            if showsChevron {
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+        }
+        .frame(minHeight: 48)
+        .contentShape(Rectangle())
+    }
+}
+
+private struct SettingsDivider: View {
+    var body: some View {
+        Divider()
+            .padding(.leading, 40)
     }
 }
 
 #Preview {
-
     PreviewRoot {
-
         NavigationStack {
-
             SettingsView()
         }
     }
