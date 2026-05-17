@@ -1,0 +1,32 @@
+[
+    {
+        "id": "json_task_001",
+        "language": "JSON",
+        "title": {
+            "de": "JSON-Objekt erstellen",
+            "en": "Create a JSON Object"
+        },
+        "explanation": {
+            "de":
+                "Übe, wie du ein gültiges JSON-Objekt mit einem String und einer Zahl schreibst.",
+            "en":
+                "Practice writing a valid JSON object with a string and a number."
+        },
+        "instruction": {
+            "de": "Erstelle JSON mit einem name-Feld und einem age-Feld.",
+            "en": "Create JSON with a name field and an age field."
+        },
+        "starterCode": "{\n    \n}",
+        "expectedKeywords": [
+            "\"name\"",
+            "\"age\"",
+            ":"
+        ],
+        "solution": "{\n    \"name\": \"Tufan\",\n    \"age\": 25\n}",
+        "hint": {
+            "de":
+                "JSON-Schlüssel und String-Werte brauchen doppelte Anführungszeichen.",
+            "en": "JSON keys and string values need double quotes."
+        }
+    }
+]

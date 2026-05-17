@@ -1,0 +1,370 @@
+{
+    "de": {
+        "tabs": {
+            "learn": "Lernen",
+            "favorites": "Favoriten",
+            "help": "Hilfe",
+            "settings": "Settings"
+        },
+        "settings": {
+            "title": "Einstellungen",
+            "languageSection": "Sprache",
+            "languagePicker": "Sprache auswählen",
+            "languageDE": "Deutsch",
+            "languageEN": "Englisch",
+            "appearance": "Erscheinungsbild",
+            "aboutSection": "Über",
+            "builtWith": "Erstellt mit Swift & SwiftUI",
+            "system": "System"
+        },
+        "appearance": {
+            "title": "Aussehen",
+            "theme": "Theme",
+            "system": "Passt sich automatisch an",
+            "light": "Immer heller Modus",
+            "dark": "Immer dunkler Modus",
+            "standard": "Standard"
+        },
+        "common": {
+            "copy": "Kopieren",
+            "copied": "Kopiert",
+            "paste": "Einfügen",
+            "clear": "Leeren",
+            "share": "Teilen",
+            "done": "Fertig",
+            "description": "Beschreibung",
+            "steps": "Schritte",
+            "codeExample": "Code-Beispiel"
+        },
+        "home": {
+            "title": "Lernen"
+        },
+        "favorites": {
+            "title": "Favoriten",
+            "emptyTitle": "Keine Favoriten",
+            "emptyDescription": "Markiere Inhalte als Favorit."
+        },
+        "drawer": {
+            "title": "Dokumentation",
+            "close": "Schließen",
+            "emptyTitle": "Keine Dokumentation",
+            "emptyDescription": "Keine Inhalte gefunden."
+        },
+        "learningList": {
+            "searchPlaceholder": "Suche...",
+            "emptyTitle": "Keine Ergebnisse",
+            "emptyDescription": "Versuche andere Suchbegriffe."
+        },
+        "learningMode": {
+            "title": "Wähle deinen Lernpfad",
+            "subtitle":
+                "Löse Aufgaben direkt in der App und nutze die Karten als Nachschlagewerk.",
+            "allCards": "Alle Lernkarten anzeigen",
+            "tasks": "Aufgaben",
+            "cards": "Karten",
+            "completed": "abgeschlossen",
+            "practice": "Praxisaufgaben",
+            "relatedCards": "Passende Lernkarten",
+            "noTasks": "Noch keine Aufgaben"
+        },
+        "progress": {
+            "title": "Lernfortschritt",
+            "unread": "Neu",
+            "read": "Gelesen",
+            "understood": "Verstanden",
+            "review": "Wiederholen",
+            "markRead": "Gelesen",
+            "markUnderstood": "Verstanden",
+            "markReview": "Wiederholen",
+            "lastOpened": "Zuletzt geöffnet",
+            "nextReview": "Nächste Wiederholung"
+        },
+        "concepts": {
+            "title": "Hilfe & Playground",
+            "subtitle":
+                "Kurze Erklärungen zu Sprache, Symbolen und UI-Bausteinen. Öffne einen Begriff und probiere Code direkt im Textfeld aus.",
+            "searchPlaceholder": "Begriff, Symbol oder Sprache suchen",
+            "all": "Alle",
+            "symbols": "Symbole",
+            "example": "Beispiel",
+            "playground": "Playground",
+            "reset": "Zurücksetzen"
+        },
+        "detail": {
+            "description": "Beschreibung",
+            "steps": "Schritte",
+            "codeExample": "Code-Beispiel"
+        },
+        "challenge": {
+            "yourCode": "Dein Code",
+            "check": "Prüfen",
+            "shareProgress": "Fortschritt teilen",
+            "shareSolution": "Lösung teilen",
+            "showHint": "Hinweis",
+            "showSolution": "Lösung",
+            "solution": "Lösung",
+            "correctTitle": "Richtig gelöst",
+            "incorrectTitle": "Noch nicht richtig",
+            "missingKeywords": "Fehlt noch",
+            "taskLabel": "Aufgabe",
+            "languageLabel": "Sprache",
+            "statusLabel": "Status",
+            "myCodeLabel": "Mein Code"
+        },
+        "onboarding": {
+            "pages": [
+                {
+                    "title": "MindLearn",
+                    "text":
+                        "Moderne Lernplattform für Entwickler,\nSchüler und Lernende jeden Alters.\n\nKlare Inhalte verbinden Theorie\nmit praxisnahen Beispielen."
+                },
+                {
+                    "title": "Sprachen & Frameworks",
+                    "text":
+                        "Swift, SwiftUI, HTML, JSON,\nARKit, RealityKit, WidgetKit\nund viele weitere Technologien.\n\nVon Grundlagen bis Profi-Level."
+                },
+                {
+                    "title": "Schule & Kinder Lernen",
+                    "text":
+                        "Mathematik, Sprache,\nLernstrategien und Programmieren.\n\nSpielerisch lernen -\nschnell verstehen."
+                }
+            ],
+            "next": "Weiter",
+            "start": "Loslegen",
+            "skip": "Überspringen"
+        },
+        "accessibility": {
+            "openDrawer": "Dokumentation öffnen",
+            "closeDrawer": "Dokumentation schließen",
+            "closeDrawerHint": "Schließt die seitliche Dokumentationsleiste.",
+            "settingsTitle": "Bedienungshilfen",
+            "enhancedLabels": "Ausführliche VoiceOver-Texte",
+            "enhancedLabelsHint":
+                "Liest bei Lernkarten mehr Kontext wie Kategorie und Favoritenstatus vor.",
+            "reduceMotion": "App-Animationen reduzieren",
+            "reduceMotionHint":
+                "Reduziert Drawer-, Onboarding- und Kartenanimationen in dieser App.",
+            "largeCards": "Größere Lernkarten",
+            "largeCardsHint":
+                "Gibt Lernkarten mehr Platz für größere Schrift und längere Texte.",
+            "addFavorite": "Zu Favoriten hinzufügen",
+            "removeFavorite": "Aus Favoriten entfernen",
+            "favoriteStatus": "Ist als Favorit markiert",
+            "notFavoriteStatus": "Nicht als Favorit markiert",
+            "categoryPrefix": "Kategorie",
+            "favoriteHint": "Speichert oder entfernt diese Lernkarte.",
+            "shareCode": "Code teilen",
+            "learningCardHint": "Öffnet die Detailansicht.",
+            "pasteInput": "Inhalt einfügen",
+            "clearInput": "Eingabe leeren",
+            "copyOutput": "Ausgabe kopieren",
+            "shareOutput": "Ausgabe teilen"
+        },
+        "info": {
+            "title": "MindLearn",
+            "subtitle":
+                "Eine kompakte Lern-App für Programmierung, Schule und digitale Werkzeuge.",
+            "sections": [
+                {
+                    "title": "Was ist MindLearn?",
+                    "text":
+                        "MindLearn sammelt kurze Lernkarten, Beispiele und Dokumentation an einem Ort."
+                },
+                {
+                    "title": "Offline nutzbar",
+                    "text":
+                        "Die Inhalte liegen lokal in der App und können ohne Account gelesen werden."
+                },
+                {
+                    "title": "Fokus",
+                    "text":
+                        "Die App ist auf schnelle Orientierung, klare Beispiele und wiederholtes Lernen ausgelegt."
+                }
+            ]
+        }
+    },
+    "en": {
+        "tabs": {
+            "learn": "Learn",
+            "favorites": "Favorites",
+            "help": "Help",
+            "settings": "Settings"
+        },
+        "settings": {
+            "title": "Settings",
+            "languageSection": "Language",
+            "languagePicker": "Select language",
+            "languageDE": "German",
+            "languageEN": "English",
+            "appearance": "Appearance",
+            "aboutSection": "About",
+            "builtWith": "Built with Swift & SwiftUI",
+            "system": "System"
+        },
+        "appearance": {
+            "title": "Appearance",
+            "theme": "Theme",
+            "system": "Follows the system setting",
+            "light": "Always light mode",
+            "dark": "Always dark mode",
+            "standard": "Default"
+        },
+        "common": {
+            "copy": "Copy",
+            "copied": "Copied",
+            "paste": "Paste",
+            "clear": "Clear",
+            "share": "Share",
+            "done": "Done",
+            "description": "Description",
+            "steps": "Steps",
+            "codeExample": "Code Example"
+        },
+        "home": {
+            "title": "Learn"
+        },
+        "favorites": {
+            "title": "Favorites",
+            "emptyTitle": "No Favorites",
+            "emptyDescription": "Mark content as a favorite."
+        },
+        "drawer": {
+            "title": "Documentation",
+            "close": "Close",
+            "emptyTitle": "No Documentation",
+            "emptyDescription": "No content found."
+        },
+        "learningList": {
+            "searchPlaceholder": "Search...",
+            "emptyTitle": "No Results",
+            "emptyDescription": "Try different search terms."
+        },
+        "learningMode": {
+            "title": "Choose your learning path",
+            "subtitle":
+                "Solve tasks directly in the app and use cards as a reference.",
+            "allCards": "Show all learning cards",
+            "tasks": "tasks",
+            "cards": "cards",
+            "completed": "completed",
+            "practice": "Practice tasks",
+            "relatedCards": "Related learning cards",
+            "noTasks": "No tasks yet"
+        },
+        "progress": {
+            "title": "Learning Progress",
+            "unread": "New",
+            "read": "Read",
+            "understood": "Understood",
+            "review": "Review",
+            "markRead": "Read",
+            "markUnderstood": "Understood",
+            "markReview": "Review",
+            "lastOpened": "Last opened",
+            "nextReview": "Next review"
+        },
+        "concepts": {
+            "title": "Help & Playground",
+            "subtitle":
+                "Short explanations for language basics, symbols and UI building blocks. Open a concept and try code directly in the text field.",
+            "searchPlaceholder": "Search concept, symbol or language",
+            "all": "All",
+            "symbols": "Symbols",
+            "example": "Example",
+            "playground": "Playground",
+            "reset": "Reset"
+        },
+        "detail": {
+            "description": "Description",
+            "steps": "Steps",
+            "codeExample": "Code Example"
+        },
+        "challenge": {
+            "yourCode": "Your Code",
+            "check": "Check",
+            "shareProgress": "Share Progress",
+            "shareSolution": "Share Solution",
+            "showHint": "Hint",
+            "showSolution": "Solution",
+            "solution": "Solution",
+            "correctTitle": "Correct",
+            "incorrectTitle": "Not quite yet",
+            "missingKeywords": "Still missing",
+            "taskLabel": "Task",
+            "languageLabel": "Language",
+            "statusLabel": "Status",
+            "myCodeLabel": "My Code"
+        },
+        "onboarding": {
+            "pages": [
+                {
+                    "title": "MindLearn",
+                    "text":
+                        "A modern learning platform for developers,\nstudents and learners of all ages.\n\nClear content connects theory\nwith practical examples."
+                },
+                {
+                    "title": "Languages & Frameworks",
+                    "text":
+                        "Swift, SwiftUI, HTML, JSON,\nARKit, RealityKit, WidgetKit\nand many other technologies.\n\nFrom basics to advanced level."
+                },
+                {
+                    "title": "School & Kids Learning",
+                    "text":
+                        "Math, language,\nlearning strategies and programming.\n\nLearn playfully -\nunderstand quickly."
+                }
+            ],
+            "next": "Next",
+            "start": "Start",
+            "skip": "Skip"
+        },
+        "accessibility": {
+            "openDrawer": "Open documentation",
+            "closeDrawer": "Close documentation",
+            "closeDrawerHint": "Closes the side documentation drawer.",
+            "settingsTitle": "Accessibility",
+            "enhancedLabels": "Detailed VoiceOver text",
+            "enhancedLabelsHint":
+                "Reads more context on learning cards, such as category and favorite status.",
+            "reduceMotion": "Reduce app animations",
+            "reduceMotionHint":
+                "Reduces drawer, onboarding and card animations in this app.",
+            "largeCards": "Larger learning cards",
+            "largeCardsHint":
+                "Gives learning cards more room for larger text and longer descriptions.",
+            "addFavorite": "Add to favorites",
+            "removeFavorite": "Remove from favorites",
+            "favoriteStatus": "Marked as favorite",
+            "notFavoriteStatus": "Not marked as favorite",
+            "categoryPrefix": "Category",
+            "favoriteHint": "Saves or removes this learning card.",
+            "shareCode": "Share code",
+            "learningCardHint": "Opens the detail view.",
+            "pasteInput": "Paste content",
+            "clearInput": "Clear input",
+            "copyOutput": "Copy output",
+            "shareOutput": "Share output"
+        },
+        "info": {
+            "title": "MindLearn",
+            "subtitle":
+                "A compact learning app for programming, school topics and digital tools.",
+            "sections": [
+                {
+                    "title": "What is MindLearn?",
+                    "text":
+                        "MindLearn brings short learning cards, examples and documentation together in one place."
+                },
+                {
+                    "title": "Works offline",
+                    "text":
+                        "The content is stored locally in the app and can be read without an account."
+                },
+                {
+                    "title": "Focus",
+                    "text":
+                        "The app is built for quick orientation, clear examples and repeated learning."
+                }
+            ]
+        }
+    }
+}

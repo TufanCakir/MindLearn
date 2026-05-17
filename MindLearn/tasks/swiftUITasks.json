@@ -1,0 +1,68 @@
+[
+    {
+        "id": "swiftui_task_001",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Button erstellen",
+            "en": "Create a Button"
+        },
+        "explanation": {
+            "de":
+                "Übe, wie du einen einfachen SwiftUI-Button mit Text und Aktion baust.",
+            "en":
+                "Practice building a basic SwiftUI button with a text label and an action."
+        },
+        "instruction": {
+            "de":
+                "Schreibe einen SwiftUI Button, der \"Tap me\" anzeigt und beim Tippen eine Nachricht ausgibt.",
+            "en":
+                "Write a SwiftUI Button that shows the text \"Tap me\" and prints a message when tapped."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        \n    }\n}",
+        "expectedKeywords": [
+            "Button",
+            "Text",
+            "Tap me",
+            "print"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        Button {\n            print(\"Tapped\")\n        } label: {\n            Text(\"Tap me\")\n        }\n    }\n}",
+        "hint": {
+            "de": "Nutze Button mit einer Action-Closure und einem Text-Label.",
+            "en": "Use Button with an action closure and a Text label."
+        }
+    },
+    {
+        "id": "swiftui_task_002",
+        "language": "SwiftUI",
+        "title": {
+            "de": "VStack bauen",
+            "en": "Build a VStack"
+        },
+        "explanation": {
+            "de": "Übe, wie du mehrere SwiftUI-Views vertikal anordnest.",
+            "en": "Practice arranging multiple SwiftUI views vertically."
+        },
+        "instruction": {
+            "de":
+                "Erstelle eine VStack mit zwei Text-Views: \"Hello\" und \"MindLearn\".",
+            "en":
+                "Create a VStack with two Text views: \"Hello\" and \"MindLearn\"."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        \n    }\n}",
+        "expectedKeywords": [
+            "VStack",
+            "Text",
+            "Hello",
+            "MindLearn"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack {\n            Text(\"Hello\")\n            Text(\"MindLearn\")\n        }\n    }\n}",
+        "hint": {
+            "de": "Nutze VStack { ... } und platziere beide Text-Views darin.",
+            "en": "Use VStack { ... } and place both Text views inside."
+        }
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "html_task_001",
+        "language": "HTML",
+        "title": {
+            "de": "Button erstellen",
+            "en": "Create a Button"
+        },
+        "explanation": {
+            "de": "Übe, wie du ein einfaches HTML-Button-Element schreibst.",
+            "en": "Practice writing a simple HTML button element."
+        },
+        "instruction": {
+            "de": "Erstelle einen Button, der den Text \"Start\" anzeigt.",
+            "en": "Create a button that displays the text \"Start\"."
+        },
+        "starterCode": "<!DOCTYPE html>\n<html>\n<body>\n\n</body>\n</html>",
+        "expectedKeywords": [
+            "<button",
+            "Start",
+            "</button>"
+        ],
+        "solution":
+            "<!DOCTYPE html>\n<html>\n<body>\n    <button>Start</button>\n</body>\n</html>",
+        "hint": {
+            "de": "Nutze das <button>-Element innerhalb des body.",
+            "en": "Use the <button> element inside the body."
+        }
+    }
+]

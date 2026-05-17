@@ -1,0 +1,31 @@
+[
+    {
+        "id": "swiftdata_task_001",
+        "language": "SwiftData",
+        "title": {
+            "de": "Model erstellen",
+            "en": "Create a Model"
+        },
+        "explanation": {
+            "de": "Übe, wie du ein minimales SwiftData-Model definierst.",
+            "en": "Practice defining a minimal SwiftData model."
+        },
+        "instruction": {
+            "de":
+                "Erstelle eine @Model-Klasse namens Note mit einer title-Property.",
+            "en": "Create a @Model class called Note with a title property."
+        },
+        "starterCode": "import SwiftData\n\n",
+        "expectedKeywords": [
+            "@Model",
+            "class Note",
+            "var title"
+        ],
+        "solution":
+            "import SwiftData\n\n@Model\nclass Note {\n    var title: String\n\n    init(title: String) {\n        self.title = title\n    }\n}",
+        "hint": {
+            "de": "Eine SwiftData-Model-Klasse nutzt das @Model-Makro.",
+            "en": "A SwiftData model class uses the @Model macro."
+        }
+    }
+]

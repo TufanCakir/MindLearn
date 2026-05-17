@@ -1,0 +1,33 @@
+[
+    {
+        "id": "react_native_task_001",
+        "language": "React Native",
+        "title": {
+            "de": "Text anzeigen",
+            "en": "Render Text"
+        },
+        "explanation": {
+            "de": "Übe, wie du Text in einer React-Native-Komponente anzeigst.",
+            "en": "Practice rendering text in a React Native component."
+        },
+        "instruction": {
+            "de":
+                "Gib eine View zurück, die ein Text-Element mit \"Hello\" enthält.",
+            "en": "Return a View that contains a Text element with \"Hello\"."
+        },
+        "starterCode":
+            "import { View, Text } from 'react-native';\n\nexport default function Practice() {\n  return (\n    \n  );\n}",
+        "expectedKeywords": [
+            "View",
+            "Text",
+            "Hello",
+            "return"
+        ],
+        "solution":
+            "import { View, Text } from 'react-native';\n\nexport default function Practice() {\n  return (\n    <View>\n      <Text>Hello</Text>\n    </View>\n  );\n}",
+        "hint": {
+            "de": "React-Native-Text muss in einer Text-Komponente stehen.",
+            "en": "React Native text must be inside a Text component."
+        }
+    }
+]

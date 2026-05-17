@@ -1,0 +1,28 @@
+//
+//  Bundle+AppVersion.swift
+//  MindLearn
+//
+//  Created by Tufan Cakir on 31.10.25.
+//
+
+import Foundation
+
+extension Bundle {
+
+    public var appVersionString: String {
+        let shortVersion =
+            infoDictionary?["CFBundleShortVersionString"] as? String
+        let buildNumber = infoDictionary?["CFBundleVersion"] as? String
+
+        switch (shortVersion, buildNumber) {
+        case (let sv?, let bn?):
+            return "\(sv) (\(bn))"
+        case (let sv?, nil):
+            return sv
+        case (nil, let bn?):
+            return bn
+        default:
+            return "Unknown"
+        }
+    }
+}

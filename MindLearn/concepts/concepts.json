@@ -1,0 +1,324 @@
+[
+    {
+        "id": "swiftui-closure",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Closure",
+            "en": "Closure"
+        },
+        "summary": {
+            "de": "Ein Code-Block, den du als Wert übergibst.",
+            "en": "A block of code you pass around as a value."
+        },
+        "explanation": {
+            "de":
+                "In SwiftUI werden Closures oft für Inhalte genutzt. Bei VStack { ... } beschreibst du in der Closure, welche Views im Stack liegen.",
+            "en":
+                "SwiftUI often uses closures for content. In VStack { ... }, the closure describes which views are placed inside the stack."
+        },
+        "symbols": [
+            "{ }",
+            "in"
+        ],
+        "exampleCode":
+            "VStack {\n    Text(\"Title\")\n    Text(\"Subtitle\")\n}",
+        "playgroundCode":
+            "VStack {\n    Text(\"Hello\")\n    Button(\"Tap\") {\n        print(\"Tapped\")\n    }\n}"
+    },
+    {
+        "id": "swiftui-modifier",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Modifier",
+            "en": "Modifier"
+        },
+        "summary": {
+            "de": "Ein Befehl, der eine View verändert.",
+            "en": "A command that changes a view."
+        },
+        "explanation": {
+            "de":
+                "Modifier hängen mit einem Punkt an einer View. Sie ändern Aussehen, Layout oder Verhalten, zum Beispiel .font(), .padding() oder .background().",
+            "en":
+                "Modifiers are chained onto a view with a dot. They change appearance, layout or behavior, such as .font(), .padding() or .background()."
+        },
+        "symbols": [
+            ".font()",
+            ".padding()",
+            ".background()"
+        ],
+        "exampleCode":
+            "Text(\"MindLearn\")\n    .font(.title.bold())\n    .padding()\n    .background(.blue.opacity(0.15))",
+        "playgroundCode":
+            "Text(\"Try me\")\n    .font(.headline)\n    .padding()\n    .foregroundStyle(.blue)"
+    },
+    {
+        "id": "swift-struct",
+        "language": "Swift",
+        "title": {
+            "de": "struct",
+            "en": "struct"
+        },
+        "summary": {
+            "de": "Ein eigener Datentyp mit Eigenschaften und Funktionen.",
+            "en": "A custom data type with properties and functions."
+        },
+        "explanation": {
+            "de":
+                "Mit struct baust du kleine, klare Typen. SwiftUI Views sind meistens structs, weil Swift sie leicht kopieren und neu berechnen kann.",
+            "en":
+                "A struct creates a small, clear type. SwiftUI views are usually structs because Swift can copy and recalculate them efficiently."
+        },
+        "symbols": [
+            "struct",
+            "let",
+            "var"
+        ],
+        "exampleCode":
+            "struct User {\n    let name: String\n    var level: Int\n}",
+        "playgroundCode":
+            "struct Lesson {\n    let title: String\n    var isDone: Bool\n}\n\nlet lesson = Lesson(title: \"Swift\", isDone: false)"
+    },
+    {
+        "id": "swiftui-body-view",
+        "language": "SwiftUI",
+        "title": {
+            "de": "body und View",
+            "en": "body and View"
+        },
+        "summary": {
+            "de": "body beschreibt, was auf dem Bildschirm erscheint.",
+            "en": "body describes what appears on screen."
+        },
+        "explanation": {
+            "de":
+                "Eine SwiftUI View hat eine body-Eigenschaft. Dort gibst du zurück, welche View-Struktur angezeigt werden soll.",
+            "en":
+                "A SwiftUI view has a body property. It returns the view structure that should be displayed."
+        },
+        "symbols": [
+            "var body",
+            "some View"
+        ],
+        "exampleCode":
+            "struct HomeView: View {\n    var body: some View {\n        Text(\"Home\")\n    }\n}",
+        "playgroundCode":
+            "struct ExampleView: View {\n    var body: some View {\n        VStack {\n            Text(\"Hello\")\n        }\n    }\n}"
+    },
+    {
+        "id": "swiftui-spacer-divider",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Spacer und Divider",
+            "en": "Spacer and Divider"
+        },
+        "summary": {
+            "de": "Spacer schiebt Abstand, Divider zeichnet eine Trennlinie.",
+            "en": "Spacer pushes space, Divider draws a separator line."
+        },
+        "explanation": {
+            "de":
+                "Spacer nimmt freien Platz ein und drückt Views auseinander. Divider hilft, Bereiche sichtbar zu trennen.",
+            "en":
+                "Spacer takes available space and pushes views apart. Divider helps visually separate areas."
+        },
+        "symbols": [
+            "Spacer()",
+            "Divider()"
+        ],
+        "exampleCode":
+            "HStack {\n    Text(\"Left\")\n    Spacer()\n    Text(\"Right\")\n}\nDivider()",
+        "playgroundCode":
+            "VStack {\n    HStack {\n        Text(\"A\")\n        Spacer()\n        Text(\"B\")\n    }\n    Divider()\n    Text(\"Below\")\n}"
+    },
+    {
+        "id": "swiftui-animation-transition",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Animation und Transition",
+            "en": "Animation and Transition"
+        },
+        "summary": {
+            "de":
+                "Animation bewegt Änderungen, Transition beschreibt Ein- und Ausblenden.",
+            "en":
+                "Animation moves changes, transition describes insertion and removal."
+        },
+        "explanation": {
+            "de":
+                "Eine Animation macht Zustandsänderungen weicher. Eine Transition gilt, wenn eine View neu erscheint oder verschwindet.",
+            "en":
+                "An animation makes state changes smoother. A transition applies when a view appears or disappears."
+        },
+        "symbols": [
+            "withAnimation",
+            ".transition()"
+        ],
+        "exampleCode":
+            "withAnimation {\n    isVisible.toggle()\n}\n\nText(\"Hi\")\n    .transition(.opacity)",
+        "playgroundCode":
+            "@State private var isVisible = true\n\nButton(\"Toggle\") {\n    withAnimation {\n        isVisible.toggle()\n    }\n}"
+    },
+    {
+        "id": "html-tags",
+        "language": "HTML",
+        "title": {
+            "de": "HTML Tags < >",
+            "en": "HTML Tags < >"
+        },
+        "summary": {
+            "de": "HTML nutzt Tags, um Bedeutung und Struktur zu markieren.",
+            "en": "HTML uses tags to mark meaning and structure."
+        },
+        "explanation": {
+            "de":
+                "Ein Tag steht zwischen < und >. Viele Elemente haben einen Start- und Endtag, zum Beispiel <p>Text</p>.",
+            "en":
+                "A tag is written between < and >. Many elements have an opening and closing tag, for example <p>Text</p>."
+        },
+        "symbols": [
+            "<tag>",
+            "</tag>",
+            "<p>"
+        ],
+        "exampleCode":
+            "<section>\n    <h1>Title</h1>\n    <p>Hello HTML</p>\n</section>",
+        "playgroundCode":
+            "<article>\n    <h2>My note</h2>\n    <p>Write text here.</p>\n</article>"
+    },
+    {
+        "id": "react-native-component",
+        "language": "React Native",
+        "title": {
+            "de": "Component",
+            "en": "Component"
+        },
+        "summary": {
+            "de": "Eine Component ist ein wiederverwendbarer UI-Baustein.",
+            "en": "A component is a reusable UI building block."
+        },
+        "explanation": {
+            "de":
+                "React Native Components sind Funktionen, die UI zurückgeben. Statt SwiftUI Text nutzt du zum Beispiel <Text> und <View>.",
+            "en":
+                "React Native components are functions that return UI. Instead of SwiftUI Text you use elements like <Text> and <View>."
+        },
+        "symbols": [
+            "function",
+            "return",
+            "<View>",
+            "<Text>"
+        ],
+        "exampleCode":
+            "function Greeting() {\n    return (\n        <View>\n            <Text>Hello</Text>\n        </View>\n    );\n}",
+        "playgroundCode":
+            "function Card() {\n    return (\n        <View>\n            <Text>MindLearn</Text>\n        </View>\n    );\n}"
+    },
+    {
+        "id": "swift-optional",
+        "language": "Swift",
+        "title": {
+            "de": "Optional ?",
+            "en": "Optional ?"
+        },
+        "summary": {
+            "de": "Ein Wert kann vorhanden sein oder nil sein.",
+            "en": "A value can exist or be nil."
+        },
+        "explanation": {
+            "de":
+                "Das Fragezeichen macht einen Typ optional. String? bedeutet: entweder ein String oder kein Wert.",
+            "en":
+                "The question mark makes a type optional. String? means either a string or no value."
+        },
+        "symbols": [
+            "?",
+            "nil",
+            "if let"
+        ],
+        "exampleCode":
+            "let name: String? = nil\n\nif let name {\n    print(name)\n}",
+        "playgroundCode":
+            "var nickname: String? = \"Tufan\"\n\nif let nickname {\n    print(nickname)\n}"
+    },
+    {
+        "id": "swift-nil",
+        "language": "Swift",
+        "title": {
+            "de": "nil",
+            "en": "nil"
+        },
+        "summary": {
+            "de": "nil bedeutet: Es gibt gerade keinen Wert.",
+            "en": "nil means there is currently no value."
+        },
+        "explanation": {
+            "de":
+                "nil ist nicht dasselbe wie ein leerer Text. Es bedeutet, dass ein Optional keinen Inhalt hat.",
+            "en":
+                "nil is not the same as an empty string. It means an optional has no content."
+        },
+        "symbols": [
+            "nil",
+            "String?"
+        ],
+        "exampleCode":
+            "var selectedTopic: String? = nil\nselectedTopic = \"SwiftUI\"",
+        "playgroundCode":
+            "var currentLesson: String? = nil\ncurrentLesson = \"Closures\""
+    },
+    {
+        "id": "swift-return",
+        "language": "Swift",
+        "title": {
+            "de": "return",
+            "en": "return"
+        },
+        "summary": {
+            "de": "return gibt ein Ergebnis aus einer Funktion zurück.",
+            "en": "return sends a result back from a function."
+        },
+        "explanation": {
+            "de":
+                "Eine Funktion kann einen Wert liefern. Mit return sagst du, welcher Wert zurückgegeben wird.",
+            "en":
+                "A function can produce a value. return says which value is sent back."
+        },
+        "symbols": [
+            "func",
+            "return",
+            "->"
+        ],
+        "exampleCode":
+            "func double(_ value: Int) -> Int {\n    return value * 2\n}",
+        "playgroundCode":
+            "func greeting(name: String) -> String {\n    return \"Hello, \\(name)\"\n}"
+    },
+    {
+        "id": "operators-equals",
+        "language": "General",
+        "title": {
+            "de": "=, == und ===",
+            "en": "=, == and ==="
+        },
+        "summary": {
+            "de": "Zuweisen und Vergleichen sind nicht dasselbe.",
+            "en": "Assigning and comparing are not the same."
+        },
+        "explanation": {
+            "de":
+                "= weist einen Wert zu. == vergleicht Werte. === wird in JavaScript genutzt, um Wert und Typ streng zu vergleichen.",
+            "en":
+                "= assigns a value. == compares values. === is used in JavaScript to strictly compare value and type."
+        },
+        "symbols": [
+            "=",
+            "==",
+            "==="
+        ],
+        "exampleCode":
+            "let points = 10\npoints == 10\n\n// JavaScript:\n10 === \"10\" // false",
+        "playgroundCode":
+            "let score = 5\nlet isPerfect = score == 10\n\n// Try changing score"
+    }
+]

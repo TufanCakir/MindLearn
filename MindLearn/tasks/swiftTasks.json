@@ -1,0 +1,33 @@
+[
+    {
+        "id": "swift_task_001",
+        "language": "Swift",
+        "title": {
+            "de": "Optional verwenden",
+            "en": "Use an Optional"
+        },
+        "explanation": {
+            "de": "Übe, wie du einen optionalen Wert sicher entpackst.",
+            "en": "Practice safely unwrapping an optional value."
+        },
+        "instruction": {
+            "de":
+                "Erstelle einen optionalen String namens name und entpacke ihn mit if let.",
+            "en":
+                "Create an optional String named name and unwrap it with if let."
+        },
+        "starterCode": "let name: String? = \"Tufan\"\n\n",
+        "expectedKeywords": [
+            "String?",
+            "if let",
+            "name"
+        ],
+        "solution":
+            "let name: String? = \"Tufan\"\n\nif let name {\n    print(name)\n}",
+        "hint": {
+            "de":
+                "Nutze if let name { ... }, um sicher auf den Wert zuzugreifen.",
+            "en": "Use if let name { ... } to access the value safely."
+        }
+    }
+]

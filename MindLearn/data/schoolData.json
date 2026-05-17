@@ -1,0 +1,167 @@
+[
+    {
+        "id": "school_004",
+        "title": "Vokabeln schneller lernen",
+        "description": "Neue Wörter langfristig merken.",
+        "steps": [
+            "Vokabeln laut aussprechen.",
+            "Karteikarten verwenden.",
+            "Täglich wiederholen.",
+            "In Sätzen anwenden."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FF375F",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "5-5-5 Methode:\n5 neue Wörter lernen.\n5 Minuten später wiederholen.\n5 Stunden später erneut testen.",
+        "category": "School"
+    },
+    {
+        "id": "school_005",
+        "title": "Prüfungsvorbereitung",
+        "description": "Stressfrei auf Tests vorbereiten.",
+        "steps": [
+            "Frühzeitig anfangen.",
+            "Lernplan erstellen.",
+            "Alte Prüfungen üben.",
+            "Schlaf nicht vergessen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#5E5CE6",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "7 Tage Plan:\nTag1 Wiederholen.\nTag3 Üben.\nTag6 Probeprüfung.\nTag7 Pause.",
+        "category": "School"
+    },
+    {
+        "id": "school_006",
+        "title": "Mindmaps erstellen",
+        "description": "Komplexe Themen visuell verstehen.",
+        "steps": [
+            "Thema in die Mitte schreiben.",
+            "Hauptäste hinzufügen.",
+            "Farben nutzen.",
+            "Bilder ergänzen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#BF5AF2",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "Mindmap Aufbau:\nZentrum = Thema\nÄste = Kapitel\nUnteräste = Details",
+        "category": "School"
+    },
+    {
+        "id": "school_007",
+        "title": "Mathe Aufgaben lösen",
+        "description": "Systematisch schwierige Aufgaben verstehen.",
+        "steps": [
+            "Aufgabe genau lesen.",
+            "Gegebenes markieren.",
+            "Formel wählen.",
+            "Ergebnis prüfen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#30D158",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "Rechnung Schema:\nGegeben → Gesucht → Formel → Ergebnis.",
+        "category": "School"
+    },
+    {
+        "id": "school_008",
+        "title": "Konzentration verbessern",
+        "description": "Ablenkungen vermeiden und Fokus erhöhen.",
+        "steps": [
+            "Handy weglegen.",
+            "Ruhigen Ort wählen.",
+            "Timer setzen.",
+            "Kurze Pausen machen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#64D2FF",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "Focus Trick:\n10 Minuten konzentriert lernen.\n1 Minute Pause.",
+        "category": "School"
+    },
+    {
+        "id": "school_009",
+        "title": "Lesetexte analysieren",
+        "description": "Texte besser verstehen und interpretieren.",
+        "steps": [
+            "Autor und Thema bestimmen.",
+            "Schlüsselwörter markieren.",
+            "Abschnitte zusammenfassen.",
+            "Absicht erkennen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FF9F0A",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "Analyse:\nWer schreibt?\nWarum?\nWelche Wirkung?",
+        "category": "School"
+    },
+    {
+        "id": "school_010",
+        "title": "Lernen ohne Stress",
+        "description": "Motivation behalten und Überforderung vermeiden.",
+        "steps": [
+            "Kleine Ziele setzen.",
+            "Fortschritt feiern.",
+            "Bewegung einbauen.",
+            "Genug schlafen."
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#FF453A",
+                "#1C1C1E",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code": "Motivation:\nHeute 20 Minuten lernen = besser als nichts.",
+        "category": "School"
+    }
+]
