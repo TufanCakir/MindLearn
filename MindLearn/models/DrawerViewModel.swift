@@ -63,7 +63,8 @@ final class DrawerViewModel: ObservableObject {
             sections
             .filter { seen.insert($0.id).inserted }
             .sorted {
-                $0.title.localizedStandardCompare($1.title) == .orderedAscending
+                $0.title.de.localizedStandardCompare($1.title.de)
+                    == .orderedAscending
             }
     }
 }

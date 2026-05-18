@@ -21,6 +21,18 @@ struct LearningDetailView: View {
         Bundle.main.appLocalization(language: language)
     }
 
+    private var localizedTitle: String {
+        topic.title(language: language)
+    }
+
+    private var localizedDescription: String {
+        topic.description(language: language)
+    }
+
+    private var localizedSteps: [String] {
+        topic.steps(language: language)
+    }
+
     private var isPad: Bool {
         UIDevice.current.userInterfaceIdiom == .pad
     }
@@ -51,7 +63,7 @@ struct LearningDetailView: View {
             .padding(.vertical, 18)
         }
         .background(background)
-        .navigationTitle(topic.title)
+        .navigationTitle(localizedTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: recordOpened)
     }
@@ -101,7 +113,7 @@ extension LearningDetailView {
 
             VStack(alignment: .leading, spacing: 8) {
 
-                Text(topic.title)
+                Text(localizedTitle)
                     .font(
                         .system(
                             .title,
@@ -275,7 +287,7 @@ extension LearningDetailView {
     @ViewBuilder
     private var descriptionSection: some View {
 
-        if !topic.description.isEmpty {
+        if !localizedDescription.isEmpty {
 
             VStack(alignment: .leading, spacing: 10) {
 
@@ -283,7 +295,7 @@ extension LearningDetailView {
                     .font(.headline)
                     .accessibilityAddTraits(.isHeader)
 
-                Text(topic.description)
+                Text(localizedDescription)
                     .font(.body)
                     .lineSpacing(6)
             }
@@ -301,7 +313,7 @@ extension LearningDetailView {
     @ViewBuilder
     private var stepsSection: some View {
 
-        if !topic.steps.isEmpty {
+        if !localizedSteps.isEmpty {
 
             VStack(
                 alignment: .leading,
@@ -315,7 +327,7 @@ extension LearningDetailView {
                 VStack(spacing: 14) {
 
                     ForEach(
-                        Array(topic.steps.enumerated()),
+                        Array(localizedSteps.enumerated()),
                         id: \.offset
                     ) { index, step in
 

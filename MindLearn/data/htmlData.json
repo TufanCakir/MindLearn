@@ -1,13 +1,28 @@
     [
         {
             "id": "html_001",
-            "title": "Boilerplate erstellen",
-            "description":
-                "Erfahre, wie man die Grundstruktur einer HTML-Datei erstellt.",
+            "title": {
+                "de": "Boilerplate erstellen",
+                "en": "Create boilerplate"
+            },
+            "description": {
+                "de":
+                    "Erfahre, wie man die Grundstruktur einer HTML-Datei erstellt.",
+                "en": "Learn how to create the basic structure of an HTML file."
+            },
             "steps": [
-                "Erstelle das Grundgerüst mit <!DOCTYPE html>",
-                "Füge <head> und <body> hinzu",
-                "Setze den Titel der Seite"
+                {
+                    "de": "Erstelle das Grundgerüst mit <!DOCTYPE html>",
+                    "en": "Create the base structure with <!DOCTYPE html>"
+                },
+                {
+                    "de": "Füge <head> und <body> hinzu",
+                    "en": "Add <head> and <body>"
+                },
+                {
+                    "de": "Setze den Titel der Seite",
+                    "en": "Set the page title"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -25,14 +40,33 @@
         },
         {
             "id": "html_002",
-            "title": "Interaktive Seite mit Button & Script",
-            "description":
-                "Lerne, wie du Buttons, CSS und JavaScript in einer HTML-Seite kombinierst.",
+            "title": {
+                "de": "Interaktive Seite mit Button & Script",
+                "en": "Interactive page with button & script"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du Buttons, CSS und JavaScript in einer HTML-Seite kombinierst.",
+                "en":
+                    "Learn how to combine buttons, CSS and JavaScript in an HTML page."
+            },
             "steps": [
-                "Erstelle Grundstruktur mit Boilerplate",
-                "Füge CSS für Layout und Design hinzu",
-                "Baue einen Button ein",
-                "Verwende JavaScript für Interaktionen"
+                {
+                    "de": "Erstelle Grundstruktur mit Boilerplate",
+                    "en": "Create the base structure with boilerplate"
+                },
+                {
+                    "de": "Füge CSS für Layout und Design hinzu",
+                    "en": "Add CSS for layout and design"
+                },
+                {
+                    "de": "Baue einen Button ein",
+                    "en": "Build in a button"
+                },
+                {
+                    "de": "Verwende JavaScript für Interaktionen",
+                    "en": "Use JavaScript for interactions"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -50,13 +84,29 @@
         },
         {
             "id": "html_003",
-            "title": "CSS in den Head einbinden",
-            "description":
-                "Lerne, wie du interne CSS-Styles direkt im <style>-Tag verwendest.",
+            "title": {
+                "de": "CSS in den Head einbinden",
+                "en": "Add CSS in the head"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du interne CSS-Styles direkt im <style>-Tag verwendest.",
+                "en":
+                    "Learn how to use internal CSS styles directly in a <style> tag."
+            },
             "steps": [
-                "Erstelle im <head> ein <style>-Tag.",
-                "Schreibe CSS-Regeln wie body, h1, p hinein.",
-                "Verknüpfe Design und Struktur in der Datei."
+                {
+                    "de": "Erstelle im <head> ein <style>-Tag.",
+                    "en": "Create a <style> tag inside <head>."
+                },
+                {
+                    "de": "Schreibe CSS-Regeln wie body, h1, p hinein.",
+                    "en": "Write CSS rules such as body, h1 and p."
+                },
+                {
+                    "de": "Verknüpfe Design und Struktur in der Datei.",
+                    "en": "Connect design and structure in one file."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -74,13 +124,29 @@
         },
         {
             "id": "html_004",
-            "title": "JavaScript im Body einbinden",
-            "description":
-                "Erfahre, wie man ein <script>-Tag verwendet, um Funktionen in HTML auszuführen.",
+            "title": {
+                "de": "JavaScript im Body einbinden",
+                "en": "Add JavaScript in the body"
+            },
+            "description": {
+                "de":
+                    "Erfahre, wie man ein <script>-Tag verwendet, um Funktionen in HTML auszuführen.",
+                "en":
+                    "Learn how to use a <script> tag to run functions in HTML."
+            },
             "steps": [
-                "Füge unterhalb von </body> ein <script>-Tag hinzu.",
-                "Schreibe Konsolenausgaben und Funktionen hinein.",
-                "Nutze Events wie onClick oder onLoad."
+                {
+                    "de": "Füge unterhalb von </body> ein <script>-Tag hinzu.",
+                    "en": "Add a <script> tag below </body>."
+                },
+                {
+                    "de": "Schreibe Konsolenausgaben und Funktionen hinein.",
+                    "en": "Write console output and functions inside it."
+                },
+                {
+                    "de": "Nutze Events wie onClick oder onLoad.",
+                    "en": "Use events such as onClick or onLoad."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -98,12 +164,27 @@
         },
         {
             "id": "html_005",
-            "title": "Bilder einfügen mit <img>",
-            "description": "Lerne, wie man Bilder in HTML einbettet.",
+            "title": {
+                "de": "Bilder einfügen mit <img>",
+                "en": "Insert images with <img>"
+            },
+            "description": {
+                "de": "Lerne, wie man Bilder in HTML einbettet.",
+                "en": "Learn how to embed images in HTML."
+            },
             "steps": [
-                "Nutze das <img>-Tag.",
-                "Setze das src-Attribut auf eine Bilddatei.",
-                "Füge alt für Barrierefreiheit hinzu."
+                {
+                    "de": "Nutze das <img>-Tag.",
+                    "en": "Use the <img> tag."
+                },
+                {
+                    "de": "Setze das src-Attribut auf eine Bilddatei.",
+                    "en": "Set the src attribute to an image file."
+                },
+                {
+                    "de": "Füge alt für Barrierefreiheit hinzu.",
+                    "en": "Add alt text for accessibility."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -121,12 +202,27 @@
         },
         {
             "id": "html_006",
-            "title": "Hyperlinks erstellen",
-            "description": "Verlinke Webseiten oder Dateien mit dem <a>-Tag.",
+            "title": {
+                "de": "Hyperlinks erstellen",
+                "en": "Create hyperlinks"
+            },
+            "description": {
+                "de": "Verlinke Webseiten oder Dateien mit dem <a>-Tag.",
+                "en": "Link websites or files with the <a> tag."
+            },
             "steps": [
-                "Füge ein <a>-Tag hinzu.",
-                "Setze das href-Attribut.",
-                "Nutze target=\"_blank\" für eine neue Seite."
+                {
+                    "de": "Füge ein <a>-Tag hinzu.",
+                    "en": "Add an <a> tag."
+                },
+                {
+                    "de": "Setze das href-Attribut.",
+                    "en": "Set the href attribute."
+                },
+                {
+                    "de": "Nutze target=\"_blank\" für eine neue Seite.",
+                    "en": "Use target=\"_blank\" for a new page."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -144,13 +240,27 @@
         },
         {
             "id": "html_007",
-            "title": "Listenelemente nutzen",
-            "description":
-                "Erstelle geordnete (ol) und ungeordnete (ul) Listen.",
+            "title": {
+                "de": "Listenelemente nutzen",
+                "en": "Use list elements"
+            },
+            "description": {
+                "de": "Erstelle geordnete (ol) und ungeordnete (ul) Listen.",
+                "en": "Create ordered (ol) and unordered (ul) lists."
+            },
             "steps": [
-                "Nutze <ul> für Stichpunktlisten.",
-                "Nutze <ol> für nummerierte Listen.",
-                "Füge <li>-Elemente hinzu."
+                {
+                    "de": "Nutze <ul> für Stichpunktlisten.",
+                    "en": "Use <ul> for bullet lists."
+                },
+                {
+                    "de": "Nutze <ol> für nummerierte Listen.",
+                    "en": "Use <ol> for numbered lists."
+                },
+                {
+                    "de": "Füge <li>-Elemente hinzu.",
+                    "en": "Add <li> elements."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -168,12 +278,27 @@
         },
         {
             "id": "html_008",
-            "title": "Tabellen erstellen",
-            "description": "Strukturiere Daten mit Tabellen.",
+            "title": {
+                "de": "Tabellen erstellen",
+                "en": "Create tables"
+            },
+            "description": {
+                "de": "Strukturiere Daten mit Tabellen.",
+                "en": "Structure data with tables."
+            },
             "steps": [
-                "Erstelle eine Tabelle mit <table>.",
-                "Nutze <tr> für Reihen.",
-                "Nutze <td> oder <th> für Zellen."
+                {
+                    "de": "Erstelle eine Tabelle mit <table>.",
+                    "en": "Create a table with <table>."
+                },
+                {
+                    "de": "Nutze <tr> für Reihen.",
+                    "en": "Use <tr> for rows."
+                },
+                {
+                    "de": "Nutze <td> oder <th> für Zellen.",
+                    "en": "Use <td> or <th> for cells."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -191,12 +316,27 @@
         },
         {
             "id": "html_009",
-            "title": "Div & Span verstehen",
-            "description": "Lerne Block- und Inline-Elemente kennen.",
+            "title": {
+                "de": "Div & Span verstehen",
+                "en": "Understand div & span"
+            },
+            "description": {
+                "de": "Lerne Block- und Inline-Elemente kennen.",
+                "en": "Learn block and inline elements."
+            },
             "steps": [
-                "Nutze <div> für Blockelemente.",
-                "Nutze <span> für Inline-Elemente.",
-                "Kombiniere beide für Layouts."
+                {
+                    "de": "Nutze <div> für Blockelemente.",
+                    "en": "Use <div> for block elements."
+                },
+                {
+                    "de": "Nutze <span> für Inline-Elemente.",
+                    "en": "Use <span> for inline elements."
+                },
+                {
+                    "de": "Kombiniere beide für Layouts.",
+                    "en": "Combine both for layouts."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -214,12 +354,27 @@
         },
         {
             "id": "html_010",
-            "title": "Audio einfügen",
-            "description": "Binde Audioelemente in deine Seite ein.",
+            "title": {
+                "de": "Audio einfügen",
+                "en": "Insert audio"
+            },
+            "description": {
+                "de": "Binde Audioelemente in deine Seite ein.",
+                "en": "Embed audio elements into your page."
+            },
             "steps": [
-                "Nutze das <audio>-Tag.",
-                "Füge eine Quelle mit <source> hinzu.",
-                "Nutze das controls-Attribut."
+                {
+                    "de": "Nutze das <audio>-Tag.",
+                    "en": "Use the <audio> tag."
+                },
+                {
+                    "de": "Füge eine Quelle mit <source> hinzu.",
+                    "en": "Add a source with <source>."
+                },
+                {
+                    "de": "Nutze das controls-Attribut.",
+                    "en": "Use the controls attribute."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -237,12 +392,27 @@
         },
         {
             "id": "html_011",
-            "title": "Video einfügen",
-            "description": "Binde Videos mit dem <video>-Element ein.",
+            "title": {
+                "de": "Video einfügen",
+                "en": "Insert video"
+            },
+            "description": {
+                "de": "Binde Videos mit dem <video>-Element ein.",
+                "en": "Embed videos with the <video> element."
+            },
             "steps": [
-                "Nutze <video>.",
-                "Füge eine Quelle hinzu.",
-                "Nutze controls zum Abspielen."
+                {
+                    "de": "Nutze <video>.",
+                    "en": "Use <video>."
+                },
+                {
+                    "de": "Füge eine Quelle hinzu.",
+                    "en": "Add a source."
+                },
+                {
+                    "de": "Nutze controls zum Abspielen.",
+                    "en": "Use controls for playback."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -260,13 +430,27 @@
         },
         {
             "id": "html_012",
-            "title": "Formulare erstellen",
-            "description":
-                "Erstelle interaktive Formulare mit Input & Buttons.",
+            "title": {
+                "de": "Formulare erstellen",
+                "en": "Create forms"
+            },
+            "description": {
+                "de": "Erstelle interaktive Formulare mit Input & Buttons.",
+                "en": "Create interactive forms with inputs and buttons."
+            },
             "steps": [
-                "Nutze <form> als Container.",
-                "Füge Eingabefelder hinzu.",
-                "Verwende Buttons zum Senden."
+                {
+                    "de": "Nutze <form> als Container.",
+                    "en": "Use <form> as the container."
+                },
+                {
+                    "de": "Füge Eingabefelder hinzu.",
+                    "en": "Add input fields."
+                },
+                {
+                    "de": "Verwende Buttons zum Senden.",
+                    "en": "Use buttons for submitting."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -284,13 +468,29 @@
         },
         {
             "id": "html_013",
-            "title": "Inline Styles verwenden",
-            "description":
-                "Lerne, wie du CSS direkt am Element mit dem style-Attribut einsetzen kannst.",
+            "title": {
+                "de": "Inline Styles verwenden",
+                "en": "Use inline styles"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du CSS direkt am Element mit dem style-Attribut einsetzen kannst.",
+                "en":
+                    "Learn how to apply CSS directly on an element with the style attribute."
+            },
             "steps": [
-                "Nutze das style-Attribut.",
-                "Trenne mehrere Eigenschaften mit Semikolon.",
-                "Verwende Inline CSS für schnelle Tests."
+                {
+                    "de": "Nutze das style-Attribut.",
+                    "en": "Use the style attribute."
+                },
+                {
+                    "de": "Trenne mehrere Eigenschaften mit Semikolon.",
+                    "en": "Separate multiple properties with semicolons."
+                },
+                {
+                    "de": "Verwende Inline CSS für schnelle Tests.",
+                    "en": "Use inline CSS for quick tests."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -308,12 +508,27 @@
         },
         {
             "id": "html_014",
-            "title": "HTML Kommentare",
-            "description": "Erfahre, wie du Kommentare im HTML Code einfügst.",
+            "title": {
+                "de": "HTML Kommentare",
+                "en": "HTML comments"
+            },
+            "description": {
+                "de": "Erfahre, wie du Kommentare im HTML Code einfügst.",
+                "en": "Learn how to add comments in HTML code."
+            },
             "steps": [
-                "Nutze <!-- Kommentar -->.",
-                "Kommentare werden nicht im Browser angezeigt.",
-                "Verwende Kommentare zur Strukturierung."
+                {
+                    "de": "Nutze <!-- Kommentar -->.",
+                    "en": "Use <!-- comment -->."
+                },
+                {
+                    "de": "Kommentare werden nicht im Browser angezeigt.",
+                    "en": "Comments are not shown in the browser."
+                },
+                {
+                    "de": "Verwende Kommentare zur Strukturierung.",
+                    "en": "Use comments to structure code."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -331,13 +546,29 @@
         },
         {
             "id": "html_015",
-            "title": "Meta Tags verstehen",
-            "description":
-                "Lerne, wofür meta charset, viewport und description verwendet werden.",
+            "title": {
+                "de": "Meta Tags verstehen",
+                "en": "Understand meta tags"
+            },
+            "description": {
+                "de":
+                    "Lerne, wofür meta charset, viewport und description verwendet werden.",
+                "en":
+                    "Learn what meta charset, viewport and description are used for."
+            },
             "steps": [
-                "Nutze meta charset für Sonderzeichen.",
-                "Nutze meta viewport für mobile Geräte.",
-                "Füge eine Seitenbeschreibung hinzu."
+                {
+                    "de": "Nutze meta charset für Sonderzeichen.",
+                    "en": "Use meta charset for special characters."
+                },
+                {
+                    "de": "Nutze meta viewport für mobile Geräte.",
+                    "en": "Use meta viewport for mobile devices."
+                },
+                {
+                    "de": "Füge eine Seitenbeschreibung hinzu.",
+                    "en": "Add a page description."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -355,13 +586,29 @@
         },
         {
             "id": "html_016",
-            "title": "Textformatierung",
-            "description":
-                "Nutze <b>, <i>, <u>, <strong> und <em> zur Textformatierung.",
+            "title": {
+                "de": "Textformatierung",
+                "en": "Text formatting"
+            },
+            "description": {
+                "de":
+                    "Nutze <b>, <i>, <u>, <strong> und <em> zur Textformatierung.",
+                "en":
+                    "Use <b>, <i>, <u>, <strong> and <em> for text formatting."
+            },
             "steps": [
-                "Nutze <b> für fett.",
-                "Nutze <i> für kursiv.",
-                "Nutze <strong> & <em> für Bedeutung."
+                {
+                    "de": "Nutze <b> für fett.",
+                    "en": "Use <b> for bold text."
+                },
+                {
+                    "de": "Nutze <i> für kursiv.",
+                    "en": "Use <i> for italic text."
+                },
+                {
+                    "de": "Nutze <strong> & <em> für Bedeutung.",
+                    "en": "Use <strong> and <em> for meaning."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -379,13 +626,28 @@
         },
         {
             "id": "html_017",
-            "title": "ID & Class verwenden",
-            "description":
-                "Verwende id für eindeutige Elemente und class für Gruppen.",
+            "title": {
+                "de": "ID & Class verwenden",
+                "en": "Use ID & class"
+            },
+            "description": {
+                "de":
+                    "Verwende id für eindeutige Elemente und class für Gruppen.",
+                "en": "Use id for unique elements and class for groups."
+            },
             "steps": [
-                "Nutze id für Einzelobjekte.",
-                "Nutze class für mehrere gleichartige Objekte.",
-                "Style Elemente später per CSS."
+                {
+                    "de": "Nutze id für Einzelobjekte.",
+                    "en": "Use id for single objects."
+                },
+                {
+                    "de": "Nutze class für mehrere gleichartige Objekte.",
+                    "en": "Use class for multiple similar objects."
+                },
+                {
+                    "de": "Style Elemente später per CSS.",
+                    "en": "Style elements later with CSS."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -403,13 +665,28 @@
         },
         {
             "id": "html_018",
-            "title": "Bild als Link",
-            "description":
-                "Mache ein Bild klickbar, indem du es mit <a> umschließt.",
+            "title": {
+                "de": "Bild als Link",
+                "en": "Image as link"
+            },
+            "description": {
+                "de":
+                    "Mache ein Bild klickbar, indem du es mit <a> umschließt.",
+                "en": "Make an image clickable by wrapping it with <a>."
+            },
             "steps": [
-                "Wickle <img> in ein <a>-Tag.",
-                "Gib ein href-Ziel an.",
-                "Nutze target=\"_blank\" für neuen Tab."
+                {
+                    "de": "Wickle <img> in ein <a>-Tag.",
+                    "en": "Wrap <img> in an <a> tag."
+                },
+                {
+                    "de": "Gib ein href-Ziel an.",
+                    "en": "Provide an href target."
+                },
+                {
+                    "de": "Nutze target=\"_blank\" für neuen Tab.",
+                    "en": "Use target=\"_blank\" for a new tab."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -427,12 +704,27 @@
         },
         {
             "id": "html_019",
-            "title": "Iframe einbinden",
-            "description": "Binde externe Webseiten oder Inhalte ein.",
+            "title": {
+                "de": "Iframe einbinden",
+                "en": "Embed iframe"
+            },
+            "description": {
+                "de": "Binde externe Webseiten oder Inhalte ein.",
+                "en": "Embed external websites or content."
+            },
             "steps": [
-                "Nutze <iframe>.",
-                "Gib eine URL über src an.",
-                "Nutze width und height zur Größensteuerung."
+                {
+                    "de": "Nutze <iframe>.",
+                    "en": "Use <iframe>."
+                },
+                {
+                    "de": "Gib eine URL über src an.",
+                    "en": "Provide a URL through src."
+                },
+                {
+                    "de": "Nutze width und height zur Größensteuerung.",
+                    "en": "Use width and height to control size."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -450,13 +742,29 @@
         },
         {
             "id": "html_020",
-            "title": "Semantische Struktur",
-            "description":
-                "Nutze header, nav, main, section und footer für saubere Struktur.",
+            "title": {
+                "de": "Semantische Struktur",
+                "en": "Semantic structure"
+            },
+            "description": {
+                "de":
+                    "Nutze header, nav, main, section und footer für saubere Struktur.",
+                "en":
+                    "Use header, nav, main, section and footer for clean structure."
+            },
             "steps": [
-                "Nutze <header> für den oberen Bereich.",
-                "Nutze <main> für Hauptinhalte.",
-                "Nutze <footer> für Infos unten."
+                {
+                    "de": "Nutze <header> für den oberen Bereich.",
+                    "en": "Use <header> for the top area."
+                },
+                {
+                    "de": "Nutze <main> für Hauptinhalte.",
+                    "en": "Use <main> for main content."
+                },
+                {
+                    "de": "Nutze <footer> für Infos unten.",
+                    "en": "Use <footer> for bottom information."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -474,12 +782,27 @@
         },
         {
             "id": "html_021",
-            "title": "Buttons verlinken",
-            "description": "Erstelle Buttons, die zu anderen Seiten führen.",
+            "title": {
+                "de": "Buttons verlinken",
+                "en": "Link buttons"
+            },
+            "description": {
+                "de": "Erstelle Buttons, die zu anderen Seiten führen.",
+                "en": "Create buttons that lead to other pages."
+            },
             "steps": [
-                "Umwickle den Button mit <a>.",
-                "Vergib ein href-Ziel.",
-                "Style den Button nach Wunsch."
+                {
+                    "de": "Umwickle den Button mit <a>.",
+                    "en": "Wrap the button with <a>."
+                },
+                {
+                    "de": "Vergib ein href-Ziel.",
+                    "en": "Set an href target."
+                },
+                {
+                    "de": "Style den Button nach Wunsch.",
+                    "en": "Style the button as needed."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -497,12 +820,27 @@
         },
         {
             "id": "html_022",
-            "title": "Responsive Bilder",
-            "description": "Skaliere Bilder flexibel mit CSS.",
+            "title": {
+                "de": "Responsive Bilder",
+                "en": "Responsive images"
+            },
+            "description": {
+                "de": "Skaliere Bilder flexibel mit CSS.",
+                "en": "Scale images flexibly with CSS."
+            },
             "steps": [
-                "Nutze width: 100% für volle Breite.",
-                "Setze max-width für Begrenzung.",
-                "Nutze height: auto für Proportionen."
+                {
+                    "de": "Nutze width: 100% für volle Breite.",
+                    "en": "Use width: 100% for full width."
+                },
+                {
+                    "de": "Setze max-width für Begrenzung.",
+                    "en": "Set max-width for limits."
+                },
+                {
+                    "de": "Nutze height: auto für Proportionen.",
+                    "en": "Use height: auto for proportions."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -520,13 +858,27 @@
         },
         {
             "id": "html_023",
-            "title": "Farben mit Hex, RGB & HSL",
-            "description":
-                "Lerne die wichtigsten Farbformate in HTML/CSS kennen.",
+            "title": {
+                "de": "Farben mit Hex, RGB & HSL",
+                "en": "Colors with Hex, RGB & HSL"
+            },
+            "description": {
+                "de": "Lerne die wichtigsten Farbformate in HTML/CSS kennen.",
+                "en": "Learn the most important color formats in HTML/CSS."
+            },
             "steps": [
-                "Nutze Hex (#FFFFFF).",
-                "Nutze RGB (rgb(0,0,0)).",
-                "Nutze HSL (hsl(0, 0%, 0%))."
+                {
+                    "de": "Nutze Hex (#FFFFFF).",
+                    "en": "Use Hex (#FFFFFF)."
+                },
+                {
+                    "de": "Nutze RGB (rgb(0,0,0)).",
+                    "en": "Use RGB (rgb(0,0,0))."
+                },
+                {
+                    "de": "Nutze HSL (hsl(0, 0%, 0%)).",
+                    "en": "Use HSL (hsl(0, 0%, 0%))."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -544,13 +896,28 @@
         },
         {
             "id": "html_024",
-            "title": "Favicon hinzufügen",
-            "description":
-                "Lerne, wie du ein kleines Icon für den Browser-Tab einfügst.",
+            "title": {
+                "de": "Favicon hinzufügen",
+                "en": "Add favicon"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du ein kleines Icon für den Browser-Tab einfügst.",
+                "en": "Learn how to add a small icon for the browser tab."
+            },
             "steps": [
-                "Erstelle oder lade eine favicon.ico Datei.",
-                "Nutze <link rel='icon'> im Head.",
-                "Speichere sie im Projektordner."
+                {
+                    "de": "Erstelle oder lade eine favicon.ico Datei.",
+                    "en": "Create or load a favicon.ico file."
+                },
+                {
+                    "de": "Nutze <link rel='icon'> im Head.",
+                    "en": "Use <link rel=\"icon\"> in the head."
+                },
+                {
+                    "de": "Speichere sie im Projektordner.",
+                    "en": "Save it in the project folder."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -568,12 +935,27 @@
         },
         {
             "id": "html_025",
-            "title": "Google Fonts einbinden",
-            "description": "Nutze externe Schriftarten von Google Fonts.",
+            "title": {
+                "de": "Google Fonts einbinden",
+                "en": "Add Google Fonts"
+            },
+            "description": {
+                "de": "Nutze externe Schriftarten von Google Fonts.",
+                "en": "Use external fonts from Google Fonts."
+            },
             "steps": [
-                "Rufe fonts.google.com auf.",
-                "Kopiere den Embed-Link.",
-                "Nutze die Schriftart in CSS."
+                {
+                    "de": "Rufe fonts.google.com auf.",
+                    "en": "Open fonts.google.com."
+                },
+                {
+                    "de": "Kopiere den Embed-Link.",
+                    "en": "Copy the embed link."
+                },
+                {
+                    "de": "Nutze die Schriftart in CSS.",
+                    "en": "Use the font in CSS."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -591,12 +973,27 @@
         },
         {
             "id": "html_026",
-            "title": "Block-Elemente verstehen",
-            "description": "Lerne, welche HTML-Tags Blockelemente sind.",
+            "title": {
+                "de": "Block-Elemente verstehen",
+                "en": "Understand block elements"
+            },
+            "description": {
+                "de": "Lerne, welche HTML-Tags Blockelemente sind.",
+                "en": "Learn which HTML tags are block elements."
+            },
             "steps": [
-                "Blockelemente nehmen ganze Breite ein.",
-                "Beispiele: div, p, h1, section.",
-                "Sie beginnen immer in neuer Zeile."
+                {
+                    "de": "Blockelemente nehmen ganze Breite ein.",
+                    "en": "Block elements take the full width."
+                },
+                {
+                    "de": "Beispiele: div, p, h1, section.",
+                    "en": "Examples: div, p, h1, section."
+                },
+                {
+                    "de": "Sie beginnen immer in neuer Zeile.",
+                    "en": "They always start on a new line."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -614,13 +1011,28 @@
         },
         {
             "id": "html_027",
-            "title": "Inline-Elemente verstehen",
-            "description": "Erfahre, wie Inline-Elemente funktionieren.",
+            "title": {
+                "de": "Inline-Elemente verstehen",
+                "en": "Understand inline elements"
+            },
+            "description": {
+                "de": "Erfahre, wie Inline-Elemente funktionieren.",
+                "en": "Learn how inline elements work."
+            },
             "icon": "chevron.left.forwardslash.chevron.right",
             "steps": [
-                "Inline Elemente teilen sich eine Zeile.",
-                "Beispiele: span, a, img.",
-                "Sie beeinflussen Layout kaum."
+                {
+                    "de": "Inline Elemente teilen sich eine Zeile.",
+                    "en": "Inline elements share one line."
+                },
+                {
+                    "de": "Beispiele: span, a, img.",
+                    "en": "Examples: span, a, img."
+                },
+                {
+                    "de": "Sie beeinflussen Layout kaum.",
+                    "en": "They barely affect layout."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -638,13 +1050,27 @@
         },
         {
             "id": "html_028",
-            "title": "HTML Entities nutzen",
-            "description":
-                "Nutze HTML-Entities, um Sonderzeichen darzustellen.",
+            "title": {
+                "de": "HTML Entities nutzen",
+                "en": "Use HTML entities"
+            },
+            "description": {
+                "de": "Nutze HTML-Entities, um Sonderzeichen darzustellen.",
+                "en": "Use HTML entities to display special characters."
+            },
             "steps": [
-                "Nutze &amp; für &.",
-                "Nutze &lt; für <.",
-                "Nutze &copy; für ©."
+                {
+                    "de": "Nutze &amp; für &.",
+                    "en": "Use &amp; for &."
+                },
+                {
+                    "de": "Nutze &lt; für <.",
+                    "en": "Use &lt; for <."
+                },
+                {
+                    "de": "Nutze &copy; für ©.",
+                    "en": "Use &copy; for ©."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -662,13 +1088,28 @@
         },
         {
             "id": "html_029",
-            "title": "Section & Article",
-            "description":
-                "Lerne semantische Bereiche wie section & article kennen.",
+            "title": {
+                "de": "Section & Article",
+                "en": "Section & article"
+            },
+            "description": {
+                "de":
+                    "Lerne semantische Bereiche wie section & article kennen.",
+                "en": "Learn semantic areas such as section and article."
+            },
             "steps": [
-                "Section teilt Inhalte grob ein.",
-                "Article ist ein unabhängiger Inhalt.",
-                "Verbessert SEO & Struktur."
+                {
+                    "de": "Section teilt Inhalte grob ein.",
+                    "en": "Section divides content broadly."
+                },
+                {
+                    "de": "Article ist ein unabhängiger Inhalt.",
+                    "en": "Article is independent content."
+                },
+                {
+                    "de": "Verbessert SEO & Struktur.",
+                    "en": "Improves SEO and structure."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -686,13 +1127,27 @@
         },
         {
             "id": "html_030",
-            "title": "Navigation erstellen",
-            "description":
-                "Erstelle eine einfache Webseite-Navigation mit <nav>.",
+            "title": {
+                "de": "Navigation erstellen",
+                "en": "Create navigation"
+            },
+            "description": {
+                "de": "Erstelle eine einfache Webseite-Navigation mit <nav>.",
+                "en": "Create simple website navigation with <nav>."
+            },
             "steps": [
-                "Nutze <nav> als Container.",
-                "Füge Links ein.",
-                "Stil später per CSS."
+                {
+                    "de": "Nutze <nav> als Container.",
+                    "en": "Use <nav> as the container."
+                },
+                {
+                    "de": "Füge Links ein.",
+                    "en": "Add links."
+                },
+                {
+                    "de": "Stil später per CSS.",
+                    "en": "Style later with CSS."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -710,12 +1165,27 @@
         },
         {
             "id": "html_031",
-            "title": "Listen in Navigation",
-            "description": "Strukturiere Navigationsleisten mit <ul> & <li>.",
+            "title": {
+                "de": "Listen in Navigation",
+                "en": "Lists in navigation"
+            },
+            "description": {
+                "de": "Strukturiere Navigationsleisten mit <ul> & <li>.",
+                "en": "Structure navigation bars with <ul> and <li>."
+            },
             "steps": [
-                "Nutze <ul> als Wrapper.",
-                "Stelle Links in <li> dar.",
-                "Style später horizontal."
+                {
+                    "de": "Nutze <ul> als Wrapper.",
+                    "en": "Use <ul> as wrapper."
+                },
+                {
+                    "de": "Stelle Links in <li> dar.",
+                    "en": "Place links inside <li>."
+                },
+                {
+                    "de": "Style später horizontal.",
+                    "en": "Style horizontally later."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -733,12 +1203,27 @@
         },
         {
             "id": "html_032",
-            "title": "Attribute verstehen",
-            "description": "Lerne wie Attribute in HTML funktionieren.",
+            "title": {
+                "de": "Attribute verstehen",
+                "en": "Understand attributes"
+            },
+            "description": {
+                "de": "Lerne wie Attribute in HTML funktionieren.",
+                "en": "Learn how attributes work in HTML."
+            },
             "steps": [
-                "Attribute erweitern HTML-Tags.",
-                "Beispiele: id, class, src, href.",
-                "Schreibe sie immer im Start-Tag."
+                {
+                    "de": "Attribute erweitern HTML-Tags.",
+                    "en": "Attributes extend HTML tags."
+                },
+                {
+                    "de": "Beispiele: id, class, src, href.",
+                    "en": "Examples: id, class, src, href."
+                },
+                {
+                    "de": "Schreibe sie immer im Start-Tag.",
+                    "en": "Always write them in the start tag."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -756,12 +1241,27 @@
         },
         {
             "id": "html_033",
-            "title": "Download-Link erstellen",
-            "description": "Lerne den download-Parameter für <a>-Tags kennen.",
+            "title": {
+                "de": "Download-Link erstellen",
+                "en": "Create download link"
+            },
+            "description": {
+                "de": "Lerne den download-Parameter für <a>-Tags kennen.",
+                "en": "Learn the download parameter for <a> tags."
+            },
             "steps": [
-                "Nutze <a download>. ",
-                "Browser lädt Datei herunter.",
-                "Setze optional Dateiname."
+                {
+                    "de": "Nutze <a download>. ",
+                    "en": "Use <a download>."
+                },
+                {
+                    "de": "Browser lädt Datei herunter.",
+                    "en": "The browser downloads the file."
+                },
+                {
+                    "de": "Setze optional Dateiname.",
+                    "en": "Optionally set a file name."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -779,13 +1279,28 @@
         },
         {
             "id": "html_034",
-            "title": "Tabellenüberschriften",
-            "description":
-                "Nutze <thead>, <tbody> & <tfoot> für organisierte Tabellen.",
+            "title": {
+                "de": "Tabellenüberschriften",
+                "en": "Table headings"
+            },
+            "description": {
+                "de":
+                    "Nutze <thead>, <tbody> & <tfoot> für organisierte Tabellen.",
+                "en": "Use <thead>, <tbody> and <tfoot> for organized tables."
+            },
             "steps": [
-                "Nutze thead für Kopfzeilen.",
-                "Nutze tbody für Inhalte.",
-                "Nutze tfoot für Summen oder Hinweise."
+                {
+                    "de": "Nutze thead für Kopfzeilen.",
+                    "en": "Use thead for header rows."
+                },
+                {
+                    "de": "Nutze tbody für Inhalte.",
+                    "en": "Use tbody for content."
+                },
+                {
+                    "de": "Nutze tfoot für Summen oder Hinweise.",
+                    "en": "Use tfoot for sums or notes."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -803,12 +1318,27 @@
         },
         {
             "id": "html_035",
-            "title": "Bilder mit Titel & Tooltip",
-            "description": "Nutze das title-Attribut für Tooltips.",
+            "title": {
+                "de": "Bilder mit Titel & Tooltip",
+                "en": "Images with title & tooltip"
+            },
+            "description": {
+                "de": "Nutze das title-Attribut für Tooltips.",
+                "en": "Use the title attribute for tooltips."
+            },
             "steps": [
-                "Füge title=\"...\" hinzu.",
-                "Browser zeigt Tooltip beim Hover.",
-                "Funktioniert für alle HTML-Elemente."
+                {
+                    "de": "Füge title=\"...\" hinzu.",
+                    "en": "Add title=\"...\"."
+                },
+                {
+                    "de": "Browser zeigt Tooltip beim Hover.",
+                    "en": "The browser shows a tooltip on hover."
+                },
+                {
+                    "de": "Funktioniert für alle HTML-Elemente.",
+                    "en": "Works for all HTML elements."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -826,13 +1356,29 @@
         },
         {
             "id": "html_036",
-            "title": "Input Typen verstehen",
-            "description":
-                "Nutze verschiedene Eingabetypen wie text, email, number, color.",
+            "title": {
+                "de": "Input Typen verstehen",
+                "en": "Understand input types"
+            },
+            "description": {
+                "de":
+                    "Nutze verschiedene Eingabetypen wie text, email, number, color.",
+                "en":
+                    "Use different input types such as text, email, number and color."
+            },
             "steps": [
-                "Nutze <input type=\"text\">.",
-                "Teste verschiedene Typen.",
-                "Füge Labels für Struktur hinzu."
+                {
+                    "de": "Nutze <input type=\"text\">.",
+                    "en": "Use <input type=\"text\">."
+                },
+                {
+                    "de": "Teste verschiedene Typen.",
+                    "en": "Test different types."
+                },
+                {
+                    "de": "Füge Labels für Struktur hinzu.",
+                    "en": "Add labels for structure."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -850,12 +1396,27 @@
         },
         {
             "id": "html_037",
-            "title": "Textarea nutzen",
-            "description": "Lerne, wie du mehrzeilige Textfelder einsetzt.",
+            "title": {
+                "de": "Textarea nutzen",
+                "en": "Use textarea"
+            },
+            "description": {
+                "de": "Lerne, wie du mehrzeilige Textfelder einsetzt.",
+                "en": "Learn how to use multiline text fields."
+            },
             "steps": [
-                "Nutze <textarea>.",
-                "Setze rows & cols.",
-                "Nutze placeholder."
+                {
+                    "de": "Nutze <textarea>.",
+                    "en": "Use <textarea>."
+                },
+                {
+                    "de": "Setze rows & cols.",
+                    "en": "Set rows and cols."
+                },
+                {
+                    "de": "Nutze placeholder.",
+                    "en": "Use placeholder."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -873,12 +1434,27 @@
         },
         {
             "id": "html_038",
-            "title": "Select Dropdown",
-            "description": "Erstelle Auswahlfelder mit <select> und <option>.",
+            "title": {
+                "de": "Select Dropdown",
+                "en": "Select dropdown"
+            },
+            "description": {
+                "de": "Erstelle Auswahlfelder mit <select> und <option>.",
+                "en": "Create selection fields with <select> and <option>."
+            },
             "steps": [
-                "Nutze <select> als Container.",
-                "Füge mehrere <option> hinzu.",
-                "Setze value für Datenwerte."
+                {
+                    "de": "Nutze <select> als Container.",
+                    "en": "Use <select> as the container."
+                },
+                {
+                    "de": "Füge mehrere <option> hinzu.",
+                    "en": "Add multiple <option> elements."
+                },
+                {
+                    "de": "Setze value für Datenwerte.",
+                    "en": "Set value for data values."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -896,12 +1472,27 @@
         },
         {
             "id": "html_039",
-            "title": "Fieldset & Legend",
-            "description": "Gruppiere Formularbereiche visuell und logisch.",
+            "title": {
+                "de": "Fieldset & Legend",
+                "en": "Fieldset & legend"
+            },
+            "description": {
+                "de": "Gruppiere Formularbereiche visuell und logisch.",
+                "en": "Group form areas visually and logically."
+            },
             "steps": [
-                "Nutze <fieldset>.",
-                "Benutze <legend> für Titel.",
-                "Setze Inputs in das Fieldset."
+                {
+                    "de": "Nutze <fieldset>.",
+                    "en": "Use <fieldset>."
+                },
+                {
+                    "de": "Benutze <legend> für Titel.",
+                    "en": "Use <legend> for the title."
+                },
+                {
+                    "de": "Setze Inputs in das Fieldset.",
+                    "en": "Place inputs inside the fieldset."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -919,12 +1510,27 @@
         },
         {
             "id": "html_040",
-            "title": "Progressbar erstellen",
-            "description": "Nutze das <progress>-Element für Ladeanzeigen.",
+            "title": {
+                "de": "Progressbar erstellen",
+                "en": "Create progress bar"
+            },
+            "description": {
+                "de": "Nutze das <progress>-Element für Ladeanzeigen.",
+                "en": "Use the <progress> element for loading indicators."
+            },
             "steps": [
-                "Nutze <progress>.",
-                "Setze max und value.",
-                "Nutze CSS für Styling."
+                {
+                    "de": "Nutze <progress>.",
+                    "en": "Use <progress>."
+                },
+                {
+                    "de": "Setze max und value.",
+                    "en": "Set max and value."
+                },
+                {
+                    "de": "Nutze CSS für Styling.",
+                    "en": "Use CSS for styling."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -942,13 +1548,28 @@
         },
         {
             "id": "html_041",
-            "title": "Datenlisten mit <dl>",
-            "description":
-                "Verwende dl, dt und dd, um Begriffe mit Beschreibungen darzustellen.",
+            "title": {
+                "de": "Datenlisten mit <dl>",
+                "en": "Description lists with <dl>"
+            },
+            "description": {
+                "de":
+                    "Verwende dl, dt und dd, um Begriffe mit Beschreibungen darzustellen.",
+                "en": "Use dl, dt and dd to show terms with descriptions."
+            },
             "steps": [
-                "Nutze <dl> als Container.",
-                "Verwende <dt> für den Begriff.",
-                "Nutze <dd> für die Beschreibung."
+                {
+                    "de": "Nutze <dl> als Container.",
+                    "en": "Use <dl> as the container."
+                },
+                {
+                    "de": "Verwende <dt> für den Begriff.",
+                    "en": "Use <dt> for the term."
+                },
+                {
+                    "de": "Nutze <dd> für die Beschreibung.",
+                    "en": "Use <dd> for the description."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -966,13 +1587,28 @@
         },
         {
             "id": "html_042",
-            "title": "Superscript & Subscript",
-            "description":
-                "Nutze <sup> und <sub> für hoch- und tiefgestellte Zeichen.",
+            "title": {
+                "de": "Superscript & Subscript",
+                "en": "Superscript & subscript"
+            },
+            "description": {
+                "de":
+                    "Nutze <sup> und <sub> für hoch- und tiefgestellte Zeichen.",
+                "en": "Use <sup> and <sub> for raised and lowered characters."
+            },
             "steps": [
-                "Nutze <sup> für Hochstellung.",
-                "Nutze <sub> für Tiefstellung.",
-                "Beispiel: mathematische Formeln."
+                {
+                    "de": "Nutze <sup> für Hochstellung.",
+                    "en": "Use <sup> for superscript."
+                },
+                {
+                    "de": "Nutze <sub> für Tiefstellung.",
+                    "en": "Use <sub> for subscript."
+                },
+                {
+                    "de": "Beispiel: mathematische Formeln.",
+                    "en": "Example: mathematical formulas."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -990,13 +1626,28 @@
         },
         {
             "id": "html_043",
-            "title": "Preformatierter Text",
-            "description":
-                "Nutze <pre>, um Text exakt mit Zeilenumbrüchen darzustellen.",
+            "title": {
+                "de": "Preformatierter Text",
+                "en": "Preformatted text"
+            },
+            "description": {
+                "de":
+                    "Nutze <pre>, um Text exakt mit Zeilenumbrüchen darzustellen.",
+                "en": "Use <pre> to display text exactly with line breaks."
+            },
             "steps": [
-                "Nutze <pre> für Codeblöcke.",
-                "Erhält Leerzeichen und Zeilen.",
-                "Oft für ASCII-Art genutzt."
+                {
+                    "de": "Nutze <pre> für Codeblöcke.",
+                    "en": "Use <pre> for code blocks."
+                },
+                {
+                    "de": "Erhält Leerzeichen und Zeilen.",
+                    "en": "Preserves spaces and lines."
+                },
+                {
+                    "de": "Oft für ASCII-Art genutzt.",
+                    "en": "Often used for ASCII art."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1014,12 +1665,27 @@
         },
         {
             "id": "html_044",
-            "title": "Code anzeigen",
-            "description": "Nutze <code> und <pre> für Quelltextdarstellung.",
+            "title": {
+                "de": "Code anzeigen",
+                "en": "Show code"
+            },
+            "description": {
+                "de": "Nutze <code> und <pre> für Quelltextdarstellung.",
+                "en": "Use <code> and <pre> for source code display."
+            },
             "steps": [
-                "Nutze <code> für Inline-Code.",
-                "Nutze <pre> für Block-Code.",
-                "Perfekt für Tutorials."
+                {
+                    "de": "Nutze <code> für Inline-Code.",
+                    "en": "Use <code> for inline code."
+                },
+                {
+                    "de": "Nutze <pre> für Block-Code.",
+                    "en": "Use <pre> for block code."
+                },
+                {
+                    "de": "Perfekt für Tutorials.",
+                    "en": "Perfect for tutorials."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1037,13 +1703,27 @@
         },
         {
             "id": "html_045",
-            "title": "Bilder mit Caption",
-            "description":
-                "Nutze figure und figcaption für Bildunterschriften.",
+            "title": {
+                "de": "Bilder mit Caption",
+                "en": "Images with caption"
+            },
+            "description": {
+                "de": "Nutze figure und figcaption für Bildunterschriften.",
+                "en": "Use figure and figcaption for image captions."
+            },
             "steps": [
-                "Nutze <figure> als Bildcontainer.",
-                "Setze <figcaption> darunter.",
-                "Verbessert SEO und Struktur."
+                {
+                    "de": "Nutze <figure> als Bildcontainer.",
+                    "en": "Use <figure> as image container."
+                },
+                {
+                    "de": "Setze <figcaption> darunter.",
+                    "en": "Place <figcaption> below it."
+                },
+                {
+                    "de": "Verbessert SEO und Struktur.",
+                    "en": "Improves SEO and structure."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1061,13 +1741,27 @@
         },
         {
             "id": "html_046",
-            "title": "Inline Event Handler",
-            "description":
-                "Nutze onclick, onmouseover und mehr direkt im HTML.",
+            "title": {
+                "de": "Inline Event Handler",
+                "en": "Inline event handlers"
+            },
+            "description": {
+                "de": "Nutze onclick, onmouseover und mehr direkt im HTML.",
+                "en": "Use onclick, onmouseover and more directly in HTML."
+            },
             "steps": [
-                "Nutze onclick=\"...\" am Element.",
-                "Nutze onmouseover für Hover.",
-                "Verknüpfe mit JavaScript-Funktionen."
+                {
+                    "de": "Nutze onclick=\"...\" am Element.",
+                    "en": "Use onclick=\"...\" on an element."
+                },
+                {
+                    "de": "Nutze onmouseover für Hover.",
+                    "en": "Use onmouseover for hover."
+                },
+                {
+                    "de": "Verknüpfe mit JavaScript-Funktionen.",
+                    "en": "Connect it with JavaScript functions."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1085,12 +1779,27 @@
         },
         {
             "id": "html_047",
-            "title": "Hidden Attribute",
-            "description": "Blende Elemente mit hidden aus.",
+            "title": {
+                "de": "Hidden Attribute",
+                "en": "Hidden attribute"
+            },
+            "description": {
+                "de": "Blende Elemente mit hidden aus.",
+                "en": "Hide elements with hidden."
+            },
             "steps": [
-                "Nutze hidden ohne Wert.",
-                "Element bleibt im DOM.",
-                "Gut für dynamische JS-Anwendungen."
+                {
+                    "de": "Nutze hidden ohne Wert.",
+                    "en": "Use hidden without a value."
+                },
+                {
+                    "de": "Element bleibt im DOM.",
+                    "en": "The element remains in the DOM."
+                },
+                {
+                    "de": "Gut für dynamische JS-Anwendungen.",
+                    "en": "Good for dynamic JS apps."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1108,12 +1817,27 @@
         },
         {
             "id": "html_048",
-            "title": "Disabled Attribute",
-            "description": "Deaktiviere Formular-Elemente mit disabled.",
+            "title": {
+                "de": "Disabled Attribute",
+                "en": "Disabled attribute"
+            },
+            "description": {
+                "de": "Deaktiviere Formular-Elemente mit disabled.",
+                "en": "Disable form elements with disabled."
+            },
             "steps": [
-                "Nutze disabled am Input.",
-                "Element ist nicht klickbar.",
-                "Perfekt für Formulare."
+                {
+                    "de": "Nutze disabled am Input.",
+                    "en": "Use disabled on the input."
+                },
+                {
+                    "de": "Element ist nicht klickbar.",
+                    "en": "The element cannot be clicked."
+                },
+                {
+                    "de": "Perfekt für Formulare.",
+                    "en": "Perfect for forms."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1131,13 +1855,27 @@
         },
         {
             "id": "html_049",
-            "title": "Required Felder",
-            "description":
-                "Nutze required, um Felder als Pflichtfeld zu markieren.",
+            "title": {
+                "de": "Required Felder",
+                "en": "Required fields"
+            },
+            "description": {
+                "de": "Nutze required, um Felder als Pflichtfeld zu markieren.",
+                "en": "Use required to mark fields as mandatory."
+            },
             "steps": [
-                "Nutze required am Input.",
-                "Browser verhindert leeres Absenden.",
-                "Ideal für Formulare."
+                {
+                    "de": "Nutze required am Input.",
+                    "en": "Use required on the input."
+                },
+                {
+                    "de": "Browser verhindert leeres Absenden.",
+                    "en": "The browser prevents empty submission."
+                },
+                {
+                    "de": "Ideal für Formulare.",
+                    "en": "Ideal for forms."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1155,13 +1893,27 @@
         },
         {
             "id": "html_050",
-            "title": "Placeholder nutzen",
-            "description":
-                "Erklärt, wie du Platzhaltertexte in Inputs verwendest.",
+            "title": {
+                "de": "Placeholder nutzen",
+                "en": "Use placeholder"
+            },
+            "description": {
+                "de": "Erklärt, wie du Platzhaltertexte in Inputs verwendest.",
+                "en": "Explains how to use placeholder text in inputs."
+            },
             "steps": [
-                "Nutze placeholder=\"...\".",
-                "Text verschwindet beim Schreiben.",
-                "Verbessert Benutzerführung."
+                {
+                    "de": "Nutze placeholder=\"...\".",
+                    "en": "Use placeholder=\"...\"."
+                },
+                {
+                    "de": "Text verschwindet beim Schreiben.",
+                    "en": "Text disappears while typing."
+                },
+                {
+                    "de": "Verbessert Benutzerführung.",
+                    "en": "Improves user guidance."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1179,13 +1931,28 @@
         },
         {
             "id": "html_051",
-            "title": "Autofocus",
-            "description":
-                "Nutze autofocus, damit ein Feld automatisch fokussiert wird.",
+            "title": {
+                "de": "Autofocus",
+                "en": "Autofocus"
+            },
+            "description": {
+                "de":
+                    "Nutze autofocus, damit ein Feld automatisch fokussiert wird.",
+                "en": "Use autofocus so a field is focused automatically."
+            },
             "steps": [
-                "autofocus setzt den Cursor direkt ins Feld.",
-                "Nur ein Element sollte es nutzen.",
-                "Gut für Login / Formulare."
+                {
+                    "de": "autofocus setzt den Cursor direkt ins Feld.",
+                    "en": "autofocus places the cursor directly in the field."
+                },
+                {
+                    "de": "Nur ein Element sollte es nutzen.",
+                    "en": "Only one element should use it."
+                },
+                {
+                    "de": "Gut für Login / Formulare.",
+                    "en": "Good for login and forms."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1203,12 +1970,27 @@
         },
         {
             "id": "html_052",
-            "title": "Min & Max Attribute",
-            "description": "Nutze min und max für Zahlenfelder.",
+            "title": {
+                "de": "Min & Max Attribute",
+                "en": "Min & max attributes"
+            },
+            "description": {
+                "de": "Nutze min und max für Zahlenfelder.",
+                "en": "Use min and max for number fields."
+            },
             "steps": [
-                "Nutze type=\"number\".",
-                "Setze min und max.",
-                "Browser verhindert falsche Werte."
+                {
+                    "de": "Nutze type=\"number\".",
+                    "en": "Use type=\"number\"."
+                },
+                {
+                    "de": "Setze min und max.",
+                    "en": "Set min and max."
+                },
+                {
+                    "de": "Browser verhindert falsche Werte.",
+                    "en": "The browser prevents invalid values."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1226,13 +2008,27 @@
         },
         {
             "id": "html_053",
-            "title": "Pattern Validator",
-            "description":
-                "Validiere Eingaben mit Regulären Ausdrücken (pattern).",
+            "title": {
+                "de": "Pattern Validator",
+                "en": "Pattern validator"
+            },
+            "description": {
+                "de": "Validiere Eingaben mit Regulären Ausdrücken (pattern).",
+                "en": "Validate input with regular expressions (pattern)."
+            },
             "steps": [
-                "Nutze pattern=\"[A-Za-z]+\".",
-                "Browser prüft Eingaben.",
-                "Ideal für Formatvorgaben."
+                {
+                    "de": "Nutze pattern=\"[A-Za-z]+\".",
+                    "en": "Use pattern=\"[A-Za-z]+\"."
+                },
+                {
+                    "de": "Browser prüft Eingaben.",
+                    "en": "The browser checks input."
+                },
+                {
+                    "de": "Ideal für Formatvorgaben.",
+                    "en": "Ideal for format rules."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1250,12 +2046,27 @@
         },
         {
             "id": "html_054",
-            "title": "Dateiupload",
-            "description": "Nutze input type='file' um Dateien hochzuladen.",
+            "title": {
+                "de": "Dateiupload",
+                "en": "File upload"
+            },
+            "description": {
+                "de": "Nutze input type='file' um Dateien hochzuladen.",
+                "en": "Use input type=\"file\" to upload files."
+            },
             "steps": [
-                "Nutze <input type=\"file\">.",
-                "Akzeptiere Bilder mit accept=\"image/*\".",
-                "Mehrere Dateien mit multiple auswählen."
+                {
+                    "de": "Nutze <input type=\"file\">.",
+                    "en": "Use <input type=\"file\">."
+                },
+                {
+                    "de": "Akzeptiere Bilder mit accept=\"image/*\".",
+                    "en": "Accept images with accept=\"image/*\"."
+                },
+                {
+                    "de": "Mehrere Dateien mit multiple auswählen.",
+                    "en": "Select multiple files with multiple."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1273,12 +2084,27 @@
         },
         {
             "id": "html_055",
-            "title": "Datum auswählen",
-            "description": "Nutze input type='date' für Kalenderauswahl.",
+            "title": {
+                "de": "Datum auswählen",
+                "en": "Select date"
+            },
+            "description": {
+                "de": "Nutze input type='date' für Kalenderauswahl.",
+                "en": "Use input type=\"date\" for calendar selection."
+            },
             "steps": [
-                "Nutze <input type=\"date\">.",
-                "Browser zeigt Datumsauswahl.",
-                "Optional: min & max setzen."
+                {
+                    "de": "Nutze <input type=\"date\">.",
+                    "en": "Use <input type=\"date\">."
+                },
+                {
+                    "de": "Browser zeigt Datumsauswahl.",
+                    "en": "The browser shows a date picker."
+                },
+                {
+                    "de": "Optional: min & max setzen.",
+                    "en": "Optionally set min and max."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1296,12 +2122,27 @@
         },
         {
             "id": "html_056",
-            "title": "Zeit auswählen",
-            "description": "Nutze input type='time' für Uhrzeitfelder.",
+            "title": {
+                "de": "Zeit auswählen",
+                "en": "Select time"
+            },
+            "description": {
+                "de": "Nutze input type='time' für Uhrzeitfelder.",
+                "en": "Use input type=\"time\" for time fields."
+            },
             "steps": [
-                "Nutze <input type=\"time\">.",
-                "Browser zeigt Uhrzeitpicker.",
-                "Optional: min & max setzen."
+                {
+                    "de": "Nutze <input type=\"time\">.",
+                    "en": "Use <input type=\"time\">."
+                },
+                {
+                    "de": "Browser zeigt Uhrzeitpicker.",
+                    "en": "The browser shows a time picker."
+                },
+                {
+                    "de": "Optional: min & max setzen.",
+                    "en": "Optionally set min and max."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1319,12 +2160,27 @@
         },
         {
             "id": "html_057",
-            "title": "Farbauswahl",
-            "description": "Nutze input type='color' für Farbpicker.",
+            "title": {
+                "de": "Farbauswahl",
+                "en": "Color picker"
+            },
+            "description": {
+                "de": "Nutze input type='color' für Farbpicker.",
+                "en": "Use input type=\"color\" for color picking."
+            },
             "steps": [
-                "Nutze <input type=\"color\">.",
-                "Browser öffnet Farbwähler.",
-                "Gibt Hexwerte zurück."
+                {
+                    "de": "Nutze <input type=\"color\">.",
+                    "en": "Use <input type=\"color\">."
+                },
+                {
+                    "de": "Browser öffnet Farbwähler.",
+                    "en": "The browser opens a color picker."
+                },
+                {
+                    "de": "Gibt Hexwerte zurück.",
+                    "en": "Returns hex values."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1342,12 +2198,27 @@
         },
         {
             "id": "html_058",
-            "title": "Range Slider",
-            "description": "Nutze input type='range' für Schieberegler.",
+            "title": {
+                "de": "Range Slider",
+                "en": "Range slider"
+            },
+            "description": {
+                "de": "Nutze input type='range' für Schieberegler.",
+                "en": "Use input type=\"range\" for sliders."
+            },
             "steps": [
-                "Nutze <input type=\"range\">.",
-                "Setze min & max.",
-                "Optionale Steps für Intervalle."
+                {
+                    "de": "Nutze <input type=\"range\">.",
+                    "en": "Use <input type=\"range\">."
+                },
+                {
+                    "de": "Setze min & max.",
+                    "en": "Set min and max."
+                },
+                {
+                    "de": "Optionale Steps für Intervalle.",
+                    "en": "Optionally define step intervals."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1365,13 +2236,29 @@
         },
         {
             "id": "html_059",
-            "title": "Progressive Enhancement",
-            "description":
-                "Baue Webseiten, die ohne JS funktionieren – und mit mehr können.",
+            "title": {
+                "de": "Progressive Enhancement",
+                "en": "Progressive enhancement"
+            },
+            "description": {
+                "de":
+                    "Baue Webseiten, die ohne JS funktionieren – und mit mehr können.",
+                "en":
+                    "Build websites that work without JavaScript and improve when JavaScript is available."
+            },
             "steps": [
-                "Beginne mit reinem HTML.",
-                "Verbessere mit CSS.",
-                "Erweitere optional mit JavaScript."
+                {
+                    "de": "Beginne mit reinem HTML.",
+                    "en": "Start with pure HTML."
+                },
+                {
+                    "de": "Verbessere mit CSS.",
+                    "en": "Improve with CSS."
+                },
+                {
+                    "de": "Erweitere optional mit JavaScript.",
+                    "en": "Optionally extend with JavaScript."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1389,13 +2276,27 @@
         },
         {
             "id": "html_060",
-            "title": "Viewport Einheit vh/vw",
-            "description":
-                "Nutze viewport-basierte Größen für responsive Layouts.",
+            "title": {
+                "de": "Viewport Einheit vh/vw",
+                "en": "Viewport units vh/vw"
+            },
+            "description": {
+                "de": "Nutze viewport-basierte Größen für responsive Layouts.",
+                "en": "Use viewport-based sizes for responsive layouts."
+            },
             "steps": [
-                "Nutze 100vh für volle Höhe.",
-                "Nutze 100vw für volle Breite.",
-                "Ideal für moderne Layouts."
+                {
+                    "de": "Nutze 100vh für volle Höhe.",
+                    "en": "Use 100vh for full height."
+                },
+                {
+                    "de": "Nutze 100vw für volle Breite.",
+                    "en": "Use 100vw for full width."
+                },
+                {
+                    "de": "Ideal für moderne Layouts.",
+                    "en": "Ideal for modern layouts."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1413,13 +2314,27 @@
         },
         {
             "id": "html_061",
-            "title": "Sticky Header erstellen",
-            "description":
-                "Lerne, wie ein Header beim Scrollen immer oben bleibt.",
+            "title": {
+                "de": "Sticky Header erstellen",
+                "en": "Create sticky header"
+            },
+            "description": {
+                "de": "Lerne, wie ein Header beim Scrollen immer oben bleibt.",
+                "en": "Learn how a header stays at the top while scrolling."
+            },
             "steps": [
-                "Erstelle einen Header im HTML.",
-                "Nutze CSS position: sticky.",
-                "Setze top: 0 für die Position."
+                {
+                    "de": "Erstelle einen Header im HTML.",
+                    "en": "Create a header in HTML."
+                },
+                {
+                    "de": "Nutze CSS position: sticky.",
+                    "en": "Use CSS position: sticky."
+                },
+                {
+                    "de": "Setze top: 0 für die Position.",
+                    "en": "Set top: 0 for the position."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1437,13 +2352,29 @@
         },
         {
             "id": "html_062",
-            "title": "Flexbox Grundlagen",
-            "description":
-                "Lerne die wichtigsten Flexbox-Regeln für moderne Layouts.",
+            "title": {
+                "de": "Flexbox Grundlagen",
+                "en": "Flexbox basics"
+            },
+            "description": {
+                "de":
+                    "Lerne die wichtigsten Flexbox-Regeln für moderne Layouts.",
+                "en":
+                    "Learn the most important Flexbox rules for modern layouts."
+            },
             "steps": [
-                "Nutze display: flex.",
-                "Setze justify-content und align-items.",
-                "Ordne Elemente flexibel an."
+                {
+                    "de": "Nutze display: flex.",
+                    "en": "Use display: flex."
+                },
+                {
+                    "de": "Setze justify-content und align-items.",
+                    "en": "Set justify-content and align-items."
+                },
+                {
+                    "de": "Ordne Elemente flexibel an.",
+                    "en": "Arrange elements flexibly."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1461,13 +2392,29 @@
         },
         {
             "id": "html_063",
-            "title": "Grid Layout erstellen",
-            "description":
-                "Lerne, wie CSS Grid funktioniert – das mächtigste Layoutsystem.",
+            "title": {
+                "de": "Grid Layout erstellen",
+                "en": "Create grid layout"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie CSS Grid funktioniert – das mächtigste Layoutsystem.",
+                "en":
+                    "Learn how CSS Grid works, the most powerful layout system."
+            },
             "steps": [
-                "Nutze display: grid.",
-                "Definiere Spalten mit grid-template-columns.",
-                "Füge Grid-Abstände mit gap hinzu."
+                {
+                    "de": "Nutze display: grid.",
+                    "en": "Use display: grid."
+                },
+                {
+                    "de": "Definiere Spalten mit grid-template-columns.",
+                    "en": "Define columns with grid-template-columns."
+                },
+                {
+                    "de": "Füge Grid-Abstände mit gap hinzu.",
+                    "en": "Add grid spacing with gap."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1485,12 +2432,27 @@
         },
         {
             "id": "html_064",
-            "title": "Modal Fenster mit HTML & CSS",
-            "description": "Baue ein einfaches Popup ohne JavaScript.",
+            "title": {
+                "de": "Modal Fenster mit HTML & CSS",
+                "en": "Modal window with HTML & CSS"
+            },
+            "description": {
+                "de": "Baue ein einfaches Popup ohne JavaScript.",
+                "en": "Build a simple popup without JavaScript."
+            },
             "steps": [
-                "Nutze das details-Tag als Popup-Container.",
-                "Style den summary-Button.",
-                "Nutze absolute Positionierung für das Fenster."
+                {
+                    "de": "Nutze das details-Tag als Popup-Container.",
+                    "en": "Use the details tag as popup container."
+                },
+                {
+                    "de": "Style den summary-Button.",
+                    "en": "Style the summary button."
+                },
+                {
+                    "de": "Nutze absolute Positionierung für das Fenster.",
+                    "en": "Use absolute positioning for the window."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -1508,12 +2470,27 @@
         },
         {
             "id": "html_065",
-            "title": "Sticky Footer erstellen",
-            "description": "Platziere einen Footer immer unten am Bildschirm.",
+            "title": {
+                "de": "Sticky Footer erstellen",
+                "en": "Create sticky footer"
+            },
+            "description": {
+                "de": "Platziere einen Footer immer unten am Bildschirm.",
+                "en": "Place a footer always at the bottom of the screen."
+            },
             "steps": [
-                "Nutze position: fixed.",
-                "Setze bottom: 0.",
-                "Verwende 100% Breite."
+                {
+                    "de": "Nutze position: fixed.",
+                    "en": "Use position: fixed."
+                },
+                {
+                    "de": "Setze bottom: 0.",
+                    "en": "Set bottom: 0."
+                },
+                {
+                    "de": "Verwende 100% Breite.",
+                    "en": "Use 100% width."
+                }
             ],
             "colors": {
                 "backgroundColors": [

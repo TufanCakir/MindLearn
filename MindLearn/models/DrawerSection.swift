@@ -10,17 +10,29 @@ import Foundation
 struct DrawerSection: Identifiable, Codable {
 
     let id: String
-    let title: String
-    let description: String
+    let title: LocalizedTaskText
+    let description: LocalizedTaskText
     let icon: String?
 
-    let steps: [String]
+    let steps: [LocalizedTaskText]
 
     let colors: DrawerColor
 
     let code: String
 
     let category: String
+
+    func title(language: String) -> String {
+        title.value(for: language)
+    }
+
+    func description(language: String) -> String {
+        description.value(for: language)
+    }
+
+    func steps(language: String) -> [String] {
+        steps.map { $0.value(for: language) }
+    }
 }
 
 struct DrawerColor: Codable {

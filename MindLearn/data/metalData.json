@@ -1,752 +1,1361 @@
-[
-    {
-        "id": "metal_001",
-        "title": "2D Triangle mit Farbverlauf",
-        "description":
-            "Erstelle dein erstes Metal-Programm mit SwiftUI und MTKView. Dieses Beispiel zeigt, wie du ein einfaches farbiges Dreieck direkt auf der GPU renderst.",
-        "steps": [
-            "Erstelle eine UIViewRepresentable-Struktur für MetalKit (MTKView).",
-            "Implementiere eine Renderer-Klasse, die MTKViewDelegate nutzt.",
-            "Erstelle einen Vertex-Buffer mit Position und Farbe.",
-            "Richte eine Render-Pipeline mit Vertex- und Fragment-Shadern ein.",
-            "Zeichne das Dreieck mit drawPrimitives()."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#0000FF",
-                "#000000"
+    [
+        {
+            "id": "metal_001",
+            "title": {
+                "de": "2D Triangle mit Farbverlauf",
+                "en": "2D triangle with gradient"
+            },
+            "description": {
+                "de":
+                    "Erstelle dein erstes Metal-Programm mit SwiftUI und MTKView. Dieses Beispiel zeigt, wie du ein einfaches farbiges Dreieck direkt auf der GPU renderst.",
+                "en":
+                    "Create your first Metal program with SwiftUI and MTKView. This example shows how to render a simple colored triangle directly on the GPU."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Erstelle eine UIViewRepresentable-Struktur für MetalKit (MTKView).",
+                    "en":
+                        "Create a UIViewRepresentable structure for MetalKit (MTKView)."
+                },
+                {
+                    "de":
+                        "Implementiere eine Renderer-Klasse, die MTKViewDelegate nutzt.",
+                    "en":
+                        "Implement a renderer class that uses MTKViewDelegate."
+                },
+                {
+                    "de":
+                        "Erstelle einen Vertex-Buffer mit Position und Farbe.",
+                    "en": "Create a vertex buffer with position and color."
+                },
+                {
+                    "de":
+                        "Richte eine Render-Pipeline mit Vertex- und Fragment-Shadern ein.",
+                    "en":
+                        "Set up a render pipeline with vertex and fragment shaders."
+                },
+                {
+                    "de": "Zeichne das Dreieck mit drawPrimitives().",
+                    "en": "Draw the triangle with drawPrimitives()."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0000FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport MetalKit\n\n/ Unsere Haupt-Renderklasse\nfinal class Renderer: NSObject, MTKViewDelegate {\n    var device: MTLDevice!\n    var commandQueue: MTLCommandQueue!\n    var pipelineState: MTLRenderPipelineState!\n    var vertexBuffer: MTLBuffer!\n\n    init(mtkView: MTKView) {\n        super.init()\n        self.device = mtkView.device\n        self.commandQueue = device.makeCommandQueue()\n        \n        / Shader laden\n        let library = device.makeDefaultLibrary()\n        let vertexFunc = library?.makeFunction(name: \"vertex_main\")\n        let fragmentFunc = library?.makeFunction(name: \"fragment_main\")\n\n        / Render Pipeline Setup\n        let pipelineDescriptor = MTLRenderPipelineDescriptor()\n        pipelineDescriptor.vertexFunction = vertexFunc\n        pipelineDescriptor.fragmentFunction = fragmentFunc\n        pipelineDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat\n        pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)\n\n        / Vertexdaten (x, y, z, r, g, b)\n        let vertices: [Float] = [\n            0.0,  0.5, 0.0,  1, 0, 0, / oben (rot)\n           -0.5, -0.5, 0.0,  0, 1, 0, / links (grün)\n            0.5, -0.5, 0.0,  0, 0, 1  / rechts (blau)\n        ]\n        vertexBuffer = device.makeBuffer(bytes: vertices,\n                                         length: MemoryLayout<Float>.size * vertices.count,\n                                         options: [])\n    }\n\n    func draw(in view: MTKView) {\n        guard let drawable = view.currentDrawable,\n              let descriptor = view.currentRenderPassDescriptor else { return }\n        \n        let commandBuffer = commandQueue.makeCommandBuffer()\n        let encoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)\n        \n        encoder?.setRenderPipelineState(pipelineState)\n        encoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)\n        encoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)\n        \n        encoder?.endEncoding()\n        commandBuffer?.present(drawable)\n        commandBuffer?.commit()\n    }\n\n    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}\n}\n\nstruct MetalView: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)\n        let renderer = Renderer(mtkView: view)\n        view.delegate = renderer\n        context.coordinator.renderer = renderer\n        return view\n    }\n\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n    func makeCoordinator() -> Coordinator { Coordinator() }\n\n    class Coordinator {\n        var renderer: Renderer?\n    }\n}",
+            "category": "Metal"
         },
-        "code":
-            "import SwiftUI\nimport MetalKit\n\n/ Unsere Haupt-Renderklasse\nfinal class Renderer: NSObject, MTKViewDelegate {\n    var device: MTLDevice!\n    var commandQueue: MTLCommandQueue!\n    var pipelineState: MTLRenderPipelineState!\n    var vertexBuffer: MTLBuffer!\n\n    init(mtkView: MTKView) {\n        super.init()\n        self.device = mtkView.device\n        self.commandQueue = device.makeCommandQueue()\n        \n        / Shader laden\n        let library = device.makeDefaultLibrary()\n        let vertexFunc = library?.makeFunction(name: \"vertex_main\")\n        let fragmentFunc = library?.makeFunction(name: \"fragment_main\")\n\n        / Render Pipeline Setup\n        let pipelineDescriptor = MTLRenderPipelineDescriptor()\n        pipelineDescriptor.vertexFunction = vertexFunc\n        pipelineDescriptor.fragmentFunction = fragmentFunc\n        pipelineDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat\n        pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)\n\n        / Vertexdaten (x, y, z, r, g, b)\n        let vertices: [Float] = [\n            0.0,  0.5, 0.0,  1, 0, 0, / oben (rot)\n           -0.5, -0.5, 0.0,  0, 1, 0, / links (grün)\n            0.5, -0.5, 0.0,  0, 0, 1  / rechts (blau)\n        ]\n        vertexBuffer = device.makeBuffer(bytes: vertices,\n                                         length: MemoryLayout<Float>.size * vertices.count,\n                                         options: [])\n    }\n\n    func draw(in view: MTKView) {\n        guard let drawable = view.currentDrawable,\n              let descriptor = view.currentRenderPassDescriptor else { return }\n        \n        let commandBuffer = commandQueue.makeCommandBuffer()\n        let encoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)\n        \n        encoder?.setRenderPipelineState(pipelineState)\n        encoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)\n        encoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)\n        \n        encoder?.endEncoding()\n        commandBuffer?.present(drawable)\n        commandBuffer?.commit()\n    }\n\n    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}\n}\n\nstruct MetalView: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)\n        let renderer = Renderer(mtkView: view)\n        view.delegate = renderer\n        context.coordinator.renderer = renderer\n        return view\n    }\n\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n    func makeCoordinator() -> Coordinator { Coordinator() }\n\n    class Coordinator {\n        var renderer: Renderer?\n    }\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_002",
-        "title": "2D Cube mit Farbverlauf (2 Dreiecke)",
-        "description":
-            "Erstelle ein farbiges Quadrat in Metal, das aus zwei Dreiecken besteht. Jeder Eckpunkt erhält seine eigene Farbe, wodurch ein Farbverlauf entsteht.",
-        "steps": [
-            "Erweitere deinen Renderer, um 6 Vertices (2 Dreiecke) zu definieren.",
-            "Nutze pro Vertex Position (x, y, z) und Farbe (r, g, b).",
-            "Passe drawPrimitives() an, um 6 Vertices zu zeichnen.",
-            "Kombiniere die Dreiecke zu einem vollständigen 2D-Quad.",
-            "Experimentiere mit Farben und Größen für kreative Effekte."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#00FF00",
-                "#000000"
+        {
+            "id": "metal_002",
+            "title": {
+                "de": "2D Cube mit Farbverlauf (2 Dreiecke)",
+                "en": "2D cube with gradient (2 triangles)"
+            },
+            "description": {
+                "de":
+                    "Erstelle ein farbiges Quadrat in Metal, das aus zwei Dreiecken besteht. Jeder Eckpunkt erhält seine eigene Farbe, wodurch ein Farbverlauf entsteht.",
+                "en":
+                    "Create a colored square in Metal made from two triangles. Each corner gets its own color, creating a gradient."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Erweitere deinen Renderer, um 6 Vertices (2 Dreiecke) zu definieren.",
+                    "en":
+                        "Extend your renderer to define 6 vertices (2 triangles)."
+                },
+                {
+                    "de":
+                        "Nutze pro Vertex Position (x, y, z) und Farbe (r, g, b).",
+                    "en":
+                        "Use position (x, y, z) and color (r, g, b) per vertex."
+                },
+                {
+                    "de":
+                        "Passe drawPrimitives() an, um 6 Vertices zu zeichnen.",
+                    "en": "Adjust drawPrimitives() to draw 6 vertices."
+                },
+                {
+                    "de":
+                        "Kombiniere die Dreiecke zu einem vollständigen 2D-Quad.",
+                    "en": "Combine the triangles into a complete 2D quad."
+                },
+                {
+                    "de":
+                        "Experimentiere mit Farben und Größen für kreative Effekte.",
+                    "en":
+                        "Experiment with colors and sizes for creative effects."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#00FF00",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport MetalKit\n\nfinal class Renderer: NSObject, MTKViewDelegate {\n    var device: MTLDevice!\n    var commandQueue: MTLCommandQueue!\n    var pipelineState: MTLRenderPipelineState!\n    var vertexBuffer: MTLBuffer!\n\n    init(mtkView: MTKView) {\n        super.init()\n        device = mtkView.device\n        commandQueue = device.makeCommandQueue()\n        \n        / Shader laden\n        let library = device.makeDefaultLibrary()\n        let vertexFunc = library?.makeFunction(name: \"vertex_main\")\n        let fragmentFunc = library?.makeFunction(name: \"fragment_main\")\n        \n        / Render Pipeline Setup\n        let pipelineDescriptor = MTLRenderPipelineDescriptor()\n        pipelineDescriptor.vertexFunction = vertexFunc\n        pipelineDescriptor.fragmentFunction = fragmentFunc\n        pipelineDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat\n        pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)\n        \n        / Quad (2 Dreiecke → 6 Vertices)\n        let vertices: [Float] = [\n            / Dreieck 1\n            -0.5,  0.5, 0.0,  1, 0, 0,   / oben links – rot\n             0.5,  0.5, 0.0,  0, 1, 0,   / oben rechts – grün\n            -0.5, -0.5, 0.0,  0, 0, 1,   / unten links – blau\n\n            / Dreieck 2\n             0.5,  0.5, 0.0,  0, 1, 0,   / oben rechts – grün\n             0.5, -0.5, 0.0,  1, 1, 0,   / unten rechts – gelb\n            -0.5, -0.5, 0.0,  0, 0, 1    / unten links – blau\n        ]\n        \n        vertexBuffer = device.makeBuffer(bytes: vertices,\n                                         length: MemoryLayout<Float>.stride * vertices.count,\n                                         options: [])\n    }\n\n    func draw(in view: MTKView) {\n        guard let drawable = view.currentDrawable,\n              let descriptor = view.currentRenderPassDescriptor else { return }\n        \n        let commandBuffer = commandQueue.makeCommandBuffer()\n        let encoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)\n        \n        encoder?.setRenderPipelineState(pipelineState)\n        encoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)\n        encoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)\n        \n        encoder?.endEncoding()\n        commandBuffer?.present(drawable)\n        commandBuffer?.commit()\n    }\n\n    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}\n}\n\nstruct MetalView: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)\n        let renderer = Renderer(mtkView: view)\n        view.delegate = renderer\n        context.coordinator.renderer = renderer\n        return view\n    }\n\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n    func makeCoordinator() -> Coordinator { Coordinator() }\n\n    class Coordinator {\n        var renderer: Renderer?\n    }\n}",
+            "category": "Metal"
         },
-        "code":
-            "import SwiftUI\nimport MetalKit\n\nfinal class Renderer: NSObject, MTKViewDelegate {\n    var device: MTLDevice!\n    var commandQueue: MTLCommandQueue!\n    var pipelineState: MTLRenderPipelineState!\n    var vertexBuffer: MTLBuffer!\n\n    init(mtkView: MTKView) {\n        super.init()\n        device = mtkView.device\n        commandQueue = device.makeCommandQueue()\n        \n        / Shader laden\n        let library = device.makeDefaultLibrary()\n        let vertexFunc = library?.makeFunction(name: \"vertex_main\")\n        let fragmentFunc = library?.makeFunction(name: \"fragment_main\")\n        \n        / Render Pipeline Setup\n        let pipelineDescriptor = MTLRenderPipelineDescriptor()\n        pipelineDescriptor.vertexFunction = vertexFunc\n        pipelineDescriptor.fragmentFunction = fragmentFunc\n        pipelineDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat\n        pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)\n        \n        / Quad (2 Dreiecke → 6 Vertices)\n        let vertices: [Float] = [\n            / Dreieck 1\n            -0.5,  0.5, 0.0,  1, 0, 0,   / oben links – rot\n             0.5,  0.5, 0.0,  0, 1, 0,   / oben rechts – grün\n            -0.5, -0.5, 0.0,  0, 0, 1,   / unten links – blau\n\n            / Dreieck 2\n             0.5,  0.5, 0.0,  0, 1, 0,   / oben rechts – grün\n             0.5, -0.5, 0.0,  1, 1, 0,   / unten rechts – gelb\n            -0.5, -0.5, 0.0,  0, 0, 1    / unten links – blau\n        ]\n        \n        vertexBuffer = device.makeBuffer(bytes: vertices,\n                                         length: MemoryLayout<Float>.stride * vertices.count,\n                                         options: [])\n    }\n\n    func draw(in view: MTKView) {\n        guard let drawable = view.currentDrawable,\n              let descriptor = view.currentRenderPassDescriptor else { return }\n        \n        let commandBuffer = commandQueue.makeCommandBuffer()\n        let encoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)\n        \n        encoder?.setRenderPipelineState(pipelineState)\n        encoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)\n        encoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)\n        \n        encoder?.endEncoding()\n        commandBuffer?.present(drawable)\n        commandBuffer?.commit()\n    }\n\n    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}\n}\n\nstruct MetalView: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)\n        let renderer = Renderer(mtkView: view)\n        view.delegate = renderer\n        context.coordinator.renderer = renderer\n        return view\n    }\n\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n    func makeCoordinator() -> Coordinator { Coordinator() }\n\n    class Coordinator {\n        var renderer: Renderer?\n    }\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_003",
-        "title": "Rotation via Vertex Shader",
-        "description":
-            "Füge eine Rotation zu deinem 2D-Objekt hinzu – komplett in der GPU über den Vertex-Shader.",
-        "steps": [
-            "Erstelle eine Uniform-Struktur für den Rotationswinkel.",
-            "Berechne die neue Position im Vertex Shader.",
-            "Übergebe Uniforms jedes Frame an die GPU.",
-            "Animierte Rotation über Zeit hinzufügen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#1E90FF",
-                "#000000"
+        {
+            "id": "metal_003",
+            "title": {
+                "de": "Rotation via Vertex Shader",
+                "en": "Rotation via vertex shader"
+            },
+            "description": {
+                "de":
+                    "Füge eine Rotation zu deinem 2D-Objekt hinzu – komplett in der GPU über den Vertex-Shader.",
+                "en":
+                    "Add rotation to your 2D object entirely on the GPU through the vertex shader."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Erstelle eine Uniform-Struktur für den Rotationswinkel.",
+                    "en": "Create a uniform structure for the rotation angle."
+                },
+                {
+                    "de": "Berechne die neue Position im Vertex Shader.",
+                    "en": "Calculate the new position in the vertex shader."
+                },
+                {
+                    "de": "Übergebe Uniforms jedes Frame an die GPU.",
+                    "en": "Pass uniforms to the GPU every frame."
+                },
+                {
+                    "de": "Animierte Rotation über Zeit hinzufügen.",
+                    "en": "Add animated rotation over time."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#1E90FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport MetalKit\n\nstruct RotatingTriangle: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.colorPixelFormat = .bgra8Unorm\n\n        let renderer = RotatingRenderer(view: view)\n        view.delegate = renderer\n        context.coordinator.renderer = renderer\n        return view\n    }\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n    func makeCoordinator() -> Coordinator { Coordinator() }\n    class Coordinator { var renderer: RotatingRenderer? }\n}\n\nfinal class RotatingRenderer: NSObject, MTKViewDelegate {\n    var device: MTLDevice!\n    var queue: MTLCommandQueue!\n    var pipeline: MTLRenderPipelineState!\n    var buffer: MTLBuffer!\n    var time: Float = 0\n\n    init(view: MTKView) {\n        super.init()\n        device = view.device\n        queue = device.makeCommandQueue()\n\n        let vertices: [Float] = [ 0,0.5,0,  -0.5,-0.5,0,  0.5,-0.5,0 ]\n        buffer = device.makeBuffer(bytes: vertices, length: vertices.count*4, options: [])\n\n        let lib = device.makeDefaultLibrary()!\n        let pipelineDesc = MTLRenderPipelineDescriptor()\n        pipelineDesc.vertexFunction = lib.makeFunction(name: \"rotating_vertex\")\n        pipelineDesc.fragmentFunction = lib.makeFunction(name: \"color_fragment\")\n        pipelineDesc.colorAttachments[0].pixelFormat = view.colorPixelFormat\n        pipeline = try! device.makeRenderPipelineState(descriptor: pipelineDesc)\n    }\n\n    func draw(in view: MTKView) {\n        time += 0.01\n        guard let drawable = view.currentDrawable,\n              let pass = view.currentRenderPassDescriptor else { return }\n\n        let command = queue.makeCommandBuffer()!\n        let enc = command.makeRenderCommandEncoder(descriptor: pass)!\n        enc.setRenderPipelineState(pipeline)\n        enc.setVertexBuffer(buffer, offset: 0, index: 0)\n        enc.setVertexBytes(&time, length: 4, index: 1)\n        enc.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)\n        enc.endEncoding()\n        command.present(drawable)\n        command.commit()\n    }\n}\n",
+            "category": "Metal"
         },
-        "code":
-            "import SwiftUI\nimport MetalKit\n\nstruct RotatingTriangle: UIViewRepresentable {\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.colorPixelFormat = .bgra8Unorm\n\n        let renderer = RotatingRenderer(view: view)\n        view.delegate = renderer\n        context.coordinator.renderer = renderer\n        return view\n    }\n    func updateUIView(_ uiView: MTKView, context: Context) {}\n    func makeCoordinator() -> Coordinator { Coordinator() }\n    class Coordinator { var renderer: RotatingRenderer? }\n}\n\nfinal class RotatingRenderer: NSObject, MTKViewDelegate {\n    var device: MTLDevice!\n    var queue: MTLCommandQueue!\n    var pipeline: MTLRenderPipelineState!\n    var buffer: MTLBuffer!\n    var time: Float = 0\n\n    init(view: MTKView) {\n        super.init()\n        device = view.device\n        queue = device.makeCommandQueue()\n\n        let vertices: [Float] = [ 0,0.5,0,  -0.5,-0.5,0,  0.5,-0.5,0 ]\n        buffer = device.makeBuffer(bytes: vertices, length: vertices.count*4, options: [])\n\n        let lib = device.makeDefaultLibrary()!\n        let pipelineDesc = MTLRenderPipelineDescriptor()\n        pipelineDesc.vertexFunction = lib.makeFunction(name: \"rotating_vertex\")\n        pipelineDesc.fragmentFunction = lib.makeFunction(name: \"color_fragment\")\n        pipelineDesc.colorAttachments[0].pixelFormat = view.colorPixelFormat\n        pipeline = try! device.makeRenderPipelineState(descriptor: pipelineDesc)\n    }\n\n    func draw(in view: MTKView) {\n        time += 0.01\n        guard let drawable = view.currentDrawable,\n              let pass = view.currentRenderPassDescriptor else { return }\n\n        let command = queue.makeCommandBuffer()!\n        let enc = command.makeRenderCommandEncoder(descriptor: pass)!\n        enc.setRenderPipelineState(pipeline)\n        enc.setVertexBuffer(buffer, offset: 0, index: 0)\n        enc.setVertexBytes(&time, length: 4, index: 1)\n        enc.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)\n        enc.endEncoding()\n        command.present(drawable)\n        command.commit()\n    }\n}\n",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_004",
-        "title": "Texturen laden & anzeigen",
-        "description":
-            "Render ein Bild (PNG/JPEG) als Textur auf einem Rechteck.",
-        "steps": [
-            "Eine Textur mit MTKTextureLoader laden.",
-            "UV-Koordinaten für jeden Vertex definieren.",
-            "Texture Sampler im Fragment Shader verwenden.",
-            "Quad mit drawPrimitives() rendern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF1493",
-                "#000000"
+        {
+            "id": "metal_004",
+            "title": {
+                "de": "Texturen laden & anzeigen",
+                "en": "Load & display textures"
+            },
+            "description": {
+                "de":
+                    "Render ein Bild (PNG/JPEG) als Textur auf einem Rechteck.",
+                "en": "Render an image (PNG/JPEG) as a texture on a rectangle."
+            },
+            "steps": [
+                {
+                    "de": "Eine Textur mit MTKTextureLoader laden.",
+                    "en": "Load a texture with MTKTextureLoader."
+                },
+                {
+                    "de": "UV-Koordinaten für jeden Vertex definieren.",
+                    "en": "Define UV coordinates for each vertex."
+                },
+                {
+                    "de": "Texture Sampler im Fragment Shader verwenden.",
+                    "en": "Use a texture sampler in the fragment shader."
+                },
+                {
+                    "de": "Quad mit drawPrimitives() rendern.",
+                    "en": "Render the quad with drawPrimitives()."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF1493",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import MetalKit\n\n/ Beispiel: Textur laden\nlet loader = MTKTextureLoader(device: device)\nlet texture = try! loader.newTexture(name: \"example\", scaleFactor: 1, bundle: .main)\n\n/ Fragment Shader:\n/ float4 fragment_main(VertexOut in [[stage_in]], texture2d<float> tex [[texture(0)]]) {\n/     constexpr sampler s(filter::linear);\n/     return tex.sample(s, in.uv);\n/ }",
+            "category": "Metal"
         },
-        "code":
-            "import MetalKit\n\n/ Beispiel: Textur laden\nlet loader = MTKTextureLoader(device: device)\nlet texture = try! loader.newTexture(name: \"example\", scaleFactor: 1, bundle: .main)\n\n/ Fragment Shader:\n/ float4 fragment_main(VertexOut in [[stage_in]], texture2d<float> tex [[texture(0)]]) {\n/     constexpr sampler s(filter::linear);\n/     return tex.sample(s, in.uv);\n/ }",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_005",
-        "title": "Depth Buffer (Z-Buffer) aktivieren",
-        "description":
-            "Erstelle eine 3D-Szene, in der Objekte korrekt verdeckt werden.",
-        "steps": [
-            "DepthStencilDescriptor erstellen.",
-            "view.depthStencilPixelFormat setzen.",
-            "Depth Buffer im RenderPass aktivieren.",
-            "Z-Werte für 3D-Vertices setzen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#00CED1",
-                "#000000"
+        {
+            "id": "metal_005",
+            "title": {
+                "de": "Depth Buffer (Z-Buffer) aktivieren",
+                "en": "Enable depth buffer (Z-buffer)"
+            },
+            "description": {
+                "de":
+                    "Erstelle eine 3D-Szene, in der Objekte korrekt verdeckt werden.",
+                "en": "Create a 3D scene where objects are occluded correctly."
+            },
+            "steps": [
+                {
+                    "de": "DepthStencilDescriptor erstellen.",
+                    "en": "Create a DepthStencilDescriptor."
+                },
+                {
+                    "de": "view.depthStencilPixelFormat setzen.",
+                    "en": "Set view.depthStencilPixelFormat."
+                },
+                {
+                    "de": "Depth Buffer im RenderPass aktivieren.",
+                    "en": "Enable the depth buffer in the render pass."
+                },
+                {
+                    "de": "Z-Werte für 3D-Vertices setzen.",
+                    "en": "Set Z values for 3D vertices."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#00CED1",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Aktivieren des Tiefenpuffers:\nview.depthStencilPixelFormat = .depth32Float\n\nlet depthDesc = MTLDepthStencilDescriptor()\ndepthDesc.depthCompareFunction = .less\ndepthDesc.isDepthWriteEnabled = true\nlet depthState = device.makeDepthStencilState(descriptor: depthDesc)",
+            "category": "Metal"
         },
-        "code":
-            "/ Aktivieren des Tiefenpuffers:\nview.depthStencilPixelFormat = .depth32Float\n\nlet depthDesc = MTLDepthStencilDescriptor()\ndepthDesc.depthCompareFunction = .less\ndepthDesc.isDepthWriteEnabled = true\nlet depthState = device.makeDepthStencilState(descriptor: depthDesc)",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_006",
-        "title": "3D Cube rotieren",
-        "description":
-            "Erstelle einen 3D-Würfel aus 36 Vertices und rotiere ihn mit Matrizen.",
-        "steps": [
-            "Vertex-Struktur mit Position & Farbe erstellen.",
-            "Model-View-Projection Matrix berechnen.",
-            "rotateX/Y/Z in GPU anwenden.",
-            "drawIndexedPrimitives() verwenden."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#9400D3",
-                "#000000"
+        {
+            "id": "metal_006",
+            "title": {
+                "de": "3D Cube rotieren",
+                "en": "Rotate a 3D cube"
+            },
+            "description": {
+                "de":
+                    "Erstelle einen 3D-Würfel aus 36 Vertices und rotiere ihn mit Matrizen.",
+                "en":
+                    "Create a 3D cube from 36 vertices and rotate it with matrices."
+            },
+            "steps": [
+                {
+                    "de": "Vertex-Struktur mit Position & Farbe erstellen.",
+                    "en": "Create a vertex structure with position and color."
+                },
+                {
+                    "de": "Model-View-Projection Matrix berechnen.",
+                    "en": "Calculate the model-view-projection matrix."
+                },
+                {
+                    "de": "rotateX/Y/Z in GPU anwenden.",
+                    "en": "Apply rotateX/Y/Z on the GPU."
+                },
+                {
+                    "de": "drawIndexedPrimitives() verwenden.",
+                    "en": "Use drawIndexedPrimitives()."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#9400D3",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Beispiel Matrix:\nlet mvp = projection * view * model\nencoder.setVertexBytes(&mvp, length: MemoryLayout<matrix_float4x4>.size, index: 2)",
+            "category": "Metal"
         },
-        "code":
-            "/ Beispiel Matrix:\nlet mvp = projection * view * model\nencoder.setVertexBytes(&mvp, length: MemoryLayout<matrix_float4x4>.size, index: 2)",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_007",
-        "title": "Compute Shader – GPU Berechnungen",
-        "description":
-            "Nutze die GPU, um parallele Berechnungen durchzuführen.",
-        "steps": [
-            "ComputePipelineState erstellen.",
-            "Eingabebuffer & Ausgabebuffer erstellen.",
-            "computeEncoder benutzen.",
-            "Threads korrekt dispatchen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF8C00",
-                "#000000"
+        {
+            "id": "metal_007",
+            "title": {
+                "de": "Compute Shader – GPU Berechnungen",
+                "en": "Compute shader - GPU calculations"
+            },
+            "description": {
+                "de": "Nutze die GPU, um parallele Berechnungen durchzuführen.",
+                "en": "Use the GPU to perform parallel calculations."
+            },
+            "steps": [
+                {
+                    "de": "ComputePipelineState erstellen.",
+                    "en": "Create a ComputePipelineState."
+                },
+                {
+                    "de": "Eingabebuffer & Ausgabebuffer erstellen.",
+                    "en": "Create input and output buffers."
+                },
+                {
+                    "de": "computeEncoder benutzen.",
+                    "en": "Use a computeEncoder."
+                },
+                {
+                    "de": "Threads korrekt dispatchen.",
+                    "en": "Dispatch threads correctly."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF8C00",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let computeFunc = library.makeFunction(name: \"compute_main\")!\nlet computePipeline = try device.makeComputePipelineState(function: computeFunc)\n\nlet encoder = commandBuffer.makeComputeCommandEncoder()!\nencoder.setComputePipelineState(computePipeline)\nencoder.setBuffer(inputBuffer, offset: 0, index: 0)\nencoder.setBuffer(outputBuffer, offset: 0, index: 1)\nencoder.dispatchThreadgroups(...)\nencoder.endEncoding()",
+            "category": "Metal"
         },
-        "code":
-            "let computeFunc = library.makeFunction(name: \"compute_main\")!\nlet computePipeline = try device.makeComputePipelineState(function: computeFunc)\n\nlet encoder = commandBuffer.makeComputeCommandEncoder()!\nencoder.setComputePipelineState(computePipeline)\nencoder.setBuffer(inputBuffer, offset: 0, index: 0)\nencoder.setBuffer(outputBuffer, offset: 0, index: 1)\nencoder.dispatchThreadgroups(...)\nencoder.endEncoding()",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_008",
-        "title": "Post Processing Shader (Blur)",
-        "description": "Füge einen Gaussian Blur im Fragment Shader hinzu.",
-        "steps": [
-            "Fullscreen Quad rendern.",
-            "Kernel-Sampling im Fragment Shader.",
-            "Mehrere Texel im Umkreis abtasten.",
-            "Resultat mischen (blur)."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#1E1EFF",
-                "#000000"
+        {
+            "id": "metal_008",
+            "title": {
+                "de": "Post Processing Shader (Blur)",
+                "en": "Post-processing shader (blur)"
+            },
+            "description": {
+                "de": "Füge einen Gaussian Blur im Fragment Shader hinzu.",
+                "en": "Add Gaussian blur in the fragment shader."
+            },
+            "steps": [
+                {
+                    "de": "Fullscreen Quad rendern.",
+                    "en": "Render a fullscreen quad."
+                },
+                {
+                    "de": "Kernel-Sampling im Fragment Shader.",
+                    "en": "Use kernel sampling in the fragment shader."
+                },
+                {
+                    "de": "Mehrere Texel im Umkreis abtasten.",
+                    "en": "Sample multiple surrounding texels."
+                },
+                {
+                    "de": "Resultat mischen (blur).",
+                    "en": "Mix the result into a blur."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#1E1EFF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Fragment Blur Shader:\n/ float4 blur(texture2d<float> tex, float2 uv) {\n/     float2 offsets[5] = {...};\n/     float4 color = float4(0);\n/     for (int i = 0; i < 5; i++) {\n/        color += tex.sample(s, uv + offsets[i]);\n/     }\n/     return color / 5.0;\n/ }",
+            "category": "Metal"
         },
-        "code":
-            "/ Fragment Blur Shader:\n/ float4 blur(texture2d<float> tex, float2 uv) {\n/     float2 offsets[5] = {...};\n/     float4 color = float4(0);\n/     for (int i = 0; i < 5; i++) {\n/        color += tex.sample(s, uv + offsets[i]);\n/     }\n/     return color / 5.0;\n/ }",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_009",
-        "title": "Instancing – hunderte Objekte zeichnen",
-        "description": "Nutze die GPU, um viele Objekte effizient zu rendern.",
-        "steps": [
-            "Mehrere Transform-Matrizen an Vertex Shader senden.",
-            "Instance Count in drawPrimitives setzen.",
-            "Shader per instance ID nutzen.",
-            "Performance-Optimierung durch shared VertexBuffer."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#00FF7F",
-                "#000000"
+        {
+            "id": "metal_009",
+            "title": {
+                "de": "Instancing – hunderte Objekte zeichnen",
+                "en": "Instancing - draw hundreds of objects"
+            },
+            "description": {
+                "de": "Nutze die GPU, um viele Objekte effizient zu rendern.",
+                "en": "Use the GPU to render many objects efficiently."
+            },
+            "steps": [
+                {
+                    "de": "Mehrere Transform-Matrizen an Vertex Shader senden.",
+                    "en":
+                        "Send multiple transform matrices to the vertex shader."
+                },
+                {
+                    "de": "Instance Count in drawPrimitives setzen.",
+                    "en": "Set instance count in drawPrimitives."
+                },
+                {
+                    "de": "Shader per instance ID nutzen.",
+                    "en": "Use instance ID in the shader."
+                },
+                {
+                    "de": "Performance-Optimierung durch shared VertexBuffer.",
+                    "en": "Optimize performance with a shared vertex buffer."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#00FF7F",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 36, instanceCount: 200)",
+            "category": "Metal"
         },
-        "code":
-            "encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 36, instanceCount: 200)",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_010",
-        "title": "Metal + SwiftUI Integration (Live Shader)",
-        "description": "Verbinde SwiftUI mit live animierten Metal Shadern.",
-        "steps": [
-            "MTKView über UIViewRepresentable einbetten.",
-            "Time Uniform an Shader senden.",
-            "SwiftUI State nutzen um Shader Parameter zu ändern.",
-            "Perfekte GPU-UI Interaktion."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#C71585",
-                "#000000"
+        {
+            "id": "metal_010",
+            "title": {
+                "de": "Metal + SwiftUI Integration (Live Shader)",
+                "en": "Metal + SwiftUI integration (live shader)"
+            },
+            "description": {
+                "de": "Verbinde SwiftUI mit live animierten Metal Shadern.",
+                "en": "Connect SwiftUI with live animated Metal shaders."
+            },
+            "steps": [
+                {
+                    "de": "MTKView über UIViewRepresentable einbetten.",
+                    "en": "Embed MTKView through UIViewRepresentable."
+                },
+                {
+                    "de": "Time Uniform an Shader senden.",
+                    "en": "Send a time uniform to the shader."
+                },
+                {
+                    "de": "SwiftUI State nutzen um Shader Parameter zu ändern.",
+                    "en": "Use SwiftUI state to change shader parameters."
+                },
+                {
+                    "de": "Perfekte GPU-UI Interaktion.",
+                    "en": "Perfect GPU and UI interaction."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#C71585",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "struct ShaderControlView: View {\n    @State private var intensity: Float = 0.5\n    var body: some View {\n        VStack {\n            MetalView(intensity: intensity)\n                .frame(height: 300)\n            Slider(value: $intensity, in: 0...1)\n        }\n    }\n}",
+            "category": "Metal"
         },
-        "code":
-            "struct ShaderControlView: View {\n    @State private var intensity: Float = 0.5\n    var body: some View {\n        VStack {\n            MetalView(intensity: intensity)\n                .frame(height: 300)\n            Slider(value: $intensity, in: 0...1)\n        }\n    }\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_011",
-        "title": "Vertex Normals für 3D Beleuchtung",
-        "description":
-            "Lerne, wie du Normalen im Vertex-Shader berechnest und realistische Beleuchtung erzeugst.",
-        "steps": [
-            "Normalen pro Vertex definieren oder berechnen.",
-            "Normal an Fragment Shader übergeben.",
-            "Lambert Beleuchtung implementieren.",
-            "Lichtfarbe & Intensität dynamisch steuern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4682B4",
-                "#000000"
+        {
+            "id": "metal_011",
+            "title": {
+                "de": "Vertex Normals für 3D Beleuchtung",
+                "en": "Vertex normals for 3D lighting"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du Normalen im Vertex-Shader berechnest und realistische Beleuchtung erzeugst.",
+                "en":
+                    "Learn how to calculate normals in the vertex shader and create realistic lighting."
+            },
+            "steps": [
+                {
+                    "de": "Normalen pro Vertex definieren oder berechnen.",
+                    "en": "Define or calculate normals per vertex."
+                },
+                {
+                    "de": "Normal an Fragment Shader übergeben.",
+                    "en": "Pass normals to the fragment shader."
+                },
+                {
+                    "de": "Lambert Beleuchtung implementieren.",
+                    "en": "Implement Lambert lighting."
+                },
+                {
+                    "de": "Lichtfarbe & Intensität dynamisch steuern.",
+                    "en": "Control light color and intensity dynamically."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4682B4",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Beispiel Fragment Shader für Lambert Lighting:\nfragment float4 lambert_frag(VertexOut in [[stage_in]]) {\n    float3 light = normalize(float3(0.3, 0.8, 1.0));\n    float diffuse = max(dot(in.normal, light), 0.0);\n    return float4(in.color * diffuse, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "/ Beispiel Fragment Shader für Lambert Lighting:\nfragment float4 lambert_frag(VertexOut in [[stage_in]]) {\n    float3 light = normalize(float3(0.3, 0.8, 1.0));\n    float diffuse = max(dot(in.normal, light), 0.0);\n    return float4(in.color * diffuse, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_012",
-        "title": "Shadow Mapping – Echtzeit Schatten",
-        "description":
-            "Füge Schatten hinzu, indem du eine Shadow Map aus Sicht der Lichtquelle renderst.",
-        "steps": [
-            "Render Pass für Shadow Map erstellen.",
-            "Depth Texture als Shadow Map nutzen.",
-            "Position in Light Space transformieren.",
-            "Shadow Vergleich im Fragment Shader nutzen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#483D8B",
-                "#000000"
+        {
+            "id": "metal_012",
+            "title": {
+                "de": "Shadow Mapping – Echtzeit Schatten",
+                "en": "Shadow mapping - real-time shadows"
+            },
+            "description": {
+                "de":
+                    "Füge Schatten hinzu, indem du eine Shadow Map aus Sicht der Lichtquelle renderst.",
+                "en":
+                    "Add shadows by rendering a shadow map from the light source perspective."
+            },
+            "steps": [
+                {
+                    "de": "Render Pass für Shadow Map erstellen.",
+                    "en": "Create a render pass for the shadow map."
+                },
+                {
+                    "de": "Depth Texture als Shadow Map nutzen.",
+                    "en": "Use a depth texture as the shadow map."
+                },
+                {
+                    "de": "Position in Light Space transformieren.",
+                    "en": "Transform position into light space."
+                },
+                {
+                    "de": "Shadow Vergleich im Fragment Shader nutzen.",
+                    "en": "Use shadow comparison in the fragment shader."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#483D8B",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Shadow Compare\nfloat shadow = depthFromLight + 0.001 < textureDepth ? 1.0 : 0.3;\nreturn float4(color * shadow, 1.0);",
+            "category": "Metal"
         },
-        "code":
-            "/ Shadow Compare\nfloat shadow = depthFromLight + 0.001 < textureDepth ? 1.0 : 0.3;\nreturn float4(color * shadow, 1.0);",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_013",
-        "title": "Performance HUD & GPU Profiling aktivieren",
-        "description":
-            "Sieh genau, wie viele GPU-ms deine Shader brauchen und optimiere deine Pipelines.",
-        "steps": [
-            "Metal HUD im Scheme aktivieren.",
-            "GPU Frame Time analysieren.",
-            "Draw Calls und Threadgroups optimieren.",
-            "Pipeline Effizienz steigern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#228B22",
-                "#000000"
+        {
+            "id": "metal_013",
+            "title": {
+                "de": "Performance HUD & GPU Profiling aktivieren",
+                "en": "Enable performance HUD & GPU profiling"
+            },
+            "description": {
+                "de":
+                    "Sieh genau, wie viele GPU-ms deine Shader brauchen und optimiere deine Pipelines.",
+                "en":
+                    "See exactly how many GPU milliseconds your shaders need and optimize your pipelines."
+            },
+            "steps": [
+                {
+                    "de": "Metal HUD im Scheme aktivieren.",
+                    "en": "Enable Metal HUD in the scheme."
+                },
+                {
+                    "de": "GPU Frame Time analysieren.",
+                    "en": "Analyze GPU frame time."
+                },
+                {
+                    "de": "Draw Calls und Threadgroups optimieren.",
+                    "en": "Optimize draw calls and threadgroups."
+                },
+                {
+                    "de": "Pipeline Effizienz steigern.",
+                    "en": "Improve pipeline efficiency."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#228B22",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Aktivieren in Xcode:\n/ Product → Scheme → Edit Scheme → Diagnostics → Metal → Performance HUD",
+            "category": "Metal"
         },
-        "code":
-            "/ Aktivieren in Xcode:\n/ Product → Scheme → Edit Scheme → Diagnostics → Metal → Performance HUD",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_014",
-        "title": "Dynamische Vertex- & Uniform-Buffers",
-        "description":
-            "Aktualisiere GPU-Buffer jedes Frame für Animation, Physics oder UI-Interaktion.",
-        "steps": [
-            "Triple Buffering für flüssige Animation nutzen.",
-            "setVertexBytes oder setBuffer wählen.",
-            "Uniforms pro Frame senden.",
-            "Ideal für bewegte Modelle."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#9370DB",
-                "#000000"
+        {
+            "id": "metal_014",
+            "title": {
+                "de": "Dynamische Vertex- & Uniform-Buffers",
+                "en": "Dynamic vertex & uniform buffers"
+            },
+            "description": {
+                "de":
+                    "Aktualisiere GPU-Buffer jedes Frame für Animation, Physics oder UI-Interaktion.",
+                "en":
+                    "Update GPU buffers every frame for animation, physics or UI interaction."
+            },
+            "steps": [
+                {
+                    "de": "Triple Buffering für flüssige Animation nutzen.",
+                    "en": "Use triple buffering for smooth animation."
+                },
+                {
+                    "de": "setVertexBytes oder setBuffer wählen.",
+                    "en": "Choose setVertexBytes or setBuffer."
+                },
+                {
+                    "de": "Uniforms pro Frame senden.",
+                    "en": "Send uniforms per frame."
+                },
+                {
+                    "de": "Ideal für bewegte Modelle.",
+                    "en": "Ideal for moving models."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#9370DB",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "encoder.setVertexBytes(&uniforms, length: MemoryLayout<Uniforms>.size, index: 1)\nencoder.setVertexBuffer(dynamicVertexBuffer, offset: 0, index: 0)",
+            "category": "Metal"
         },
-        "code":
-            "encoder.setVertexBytes(&uniforms, length: MemoryLayout<Uniforms>.size, index: 1)\nencoder.setVertexBuffer(dynamicVertexBuffer, offset: 0, index: 0)",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_015",
-        "title": "Compute Shader Partikel-System",
-        "description":
-            "Erzeuge tausende Partikel (Feuer, Regen, Funken) ausschließlich auf der GPU.",
-        "steps": [
-            "Buffer für Position, Velocity & Life erstellen.",
-            "Compute Shader aktualisiert alle Partikel parallel.",
-            "Render Pass zeichnet die Partikel als Punkte.",
-            "Perfekt für Schneefall, Funken, Explosionen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF4500",
-                "#000000"
+        {
+            "id": "metal_015",
+            "title": {
+                "de": "Compute Shader Partikel-System",
+                "en": "Compute shader particle system"
+            },
+            "description": {
+                "de":
+                    "Erzeuge tausende Partikel (Feuer, Regen, Funken) ausschließlich auf der GPU.",
+                "en":
+                    "Generate thousands of particles such as fire, rain or sparks entirely on the GPU."
+            },
+            "steps": [
+                {
+                    "de": "Buffer für Position, Velocity & Life erstellen.",
+                    "en": "Create buffers for position, velocity and life."
+                },
+                {
+                    "de": "Compute Shader aktualisiert alle Partikel parallel.",
+                    "en":
+                        "The compute shader updates all particles in parallel."
+                },
+                {
+                    "de": "Render Pass zeichnet die Partikel als Punkte.",
+                    "en": "The render pass draws particles as points."
+                },
+                {
+                    "de": "Perfekt für Schneefall, Funken, Explosionen.",
+                    "en": "Perfect for snow, sparks and explosions."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF4500",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Compute Shader (vereinfacht)\nkernel void particle_update(device Particle *particles [[buffer(0)]], uint id [[thread_position_in_grid]]) {\n    particles[id].position += particles[id].velocity * 0.016;\n    particles[id].life -= 0.01;\n}",
+            "category": "Metal"
         },
-        "code":
-            "/ Compute Shader (vereinfacht)\nkernel void particle_update(device Particle *particles [[buffer(0)]], uint id [[thread_position_in_grid]]) {\n    particles[id].position += particles[id].velocity * 0.016;\n    particles[id].life -= 0.01;\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_016",
-        "title": "2D Triangle Shader (vertex_main & fragment_main)",
-        "description":
-            "Dies ist der grundlegende Shader für dein erstes Metal-Dreieck. Er enthält einen Vertex-Shader, der Position und Farbe pro Vertex verarbeitet, sowie einen Fragment-Shader, der die Farbe auf die Pixel überträgt.",
-        "steps": [
-            "Importiere das Metal-Standard-Framework mit `#include <metal_stdlib>`.",
-            "Definiere eine Struktur `VertexOut`, um Daten zwischen Vertex- und Fragment-Shader zu übergeben.",
-            "Implementiere den `vertex_main`-Shader, der Position und Farbe aus dem Vertex-Array liest.",
-            "Implementiere den `fragment_main`-Shader, der die Farbe auf die GPU-Pixel rendert."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#0A84FF",
-                "#000000"
+        {
+            "id": "metal_016",
+            "title": {
+                "de": "2D Triangle Shader (vertex_main & fragment_main)",
+                "en": "2D triangle shader (vertex_main & fragment_main)"
+            },
+            "description":
+                {
+                    "de":
+                        "Dies ist der grundlegende Shader für dein erstes Metal-Dreieck. Er enthält einen Vertex-Shader, der Position und Farbe pro Vertex verarbeitet, sowie einen Fragment-Shader, der die Farbe auf die Pixel überträgt.",
+                    "en":
+                        "This is the basic shader for your first Metal triangle. It contains a vertex shader that processes position and color per vertex, plus a fragment shader that writes color to pixels."
+                },
+            "steps": [
+                {
+                    "de":
+                        "Importiere das Metal-Standard-Framework mit `#include <metal_stdlib>`.",
+                    "en":
+                        "Import the Metal standard library with `#include <metal_stdlib>`."
+                },
+                {
+                    "de":
+                        "Definiere eine Struktur `VertexOut`, um Daten zwischen Vertex- und Fragment-Shader zu übergeben.",
+                    "en":
+                        "Define a `VertexOut` structure to pass data between vertex and fragment shader."
+                },
+                {
+                    "de":
+                        "Implementiere den `vertex_main`-Shader, der Position und Farbe aus dem Vertex-Array liest.",
+                    "en":
+                        "Implement the `vertex_main` shader that reads position and color from the vertex array."
+                },
+                {
+                    "de":
+                        "Implementiere den `fragment_main`-Shader, der die Farbe auf die GPU-Pixel rendert.",
+                    "en":
+                        "Implement the `fragment_main` shader that renders color to GPU pixels."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0A84FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\n/ Vertex-Eingabe\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\n/ Vertex Shader\nvertex VertexOut vertex_main(const device float* vertexArray [[buffer(0)]],\n                             uint vertexId [[vertex_id]]) {\n    VertexOut out;\n    int stride = 6; / 3 Position + 3 Farbe\n    int i = int(vertexId * stride);\n    float3 position = float3(vertexArray[i + 0], vertexArray[i + 1], vertexArray[i + 2]);\n    float3 color    = float3(vertexArray[i + 3], vertexArray[i + 4], vertexArray[i + 5]);\n\n    out.position = float4(position, 1.0);\n    out.color = color;\n    return out;\n}\n\n/ Fragment Shader\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\n/ Vertex-Eingabe\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\n/ Vertex Shader\nvertex VertexOut vertex_main(const device float* vertexArray [[buffer(0)]],\n                             uint vertexId [[vertex_id]]) {\n    VertexOut out;\n    int stride = 6; / 3 Position + 3 Farbe\n    int i = int(vertexId * stride);\n    float3 position = float3(vertexArray[i + 0], vertexArray[i + 1], vertexArray[i + 2]);\n    float3 color    = float3(vertexArray[i + 3], vertexArray[i + 4], vertexArray[i + 5]);\n\n    out.position = float4(position, 1.0);\n    out.color = color;\n    return out;\n}\n\n/ Fragment Shader\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_017",
-        "title": "2D Cube Shader (vertex_main & fragment_main)",
-        "description":
-            "Dieser Shader wird für den 2D Cube verwendet, der aus zwei Dreiecken besteht. Er liest pro Vertex Position und Farbe aus dem Buffer und gibt sie an den Fragment-Shader weiter, der daraus einen Farbverlauf über die Fläche rendert.",
-        "steps": [
-            "Verwende denselben Aufbau wie beim Hello Triangle-Shader.",
-            "Der Vertex-Shader verarbeitet nun 6 Vertices (2 Dreiecke = 1 Quadrat).",
-            "Jeder Vertex besitzt Position (x, y, z) und Farbe (r, g, b).",
-            "Der Fragment-Shader gibt die interpolierte Farbe auf jedes Pixel aus.",
-            "Dieser Shader kann für beliebige 2D-Formen wiederverwendet werden."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF9500",
-                "#000000"
+        {
+            "id": "metal_017",
+            "title": {
+                "de": "2D Cube Shader (vertex_main & fragment_main)",
+                "en": "2D cube shader (vertex_main & fragment_main)"
+            },
+            "description": {
+                "de":
+                    "Dieser Shader wird für den 2D Cube verwendet, der aus zwei Dreiecken besteht. Er liest pro Vertex Position und Farbe aus dem Buffer und gibt sie an den Fragment-Shader weiter, der daraus einen Farbverlauf über die Fläche rendert.",
+                "en":
+                    "This shader is used for the 2D cube made from two triangles. It reads position and color per vertex and passes them to the fragment shader, which renders a gradient across the surface."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Verwende denselben Aufbau wie beim Hello Triangle-Shader.",
+                    "en": "Use the same structure as the Hello Triangle shader."
+                },
+                {
+                    "de":
+                        "Der Vertex-Shader verarbeitet nun 6 Vertices (2 Dreiecke = 1 Quadrat).",
+                    "en":
+                        "The vertex shader now processes 6 vertices (2 triangles = 1 square)."
+                },
+                {
+                    "de":
+                        "Jeder Vertex besitzt Position (x, y, z) und Farbe (r, g, b).",
+                    "en":
+                        "Each vertex has position (x, y, z) and color (r, g, b)."
+                },
+                {
+                    "de":
+                        "Der Fragment-Shader gibt die interpolierte Farbe auf jedes Pixel aus.",
+                    "en":
+                        "The fragment shader outputs the interpolated color to each pixel."
+                },
+                {
+                    "de":
+                        "Dieser Shader kann für beliebige 2D-Formen wiederverwendet werden.",
+                    "en": "This shader can be reused for any 2D shape."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF9500",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\nvertex VertexOut vertex_main(const device float* vertexArray [[buffer(0)]],\n                             uint vertexId [[vertex_id]]) {\n    VertexOut out;\n    int stride = 6; / 3 Position + 3 Farbe\n    int i = int(vertexId * stride);\n\n    float3 position = float3(vertexArray[i + 0], vertexArray[i + 1], vertexArray[i + 2]);\n    float3 color    = float3(vertexArray[i + 3], vertexArray[i + 4], vertexArray[i + 5]);\n\n    out.position = float4(position, 1.0);\n    out.color = color;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\nvertex VertexOut vertex_main(const device float* vertexArray [[buffer(0)]],\n                             uint vertexId [[vertex_id]]) {\n    VertexOut out;\n    int stride = 6; / 3 Position + 3 Farbe\n    int i = int(vertexId * stride);\n\n    float3 position = float3(vertexArray[i + 0], vertexArray[i + 1], vertexArray[i + 2]);\n    float3 color    = float3(vertexArray[i + 3], vertexArray[i + 4], vertexArray[i + 5]);\n\n    out.position = float4(position, 1.0);\n    out.color = color;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_018",
-        "title": "Rotation Matrix Shader",
-        "description":
-            "Dieser Shader rotiert ein 2D- oder 3D-Vertex mithilfe einer Uniform-Matrix. Ideal für animierte Drehungen.",
-        "steps": [
-            "Definiere eine Uniform-Matrix für Transformationen.",
-            "Lese sie im Vertex-Shader über [[buffer(1)]].",
-            "Multipliziere die Vertex-Position mit der Matrix.",
-            "Der Fragment-Shader bleibt unverändert."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#30D158",
-                "#000000"
+        {
+            "id": "metal_018",
+            "title": {
+                "de": "Rotation Matrix Shader",
+                "en": "Rotation matrix shader"
+            },
+            "description": {
+                "de":
+                    "Dieser Shader rotiert ein 2D- oder 3D-Vertex mithilfe einer Uniform-Matrix. Ideal für animierte Drehungen.",
+                "en":
+                    "This shader rotates a 2D or 3D vertex using a uniform matrix. Ideal for animated rotations."
+            },
+            "steps": [
+                {
+                    "de": "Definiere eine Uniform-Matrix für Transformationen.",
+                    "en": "Define a uniform matrix for transformations."
+                },
+                {
+                    "de": "Lese sie im Vertex-Shader über [[buffer(1)]].",
+                    "en": "Read it in the vertex shader through [[buffer(1)]]."
+                },
+                {
+                    "de": "Multipliziere die Vertex-Position mit der Matrix.",
+                    "en": "Multiply the vertex position by the matrix."
+                },
+                {
+                    "de": "Der Fragment-Shader bleibt unverändert.",
+                    "en": "The fragment shader stays unchanged."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\nvertex VertexOut vertex_main(const device float* vertices [[buffer(0)]],\n                             constant float4x4& mvp [[buffer(1)]],\n                             uint vid [[vertex_id]]) {\n    int i = int(vid * 6);\n    float3 pos = float3(vertices[i], vertices[i+1], vertices[i+2]);\n    float3 col = float3(vertices[i+3], vertices[i+4], vertices[i+5]);\n\n    VertexOut out;\n    out.position = mvp * float4(pos, 1.0);\n    out.color = col;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\nvertex VertexOut vertex_main(const device float* vertices [[buffer(0)]],\n                             constant float4x4& mvp [[buffer(1)]],\n                             uint vid [[vertex_id]]) {\n    int i = int(vid * 6);\n    float3 pos = float3(vertices[i], vertices[i+1], vertices[i+2]);\n    float3 col = float3(vertices[i+3], vertices[i+4], vertices[i+5]);\n\n    VertexOut out;\n    out.position = mvp * float4(pos, 1.0);\n    out.color = col;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_019",
-        "title": "Textur Shader (UV Mapping)",
-        "description":
-            "Dieser Shader unterstützt Texturen. Er nutzt UV-Koordinaten pro Vertex und rendert Pixel direkt über eine GPU-Textur.",
-        "steps": [
-            "Definiere UV-Koordinaten im Vertex-Array.",
-            "Gib sie im VertexOut an den Fragment-Shader weiter.",
-            "Sample die Textur im Fragment-Shader.",
-            "Verwende einen Sampler für Filterqualität."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF2D55",
-                "#000000"
+        {
+            "id": "metal_019",
+            "title": {
+                "de": "Textur Shader (UV Mapping)",
+                "en": "Texture shader (UV mapping)"
+            },
+            "description": {
+                "de":
+                    "Dieser Shader unterstützt Texturen. Er nutzt UV-Koordinaten pro Vertex und rendert Pixel direkt über eine GPU-Textur.",
+                "en":
+                    "This shader supports textures. It uses UV coordinates per vertex and renders pixels directly from a GPU texture."
+            },
+            "steps": [
+                {
+                    "de": "Definiere UV-Koordinaten im Vertex-Array.",
+                    "en": "Define UV coordinates in the vertex array."
+                },
+                {
+                    "de": "Gib sie im VertexOut an den Fragment-Shader weiter.",
+                    "en": "Pass them through VertexOut to the fragment shader."
+                },
+                {
+                    "de": "Sample die Textur im Fragment-Shader.",
+                    "en": "Sample the texture in the fragment shader."
+                },
+                {
+                    "de": "Verwende einen Sampler für Filterqualität.",
+                    "en": "Use a sampler for filtering quality."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF2D55",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float2 uv;\n};\n\nvertex VertexOut vertex_main(const device float* data [[buffer(0)]],\n                             uint vid [[vertex_id]]) {\n    int i = int(vid * 5);\n    float3 pos = float3(data[i], data[i+1], data[i+2]);\n    float2 uv  = float2(data[i+3], data[i+4]);\n\n    VertexOut out;\n    out.position = float4(pos,1.0);\n    out.uv = uv;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]],\n                             texture2d<float> tex [[texture(0)]]) {\n    constexpr sampler s(filter::linear);\n    return tex.sample(s, in.uv);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float2 uv;\n};\n\nvertex VertexOut vertex_main(const device float* data [[buffer(0)]],\n                             uint vid [[vertex_id]]) {\n    int i = int(vid * 5);\n    float3 pos = float3(data[i], data[i+1], data[i+2]);\n    float2 uv  = float2(data[i+3], data[i+4]);\n\n    VertexOut out;\n    out.position = float4(pos,1.0);\n    out.uv = uv;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]],\n                             texture2d<float> tex [[texture(0)]]) {\n    constexpr sampler s(filter::linear);\n    return tex.sample(s, in.uv);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_020",
-        "title": "Color Pulse Shader",
-        "description":
-            "Ein Shader, der die Farbe animiert. Perfekt für UI-Effekte, Glow oder Boss Attack Effekte.",
-        "steps": [
-            "Nutze eine time-Uniform für Animation.",
-            "Modifiziere im Fragment-Shader die Farbe über sin(time).",
-            "Clippe Werte zwischen 0 und 1.",
-            "Farben pulsen dynamisch über Zeit."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FFD60A",
-                "#000000"
+        {
+            "id": "metal_020",
+            "title": {
+                "de": "Color Pulse Shader",
+                "en": "Color pulse shader"
+            },
+            "description": {
+                "de":
+                    "Ein Shader, der die Farbe animiert. Perfekt für UI-Effekte, Glow oder Boss Attack Effekte.",
+                "en":
+                    "A shader that animates color, perfect for UI effects, glow or boss attack effects."
+            },
+            "steps": [
+                {
+                    "de": "Nutze eine time-Uniform für Animation.",
+                    "en": "Use a time uniform for animation."
+                },
+                {
+                    "de":
+                        "Modifiziere im Fragment-Shader die Farbe über sin(time).",
+                    "en": "Modify color in the fragment shader with sin(time)."
+                },
+                {
+                    "de": "Clippe Werte zwischen 0 und 1.",
+                    "en": "Clamp values between 0 and 1."
+                },
+                {
+                    "de": "Farben pulsen dynamisch über Zeit.",
+                    "en": "Colors pulse dynamically over time."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FFD60A",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 fragment_main(float4 pos [[position]],\n                             constant float& time [[buffer(0)]]) {\n    float pulse = (sin(time) + 1.0) * 0.5;\n    return float4(pulse, 0.2, 1.0 - pulse, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 fragment_main(float4 pos [[position]],\n                             constant float& time [[buffer(0)]]) {\n    float pulse = (sin(time) + 1.0) * 0.5;\n    return float4(pulse, 0.2, 1.0 - pulse, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_021",
-        "title": "Gouraud Lighting Shader",
-        "description":
-            "Ein einfacher Beleuchtungs-Shader (Vertex Lighting) für 3D-Modelle.",
-        "steps": [
-            "Berechne Licht im Vertex Shader.",
-            "Nutze Normalen zum Lichtwinkel.",
-            "Interpolierte Farbe im Fragment Shader.",
-            "Perfekt für einfache 3D Szenen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#64D2FF",
-                "#000000"
+        {
+            "id": "metal_021",
+            "title": {
+                "de": "Gouraud Lighting Shader",
+                "en": "Gouraud lighting shader"
+            },
+            "description": {
+                "de":
+                    "Ein einfacher Beleuchtungs-Shader (Vertex Lighting) für 3D-Modelle.",
+                "en":
+                    "A simple lighting shader (vertex lighting) for 3D models."
+            },
+            "steps": [
+                {
+                    "de": "Berechne Licht im Vertex Shader.",
+                    "en": "Calculate light in the vertex shader."
+                },
+                {
+                    "de": "Nutze Normalen zum Lichtwinkel.",
+                    "en": "Use normals for the light angle."
+                },
+                {
+                    "de": "Interpolierte Farbe im Fragment Shader.",
+                    "en": "Interpolate color in the fragment shader."
+                },
+                {
+                    "de": "Perfekt für einfache 3D Szenen.",
+                    "en": "Perfect for simple 3D scenes."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#64D2FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\nvertex VertexOut vertex_main(const device float* verts [[buffer(0)]],\n                             const device float3* normals [[buffer(1)]],\n                             constant float3& lightDir [[buffer(2)]],\n                             uint id [[vertex_id]]) {\n    float3 pos = float3(verts[id*6], verts[id*6+1], verts[id*6+2]);\n    float3 col = float3(verts[id*6+3], verts[id*6+4], verts[id*6+5]);\n\n    float ndotl = max(dot(normalize(normals[id]), normalize(lightDir)), 0.0);\n    float3 litColor = col * ndotl;\n\n    VertexOut out;\n    out.position = float4(pos,1.0);\n    out.color = litColor;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color,1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nstruct VertexOut {\n    float4 position [[position]];\n    float3 color;\n};\n\nvertex VertexOut vertex_main(const device float* verts [[buffer(0)]],\n                             const device float3* normals [[buffer(1)]],\n                             constant float3& lightDir [[buffer(2)]],\n                             uint id [[vertex_id]]) {\n    float3 pos = float3(verts[id*6], verts[id*6+1], verts[id*6+2]);\n    float3 col = float3(verts[id*6+3], verts[id*6+4], verts[id*6+5]);\n\n    float ndotl = max(dot(normalize(normals[id]), normalize(lightDir)), 0.0);\n    float3 litColor = col * ndotl;\n\n    VertexOut out;\n    out.position = float4(pos,1.0);\n    out.color = litColor;\n    return out;\n}\n\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color,1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_022",
-        "title": "Blending Shader (Transparenz)",
-        "description":
-            "Dieser Shader erzeugt halbtransparente Effekte – ideal für UI, Nebel, Magie oder HUD.",
-        "steps": [
-            "Gib im Fragment Shader Alpha < 1.0 zurück.",
-            "Aktiviere Blending in der Render Pipeline.",
-            "Nutze RGBA-Werte für transparente Farben.",
-            "Perfekt für Effekte in Spielen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF3B30",
-                "#000000"
+        {
+            "id": "metal_022",
+            "title": {
+                "de": "Blending Shader (Transparenz)",
+                "en": "Blending shader (transparency)"
+            },
+            "description": {
+                "de":
+                    "Dieser Shader erzeugt halbtransparente Effekte – ideal für UI, Nebel, Magie oder HUD.",
+                "en":
+                    "This shader creates semi-transparent effects, ideal for UI, fog, magic or HUD."
+            },
+            "steps": [
+                {
+                    "de": "Gib im Fragment Shader Alpha < 1.0 zurück.",
+                    "en": "Return alpha < 1.0 in the fragment shader."
+                },
+                {
+                    "de": "Aktiviere Blending in der Render Pipeline.",
+                    "en": "Enable blending in the render pipeline."
+                },
+                {
+                    "de": "Nutze RGBA-Werte für transparente Farben.",
+                    "en": "Use RGBA values for transparent colors."
+                },
+                {
+                    "de": "Perfekt für Effekte in Spielen.",
+                    "en": "Perfect for game effects."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF3B30",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "/ Fragment Shader mit Transparenz\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 0.5); / 50% transparent\n}\n\n/ Swift Pipeline Setup:\npipelineDescriptor.colorAttachments[0].isBlendingEnabled = true;\npipelineDescriptor.colorAttachments[0].rgbBlendOperation = .add;\npipelineDescriptor.colorAttachments[0].alphaBlendOperation = .add;\npipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = .sourceAlpha;\npipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha;",
+            "category": "Metal"
         },
-        "code":
-            "/ Fragment Shader mit Transparenz\nfragment float4 fragment_main(VertexOut in [[stage_in]]) {\n    return float4(in.color, 0.5); / 50% transparent\n}\n\n/ Swift Pipeline Setup:\npipelineDescriptor.colorAttachments[0].isBlendingEnabled = true;\npipelineDescriptor.colorAttachments[0].rgbBlendOperation = .add;\npipelineDescriptor.colorAttachments[0].alphaBlendOperation = .add;\npipelineDescriptor.colorAttachments[0].sourceRGBBlendFactor = .sourceAlpha;\npipelineDescriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha;",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_023",
-        "title": "Fullscreen Quad Shader",
-        "description":
-            "Basis für Post-Processing: zeichnet ein 2D-Fullscreen-Quad ohne Vertex-Daten.",
-        "steps": [
-            "Nutze vertex_id in range 0–5.",
-            "Generiere Quad-Koordinaten direkt im Shader.",
-            "Ideal für Effekte wie Blur, Bloom, Glow.",
-            "Kein Vertex Buffer erforderlich."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#5E5CE6",
-                "#000000"
+        {
+            "id": "metal_023",
+            "title": {
+                "de": "Fullscreen Quad Shader",
+                "en": "Fullscreen quad shader"
+            },
+            "description": {
+                "de":
+                    "Basis für Post-Processing: zeichnet ein 2D-Fullscreen-Quad ohne Vertex-Daten.",
+                "en":
+                    "Base for post-processing: draws a 2D fullscreen quad without vertex data."
+            },
+            "steps": [
+                {
+                    "de": "Nutze vertex_id in range 0–5.",
+                    "en": "Use vertex_id in range 0-5."
+                },
+                {
+                    "de": "Generiere Quad-Koordinaten direkt im Shader.",
+                    "en": "Generate quad coordinates directly in the shader."
+                },
+                {
+                    "de": "Ideal für Effekte wie Blur, Bloom, Glow.",
+                    "en": "Ideal for effects such as blur, bloom and glow."
+                },
+                {
+                    "de": "Kein Vertex Buffer erforderlich.",
+                    "en": "No vertex buffer required."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#5E5CE6",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nvertex float4 vertex_main(uint vid [[vertex_id]]) {\n    float2 pos[6] = {\n        {-1,-1}, {1,-1}, {-1,1},\n        {1,-1}, {1,1}, {-1,1}\n    };\n    return float4(pos[vid], 0, 1);\n}\n\nfragment float4 fragment_main() {\n    return float4(0.2,0.2,0.9,1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nvertex float4 vertex_main(uint vid [[vertex_id]]) {\n    float2 pos[6] = {\n        {-1,-1}, {1,-1}, {-1,1},\n        {1,-1}, {1,1}, {-1,1}\n    };\n    return float4(pos[vid], 0, 1);\n}\n\nfragment float4 fragment_main() {\n    return float4(0.2,0.2,0.9,1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_024",
-        "title": "Compute Shader – Addieren von Arrays",
-        "description":
-            "Ein einfacher Compute Shader, der zwei Arrays GPU-seitig addiert.",
-        "steps": [
-            "Erstelle inputA, inputB und output Arrays.",
-            "Nutze thread_position_in_grid für Index.",
-            "Addiere Werte und speichere im Output.",
-            "Perfekt als Basis für Physik oder KI."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#00FF00",
-                "#000000"
+        {
+            "id": "metal_024",
+            "title": {
+                "de": "Compute Shader – Addieren von Arrays",
+                "en": "Compute shader - adding arrays"
+            },
+            "description": {
+                "de":
+                    "Ein einfacher Compute Shader, der zwei Arrays GPU-seitig addiert.",
+                "en": "A simple compute shader that adds two arrays on the GPU."
+            },
+            "steps": [
+                {
+                    "de": "Erstelle inputA, inputB und output Arrays.",
+                    "en": "Create inputA, inputB and output arrays."
+                },
+                {
+                    "de": "Nutze thread_position_in_grid für Index.",
+                    "en": "Use thread_position_in_grid for the index."
+                },
+                {
+                    "de": "Addiere Werte und speichere im Output.",
+                    "en": "Add values and store the result in output."
+                },
+                {
+                    "de": "Perfekt als Basis für Physik oder KI.",
+                    "en": "Perfect as a base for physics or AI."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#00FF00",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nkernel void compute_main(const device float* a [[buffer(0)]],\n                         const device float* b [[buffer(1)]],\n                         device float* result [[buffer(2)]],\n                         uint id [[thread_position_in_grid]]) {\n    result[id] = a[id] + b[id];\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nkernel void compute_main(const device float* a [[buffer(0)]],\n                         const device float* b [[buffer(1)]],\n                         device float* result [[buffer(2)]],\n                         uint id [[thread_position_in_grid]]) {\n    result[id] = a[id] + b[id];\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_025",
-        "title": "Noise Shader (Perlin Style)",
-        "description":
-            "Ein einfacher Noise-Shader, ideal für Feuer, Nebel, Wasser oder Spirit-Effekte in Slayken.",
-        "steps": [
-            "Erzeuge Pseudo-Random Noise per Funktion.",
-            "Interpoliere Werte smoothstep().",
-            "Erzeuge dynamischen Noise über Zeit.",
-            "Nutze ihn für Hintergründe & Effekte."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#0A84FF",
-                "#000000"
+        {
+            "id": "metal_025",
+            "title": {
+                "de": "Noise Shader (Perlin Style)",
+                "en": "Noise shader (Perlin style)"
+            },
+            "description": {
+                "de":
+                    "Ein einfacher Noise-Shader, ideal für Feuer, Nebel, Wasser oder Spirit-Effekte in Slayken.",
+                "en":
+                    "A simple noise shader, ideal for fire, fog, water or spirit effects."
+            },
+            "steps": [
+                {
+                    "de": "Erzeuge Pseudo-Random Noise per Funktion.",
+                    "en": "Generate pseudo-random noise with a function."
+                },
+                {
+                    "de": "Interpoliere Werte smoothstep().",
+                    "en": "Interpolate values with smoothstep()."
+                },
+                {
+                    "de": "Erzeuge dynamischen Noise über Zeit.",
+                    "en": "Create dynamic noise over time."
+                },
+                {
+                    "de": "Nutze ihn für Hintergründe & Effekte.",
+                    "en": "Use it for backgrounds and effects."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0A84FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nfloat rand(float2 n) {\n    return fract(sin(dot(n, float2(12.9898,78.233))) * 43758.5453);\n}\n\nfragment float4 fragment_main(float2 uv [[position]]) {\n    float noise = rand(uv * 20.0);\n    return float4(noise, noise*0.2, 1.0 - noise, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nfloat rand(float2 n) {\n    return fract(sin(dot(n, float2(12.9898,78.233))) * 43758.5453);\n}\n\nfragment float4 fragment_main(float2 uv [[position]]) {\n    float noise = rand(uv * 20.0);\n    return float4(noise, noise*0.2, 1.0 - noise, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_026",
-        "title": "Normal Map Shader (Bump Mapping)",
-        "description":
-            "Dieser Shader nutzt eine Normal Map, um feine Oberflächenstrukturen zu simulieren – perfekt für 3D-Spirits, Rüstungen oder Bossflächen.",
-        "steps": [
-            "Lade eine Normalmap als zweite Textur.",
-            "Lese pro Pixel die Normale aus der Textur.",
-            "Transformiere sie in den Tangent Space.",
-            "Berechne Licht basierend auf der Normalmap."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#34C759",
-                "#000000"
+        {
+            "id": "metal_026",
+            "title": {
+                "de": "Normal Map Shader (Bump Mapping)",
+                "en": "Normal map shader (bump mapping)"
+            },
+            "description": {
+                "de":
+                    "Dieser Shader nutzt eine Normal Map, um feine Oberflächenstrukturen zu simulieren – perfekt für 3D-Spirits, Rüstungen oder Bossflächen.",
+                "en":
+                    "This shader uses a normal map to simulate fine surface detail, perfect for 3D spirits, armor or boss surfaces."
+            },
+            "steps": [
+                {
+                    "de": "Lade eine Normalmap als zweite Textur.",
+                    "en": "Load a normal map as a second texture."
+                },
+                {
+                    "de": "Lese pro Pixel die Normale aus der Textur.",
+                    "en": "Read the normal from the texture per pixel."
+                },
+                {
+                    "de": "Transformiere sie in den Tangent Space.",
+                    "en": "Transform it into tangent space."
+                },
+                {
+                    "de": "Berechne Licht basierend auf der Normalmap.",
+                    "en": "Calculate lighting based on the normal map."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#34C759",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 fragment_main(float2 uv [[stage_in]],\n                             texture2d<float> albedo [[texture(0)]],\n                             texture2d<float> normalMap [[texture(1)]]) {\n\n    constexpr sampler s(filter::linear);\n\n    float3 baseColor = albedo.sample(s, uv).rgb;\n    float3 normal    = normalMap.sample(s, uv).rgb * 2.0 - 1.0;\n\n    float3 lightDir = normalize(float3(0.3, 0.6, 1.0));\n    float diffuse   = max(dot(normal, lightDir), 0.0);\n\n    return float4(baseColor * diffuse, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 fragment_main(float2 uv [[stage_in]],\n                             texture2d<float> albedo [[texture(0)]],\n                             texture2d<float> normalMap [[texture(1)]]) {\n\n    constexpr sampler s(filter::linear);\n\n    float3 baseColor = albedo.sample(s, uv).rgb;\n    float3 normal    = normalMap.sample(s, uv).rgb * 2.0 - 1.0;\n\n    float3 lightDir = normalize(float3(0.3, 0.6, 1.0));\n    float diffuse   = max(dot(normal, lightDir), 0.0);\n\n    return float4(baseColor * diffuse, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_027",
-        "title": "Specular Highlight Shader",
-        "description":
-            "Fügt realistische Glanzlichter hinzu – ideal für Metall-Rüstungen, glänzende Waffen oder futuristische Spirit-Effekte.",
-        "steps": [
-            "Berechne Reflexionswinkel im Fragment Shader.",
-            "Nutze die Phong Specular Formel.",
-            "Passe Shininess an für stärkere Highlights.",
-            "Kombiniere Diffuse + Specular Licht."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FFD700",
-                "#000000"
+        {
+            "id": "metal_027",
+            "title": {
+                "de": "Specular Highlight Shader",
+                "en": "Specular highlight shader"
+            },
+            "description": {
+                "de":
+                    "Fügt realistische Glanzlichter hinzu – ideal für Metall-Rüstungen, glänzende Waffen oder futuristische Spirit-Effekte.",
+                "en":
+                    "Adds realistic highlights, ideal for metal armor, shiny weapons or futuristic spirit effects."
+            },
+            "steps": [
+                {
+                    "de": "Berechne Reflexionswinkel im Fragment Shader.",
+                    "en":
+                        "Calculate the reflection angle in the fragment shader."
+                },
+                {
+                    "de": "Nutze die Phong Specular Formel.",
+                    "en": "Use the Phong specular formula."
+                },
+                {
+                    "de": "Passe Shininess an für stärkere Highlights.",
+                    "en": "Adjust shininess for stronger highlights."
+                },
+                {
+                    "de": "Kombiniere Diffuse + Specular Licht.",
+                    "en": "Combine diffuse and specular light."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FFD700",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 fragment_main(float3 normal [[stage_in]], float3 pos [[position]]) {\n    float3 N = normalize(normal);\n    float3 L = normalize(float3(0.4, 0.8, 1.0));\n    float3 V = normalize(-pos);\n\n    float3 R = reflect(-L, N);\n\n    float diffuse = max(dot(N, L), 0.0);\n    float spec    = pow(max(dot(R, V), 0.0), 32.0); / Shininess\n\n    float3 color = diffuse * float3(0.5, 0.5, 1.0) + spec * float3(1.0, 1.0, 1.0);\n\n    return float4(color, 1.0);\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 fragment_main(float3 normal [[stage_in]], float3 pos [[position]]) {\n    float3 N = normalize(normal);\n    float3 L = normalize(float3(0.4, 0.8, 1.0));\n    float3 V = normalize(-pos);\n\n    float3 R = reflect(-L, N);\n\n    float diffuse = max(dot(N, L), 0.0);\n    float spec    = pow(max(dot(R, V), 0.0), 32.0); / Shininess\n\n    float3 color = diffuse * float3(0.5, 0.5, 1.0) + spec * float3(1.0, 1.0, 1.0);\n\n    return float4(color, 1.0);\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_028",
-        "title": "Outline Shader (Cartoon Look)",
-        "description":
-            "Ein Shader, der Figuren oder Objekte mit schwarzen Outlines versieht. Perfekt für Cel-Shading, Anime-Look oder Spirit-Border-Effekte.",
-        "steps": [
-            "Bewege den Vertex entlang seiner Normalen nach außen.",
-            "Render die vergrößerte Silhouette schwarz.",
-            "Render das Objekt normal darüber.",
-            "Dadurch entsteht ein 3D-Outline Effekt."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#AF52DE",
-                "#000000"
+        {
+            "id": "metal_028",
+            "title": {
+                "de": "Outline Shader (Cartoon Look)",
+                "en": "Outline shader (cartoon look)"
+            },
+            "description": {
+                "de":
+                    "Ein Shader, der Figuren oder Objekte mit schwarzen Outlines versieht. Perfekt für Cel-Shading, Anime-Look oder Spirit-Border-Effekte.",
+                "en":
+                    "A shader that gives characters or objects black outlines. Perfect for cel shading, anime style or spirit border effects."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Bewege den Vertex entlang seiner Normalen nach außen.",
+                    "en": "Move the vertex outward along its normal."
+                },
+                {
+                    "de": "Render die vergrößerte Silhouette schwarz.",
+                    "en": "Render the enlarged silhouette in black."
+                },
+                {
+                    "de": "Render das Objekt normal darüber.",
+                    "en": "Render the object normally on top."
+                },
+                {
+                    "de": "Dadurch entsteht ein 3D-Outline Effekt.",
+                    "en": "This creates a 3D outline effect."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#AF52DE",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nvertex float4 outline_vertex(float3 pos [[attribute(0)]],\n                             float3 normal [[attribute(1)]],\n                             constant float4x4& mvp [[buffer(2)]]) {\n    float3 offsetPos = pos + normal * 0.03; / Outline Stärke\n    return mvp * float4(offsetPos, 1.0);\n}\n\nfragment float4 outline_frag() {\n    return float4(0, 0, 0, 1); / Schwarz\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nvertex float4 outline_vertex(float3 pos [[attribute(0)]],\n                             float3 normal [[attribute(1)]],\n                             constant float4x4& mvp [[buffer(2)]]) {\n    float3 offsetPos = pos + normal * 0.03; / Outline Stärke\n    return mvp * float4(offsetPos, 1.0);\n}\n\nfragment float4 outline_frag() {\n    return float4(0, 0, 0, 1); / Schwarz\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_029",
-        "title": "Bloom Extract Shader",
-        "description":
-            "Extrahiert helle Pixel, um Glow/Bloom zu erzeugen – ideal für Spirit-Aura, Boss-Hintergründe und Attack-Effekte.",
-        "steps": [
-            "Lese die Szene-Textur.",
-            "Extrahiere nur helle Pixel (threshold).",
-            "Gebe sie an einen Blur Shader weiter.",
-            "Addiere danach Bloom + Originalbild."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF2D55",
-                "#000000"
+        {
+            "id": "metal_029",
+            "title": {
+                "de": "Bloom Extract Shader",
+                "en": "Bloom extract shader"
+            },
+            "description": {
+                "de":
+                    "Extrahiert helle Pixel, um Glow/Bloom zu erzeugen – ideal für Spirit-Aura, Boss-Hintergründe und Attack-Effekte.",
+                "en":
+                    "Extracts bright pixels to create glow or bloom, ideal for spirit auras, boss backgrounds and attack effects."
+            },
+            "steps": [
+                {
+                    "de": "Lese die Szene-Textur.",
+                    "en": "Read the scene texture."
+                },
+                {
+                    "de": "Extrahiere nur helle Pixel (threshold).",
+                    "en": "Extract only bright pixels with a threshold."
+                },
+                {
+                    "de": "Gebe sie an einen Blur Shader weiter.",
+                    "en": "Pass them to a blur shader."
+                },
+                {
+                    "de": "Addiere danach Bloom + Originalbild.",
+                    "en": "Add bloom and original image afterward."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF2D55",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 bloom_extract(texture2d<float> tex [[texture(0)]], float2 uv [[stage_in]]) {\n    constexpr sampler s(filter::linear);\n    float3 c = tex.sample(s, uv).rgb;\n\n    float brightness = max(max(c.r, c.g), c.b);\n\n    if (brightness > 0.7) { return float4(c,1.0); }\n    else                  { return float4(0,0,0,1); }\n}",
+            "category": "Metal"
         },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 bloom_extract(texture2d<float> tex [[texture(0)]], float2 uv [[stage_in]]) {\n    constexpr sampler s(filter::linear);\n    float3 c = tex.sample(s, uv).rgb;\n\n    float brightness = max(max(c.r, c.g), c.b);\n\n    if (brightness > 0.7) { return float4(c,1.0); }\n    else                  { return float4(0,0,0,1); }\n}",
-        "category": "Metal"
-    },
-    {
-        "id": "metal_030",
-        "title": "Dissolve Shader (Burn Effekt)",
-        "description":
-            "Ein Shader, bei dem ein Objekt dynamisch verbrennt oder sich auflöst – ideal für Boss Death, Spirit Fade oder Magieanimation.",
-        "steps": [
-            "Nutze eine Noise Map zur Maskierung.",
-            "Vergleiche Noise mit einem Threshold.",
-            "Verberge Pixel über Schwellenwert.",
-            "Füge Glow/Feuerfarbe an den Rändern hinzu."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#FF6B00",
-                "#000000"
+        {
+            "id": "metal_030",
+            "title": {
+                "de": "Dissolve Shader (Burn Effekt)",
+                "en": "Dissolve shader (burn effect)"
+            },
+            "description": {
+                "de":
+                    "Ein Shader, bei dem ein Objekt dynamisch verbrennt oder sich auflöst – ideal für Boss Death, Spirit Fade oder Magieanimation.",
+                "en":
+                    "A shader where an object burns away or dissolves dynamically, ideal for boss death, spirit fade or magic animation."
+            },
+            "steps": [
+                {
+                    "de": "Nutze eine Noise Map zur Maskierung.",
+                    "en": "Use a noise map for masking."
+                },
+                {
+                    "de": "Vergleiche Noise mit einem Threshold.",
+                    "en": "Compare noise with a threshold."
+                },
+                {
+                    "de": "Verberge Pixel über Schwellenwert.",
+                    "en": "Hide pixels above the threshold."
+                },
+                {
+                    "de": "Füge Glow/Feuerfarbe an den Rändern hinzu.",
+                    "en": "Add glow or fire color at the edges."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
-        },
-        "code":
-            "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 dissolve_frag(float2 uv [[stage_in]],\n                              texture2d<float> tex [[texture(0)]],\n                              texture2d<float> noiseTex [[texture(1)]],\n                              constant float& threshold [[buffer(0)]]) {\n\n    constexpr sampler s(filter::linear);\n    float4 base = tex.sample(s, uv);\n    float noise = noiseTex.sample(s, uv).r;\n\n    if (noise < threshold) {\n        return base; / sichtbar\n    }\n\n    float edge = smoothstep(threshold, threshold + 0.1, noise);\n    return float4(edge, edge*0.3, 0.0, 1.0); / Feuer-Rand\n}",
-        "category": "Metal"
-    }
-]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF6B00",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "#include <metal_stdlib>\nusing namespace metal;\n\nfragment float4 dissolve_frag(float2 uv [[stage_in]],\n                              texture2d<float> tex [[texture(0)]],\n                              texture2d<float> noiseTex [[texture(1)]],\n                              constant float& threshold [[buffer(0)]]) {\n\n    constexpr sampler s(filter::linear);\n    float4 base = tex.sample(s, uv);\n    float noise = noiseTex.sample(s, uv).r;\n\n    if (noise < threshold) {\n        return base; / sichtbar\n    }\n\n    float edge = smoothstep(threshold, threshold + 0.1, noise);\n    return float4(edge, edge*0.3, 0.0, 1.0); / Feuer-Rand\n}",
+            "category": "Metal"
+        }
+    ]

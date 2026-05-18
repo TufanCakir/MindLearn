@@ -1,644 +1,1044 @@
-    [
-        {
-            "id": "html_001",
-            "title": "Button erstellen",
-            "description":
+[
+    {
+        "id": "html_001",
+        "title": {
+            "de": "Button erstellen",
+            "en": "Create button"
+        },
+        "description": {
+            "de":
                 "Lerne, wie du in HTML einen einfachen klickbaren Button erstellst.",
-            "steps": [
-                "Erstelle das Grundgerüst mit <!DOCTYPE html>.",
-                "Füge <button> innerhalb des <body>-Tags hinzu.",
-                "Füge optional CSS hinzu, um den Button zu stylen."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Button Beispiel</title>\n</head>\n<body>\n    <button>Click me</button>\n</body>\n</html>",
-            "category": "HTML"
+            "en": "Learn how to create a simple clickable button in HTML."
         },
-        {
-            "id": "html_002",
-            "title": "Textgrößen verwenden",
-            "description":
-                "Lerne, wie du verschiedene Textgrößen in HTML nutzt.",
-            "steps": [
-                "Beginne mit dem HTML Grundgerüst.",
-                "Füge <h1> bis <h6> innerhalb des <body>-Tags hinzu.",
-                "Füge optional CSS hinzu, um die Überschriften zu stylen."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+        "steps": [
+            {
+                "de": "Erstelle das Grundgerüst mit <!DOCTYPE html>.",
+                "en": "Create the base structure with <!DOCTYPE html>."
             },
-            "code":
-                "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Textgrößen Beispiel</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <h2>Hello World</h2>\n    <h3>Hello World!</h3>\n    <h4>Hello World.</h4>\n    <h5>Hello World.</h5>\n    <h6>Hello World!</h6>\n</body>\n</html>",
-            "category": "HTML"
-        },
-        {
-            "id": "html_003",
-            "title": "Bilder einfügen",
-            "description": "Lerne, wie du Bilder mit dem <img>-Tag einbindest.",
-            "steps": [
-                "Erstelle das Grundgerüst.",
-                "Füge ein <img>-Tag innerhalb des <body>-Tags hinzu.",
-                "Verwende src, alt, width und height Attribute."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+            {
+                "de": "Füge <button> innerhalb des <body>-Tags hinzu.",
+                "en": "Add <button> inside the <body> tag."
             },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Bilder Beispiel</title>\n</head>\n<body>\n    <img src=\"bild.png\" alt=\"Ein Beispielbild\" width=\"300\">\n</body>\n</html>",
-            "category": "HTML"
-        },
-        {
-            "id": "html_004",
-            "title": "Links erstellen",
-            "description": "Erstelle klickbare Links mit dem <a>-Tag.",
-            "steps": [
-                "Erstelle das HTML Grundgerüst.",
-                "Verwende das <a>-Tag mit href.",
-                "Nutze target=\"_blank\" für neue Tabs."
+            {
+                "de": "Füge optional CSS hinzu, um den Button zu stylen.",
+                "en": "Optionally add CSS to style the button."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Links Beispiel</title>\n</head>\n<body>\n    <a href=\"https:/example.com\" target=\"_blank\">Besuche Example</a>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_005",
-            "title": "Listen erstellen",
-            "description":
+        "code":
+            "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Button Beispiel</title>\n</head>\n<body>\n    <button>Click me</button>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_002",
+        "title": {
+            "de": "Textgrößen verwenden",
+            "en": "Use text sizes"
+        },
+        "description": {
+            "de": "Lerne, wie du verschiedene Textgrößen in HTML nutzt.",
+            "en": "Learn how to use different text sizes in HTML."
+        },
+        "steps": [
+            {
+                "de": "Beginne mit dem HTML Grundgerüst.",
+                "en": "Start with the HTML base structure."
+            },
+            {
+                "de": "Füge <h1> bis <h6> innerhalb des <body>-Tags hinzu.",
+                "en": "Add <h1> through <h6> inside the <body> tag."
+            },
+            {
+                "de":
+                    "Füge optional CSS hinzu, um die Überschriften zu stylen.",
+                "en": "Optionally add CSS to style the headings."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Textgrößen Beispiel</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <h2>Hello World</h2>\n    <h3>Hello World!</h3>\n    <h4>Hello World.</h4>\n    <h5>Hello World.</h5>\n    <h6>Hello World!</h6>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_003",
+        "title": {
+            "de": "Bilder einfügen",
+            "en": "Insert images"
+        },
+        "description": {
+            "de": "Lerne, wie du Bilder mit dem <img>-Tag einbindest.",
+            "en": "Learn how to include images with the <img> tag."
+        },
+        "steps": [
+            {
+                "de": "Erstelle das Grundgerüst.",
+                "en": "Create the base structure."
+            },
+            {
+                "de": "Füge ein <img>-Tag innerhalb des <body>-Tags hinzu.",
+                "en": "Add an <img> tag inside the <body> tag."
+            },
+            {
+                "de": "Verwende src, alt, width und height Attribute.",
+                "en": "Use src, alt, width and height attributes."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Bilder Beispiel</title>\n</head>\n<body>\n    <img src=\"bild.png\" alt=\"Ein Beispielbild\" width=\"300\">\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_004",
+        "title": {
+            "de": "Links erstellen",
+            "en": "Create links"
+        },
+        "description": {
+            "de": "Erstelle klickbare Links mit dem <a>-Tag.",
+            "en": "Create clickable links with the <a> tag."
+        },
+        "steps": [
+            {
+                "de": "Erstelle das HTML Grundgerüst.",
+                "en": "Create the HTML base structure."
+            },
+            {
+                "de": "Verwende das <a>-Tag mit href.",
+                "en": "Use the <a> tag with href."
+            },
+            {
+                "de": "Nutze target=\"_blank\" für neue Tabs.",
+                "en": "Use target=\"_blank\" for new tabs."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Links Beispiel</title>\n</head>\n<body>\n    <a href=\"https:/example.com\" target=\"_blank\">Besuche Example</a>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_005",
+        "title": {
+            "de": "Listen erstellen",
+            "en": "Create lists"
+        },
+        "description": {
+            "de":
                 "Lerne den Unterschied zwischen ungeordneten und geordneten Listen.",
-            "steps": [
-                "Erstelle eine <ul>-Liste.",
-                "Erstelle eine <ol>-Liste.",
-                "Verwende <li> für Listenelemente."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Listen Beispiel</title>\n</head>\n<body>\n    <ul>\n        <li>Hund</li>\n        <li>Katze</li>\n        <li>Maus</li>\n    </ul>\n    <ol>\n        <li>Erster Punkt</li>\n        <li>Zweiter Punkt</li>\n    </ol>\n</body>\n</html>",
-            "category": "HTML"
+            "en": "Learn the difference between unordered and ordered lists."
         },
-        {
-            "id": "html_006",
-            "title": "Tabellen erstellen",
-            "description":
+        "steps": [
+            {
+                "de": "Erstelle eine <ul>-Liste.",
+                "en": "Create a <ul> list."
+            },
+            {
+                "de": "Erstelle eine <ol>-Liste.",
+                "en": "Create an <ol> list."
+            },
+            {
+                "de": "Verwende <li> für Listenelemente.",
+                "en": "Use <li> for list items."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Listen Beispiel</title>\n</head>\n<body>\n    <ul>\n        <li>Hund</li>\n        <li>Katze</li>\n        <li>Maus</li>\n    </ul>\n    <ol>\n        <li>Erster Punkt</li>\n        <li>Zweiter Punkt</li>\n    </ol>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_006",
+        "title": {
+            "de": "Tabellen erstellen",
+            "en": "Create tables"
+        },
+        "description": {
+            "de":
                 "Erstelle einfache Tabellen mit <table>, <tr>, <th> und <td>.",
-            "steps": [
-                "Erstelle eine Tabelle mit <table>.",
-                "Füge Reihen mit <tr> hinzu.",
-                "Nutze <th> für Titel und <td> für Zellen."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Tabelle Beispiel</title>\n</head>\n<body>\n    <table border=\"1\">\n        <tr>\n            <th>Name</th>\n            <th>Alter</th>\n        </tr>\n        <tr>\n            <td>Anna</td>\n            <td>23</td>\n        </tr>\n    </table>\n</body>\n</html>",
-            "category": "HTML"
+            "en": "Create simple tables with <table>, <tr>, <th> and <td>."
         },
-        {
-            "id": "html_007",
-            "title": "Div & Span verstehen",
-            "description":
+        "steps": [
+            {
+                "de": "Erstelle eine Tabelle mit <table>.",
+                "en": "Create a table with <table>."
+            },
+            {
+                "de": "Füge Reihen mit <tr> hinzu.",
+                "en": "Add rows with <tr>."
+            },
+            {
+                "de": "Nutze <th> für Titel und <td> für Zellen.",
+                "en": "Use <th> for headers and <td> for cells."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Tabelle Beispiel</title>\n</head>\n<body>\n    <table border=\"1\">\n        <tr>\n            <th>Name</th>\n            <th>Alter</th>\n        </tr>\n        <tr>\n            <td>Anna</td>\n            <td>23</td>\n        </tr>\n    </table>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_007",
+        "title": {
+            "de": "Div & Span verstehen",
+            "en": "Understand div & span"
+        },
+        "description": {
+            "de":
                 "Erfahre den Unterschied zwischen Block- und Inline-Elementen.",
-            "steps": [
-                "Nutze <div> für Block-Container.",
-                "Nutze <span> für Inline-Elemente.",
-                "Verstehe die strukturellen Unterschiede."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Div und Span</title>\n</head>\n<body>\n    <div>Ich bin ein Blockelement</div>\n    <span>Ich bin inline</span>\n</body>\n</html>",
-            "category": "HTML",
-            "categoryIcon": "chevron.left.forwardslash.chevron.right",
-            "categoryIconColor": "#FF6D2D"
+            "en": "Learn the difference between block and inline elements."
         },
-        {
-            "id": "html_008",
-            "title": "CSS Basics",
-            "description":
-                "Erste Schritte mit CSS: Farben, Größen und Textstile.",
-            "steps": [
-                "Füge ein <style>-Tag hinzu.",
-                "Stylen eines Elements mit CSS.",
-                "Farben, Größen, Fonts ausprobieren."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+        "steps": [
+            {
+                "de": "Nutze <div> für Block-Container.",
+                "en": "Use <div> for block containers."
             },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>CSS Basics</title>\n    <style>\n        p {\n            color: cyan;\n            font-size: 20px;\n        }\n    </style>\n</head>\n<body>\n    <p>Hallo CSS!</p>\n</body>\n</html>",
-            "category": "HTML"
-        },
-        {
-            "id": "html_009",
-            "title": "Farben & Hintergründe",
-            "description": "Lerne Farbwerte und Hintergrundfarben in CSS.",
-            "steps": [
-                "Nutze hex Farben (#FFFFFF).",
-                "Nutze rgb(0,0,0) und hsl().",
-                "Setze background-color ein."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+            {
+                "de": "Nutze <span> für Inline-Elemente.",
+                "en": "Use <span> for inline elements."
             },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Farben Beispiel</title>\n    <style>\n        body {\n            background-color: #7209B7;\n            color: white;\n        }\n    </style>\n</head>\n<body>\n    <p>Farben machen HTML lebendig!</p>\n</body>\n</html>",
-            "category": "HTML"
-        },
-        {
-            "id": "html_010",
-            "title": "Container Layout mit Flexbox",
-            "description":
-                "Lerne, wie du Flexbox direkt in HTML verwenden kannst.",
-            "steps": [
-                "Nutze display: flex.",
-                "Richte Elemente horizontal aus.",
-                "Nutze justify-content und align-items."
+            {
+                "de": "Verstehe die strukturellen Unterschiede.",
+                "en": "Understand the structural differences."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Flexbox Beispiel</title>\n    <style>\n        .container {\n            display: flex;\n            gap: 10px;\n        }\n        .box {\n            background: cyan;\n            padding: 20px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"box\">1</div>\n        <div class=\"box\">2</div>\n        <div class=\"box\">3</div>\n    </div>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_011",
-            "title": "Formulare erstellen",
-            "description": "Erstelle interaktive Formulare mit Input-Feldern.",
-            "steps": [
-                "Nutze <form> als Container.",
-                "Füge <input>-Felder hinzu.",
-                "Füge Labels hinzu und verbinde sie."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Div und Span</title>\n</head>\n<body>\n    <div>Ich bin ein Blockelement</div>\n    <span>Ich bin inline</span>\n</body>\n</html>",
+        "category": "HTML",
+        "categoryIcon": "chevron.left.forwardslash.chevron.right",
+        "categoryIconColor": "#FF6D2D"
+    },
+    {
+        "id": "html_008",
+        "title": {
+            "de": "CSS Basics",
+            "en": "CSS basics"
+        },
+        "description": {
+            "de": "Erste Schritte mit CSS: Farben, Größen und Textstile.",
+            "en": "First steps with CSS: colors, sizes and text styles."
+        },
+        "steps": [
+            {
+                "de": "Füge ein <style>-Tag hinzu.",
+                "en": "Add a <style> tag."
+            },
+            {
+                "de": "Stylen eines Elements mit CSS.",
+                "en": "Style an element with CSS."
+            },
+            {
+                "de": "Farben, Größen, Fonts ausprobieren.",
+                "en": "Try colors, sizes and fonts."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Formular Beispiel</title>\n</head>\n<body>\n    <form>\n        <label>Name:</label>\n        <input type=\"text\" placeholder=\"Gib deinen Namen ein\">\n        <button>Absenden</button>\n    </form>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_012",
-            "title": "Audio & Video einbinden",
-            "description":
-                "Binde Audio- und Video-Dateien in deine Webseite ein.",
-            "steps": [
-                "Nutze das <audio>-Tag.",
-                "Nutze das <video>-Tag.",
-                "Aktiviere controls für Abspielknöpfe."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>CSS Basics</title>\n    <style>\n        p {\n            color: cyan;\n            font-size: 20px;\n        }\n    </style>\n</head>\n<body>\n    <p>Hallo CSS!</p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_009",
+        "title": {
+            "de": "Farben & Hintergründe",
+            "en": "Colors & backgrounds"
+        },
+        "description": {
+            "de": "Lerne Farbwerte und Hintergrundfarben in CSS.",
+            "en": "Learn color values and background colors in CSS."
+        },
+        "steps": [
+            {
+                "de": "Nutze hex Farben (#FFFFFF).",
+                "en": "Use hex colors (#FFFFFF)."
+            },
+            {
+                "de": "Nutze rgb(0,0,0) und hsl().",
+                "en": "Use rgb(0,0,0) and hsl()."
+            },
+            {
+                "de": "Setze background-color ein.",
+                "en": "Set background-color."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Media Beispiel</title>\n</head>\n<body>\n    <audio controls>\n        <source src=\"audio.mp3\" type=\"audio/mpeg\">\n    </audio>\n    <video width=\"300\" controls>\n        <source src=\"video.mp4\" type=\"video/mp4\">\n    </video>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_013",
-            "title": "Inline Styles verwenden",
-            "description":
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Farben Beispiel</title>\n    <style>\n        body {\n            background-color: #7209B7;\n            color: white;\n        }\n    </style>\n</head>\n<body>\n    <p>Farben machen HTML lebendig!</p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_010",
+        "title": {
+            "de": "Container Layout mit Flexbox",
+            "en": "Container layout with Flexbox"
+        },
+        "description": {
+            "de": "Lerne, wie du Flexbox direkt in HTML verwenden kannst.",
+            "en": "Learn how to use Flexbox directly in HTML."
+        },
+        "steps": [
+            {
+                "de": "Nutze display: flex.",
+                "en": "Use display: flex."
+            },
+            {
+                "de": "Richte Elemente horizontal aus.",
+                "en": "Align elements horizontally."
+            },
+            {
+                "de": "Nutze justify-content und align-items.",
+                "en": "Use justify-content and align-items."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Flexbox Beispiel</title>\n    <style>\n        .container {\n            display: flex;\n            gap: 10px;\n        }\n        .box {\n            background: cyan;\n            padding: 20px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"box\">1</div>\n        <div class=\"box\">2</div>\n        <div class=\"box\">3</div>\n    </div>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_011",
+        "title": {
+            "de": "Formulare erstellen",
+            "en": "Create forms"
+        },
+        "description": {
+            "de": "Erstelle interaktive Formulare mit Input-Feldern.",
+            "en": "Create interactive forms with input fields."
+        },
+        "steps": [
+            {
+                "de": "Nutze <form> als Container.",
+                "en": "Use <form> as the container."
+            },
+            {
+                "de": "Füge <input>-Felder hinzu.",
+                "en": "Add <input> fields."
+            },
+            {
+                "de": "Füge Labels hinzu und verbinde sie.",
+                "en": "Add labels and connect them."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Formular Beispiel</title>\n</head>\n<body>\n    <form>\n        <label>Name:</label>\n        <input type=\"text\" placeholder=\"Gib deinen Namen ein\">\n        <button>Absenden</button>\n    </form>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_012",
+        "title": {
+            "de": "Audio & Video einbinden",
+            "en": "Embed audio & video"
+        },
+        "description": {
+            "de": "Binde Audio- und Video-Dateien in deine Webseite ein.",
+            "en": "Embed audio and video files into your website."
+        },
+        "steps": [
+            {
+                "de": "Nutze das <audio>-Tag.",
+                "en": "Use the <audio> tag."
+            },
+            {
+                "de": "Nutze das <video>-Tag.",
+                "en": "Use the <video> tag."
+            },
+            {
+                "de": "Aktiviere controls für Abspielknöpfe.",
+                "en": "Enable controls for playback buttons."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Media Beispiel</title>\n</head>\n<body>\n    <audio controls>\n        <source src=\"audio.mp3\" type=\"audio/mpeg\">\n    </audio>\n    <video width=\"300\" controls>\n        <source src=\"video.mp4\" type=\"video/mp4\">\n    </video>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_013",
+        "title": {
+            "de": "Inline Styles verwenden",
+            "en": "Use inline styles"
+        },
+        "description": {
+            "de":
                 "Lerne, wie du CSS direkt in HTML-Elementen mit dem style-Attribut verwendest.",
-            "steps": [
-                "Nutze das style-Attribut an einem HTML-Element.",
-                "Definiere CSS Eigenschaften wie color oder background.",
-                "Verwende mehrere Eigenschaften mit Semikolon getrennt."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<title>Inline Styles</title>\n</head>\n<body>\n    <p style=\"color: cyan; font-size: 20px;\">Dieser Text nutzt Inline CSS.</p>\n</body>\n</html>",
-            "category": "HTML"
+            "en":
+                "Learn how to use CSS directly in HTML elements with the style attribute."
         },
-        {
-            "id": "html_014",
-            "title": "Kommentare in HTML",
-            "description": "Lerne, wie du Kommentare in HTML einfügst.",
-            "steps": [
-                "Nutze <!-- Kommentar --> für HTML-Kommentare.",
-                "Kommentare werden vom Browser ignoriert.",
-                "Nutze Kommentare, um Code zu erklären."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+        "steps": [
+            {
+                "de": "Nutze das style-Attribut an einem HTML-Element.",
+                "en": "Use the style attribute on an HTML element."
             },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n    <!-- Das ist ein Kommentar -->\n    <p>Hello World</p>\n</body>\n</html>",
-            "category": "HTML"
-        },
-        {
-            "id": "html_015",
-            "title": "Metadaten im Head",
-            "description": "Lerne wichtige <meta>-Tags im HTML-Head kennen.",
-            "steps": [
-                "Nutze <meta charset=\"UTF-8\"> für Umlaute.",
-                "Nutze viewport für mobile Optimierung.",
-                "Setze einen passenden title."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+            {
+                "de": "Definiere CSS Eigenschaften wie color oder background.",
+                "en": "Define CSS properties such as color or background."
             },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Head Metadaten</title>\n</head>\n<body>\n    <p>Head Bereich konfiguriert!</p>\n</body>\n</html>",
-            "category": "HTML"
-        },
-        {
-            "id": "html_016",
-            "title": "Textformatierung",
-            "description":
-                "Nutze <b>, <i>, <u> und <strong> für Formatierungen.",
-            "steps": [
-                "Nutze <b> für fett.",
-                "Nutze <i> für kursiv.",
-                "Nutze <strong> für wichtige Hervorhebung."
+            {
+                "de": "Verwende mehrere Eigenschaften mit Semikolon getrennt.",
+                "en": "Separate multiple properties with semicolons."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n    <p><b>Fett</b> und <i>Kursiv</i> und <u>Unterstrichen</u></p>\n    <p><strong>Wichtiger Hinweis!</strong></p>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_017",
-            "title": "ID und Class verwenden",
-            "description":
-                "Erstelle klare Strukturen mit id und class Attributen.",
-            "steps": [
-                "Nutze id für eindeutige Elemente.",
-                "Nutze class für Gruppen.",
-                "Nutze diese später für CSS."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<title>Inline Styles</title>\n</head>\n<body>\n    <p style=\"color: cyan; font-size: 20px;\">Dieser Text nutzt Inline CSS.</p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_014",
+        "title": {
+            "de": "Kommentare in HTML",
+            "en": "Comments in HTML"
+        },
+        "description": {
+            "de": "Lerne, wie du Kommentare in HTML einfügst.",
+            "en": "Learn how to add comments in HTML."
+        },
+        "steps": [
+            {
+                "de": "Nutze <!-- Kommentar --> für HTML-Kommentare.",
+                "en": "Use <!-- comment --> for HTML comments."
+            },
+            {
+                "de": "Kommentare werden vom Browser ignoriert.",
+                "en": "Comments are ignored by the browser."
+            },
+            {
+                "de": "Nutze Kommentare, um Code zu erklären.",
+                "en": "Use comments to explain code."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<style>\n#header { color: cyan; }\n.box { background: purple; padding: 10px; }\n</style>\n</head>\n<body>\n    <h1 id=\"header\">Hallo ID</h1>\n    <div class=\"box\">Ich bin eine Box</div>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_018",
-            "title": "Bilder verlinken",
-            "description":
-                "Kombiniere <img> und <a> um Bilder klickbar zu machen.",
-            "steps": [
-                "Lege ein <a>-Tag um ein Bild.",
-                "Verwende href für das Ziel.",
-                "Nutze target=\"_blank\" für neues Fenster."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n    <!-- Das ist ein Kommentar -->\n    <p>Hello World</p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_015",
+        "title": {
+            "de": "Metadaten im Head",
+            "en": "Metadata in the head"
+        },
+        "description": {
+            "de": "Lerne wichtige <meta>-Tags im HTML-Head kennen.",
+            "en": "Learn important <meta> tags in the HTML head."
+        },
+        "steps": [
+            {
+                "de": "Nutze <meta charset=\"UTF-8\"> für Umlaute.",
+                "en": "Use <meta charset=\"UTF-8\"> for special characters."
+            },
+            {
+                "de": "Nutze viewport für mobile Optimierung.",
+                "en": "Use viewport for mobile optimization."
+            },
+            {
+                "de": "Setze einen passenden title.",
+                "en": "Set a fitting title."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\" target=\"_blank\">\n    <img src=\"bild.png\" width=\"200\">\n</a>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_019",
-            "title": "Iframe einbinden",
-            "description":
-                "Binde externe Inhalte wie Webseiten oder Videos ein.",
-            "steps": [
-                "Nutze das <iframe>-Tag.",
-                "Setze width und height.",
-                "Nutze src für die Zielseite."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Head Metadaten</title>\n</head>\n<body>\n    <p>Head Bereich konfiguriert!</p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_016",
+        "title": {
+            "de": "Textformatierung",
+            "en": "Text formatting"
+        },
+        "description": {
+            "de": "Nutze <b>, <i>, <u> und <strong> für Formatierungen.",
+            "en": "Use <b>, <i>, <u> and <strong> for formatting."
+        },
+        "steps": [
+            {
+                "de": "Nutze <b> für fett.",
+                "en": "Use <b> for bold text."
+            },
+            {
+                "de": "Nutze <i> für kursiv.",
+                "en": "Use <i> for italic text."
+            },
+            {
+                "de": "Nutze <strong> für wichtige Hervorhebung.",
+                "en": "Use <strong> for important emphasis."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\"https:/example.com\" width=\"300\" height=\"200\"></iframe>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_020",
-            "title": "Struktur einer Webseite",
-            "description":
-                "Verwende header, main und footer für sauberen Aufbau.",
-            "steps": [
-                "Nutze <header> für Kopfbereich.",
-                "Nutze <main> für Hauptinhalte.",
-                "Nutze <footer> für den unteren Bereich."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n    <p><b>Fett</b> und <i>Kursiv</i> und <u>Unterstrichen</u></p>\n    <p><strong>Wichtiger Hinweis!</strong></p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_017",
+        "title": {
+            "de": "ID und Class verwenden",
+            "en": "Use ID and class"
+        },
+        "description": {
+            "de": "Erstelle klare Strukturen mit id und class Attributen.",
+            "en": "Create clear structure with id and class attributes."
+        },
+        "steps": [
+            {
+                "de": "Nutze id für eindeutige Elemente.",
+                "en": "Use id for unique elements."
+            },
+            {
+                "de": "Nutze class für Gruppen.",
+                "en": "Use class for groups."
+            },
+            {
+                "de": "Nutze diese später für CSS.",
+                "en": "Use them later for CSS."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<header>Header Bereich</header>\n<main>Hauptinhalt</main>\n<footer>Footer Bereich</footer>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_021",
-            "title": "Buttons mit Links kombinieren",
-            "description": "Mache Buttons klickbar und verlinke sie.",
-            "steps": [
-                "Lege ein <a>-Tag um einen Button.",
-                "Nutze href für die Zielseite.",
-                "Nutze CSS für Styling."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<style>\n#header { color: cyan; }\n.box { background: purple; padding: 10px; }\n</style>\n</head>\n<body>\n    <h1 id=\"header\">Hallo ID</h1>\n    <div class=\"box\">Ich bin eine Box</div>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_018",
+        "title": {
+            "de": "Bilder verlinken",
+            "en": "Link images"
+        },
+        "description": {
+            "de": "Kombiniere <img> und <a> um Bilder klickbar zu machen.",
+            "en": "Combine <img> and <a> to make images clickable."
+        },
+        "steps": [
+            {
+                "de": "Lege ein <a>-Tag um ein Bild.",
+                "en": "Place an <a> tag around an image."
+            },
+            {
+                "de": "Verwende href für das Ziel.",
+                "en": "Use href for the target."
+            },
+            {
+                "de": "Nutze target=\"_blank\" für neues Fenster.",
+                "en": "Use target=\"_blank\" for a new window."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\">\n    <button style=\"padding:10px;\">Go!</button>\n</a>\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_022",
-            "title": "Bilder skalieren mit CSS",
-            "description": "Lerne, wie du Bilder responsive skalierst.",
-            "steps": [
-                "Nutze width: 100% für volle Breite.",
-                "Setze max-width für Begrenzung.",
-                "Nutze height: auto um Verhältnis zu behalten."
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\" target=\"_blank\">\n    <img src=\"bild.png\" width=\"200\">\n</a>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_019",
+        "title": {
+            "de": "Iframe einbinden",
+            "en": "Embed iframe"
+        },
+        "description": {
+            "de": "Binde externe Inhalte wie Webseiten oder Videos ein.",
+            "en": "Embed external content such as websites or videos."
+        },
+        "steps": [
+            {
+                "de": "Nutze das <iframe>-Tag.",
+                "en": "Use the <iframe> tag."
+            },
+            {
+                "de": "Setze width und height.",
+                "en": "Set width and height."
+            },
+            {
+                "de": "Nutze src für die Zielseite.",
+                "en": "Use src for the target page."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
             ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.responsive {\n    width: 100%;\n    max-width: 300px;\n    height: auto;\n}\n</style>\n</head>\n<body>\n    <img src=\"bild.png\" class=\"responsive\">\n</body>\n</html>",
-            "category": "HTML"
+            "textColors": [
+                "#FFFFFF"
+            ]
         },
-        {
-            "id": "html_023",
-            "title": "Formular-Validierung (Basics)",
-            "description":
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\"https:/example.com\" width=\"300\" height=\"200\"></iframe>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_020",
+        "title": {
+            "de": "Struktur einer Webseite",
+            "en": "Website structure"
+        },
+        "description": {
+            "de": "Verwende header, main und footer für sauberen Aufbau.",
+            "en": "Use header, main and footer for a clean layout."
+        },
+        "steps": [
+            {
+                "de": "Nutze <header> für Kopfbereich.",
+                "en": "Use <header> for the top area."
+            },
+            {
+                "de": "Nutze <main> für Hauptinhalte.",
+                "en": "Use <main> for main content."
+            },
+            {
+                "de": "Nutze <footer> für den unteren Bereich.",
+                "en": "Use <footer> for the bottom area."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n<header>Header Bereich</header>\n<main>Hauptinhalt</main>\n<footer>Footer Bereich</footer>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_021",
+        "title": {
+            "de": "Buttons mit Links kombinieren",
+            "en": "Combine buttons with links"
+        },
+        "description": {
+            "de": "Mache Buttons klickbar und verlinke sie.",
+            "en": "Make buttons clickable and link them."
+        },
+        "steps": [
+            {
+                "de": "Lege ein <a>-Tag um einen Button.",
+                "en": "Place an <a> tag around a button."
+            },
+            {
+                "de": "Nutze href für die Zielseite.",
+                "en": "Use href for the target page."
+            },
+            {
+                "de": "Nutze CSS für Styling.",
+                "en": "Use CSS for styling."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\">\n    <button style=\"padding:10px;\">Go!</button>\n</a>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_022",
+        "title": {
+            "de": "Bilder skalieren mit CSS",
+            "en": "Scale images with CSS"
+        },
+        "description": {
+            "de": "Lerne, wie du Bilder responsive skalierst.",
+            "en": "Learn how to scale images responsively."
+        },
+        "steps": [
+            {
+                "de": "Nutze width: 100% für volle Breite.",
+                "en": "Use width: 100% for full width."
+            },
+            {
+                "de": "Setze max-width für Begrenzung.",
+                "en": "Set max-width as a limit."
+            },
+            {
+                "de": "Nutze height: auto um Verhältnis zu behalten.",
+                "en": "Use height: auto to keep proportions."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.responsive {\n    width: 100%;\n    max-width: 300px;\n    height: auto;\n}\n</style>\n</head>\n<body>\n    <img src=\"bild.png\" class=\"responsive\">\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_023",
+        "title": {
+            "de": "Formular-Validierung (Basics)",
+            "en": "Form validation basics"
+        },
+        "description": {
+            "de":
                 "Lerne, wie du HTML-Felder direkt mit Validierung versiehst – ohne JavaScript.",
-            "steps": [
-                "Nutze required für Pflichtfelder.",
-                "Nutze minlength und maxlength.",
-                "Nutze pattern für eigene Regeln (z. B. nur Zahlen)."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<form>\n    <input type=\"text\" placeholder=\"Name\" required minlength=\"3\">\n    <input type=\"text\" placeholder=\"Nur Zahlen\" pattern=\"[0-9]+\">\n    <button>Absenden</button>\n</form>\n</body>\n</html>",
-            "category": "HTML"
+            "en":
+                "Learn how to validate HTML fields directly without JavaScript."
         },
-        {
-            "id": "html_024",
-            "title": "Navigation Bar erstellen",
-            "description":
+        "steps": [
+            {
+                "de": "Nutze required für Pflichtfelder.",
+                "en": "Use required for mandatory fields."
+            },
+            {
+                "de": "Nutze minlength und maxlength.",
+                "en": "Use minlength and maxlength."
+            },
+            {
+                "de": "Nutze pattern für eigene Regeln (z. B. nur Zahlen).",
+                "en": "Use pattern for custom rules, such as numbers only."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<body>\n<form>\n    <input type=\"text\" placeholder=\"Name\" required minlength=\"3\">\n    <input type=\"text\" placeholder=\"Nur Zahlen\" pattern=\"[0-9]+\">\n    <button>Absenden</button>\n</form>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_024",
+        "title": {
+            "de": "Navigation Bar erstellen",
+            "en": "Create navigation bar"
+        },
+        "description": {
+            "de":
                 "Baue eine einfache Navbar mit Links – perfekt für Webseiten-Menüs.",
-            "steps": [
-                "Erstelle ein <nav>-Element.",
-                "Nutze <a>-Tags als Menüeinträge.",
-                "Stylen mit display: flex."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<style>\nnav {\n    display: flex;\n    gap: 20px;\n    background: #7209B7;\n    padding: 10px;\n}\nnav a {\n    color: white;\n    text-decoration: none;\n}\n</style>\n</head>\n<body>\n<nav>\n    <a href=\"#\">Home</a>\n    <a href=\"#\">About</a>\n    <a href=\"#\">Kontakt</a>\n</nav>\n</body>\n</html>",
-            "category": "HTML"
+            "en": "Build a simple navbar with links, perfect for website menus."
         },
-        {
-            "id": "html_025",
-            "title": "CSS Grid Basics",
-            "description":
+        "steps": [
+            {
+                "de": "Erstelle ein <nav>-Element.",
+                "en": "Create a <nav> element."
+            },
+            {
+                "de": "Nutze <a>-Tags als Menüeinträge.",
+                "en": "Use <a> tags as menu items."
+            },
+            {
+                "de": "Stylen mit display: flex.",
+                "en": "Style with display: flex."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<style>\nnav {\n    display: flex;\n    gap: 20px;\n    background: #7209B7;\n    padding: 10px;\n}\nnav a {\n    color: white;\n    text-decoration: none;\n}\n</style>\n</head>\n<body>\n<nav>\n    <a href=\"#\">Home</a>\n    <a href=\"#\">About</a>\n    <a href=\"#\">Kontakt</a>\n</nav>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_025",
+        "title": {
+            "de": "CSS Grid Basics",
+            "en": "CSS Grid basics"
+        },
+        "description": {
+            "de":
                 "Erstelle ein modernes Layout mit CSS Grid – ideal für Galerien & Dashboards.",
-            "steps": [
-                "Nutze display: grid.",
-                "Definiere grid-template-columns.",
-                "Lege Abstände mit gap fest."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n}\n.item {\n    background: cyan;\n    padding: 20px;\n}\n</style>\n</head>\n<body>\n<div class=\"grid\">\n    <div class=\"item\">1</div>\n    <div class=\"item\">2</div>\n    <div class=\"item\">3</div>\n</div>\n</body>\n</html>",
-            "category": "HTML"
+            "en":
+                "Create a modern layout with CSS Grid, ideal for galleries and dashboards."
         },
-        {
-            "id": "html_026",
-            "title": "Responsive Layout (Media Queries)",
-            "description":
+        "steps": [
+            {
+                "de": "Nutze display: grid.",
+                "en": "Use display: grid."
+            },
+            {
+                "de": "Definiere grid-template-columns.",
+                "en": "Define grid-template-columns."
+            },
+            {
+                "de": "Lege Abstände mit gap fest.",
+                "en": "Set spacing with gap."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n}\n.item {\n    background: cyan;\n    padding: 20px;\n}\n</style>\n</head>\n<body>\n<div class=\"grid\">\n    <div class=\"item\">1</div>\n    <div class=\"item\">2</div>\n    <div class=\"item\">3</div>\n</div>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_026",
+        "title": {
+            "de": "Responsive Layout (Media Queries)",
+            "en": "Responsive layout (media queries)"
+        },
+        "description": {
+            "de":
                 "Lerne, wie Webseiten automatisch auf mobile Screens reagieren.",
-            "steps": [
-                "Nutze @media screen für Breakpoints.",
-                "Passe Schriftgrößen oder Layout an.",
-                "Simuliere in Browser DevTools."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
-            },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<style>\np { font-size: 20px; }\n\n@media screen and (max-width: 600px) {\n    p { font-size: 14px; color: yellow; }\n}\n</style>\n</head>\n<body>\n<p>Ich passe mich der Bildschirmgröße an!</p>\n</body>\n</html>",
-            "category": "HTML"
+            "en": "Learn how websites react automatically to mobile screens."
         },
-        {
-            "id": "html_027",
-            "title": "Einfache CSS Animation erstellen",
-            "description":
-                "Nutze CSS keyframes, um Elemente zu animieren – ohne JavaScript.",
-            "steps": [
-                "Definiere @keyframes.",
-                "Nutze animation-duration und animation-name.",
-                "Wende Animation auf ein HTML-Element an."
-            ],
-            "colors": {
-                "backgroundColors": [
-                    "#000000",
-                    "#7209B7",
-                    "#000000"
-                ],
-                "textColors": [
-                    "#FFFFFF"
-                ]
+        "steps": [
+            {
+                "de": "Nutze @media screen für Breakpoints.",
+                "en": "Use @media screen for breakpoints."
             },
-            "code":
-                "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.box {\n    width: 100px;\n    height: 100px;\n    background: cyan;\n    animation: move 2s infinite alternate;\n}\n@keyframes move {\n    from { transform: translateX(0); }\n    to { transform: translateX(200px); }\n}\n</style>\n</head>\n<body>\n<div class=\"box\"></div>\n</body>\n</html>",
-            "category": "HTML"
-        }
-    ]
+            {
+                "de": "Passe Schriftgrößen oder Layout an.",
+                "en": "Adjust font sizes or layout."
+            },
+            {
+                "de": "Simuliere in Browser DevTools.",
+                "en": "Simulate it in browser DevTools."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<style>\np { font-size: 20px; }\n\n@media screen and (max-width: 600px) {\n    p { font-size: 14px; color: yellow; }\n}\n</style>\n</head>\n<body>\n<p>Ich passe mich der Bildschirmgröße an!</p>\n</body>\n</html>",
+        "category": "HTML"
+    },
+    {
+        "id": "html_027",
+        "title": {
+            "de": "Einfache CSS Animation erstellen",
+            "en": "Create simple CSS animation"
+        },
+        "description": {
+            "de":
+                "Nutze CSS keyframes, um Elemente zu animieren – ohne JavaScript.",
+            "en": "Use CSS keyframes to animate elements without JavaScript."
+        },
+        "steps": [
+            {
+                "de": "Definiere @keyframes.",
+                "en": "Define @keyframes."
+            },
+            {
+                "de": "Nutze animation-duration und animation-name.",
+                "en": "Use animation-duration and animation-name."
+            },
+            {
+                "de": "Wende Animation auf ein HTML-Element an.",
+                "en": "Apply the animation to an HTML element."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#000000",
+                "#7209B7",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "<!DOCTYPE html>\n<html>\n<head>\n<style>\n.box {\n    width: 100px;\n    height: 100px;\n    background: cyan;\n    animation: move 2s infinite alternate;\n}\n@keyframes move {\n    from { transform: translateX(0); }\n    to { transform: translateX(200px); }\n}\n</style>\n</head>\n<body>\n<div class=\"box\"></div>\n</body>\n</html>",
+        "category": "HTML"
+    }
+]

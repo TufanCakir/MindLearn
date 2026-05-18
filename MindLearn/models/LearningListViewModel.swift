@@ -94,13 +94,8 @@ extension LearningListViewModel {
             return true
         }
 
-        return topic.title
+        return topic.searchableText
             .localizedCaseInsensitiveContains(query)
-
-            ||
-
-            topic.description
-                .localizedCaseInsensitiveContains(query)
     }
 }
 

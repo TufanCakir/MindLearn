@@ -1,13 +1,32 @@
     [
         {
             "id": "widgetkit_001",
-            "title": "Einfaches Widget erstellen",
-            "description":
-                "Lerne, wie du mit WidgetKit ein einfaches Widget für den Home-Bildschirm erstellst.",
+            "title": {
+                "de": "Einfaches Widget erstellen",
+                "en": "Create simple widget"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du mit WidgetKit ein einfaches Widget für den Home-Bildschirm erstellst.",
+                "en":
+                    "Learn how to create a simple home screen widget with WidgetKit."
+            },
             "steps": [
-                "Erstelle ein Widget-Extension-Target in Xcode.",
-                "Definiere einen `TimelineProvider`, der Daten liefert.",
-                "Baue das Layout mit SwiftUI und registriere das Widget."
+                {
+                    "de": "Erstelle ein Widget-Extension-Target in Xcode.",
+                    "en": "Create a widget extension target in Xcode."
+                },
+                {
+                    "de":
+                        "Definiere einen `TimelineProvider`, der Daten liefert.",
+                    "en": "Define a `TimelineProvider` that provides data."
+                },
+                {
+                    "de":
+                        "Baue das Layout mit SwiftUI und registriere das Widget.",
+                    "en":
+                        "Build the layout with SwiftUI and register the widget."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -25,13 +44,31 @@
         },
         {
             "id": "widgetkit_002",
-            "title": "Lock Screen Widget (iOS 16+)",
-            "description":
-                "Erstelle ein kompaktes Lock Screen Widget, ideal für Status, Timer oder Health-Daten.",
+            "title": {
+                "de": "Lock Screen Widget (iOS 16+)",
+                "en": "Lock screen widget (iOS 16+)"
+            },
+            "description": {
+                "de":
+                    "Erstelle ein kompaktes Lock Screen Widget, ideal für Status, Timer oder Health-Daten.",
+                "en":
+                    "Create a compact lock screen widget, ideal for status, timers or health data."
+            },
             "steps": [
-                "Erstelle eine neue Widget-Erweiterung.",
-                "Nutze `.accessoryInline`, `.accessoryCircular` oder `.accessoryRectangular`.",
-                "Passe das UI für den gesperrten Bildschirm an."
+                {
+                    "de": "Erstelle eine neue Widget-Erweiterung.",
+                    "en": "Create a new widget extension."
+                },
+                {
+                    "de":
+                        "Nutze `.accessoryInline`, `.accessoryCircular` oder `.accessoryRectangular`.",
+                    "en":
+                        "Use `.accessoryInline`, `.accessoryCircular` or `.accessoryRectangular`."
+                },
+                {
+                    "de": "Passe das UI für den gesperrten Bildschirm an.",
+                    "en": "Adapt the UI for the locked screen."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -49,13 +86,29 @@
         },
         {
             "id": "widgetkit_003",
-            "title": "Widget mit API-Daten",
-            "description":
-                "Lade Daten aus einer Web-API und zeige sie im Widget an – perfekt für Wetter, Uhrzeit, News.",
+            "title": {
+                "de": "Widget mit API-Daten",
+                "en": "Widget with API data"
+            },
+            "description": {
+                "de":
+                    "Lade Daten aus einer Web-API und zeige sie im Widget an – perfekt für Wetter, Uhrzeit, News.",
+                "en":
+                    "Load data from a web API and show it in the widget, perfect for weather, time or news."
+            },
             "steps": [
-                "Führe einen API-Request im TimelineProvider aus.",
-                "Dekodiere JSON mit Codable.",
-                "Aktualisiere das Widget in Intervallen."
+                {
+                    "de": "Führe einen API-Request im TimelineProvider aus.",
+                    "en": "Run an API request in the TimelineProvider."
+                },
+                {
+                    "de": "Dekodiere JSON mit Codable.",
+                    "en": "Decode JSON with Codable."
+                },
+                {
+                    "de": "Aktualisiere das Widget in Intervallen.",
+                    "en": "Update the widget at intervals."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -73,13 +126,31 @@
         },
         {
             "id": "widgetkit_004",
-            "title": "Interaktives Widget (iOS 17+)",
-            "description":
-                "Widgets können Buttons enthalten, die App-Funktionen direkt ausführen.",
+            "title": {
+                "de": "Interaktives Widget (iOS 17+)",
+                "en": "Interactive widget (iOS 17+)"
+            },
+            "description": {
+                "de":
+                    "Widgets können Buttons enthalten, die App-Funktionen direkt ausführen.",
+                "en":
+                    "Widgets can contain buttons that run app features directly."
+            },
             "steps": [
-                "Verwende AppIntents für Trigger-Aktionen.",
-                "Nutze `Button(intent:)` innerhalb des Widgets.",
-                "Aktualisiere Daten mit `WidgetCenter.shared.reloadAllTimelines()`."
+                {
+                    "de": "Verwende AppIntents für Trigger-Aktionen.",
+                    "en": "Use AppIntents for trigger actions."
+                },
+                {
+                    "de": "Nutze `Button(intent:)` innerhalb des Widgets.",
+                    "en": "Use `Button(intent:)` inside the widget."
+                },
+                {
+                    "de":
+                        "Aktualisiere Daten mit `WidgetCenter.shared.reloadAllTimelines()`.",
+                    "en":
+                        "Update data with `WidgetCenter.shared.reloadAllTimelines()`."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -97,13 +168,30 @@
         },
         {
             "id": "widgetkit_005",
-            "title": "Dynamic Island / Live Activity",
-            "description":
-                "Erstelle eine Live Activity, die im Dynamic Island angezeigt wird – perfekt für Timer oder Tracking.",
+            "title": {
+                "de": "Dynamic Island / Live Activity",
+                "en": "Dynamic Island / Live Activity"
+            },
+            "description": {
+                "de":
+                    "Erstelle eine Live Activity, die im Dynamic Island angezeigt wird – perfekt für Timer oder Tracking.",
+                "en":
+                    "Create a Live Activity shown in the Dynamic Island, perfect for timers or tracking."
+            },
             "steps": [
-                "Definiere ein ActivityAttributes-Model.",
-                "Starte eine Activity aus der App.",
-                "Erstelle das Layout für Compact, Minimal und Expanded."
+                {
+                    "de": "Definiere ein ActivityAttributes-Model.",
+                    "en": "Define an ActivityAttributes model."
+                },
+                {
+                    "de": "Starte eine Activity aus der App.",
+                    "en": "Start an activity from the app."
+                },
+                {
+                    "de":
+                        "Erstelle das Layout für Compact, Minimal und Expanded.",
+                    "en": "Create layouts for compact, minimal and expanded."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -121,13 +209,29 @@
         },
         {
             "id": "widgetkit_006",
-            "title": "Widget mit lokalem Bild",
-            "description":
-                "Zeige Bilder aus deinem Asset-Ordner im Widget an – ideal für Avatare, Icons oder Logos.",
+            "title": {
+                "de": "Widget mit lokalem Bild",
+                "en": "Widget with local image"
+            },
+            "description": {
+                "de":
+                    "Zeige Bilder aus deinem Asset-Ordner im Widget an – ideal für Avatare, Icons oder Logos.",
+                "en":
+                    "Show images from your asset folder in the widget, ideal for avatars, icons or logos."
+            },
             "steps": [
-                "Füge Bilder zu Assets hinzu.",
-                "Nutze SwiftUI Image im Widget-View.",
-                "Passe das Layout mit ClipShape & Gradients an."
+                {
+                    "de": "Füge Bilder zu Assets hinzu.",
+                    "en": "Add images to Assets."
+                },
+                {
+                    "de": "Nutze SwiftUI Image im Widget-View.",
+                    "en": "Use SwiftUI Image in the widget view."
+                },
+                {
+                    "de": "Passe das Layout mit ClipShape & Gradients an.",
+                    "en": "Adjust layout with ClipShape and gradients."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -145,13 +249,30 @@
         },
         {
             "id": "widgetkit_007",
-            "title": "Kalender Widget (Nächster Termin)",
-            "description":
-                "Zeige den nächsten Termin aus dem Kalender an – ideal für Productivity-Widgets.",
+            "title": {
+                "de": "Kalender Widget (Nächster Termin)",
+                "en": "Calendar widget (next event)"
+            },
+            "description": {
+                "de":
+                    "Zeige den nächsten Termin aus dem Kalender an – ideal für Productivity-Widgets.",
+                "en":
+                    "Show the next calendar event, ideal for productivity widgets."
+            },
             "steps": [
-                "Nutze EventKit, um Termine abzurufen.",
-                "Gib den nächsten bevorstehenden Termin im Widget aus.",
-                "Aktualisiere das Widget stündlich."
+                {
+                    "de": "Nutze EventKit, um Termine abzurufen.",
+                    "en": "Use EventKit to fetch events."
+                },
+                {
+                    "de":
+                        "Gib den nächsten bevorstehenden Termin im Widget aus.",
+                    "en": "Output the next upcoming event in the widget."
+                },
+                {
+                    "de": "Aktualisiere das Widget stündlich.",
+                    "en": "Update the widget hourly."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -169,13 +290,29 @@
         },
         {
             "id": "widgetkit_008",
-            "title": "Countdown Widget",
-            "description":
-                "Zeige einen Countdown zu einem bestimmten Datum – ideal für Events oder Releases.",
+            "title": {
+                "de": "Countdown Widget",
+                "en": "Countdown widget"
+            },
+            "description": {
+                "de":
+                    "Zeige einen Countdown zu einem bestimmten Datum – ideal für Events oder Releases.",
+                "en":
+                    "Show a countdown to a specific date, ideal for events or releases."
+            },
             "steps": [
-                "Berechne die verbleibenden Tage/Stunden.",
-                "Aktualisiere jede Stunde automatisch.",
-                "Zeige das Ziel-Datum im Widget an."
+                {
+                    "de": "Berechne die verbleibenden Tage/Stunden.",
+                    "en": "Calculate remaining days or hours."
+                },
+                {
+                    "de": "Aktualisiere jede Stunde automatisch.",
+                    "en": "Update automatically every hour."
+                },
+                {
+                    "de": "Zeige das Ziel-Datum im Widget an.",
+                    "en": "Show the target date in the widget."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -193,13 +330,28 @@
         },
         {
             "id": "widgetkit_009",
-            "title": "Akkustand Widget",
-            "description":
-                "Zeige den aktuellen Akkustand des Geräts als Widget an.",
+            "title": {
+                "de": "Akkustand Widget",
+                "en": "Battery level widget"
+            },
+            "description": {
+                "de": "Zeige den aktuellen Akkustand des Geräts als Widget an.",
+                "en":
+                    "Show the current battery level of the device as a widget."
+            },
             "steps": [
-                "Nutze UIDevice.current.isBatteryMonitoringEnabled.",
-                "Lies batteryLevel aus.",
-                "Aktualisiere das Widget z. B. alle 15 Minuten."
+                {
+                    "de": "Nutze UIDevice.current.isBatteryMonitoringEnabled.",
+                    "en": "Use UIDevice.current.isBatteryMonitoringEnabled."
+                },
+                {
+                    "de": "Lies batteryLevel aus.",
+                    "en": "Read batteryLevel."
+                },
+                {
+                    "de": "Aktualisiere das Widget z. B. alle 15 Minuten.",
+                    "en": "Update the widget for example every 15 minutes."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -217,13 +369,28 @@
         },
         {
             "id": "widgetkit_010",
-            "title": "Zufalls-Zitat Widget",
-            "description":
-                "Ein Widget, das bei jedem Reload ein neues Zitat anzeigt.",
+            "title": {
+                "de": "Zufalls-Zitat Widget",
+                "en": "Random quote widget"
+            },
+            "description": {
+                "de":
+                    "Ein Widget, das bei jedem Reload ein neues Zitat anzeigt.",
+                "en": "A widget that shows a new quote on each reload."
+            },
             "steps": [
-                "Definiere ein Zitat-Array.",
-                "Wähle ein zufälliges Zitat im Provider.",
-                "Aktualisiere alle paar Stunden."
+                {
+                    "de": "Definiere ein Zitat-Array.",
+                    "en": "Define a quote array."
+                },
+                {
+                    "de": "Wähle ein zufälliges Zitat im Provider.",
+                    "en": "Choose a random quote in the provider."
+                },
+                {
+                    "de": "Aktualisiere alle paar Stunden.",
+                    "en": "Update every few hours."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -241,13 +408,29 @@
         },
         {
             "id": "widgetkit_011",
-            "title": "Fitness Schritte Widget",
-            "description":
-                "Zeige deine heutigen Schritte aus HealthKit direkt im Widget.",
+            "title": {
+                "de": "Fitness Schritte Widget",
+                "en": "Fitness steps widget"
+            },
+            "description": {
+                "de":
+                    "Zeige deine heutigen Schritte aus HealthKit direkt im Widget.",
+                "en":
+                    "Show today’s steps from HealthKit directly in the widget."
+            },
             "steps": [
-                "Lese Schritte mit HKStatisticsQuery aus.",
-                "Gib die Anzahl im Widget aus.",
-                "Reload alle 30 Minuten."
+                {
+                    "de": "Lese Schritte mit HKStatisticsQuery aus.",
+                    "en": "Read steps with HKStatisticsQuery."
+                },
+                {
+                    "de": "Gib die Anzahl im Widget aus.",
+                    "en": "Output the count in the widget."
+                },
+                {
+                    "de": "Reload alle 30 Minuten.",
+                    "en": "Reload every 30 minutes."
+                }
             ],
             "colors": {
                 "backgroundColors": [

@@ -42,7 +42,7 @@ extension DrawerListView {
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(
-                        "\(section.title). \(section.description)"
+                        "\(section.title(language: language)). \(section.description(language: language))"
                     )
                     .accessibilityHint(text.accessibility.learningCardHint)
                 }
@@ -55,6 +55,8 @@ extension DrawerListView {
 extension DrawerListView {
     private func drawerCard(_ section: DrawerSection) -> some View {
         let style = CategoryStyle.style(for: section.category)
+        let title = section.title(language: language)
+        let description = section.description(language: language)
 
         return HStack(spacing: 12) {
             Image(systemName: style.icon)
@@ -74,11 +76,11 @@ extension DrawerListView {
                 alignment: .leading,
                 spacing: 4
             ) {
-                Text(section.title)
+                Text(title)
                     .font(.headline)
                     .lineLimit(1)
 
-                Text(section.description)
+                Text(description)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)

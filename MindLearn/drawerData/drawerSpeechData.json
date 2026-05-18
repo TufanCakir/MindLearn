@@ -1,13 +1,31 @@
     [
         {
             "id": "speech_001",
-            "title": "Spracherkennung mit Speech Framework",
-            "description":
-                "Lerne, wie du mit Apples Speech Framework gesprochene Sprache in Text umwandelst.",
+            "title": {
+                "de": "Spracherkennung mit Speech Framework",
+                "en": "Speech recognition with Speech framework"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du mit Apples Speech Framework gesprochene Sprache in Text umwandelst.",
+                "en":
+                    "Learn how to convert spoken language into text with Apple Speech framework."
+            },
             "steps": [
-                "Importiere Speech und bitte um Mikrofon-Zugriff.",
-                "Erstelle eine SFSpeechRecognizer-Instanz.",
-                "Starte eine SFSpeechAudioBufferRecognitionRequest, um Sprache zu transkribieren."
+                {
+                    "de": "Importiere Speech und bitte um Mikrofon-Zugriff.",
+                    "en": "Import Speech and request microphone access."
+                },
+                {
+                    "de": "Erstelle eine SFSpeechRecognizer-Instanz.",
+                    "en": "Create an SFSpeechRecognizer instance."
+                },
+                {
+                    "de":
+                        "Starte eine SFSpeechAudioBufferRecognitionRequest, um Sprache zu transkribieren.",
+                    "en":
+                        "Start an SFSpeechAudioBufferRecognitionRequest to transcribe speech."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -25,13 +43,31 @@
         },
         {
             "id": "speech_002",
-            "title": "Spracherkennung aus Datei (Offline Audio)",
-            "description":
-                "Analysiere eine bestehende Audiodatei (z. B. .m4a oder .wav) und wandle sie in Text um.",
+            "title": {
+                "de": "Spracherkennung aus Datei (Offline Audio)",
+                "en": "Speech recognition from file"
+            },
+            "description": {
+                "de":
+                    "Analysiere eine bestehende Audiodatei (z. B. .m4a oder .wav) und wandle sie in Text um.",
+                "en":
+                    "Analyze an existing audio file such as .m4a or .wav and convert it to text."
+            },
             "steps": [
-                "Lade eine Audiodatei aus dem Bundle oder Dateisystem.",
-                "Erstelle eine SFSpeechURLRecognitionRequest.",
-                "Lasse den SpeechRecognizer die Datei transkribieren."
+                {
+                    "de":
+                        "Lade eine Audiodatei aus dem Bundle oder Dateisystem.",
+                    "en": "Load an audio file from the bundle or file system."
+                },
+                {
+                    "de": "Erstelle eine SFSpeechURLRecognitionRequest.",
+                    "en": "Create an SFSpeechURLRecognitionRequest."
+                },
+                {
+                    "de":
+                        "Lasse den SpeechRecognizer die Datei transkribieren.",
+                    "en": "Let SpeechRecognizer transcribe the file."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -49,13 +85,29 @@
         },
         {
             "id": "speech_003",
-            "title": "Live-Transkription mit UI",
-            "description":
-                "Erstelle ein SwiftUI-Interface, das in Echtzeit gesprochene Sprache anzeigt.",
+            "title": {
+                "de": "Live-Transkription mit UI",
+                "en": "Live transcription with UI"
+            },
+            "description": {
+                "de":
+                    "Erstelle ein SwiftUI-Interface, das in Echtzeit gesprochene Sprache anzeigt.",
+                "en":
+                    "Create a SwiftUI interface that shows spoken language in real time."
+            },
             "steps": [
-                "SpeechRecognizerManager in SwiftUI verwenden.",
-                "Live-Text per @Published anzeigen.",
-                "Start/Stop Buttons hinzufügen."
+                {
+                    "de": "SpeechRecognizerManager in SwiftUI verwenden.",
+                    "en": "Use SpeechRecognizerManager in SwiftUI."
+                },
+                {
+                    "de": "Live-Text per @Published anzeigen.",
+                    "en": "Show live text through @Published."
+                },
+                {
+                    "de": "Start/Stop Buttons hinzufügen.",
+                    "en": "Add start and stop buttons."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -73,13 +125,29 @@
         },
         {
             "id": "speech_004",
-            "title": "Nur bestimmte Wörter erkennen",
-            "description":
-                "Erstelle einen Keyword-Spotter, der ausschließlich nach bestimmten Wörtern sucht.",
+            "title": {
+                "de": "Nur bestimmte Wörter erkennen",
+                "en": "Recognize only selected words"
+            },
+            "description": {
+                "de":
+                    "Erstelle einen Keyword-Spotter, der ausschließlich nach bestimmten Wörtern sucht.",
+                "en":
+                    "Create a keyword spotter that only looks for specific words."
+            },
             "steps": [
-                "Transkription in Echtzeit erhalten.",
-                "Mit .lowercased() nach Keywords suchen.",
-                "Aktionen auslösen, wenn ein Wort erkannt wurde."
+                {
+                    "de": "Transkription in Echtzeit erhalten.",
+                    "en": "Receive transcription in real time."
+                },
+                {
+                    "de": "Mit .lowercased() nach Keywords suchen.",
+                    "en": "Search for keywords with .lowercased()."
+                },
+                {
+                    "de": "Aktionen auslösen, wenn ein Wort erkannt wurde.",
+                    "en": "Trigger actions when a word is recognized."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -97,13 +165,29 @@
         },
         {
             "id": "speech_005",
-            "title": "Siri-ähnliches Voice-Trigger System",
-            "description":
-                "Baue ein kleines Voice-Assistant-System, das erst auf ein Aktivierungswort reagiert.",
+            "title": {
+                "de": "Siri-ähnliches Voice-Trigger System",
+                "en": "Siri-like voice trigger system"
+            },
+            "description": {
+                "de":
+                    "Baue ein kleines Voice-Assistant-System, das erst auf ein Aktivierungswort reagiert.",
+                "en":
+                    "Build a small voice assistant system that reacts only after an activation word."
+            },
             "steps": [
-                "Spracherkennung permanent laufen lassen.",
-                "Auf Aktivierungswort wie „hey app!“ prüfen.",
-                "Nach Aktivierung weitere Befehle analysieren."
+                {
+                    "de": "Spracherkennung permanent laufen lassen.",
+                    "en": "Keep speech recognition running."
+                },
+                {
+                    "de": "Auf Aktivierungswort wie „hey app!“ prüfen.",
+                    "en": "Check for an activation word such as “hey app!”."
+                },
+                {
+                    "de": "Nach Aktivierung weitere Befehle analysieren.",
+                    "en": "Analyze further commands after activation."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -115,18 +199,35 @@
                     "#FFFFFF"
                 ]
             },
-            "code": "var isActivated = false\n\nfunc handleVoiceCommand(_ text: String) {\n    let message = text.lowercased()\n\n    if message.contains(\"hey app\") {\n        isActivated = true\n        print(\"🟣 Voice-Trigger aktiviert!\")\n        return\n    }\n\n    if isActivated {\n        if message.contains(\"zeit\") { print(\"⏰ Uhrzeit anzeigen\") }\n        if message.contains(\"wetter\") { print(\"🌧 Wetter anzeigen\") }\n    }\n}",
+            "code":
+                "var isActivated = false\n\nfunc handleVoiceCommand(_ text: String) {\n    let message = text.lowercased()\n\n    if message.contains(\"hey app\") {\n        isActivated = true\n        print(\"🟣 Voice-Trigger aktiviert!\")\n        return\n    }\n\n    if isActivated {\n        if message.contains(\"zeit\") { print(\"⏰ Uhrzeit anzeigen\") }\n        if message.contains(\"wetter\") { print(\"🌧 Wetter anzeigen\") }\n    }\n}",
             "category": "Speech"
         },
         {
             "id": "speech_006",
-            "title": "Audioaufnahme speichern & transkribieren",
-            "description":
-                "Nimm Audio auf, speichere es als Datei und lasse die Speech API diese Datei analysieren.",
+            "title": {
+                "de": "Audioaufnahme speichern & transkribieren",
+                "en": "Save and transcribe audio recording"
+            },
+            "description": {
+                "de":
+                    "Nimm Audio auf, speichere es als Datei und lasse die Speech API diese Datei analysieren.",
+                "en":
+                    "Record audio, save it as a file and let Speech API analyze it."
+            },
             "steps": [
-                "AudioEngine aufnehmen & AVAudioFile schreiben.",
-                "Aufnahme stoppen & Datei speichern.",
-                "Mit SFSpeechURLRecognitionRequest transkribieren."
+                {
+                    "de": "AudioEngine aufnehmen & AVAudioFile schreiben.",
+                    "en": "Record with AudioEngine and write AVAudioFile."
+                },
+                {
+                    "de": "Aufnahme stoppen & Datei speichern.",
+                    "en": "Stop recording and save the file."
+                },
+                {
+                    "de": "Mit SFSpeechURLRecognitionRequest transkribieren.",
+                    "en": "Transcribe with SFSpeechURLRecognitionRequest."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -144,13 +245,30 @@
         },
         {
             "id": "speech_007",
-            "title": "Live-Sprachübersetzung",
-            "description":
-                "Erkenne gesprochene Sprache und übersetze sie live in eine andere Sprache.",
+            "title": {
+                "de": "Live-Sprachübersetzung",
+                "en": "Live speech translation"
+            },
+            "description": {
+                "de":
+                    "Erkenne gesprochene Sprache und übersetze sie live in eine andere Sprache.",
+                "en":
+                    "Recognize spoken language and translate it live into another language."
+            },
             "steps": [
-                "Sprache per SpeechRecognizer in Text umwandeln.",
-                "Text an Translate API oder eigenen Übersetzer senden.",
-                "Übersetzten Text live anzeigen."
+                {
+                    "de": "Sprache per SpeechRecognizer in Text umwandeln.",
+                    "en": "Convert speech to text with SpeechRecognizer."
+                },
+                {
+                    "de":
+                        "Text an Translate API oder eigenen Übersetzer senden.",
+                    "en": "Send text to a translation API or custom translator."
+                },
+                {
+                    "de": "Übersetzten Text live anzeigen.",
+                    "en": "Show translated text live."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -168,13 +286,29 @@
         },
         {
             "id": "speech_008",
-            "title": "Spracherkennung pausieren & fortsetzen",
-            "description":
-                "Pause die laufende Speech-Erkennung, ohne sie komplett zu resetten.",
+            "title": {
+                "de": "Spracherkennung pausieren & fortsetzen",
+                "en": "Pause and resume speech recognition"
+            },
+            "description": {
+                "de":
+                    "Pause die laufende Speech-Erkennung, ohne sie komplett zu resetten.",
+                "en":
+                    "Pause running speech recognition without resetting it completely."
+            },
             "steps": [
-                "AudioEngine.pause() verwenden.",
-                "Erst bei Resume wieder starten.",
-                "Ideal für Voice-Controlled Games."
+                {
+                    "de": "AudioEngine.pause() verwenden.",
+                    "en": "Use AudioEngine.pause()."
+                },
+                {
+                    "de": "Erst bei Resume wieder starten.",
+                    "en": "Restart only on resume."
+                },
+                {
+                    "de": "Ideal für Voice-Controlled Games.",
+                    "en": "Ideal for voice-controlled games."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -192,13 +326,28 @@
         },
         {
             "id": "speech_009",
-            "title": "Sprachbefehle mit Haptics verbinden",
-            "description":
-                "Erzeuge Vibrationen, wenn bestimmte Wörter erkannt werden.",
+            "title": {
+                "de": "Sprachbefehle mit Haptics verbinden",
+                "en": "Connect speech commands with haptics"
+            },
+            "description": {
+                "de":
+                    "Erzeuge Vibrationen, wenn bestimmte Wörter erkannt werden.",
+                "en": "Create vibrations when specific words are recognized."
+            },
             "steps": [
-                "Sprachtext live analysieren.",
-                "Keywords erkennen.",
-                "Haptic Feedback triggern."
+                {
+                    "de": "Sprachtext live analysieren.",
+                    "en": "Analyze speech text live."
+                },
+                {
+                    "de": "Keywords erkennen.",
+                    "en": "Detect keywords."
+                },
+                {
+                    "de": "Haptic Feedback triggern.",
+                    "en": "Trigger haptic feedback."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -216,13 +365,29 @@
         },
         {
             "id": "speech_010",
-            "title": "Automatische Satz-Erkennung",
-            "description":
-                "Erkenne automatisch Satzenden während der Spracherkennung.",
+            "title": {
+                "de": "Automatische Satz-Erkennung",
+                "en": "Automatic sentence detection"
+            },
+            "description": {
+                "de":
+                    "Erkenne automatisch Satzenden während der Spracherkennung.",
+                "en":
+                    "Detect sentence endings automatically during speech recognition."
+            },
             "steps": [
-                "Transkript live analysieren.",
-                "Nach ., !, ? suchen.",
-                "Sätze einzeln weiterverarbeiten."
+                {
+                    "de": "Transkript live analysieren.",
+                    "en": "Analyze transcript live."
+                },
+                {
+                    "de": "Nach ., !, ? suchen.",
+                    "en": "Search for ., ! and ?."
+                },
+                {
+                    "de": "Sätze einzeln weiterverarbeiten.",
+                    "en": "Process sentences one by one."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -240,13 +405,29 @@
         },
         {
             "id": "speech_011",
-            "title": "Whisper On-Device Integration",
-            "description":
-                "Nutze Whisper (OpenAI) lokal oder über API als Alternative zur Apple Speech API.",
+            "title": {
+                "de": "Whisper On-Device Integration",
+                "en": "Whisper on-device integration"
+            },
+            "description": {
+                "de":
+                    "Nutze Whisper (OpenAI) lokal oder über API als Alternative zur Apple Speech API.",
+                "en":
+                    "Use Whisper locally or through API as an alternative to Apple Speech API."
+            },
             "steps": [
-                "Audio als PCM oder WAV ausgeben.",
-                "In Whisper-Model schicken (lokal oder API).",
-                "Transkript zurück in die App einspeisen."
+                {
+                    "de": "Audio als PCM oder WAV ausgeben.",
+                    "en": "Output audio as PCM or WAV."
+                },
+                {
+                    "de": "In Whisper-Model schicken (lokal oder API).",
+                    "en": "Send it to a Whisper model locally or through API."
+                },
+                {
+                    "de": "Transkript zurück in die App einspeisen.",
+                    "en": "Feed the transcript back into the app."
+                }
             ],
             "colors": {
                 "backgroundColors": [

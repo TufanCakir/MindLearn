@@ -1,13 +1,31 @@
 [
     {
         "id": "spritekit_001",
-        "title": "SpriteKit Integration",
-        "description":
-            "Verwende SpriteKit direkt in SwiftUI für 2D-Animationen, Effekte und Spielelemente.",
+        "title": {
+            "de": "SpriteKit Integration",
+            "en": "SpriteKit integration"
+        },
+        "description": {
+            "de":
+                "Verwende SpriteKit direkt in SwiftUI für 2D-Animationen, Effekte und Spielelemente.",
+            "en":
+                "Use SpriteKit directly in SwiftUI for 2D animations, effects and game elements."
+        },
         "steps": [
-            "Importiere SpriteKit.",
-            "Erstelle eine eigene SKScene-Unterklasse mit Grafiken oder Partikeln.",
-            "Binde die Szene über SpriteView in SwiftUI ein."
+            {
+                "de": "Importiere SpriteKit.",
+                "en": "Import SpriteKit."
+            },
+            {
+                "de":
+                    "Erstelle eine eigene SKScene-Unterklasse mit Grafiken oder Partikeln.",
+                "en":
+                    "Create a custom SKScene subclass with graphics or particles."
+            },
+            {
+                "de": "Binde die Szene über SpriteView in SwiftUI ein.",
+                "en": "Embed the scene in SwiftUI through SpriteView."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,13 +43,30 @@
     },
     {
         "id": "spritekit_002",
-        "title": "Sprite Animation (Texture Atlas)",
-        "description":
-            "Erstelle flüssige 2D-Animationen mit SKTextureAtlas – ideal für Charaktere oder Effekte.",
+        "title": {
+            "de": "Sprite Animation (Texture Atlas)",
+            "en": "Sprite animation (texture atlas)"
+        },
+        "description": {
+            "de":
+                "Erstelle flüssige 2D-Animationen mit SKTextureAtlas – ideal für Charaktere oder Effekte.",
+            "en":
+                "Create smooth 2D animations with SKTextureAtlas, ideal for characters or effects."
+        },
         "steps": [
-            "Erstelle einen TextureAtlas im Assets-Katalog.",
-            "Lade mehrere Frames in ein Array von SKTextures.",
-            "Starte eine wiederholende Animation mit run(SKAction.animate)."
+            {
+                "de": "Erstelle einen TextureAtlas im Assets-Katalog.",
+                "en": "Create a TextureAtlas in the asset catalog."
+            },
+            {
+                "de": "Lade mehrere Frames in ein Array von SKTextures.",
+                "en": "Load multiple frames into an array of SKTextures."
+            },
+            {
+                "de":
+                    "Starte eine wiederholende Animation mit run(SKAction.animate).",
+                "en": "Start a repeating animation with run(SKAction.animate)."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -49,13 +84,31 @@
     },
     {
         "id": "spritekit_003",
-        "title": "Physik & Kollisionen",
-        "description":
-            "Nutze SpriteKits Physik-Engine, um realistische Bewegungen, Gravitation und Kollisionen umzusetzen.",
+        "title": {
+            "de": "Physik & Kollisionen",
+            "en": "Physics & collisions"
+        },
+        "description": {
+            "de":
+                "Nutze SpriteKits Physik-Engine, um realistische Bewegungen, Gravitation und Kollisionen umzusetzen.",
+            "en":
+                "Use SpriteKit physics to implement realistic movement, gravity and collisions."
+        },
         "steps": [
-            "Setze physicsBody für Nodes.",
-            "Definiere Kategorien & Bitmasks für Kollisionserkennung.",
-            "Nutze SKPhysicsContactDelegate, um auf Treffer zu reagieren."
+            {
+                "de": "Setze physicsBody für Nodes.",
+                "en": "Set physicsBody for nodes."
+            },
+            {
+                "de":
+                    "Definiere Kategorien & Bitmasks für Kollisionserkennung.",
+                "en": "Define categories and bitmasks for collision detection."
+            },
+            {
+                "de":
+                    "Nutze SKPhysicsContactDelegate, um auf Treffer zu reagieren.",
+                "en": "Use SKPhysicsContactDelegate to react to hits."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -67,19 +120,34 @@
                 "#FFFFFF"
             ]
         },
-        "code":
-            "import SpriteKit\n\nstruct PhysicsCategory {\n    static let player: UInt32 = 1\n    static let enemy: UInt32 = 2\n}\n\nclass PhysicsScene: SKScene, SKPhysicsContactDelegate {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n        physicsWorld.contactDelegate = self\n\n        let player = SKSpriteNode(color: .cyan, size: CGSize(width: 40, height: 40))\n        player.position = CGPoint(x: 200, y: 400)\n        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)\n        player.physicsBody?.categoryBitMask = PhysicsCategory.player\n        player.physicsBody?.contactTestBitMask = PhysicsCategory.enemy\n        addChild(player)\n\n        let enemy = SKSpriteNode(color: .red, size: CGSize(width: 40, height: 40))\n        enemy.position = CGPoint(x: 200, y: 100)\n        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)\n        enemy.physicsBody?.categoryBitMask = PhysicsCategory.enemy\n        addChild(enemy)\n    }\n\n    func didBegin(_ contact: SKPhysicsContact) {\n        print(\"💥 Kollision erkannt!\")\n    }\n}",
+        "code": "import SpriteKit\n\nstruct PhysicsCategory {\n    static let player: UInt32 = 1\n    static let enemy: UInt32 = 2\n}\n\nclass PhysicsScene: SKScene, SKPhysicsContactDelegate {\n    override func didMove(to view: SKView) {\n        backgroundColor = .black\n        physicsWorld.contactDelegate = self\n\n        let player = SKSpriteNode(color: .cyan, size: CGSize(width: 40, height: 40))\n        player.position = CGPoint(x: 200, y: 400)\n        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)\n        player.physicsBody?.categoryBitMask = PhysicsCategory.player\n        player.physicsBody?.contactTestBitMask = PhysicsCategory.enemy\n        addChild(player)\n\n        let enemy = SKSpriteNode(color: .red, size: CGSize(width: 40, height: 40))\n        enemy.position = CGPoint(x: 200, y: 100)\n        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)\n        enemy.physicsBody?.categoryBitMask = PhysicsCategory.enemy\n        addChild(enemy)\n    }\n\n    func didBegin(_ contact: SKPhysicsContact) {\n        print(\"💥 Kollision erkannt!\")\n    }\n}",
         "category": "SpriteKit"
     },
     {
         "id": "spritekit_004",
-        "title": "Particle Effects (Explosion)",
-        "description":
-            "Füge beeindruckende Partikel-Explosionen hinzu – perfekt für Spieleffekte wie Treffer oder Magie.",
+        "title": {
+            "de": "Particle Effects (Explosion)",
+            "en": "Particle effects (explosion)"
+        },
+        "description": {
+            "de":
+                "Füge beeindruckende Partikel-Explosionen hinzu – perfekt für Spieleffekte wie Treffer oder Magie.",
+            "en":
+                "Add impressive particle explosions, perfect for game effects such as hits or magic."
+        },
         "steps": [
-            "Erstelle eine .sks Partikeldatei im Xcode-Editor.",
-            "Lade das SKEmitterNode im Code.",
-            "Positioniere und spiele die Explosion an einem Punkt."
+            {
+                "de": "Erstelle eine .sks Partikeldatei im Xcode-Editor.",
+                "en": "Create a .sks particle file in the Xcode editor."
+            },
+            {
+                "de": "Lade das SKEmitterNode im Code.",
+                "en": "Load the SKEmitterNode in code."
+            },
+            {
+                "de": "Positioniere und spiele die Explosion an einem Punkt.",
+                "en": "Position and play the explosion at a point."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -97,13 +165,29 @@
     },
     {
         "id": "spritekit_005",
-        "title": "Touch-Steuerung",
-        "description":
-            "Steuere Spielfiguren mit Touch-Ereignissen wie Tap, Drag oder Hold.",
+        "title": {
+            "de": "Touch-Steuerung",
+            "en": "Touch control"
+        },
+        "description": {
+            "de":
+                "Steuere Spielfiguren mit Touch-Ereignissen wie Tap, Drag oder Hold.",
+            "en":
+                "Control game characters with touch events such as tap, drag or hold."
+        },
         "steps": [
-            "override touchesBegan() nutzen.",
-            "Sprite zu Touch-Position bewegen.",
-            "Optionale Bewegungsanimationen hinzufügen."
+            {
+                "de": "override touchesBegan() nutzen.",
+                "en": "Use override touchesBegan()."
+            },
+            {
+                "de": "Sprite zu Touch-Position bewegen.",
+                "en": "Move sprite to the touch position."
+            },
+            {
+                "de": "Optionale Bewegungsanimationen hinzufügen.",
+                "en": "Optionally add movement animations."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -121,13 +205,29 @@
     },
     {
         "id": "spritekit_006",
-        "title": "Parallax Scrolling Hintergrund",
-        "description":
-            "Erstelle einen mehrschichtigen Hintergrund, der sich mit unterschiedlicher Geschwindigkeit bewegt – ideal für Games.",
+        "title": {
+            "de": "Parallax Scrolling Hintergrund",
+            "en": "Parallax scrolling background"
+        },
+        "description": {
+            "de":
+                "Erstelle einen mehrschichtigen Hintergrund, der sich mit unterschiedlicher Geschwindigkeit bewegt – ideal für Games.",
+            "en":
+                "Create a layered background that moves at different speeds, ideal for games."
+        },
         "steps": [
-            "Mehrere Ebenen als SKSpriteNode erstellen.",
-            "Verschiedene Geschwindigkeiten definieren.",
-            "Endlosschleife für fließende Bewegung entwickeln."
+            {
+                "de": "Mehrere Ebenen als SKSpriteNode erstellen.",
+                "en": "Create multiple layers as SKSpriteNode."
+            },
+            {
+                "de": "Verschiedene Geschwindigkeiten definieren.",
+                "en": "Define different speeds."
+            },
+            {
+                "de": "Endlosschleife für fließende Bewegung entwickeln.",
+                "en": "Develop an endless loop for smooth movement."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -145,13 +245,29 @@
     },
     {
         "id": "spritekit_007",
-        "title": "Shader Effekte (SKShader)",
-        "description":
-            "Nutze GLSL-basierte Shader, um beeindruckende visuelle Effekte wie Energie, Verzerrung oder Glühen zu erzeugen.",
+        "title": {
+            "de": "Shader Effekte (SKShader)",
+            "en": "Shader effects (SKShader)"
+        },
+        "description": {
+            "de":
+                "Nutze GLSL-basierte Shader, um beeindruckende visuelle Effekte wie Energie, Verzerrung oder Glühen zu erzeugen.",
+            "en":
+                "Use GLSL-based shaders to create visual effects such as energy, distortion or glow."
+        },
         "steps": [
-            "Erstelle einen SKShader mit GLSL-Code.",
-            "Füge ihn einem SKSpriteNode zu.",
-            "Passe Uniforms (Parameter) dynamisch an."
+            {
+                "de": "Erstelle einen SKShader mit GLSL-Code.",
+                "en": "Create an SKShader with GLSL code."
+            },
+            {
+                "de": "Füge ihn einem SKSpriteNode zu.",
+                "en": "Add it to an SKSpriteNode."
+            },
+            {
+                "de": "Passe Uniforms (Parameter) dynamisch an.",
+                "en": "Adjust uniforms dynamically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -169,13 +285,28 @@
     },
     {
         "id": "spritekit_008",
-        "title": "Kamera bewegen & zoomen",
-        "description":
-            "Nutze SKCameraNode, um die Kamera dynamisch zu bewegen oder zu zoomen.",
+        "title": {
+            "de": "Kamera bewegen & zoomen",
+            "en": "Move & zoom camera"
+        },
+        "description": {
+            "de":
+                "Nutze SKCameraNode, um die Kamera dynamisch zu bewegen oder zu zoomen.",
+            "en": "Use SKCameraNode to move or zoom the camera dynamically."
+        },
         "steps": [
-            "SKCameraNode erstellen und der Szene zuweisen.",
-            "Kamera per SKAction bewegen.",
-            "Zoom mit camera.setScale()."
+            {
+                "de": "SKCameraNode erstellen und der Szene zuweisen.",
+                "en": "Create SKCameraNode and assign it to the scene."
+            },
+            {
+                "de": "Kamera per SKAction bewegen.",
+                "en": "Move the camera with SKAction."
+            },
+            {
+                "de": "Zoom mit camera.setScale().",
+                "en": "Zoom with camera.setScale()."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -193,13 +324,31 @@
     },
     {
         "id": "spritekit_009",
-        "title": "Endlos-Runner Bewegung",
-        "description":
-            "Erzeuge seitlich scrollende Levelobjekte für ein Endlos-Runner-Spiel.",
+        "title": {
+            "de": "Endlos-Runner Bewegung",
+            "en": "Endless runner movement"
+        },
+        "description": {
+            "de":
+                "Erzeuge seitlich scrollende Levelobjekte für ein Endlos-Runner-Spiel.",
+            "en":
+                "Create side-scrolling level objects for an endless runner game."
+        },
         "steps": [
-            "Hintergrund & Boden bewegen.",
-            "Wenn ein Objekt aus dem Bildschirm läuft → rechts wieder ansetzen.",
-            "Geschwindigkeit dynamisch anpassen."
+            {
+                "de": "Hintergrund & Boden bewegen.",
+                "en": "Move background and floor."
+            },
+            {
+                "de":
+                    "Wenn ein Objekt aus dem Bildschirm läuft → rechts wieder ansetzen.",
+                "en":
+                    "When an object leaves the screen, place it back on the right."
+            },
+            {
+                "de": "Geschwindigkeit dynamisch anpassen.",
+                "en": "Adjust speed dynamically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -217,13 +366,28 @@
     },
     {
         "id": "spritekit_010",
-        "title": "Health Bar Overlay",
-        "description":
-            "Füge Lebensbalken oder UI-Elemente hinzu, die nicht scrollen oder sich bewegen.",
+        "title": {
+            "de": "Health Bar Overlay",
+            "en": "Health bar overlay"
+        },
+        "description": {
+            "de":
+                "Füge Lebensbalken oder UI-Elemente hinzu, die nicht scrollen oder sich bewegen.",
+            "en": "Add health bars or UI elements that do not scroll or move."
+        },
         "steps": [
-            "SKSpriteNode für Hintergrund und Füllung erstellen.",
-            "Masken oder Scale für HP-Balken anwenden.",
-            "Über SKCameraNode fixieren."
+            {
+                "de": "SKSpriteNode für Hintergrund und Füllung erstellen.",
+                "en": "Create SKSpriteNode for background and fill."
+            },
+            {
+                "de": "Masken oder Scale für HP-Balken anwenden.",
+                "en": "Apply masks or scale for the HP bar."
+            },
+            {
+                "de": "Über SKCameraNode fixieren.",
+                "en": "Fix it through SKCameraNode."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -241,13 +405,29 @@
     },
     {
         "id": "spritekit_011",
-        "title": "Audio & Soundeffekte",
-        "description":
-            "Spiele Soundeffekte und Hintergrundmusik direkt in SpriteKit ab.",
+        "title": {
+            "de": "Audio & Soundeffekte",
+            "en": "Audio & sound effects"
+        },
+        "description": {
+            "de":
+                "Spiele Soundeffekte und Hintergrundmusik direkt in SpriteKit ab.",
+            "en":
+                "Play sound effects and background music directly in SpriteKit."
+        },
         "steps": [
-            "Nutze SKAction.playSoundFileNamed().",
-            "Lade kurze Soundeffekte in .wav / .mp3.",
-            "Für Musik AVAudioPlayer oder SKAudioNode verwenden."
+            {
+                "de": "Nutze SKAction.playSoundFileNamed().",
+                "en": "Use SKAction.playSoundFileNamed()."
+            },
+            {
+                "de": "Lade kurze Soundeffekte in .wav / .mp3.",
+                "en": "Load short sound effects as .wav or .mp3."
+            },
+            {
+                "de": "Für Musik AVAudioPlayer oder SKAudioNode verwenden.",
+                "en": "Use AVAudioPlayer or SKAudioNode for music."
+            }
         ],
         "colors": {
             "backgroundColors": [

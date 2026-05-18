@@ -1,13 +1,30 @@
     [
         {
             "id": "speech_001",
-            "title": "Spracherkennung (Speech Framework)",
-            "description":
-                "Nutze Apples Speech API, um gesprochene Sprache in Text umzuwandeln.",
+            "title": {
+                "de": "Spracherkennung (Speech Framework)",
+                "en": "Speech recognition"
+            },
+            "description": {
+                "de":
+                    "Nutze Apples Speech API, um gesprochene Sprache in Text umzuwandeln.",
+                "en":
+                    "Use Apple Speech API to convert spoken language into text."
+            },
             "steps": [
-                "Speech importieren und SFSpeechRecognizer erstellen.",
-                "Mikrofonzugriff anfordern.",
-                "AudioSession starten und Texterkennung aktivieren."
+                {
+                    "de":
+                        "Speech importieren und SFSpeechRecognizer erstellen.",
+                    "en": "Import Speech and create an SFSpeechRecognizer."
+                },
+                {
+                    "de": "Mikrofonzugriff anfordern.",
+                    "en": "Request microphone access."
+                },
+                {
+                    "de": "AudioSession starten und Texterkennung aktivieren.",
+                    "en": "Start AudioSession and enable text recognition."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -25,14 +42,35 @@
         },
         {
             "id": "speech_002",
-            "title": "Live-Spracherkennung (Mikrofon-Input)",
-            "description":
-                "Erkenne Sprache live über das Mikrofon und konvertiere sie in Text.",
+            "title": {
+                "de": "Live-Spracherkennung (Mikrofon-Input)",
+                "en": "Live speech recognition"
+            },
+            "description": {
+                "de":
+                    "Erkenne Sprache live über das Mikrofon und konvertiere sie in Text.",
+                "en":
+                    "Recognize speech live through the microphone and convert it to text."
+            },
             "steps": [
-                "SFSpeechAudioBufferRecognitionRequest nutzen.",
-                "AudioSession konfigurieren (Record, Measurement).",
-                "AudioEngine starten und Input in den RecognitionRequest streamen.",
-                "Transkription laufend aktualisieren."
+                {
+                    "de": "SFSpeechAudioBufferRecognitionRequest nutzen.",
+                    "en": "Use SFSpeechAudioBufferRecognitionRequest."
+                },
+                {
+                    "de": "AudioSession konfigurieren (Record, Measurement).",
+                    "en": "Configure AudioSession for record and measurement."
+                },
+                {
+                    "de":
+                        "AudioEngine starten und Input in den RecognitionRequest streamen.",
+                    "en":
+                        "Start AudioEngine and stream input into the recognition request."
+                },
+                {
+                    "de": "Transkription laufend aktualisieren.",
+                    "en": "Update transcription continuously."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -50,13 +88,30 @@
         },
         {
             "id": "speech_003",
-            "title": "Offline-Spracherkennung prüfen",
-            "description":
-                "Prüfe, ob dein Gerät Offline-Spracherkennung unterstützt.",
+            "title": {
+                "de": "Offline-Spracherkennung prüfen",
+                "en": "Check offline speech recognition"
+            },
+            "description": {
+                "de":
+                    "Prüfe, ob dein Gerät Offline-Spracherkennung unterstützt.",
+                "en":
+                    "Check whether your device supports offline speech recognition."
+            },
             "steps": [
-                "SFSpeechRecognizer.supportsOnDeviceRecognition nutzen.",
-                "Ideal für Privatsphäre & schnelle Verarbeitung.",
-                "Nur in bestimmten Sprachen verfügbar."
+                {
+                    "de":
+                        "SFSpeechRecognizer.supportsOnDeviceRecognition nutzen.",
+                    "en": "Use SFSpeechRecognizer.supportsOnDeviceRecognition."
+                },
+                {
+                    "de": "Ideal für Privatsphäre & schnelle Verarbeitung.",
+                    "en": "Ideal for privacy and fast processing."
+                },
+                {
+                    "de": "Nur in bestimmten Sprachen verfügbar.",
+                    "en": "Only available for selected languages."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -74,13 +129,29 @@
         },
         {
             "id": "speech_004",
-            "title": "Sprach-Segment-Analyse (Wörter & Zeitstempel)",
-            "description":
-                "Analysiere jedes erkannte Wort mit Zeitstempeln – perfekt für Untertitel / Karaoke.",
+            "title": {
+                "de": "Sprach-Segment-Analyse (Wörter & Zeitstempel)",
+                "en": "Speech segment analysis"
+            },
+            "description": {
+                "de":
+                    "Analysiere jedes erkannte Wort mit Zeitstempeln – perfekt für Untertitel / Karaoke.",
+                "en":
+                    "Analyze each recognized word with timestamps, perfect for subtitles or karaoke."
+            },
             "steps": [
-                "Auf result.bestTranscription.segments zugreifen.",
-                "Segment enthält: Wort, Offset, Dauer.",
-                "Kann live aktualisiert werden."
+                {
+                    "de": "Auf result.bestTranscription.segments zugreifen.",
+                    "en": "Access result.bestTranscription.segments."
+                },
+                {
+                    "de": "Segment enthält: Wort, Offset, Dauer.",
+                    "en": "Each segment contains word, offset and duration."
+                },
+                {
+                    "de": "Kann live aktualisiert werden.",
+                    "en": "Can be updated live."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -98,13 +169,29 @@
         },
         {
             "id": "speech_005",
-            "title": "Spracherkennung abbrechen / pausieren",
-            "description":
-                "Stoppe oder pausiere laufende Erkennung – wichtig für UI-Control (Record, Stop).",
+            "title": {
+                "de": "Spracherkennung abbrechen / pausieren",
+                "en": "Cancel or pause speech recognition"
+            },
+            "description": {
+                "de":
+                    "Stoppe oder pausiere laufende Erkennung – wichtig für UI-Control (Record, Stop).",
+                "en":
+                    "Stop or pause running recognition, important for UI controls such as record and stop."
+            },
             "steps": [
-                "AudioEngine stoppen.",
-                "RecognitionTask canceln.",
-                "Request beenden oder zurücksetzen."
+                {
+                    "de": "AudioEngine stoppen.",
+                    "en": "Stop AudioEngine."
+                },
+                {
+                    "de": "RecognitionTask canceln.",
+                    "en": "Cancel the recognition task."
+                },
+                {
+                    "de": "Request beenden oder zurücksetzen.",
+                    "en": "End or reset the request."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -122,13 +209,29 @@
         },
         {
             "id": "speech_006",
-            "title": "Spracherkennung in SwiftUI integrieren",
-            "description":
-                "Ein komplettes SwiftUI Beispiel: Button → Start/Stop → Live Text.",
+            "title": {
+                "de": "Spracherkennung in SwiftUI integrieren",
+                "en": "Integrate speech recognition in SwiftUI"
+            },
+            "description": {
+                "de":
+                    "Ein komplettes SwiftUI Beispiel: Button → Start/Stop → Live Text.",
+                "en":
+                    "A complete SwiftUI example: button to start/stop and live text output."
+            },
             "steps": [
-                "ObservableObject für Speech-Manager.",
-                "Live-Text als Published Property.",
-                "SwiftUI Button steuert Aufnahme."
+                {
+                    "de": "ObservableObject für Speech-Manager.",
+                    "en": "Create an ObservableObject speech manager."
+                },
+                {
+                    "de": "Live-Text als Published Property.",
+                    "en": "Expose live text as a published property."
+                },
+                {
+                    "de": "SwiftUI Button steuert Aufnahme.",
+                    "en": "Control recording with a SwiftUI button."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -146,12 +249,27 @@
         },
         {
             "id": "speech_007",
-            "title": "Speech → Commands (Befehle erkennen)",
-            "description": "Erkenne Befehle wie „Attack“, „Heal“, „Next Level!",
+            "title": {
+                "de": "Speech → Commands (Befehle erkennen)",
+                "en": "Speech to commands"
+            },
+            "description": {
+                "de": "Erkenne Befehle wie „Attack“, „Heal“, „Next Level!",
+                "en": "Recognize commands such as Attack, Heal or Next Level."
+            },
             "steps": [
-                "Nach jedem Transkript auf Schlüsselwörter prüfen.",
-                "Mehrere Synonyme unterstützen.",
-                "Aktionen in der App triggern."
+                {
+                    "de": "Nach jedem Transkript auf Schlüsselwörter prüfen.",
+                    "en": "Check each transcript for keywords."
+                },
+                {
+                    "de": "Mehrere Synonyme unterstützen.",
+                    "en": "Support multiple synonyms."
+                },
+                {
+                    "de": "Aktionen in der App triggern.",
+                    "en": "Trigger actions in the app."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -169,13 +287,29 @@
         },
         {
             "id": "speech_008",
-            "title": "Sprache aufnehmen & automatisch transkribieren",
-            "description":
-                "Nimm deine Stimme als .m4a auf und lasse nach der Aufnahme die komplette Datei transkribieren.",
+            "title": {
+                "de": "Sprache aufnehmen & automatisch transkribieren",
+                "en": "Record speech and transcribe automatically"
+            },
+            "description": {
+                "de":
+                    "Nimm deine Stimme als .m4a auf und lasse nach der Aufnahme die komplette Datei transkribieren.",
+                "en":
+                    "Record voice as .m4a and transcribe the complete file after recording."
+            },
             "steps": [
-                "AVAudioRecorder einrichten, um Sprache aufzunehmen.",
-                "Aufnahme stoppen → Datei an Speech API übergeben.",
-                "Ergebnis anzeigen oder speichern."
+                {
+                    "de": "AVAudioRecorder einrichten, um Sprache aufzunehmen.",
+                    "en": "Set up AVAudioRecorder to record speech."
+                },
+                {
+                    "de": "Aufnahme stoppen → Datei an Speech API übergeben.",
+                    "en": "Stop recording and pass the file to the Speech API."
+                },
+                {
+                    "de": "Ergebnis anzeigen oder speichern.",
+                    "en": "Display or save the result."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -193,13 +327,29 @@
         },
         {
             "id": "speech_009",
-            "title": "Keyword Spotting (Wake Words)",
-            "description":
-                "Erkenne Schlüsselwörter live – z. B. 'Hey Slayken', 'Attack', 'Spirit', 'Heal'. Perfekt für Voice-Control im Game.",
+            "title": {
+                "de": "Keyword Spotting (Wake Words)",
+                "en": "Keyword spotting (wake words)"
+            },
+            "description": {
+                "de":
+                    "Erkenne Schlüsselwörter live – z. B. 'Hey Slayken', 'Attack', 'Spirit', 'Heal'. Perfekt für Voice-Control im Game.",
+                "en":
+                    "Recognize keywords live, for example Hey Slayken, Attack, Spirit or Heal. Perfect for voice control in games."
+            },
             "steps": [
-                "Live Spracherkennung aktivieren.",
-                "Laufend neuesten Textpuffer prüfen.",
-                "Keywords triggern Aktionen."
+                {
+                    "de": "Live Spracherkennung aktivieren.",
+                    "en": "Enable live speech recognition."
+                },
+                {
+                    "de": "Laufend neuesten Textpuffer prüfen.",
+                    "en": "Continuously check the latest text buffer."
+                },
+                {
+                    "de": "Keywords triggern Aktionen.",
+                    "en": "Trigger actions from keywords."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -217,13 +367,29 @@
         },
         {
             "id": "speech_010",
-            "title": "Automatische Satztrennung (Punkt-Erkennung)",
-            "description":
-                "Analysiere erkannte Sprache und teile sie sauber in Sätze auf – ideal für Chatbots, Story-Modus oder Notizen.",
+            "title": {
+                "de": "Automatische Satztrennung (Punkt-Erkennung)",
+                "en": "Automatic sentence splitting"
+            },
+            "description": {
+                "de":
+                    "Analysiere erkannte Sprache und teile sie sauber in Sätze auf – ideal für Chatbots, Story-Modus oder Notizen.",
+                "en":
+                    "Analyze recognized speech and split it into sentences, ideal for chatbots, story mode or notes."
+            },
             "steps": [
-                "Transkript live analysieren.",
-                "Auf Satzende-Wörter prüfen.",
-                "Satzliste aktualisieren."
+                {
+                    "de": "Transkript live analysieren.",
+                    "en": "Analyze the transcript live."
+                },
+                {
+                    "de": "Auf Satzende-Wörter prüfen.",
+                    "en": "Check for sentence-ending words."
+                },
+                {
+                    "de": "Satzliste aktualisieren.",
+                    "en": "Update the sentence list."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -241,13 +407,30 @@
         },
         {
             "id": "speech_011",
-            "title": "Einfache Emotionserkennung über Stimme (Tonhöhe)",
-            "description":
-                "Analysiere die Tonhöhe des Mikrofon-Signals, um simple Emotionen wie Stress, Lautstärke oder Freude zu erkennen.",
+            "title": {
+                "de": "Einfache Emotionserkennung über Stimme (Tonhöhe)",
+                "en": "Simple emotion detection from voice"
+            },
+            "description": {
+                "de":
+                    "Analysiere die Tonhöhe des Mikrofon-Signals, um simple Emotionen wie Stress, Lautstärke oder Freude zu erkennen.",
+                "en":
+                    "Analyze microphone pitch to detect simple signals such as stress, volume or joy."
+            },
             "steps": [
-                "AudioEngine Input analysieren.",
-                "Amplitude & Frequenz messen.",
-                "Thresholds definieren für 'laut', 'leise', 'stressig'."
+                {
+                    "de": "AudioEngine Input analysieren.",
+                    "en": "Analyze AudioEngine input."
+                },
+                {
+                    "de": "Amplitude & Frequenz messen.",
+                    "en": "Measure amplitude and frequency."
+                },
+                {
+                    "de":
+                        "Thresholds definieren für 'laut', 'leise', 'stressig'.",
+                    "en": "Define thresholds for loud, quiet or stressed."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -265,13 +448,29 @@
         },
         {
             "id": "speech_012",
-            "title": "Voice UI – Sprachbefehle triggern SwiftUI Buttons",
-            "description":
-                "Verknüpfe Sprachbefehle automatisch mit SwiftUI UI Aktionen – wie ein Voice Controller für dein Game.",
+            "title": {
+                "de": "Voice UI – Sprachbefehle triggern SwiftUI Buttons",
+                "en": "Voice UI - speech commands trigger SwiftUI buttons"
+            },
+            "description": {
+                "de":
+                    "Verknüpfe Sprachbefehle automatisch mit SwiftUI UI Aktionen – wie ein Voice Controller für dein Game.",
+                "en":
+                    "Connect speech commands automatically to SwiftUI actions, like a voice controller for your game."
+            },
             "steps": [
-                "SpeechManager veröffentlicht den erkannten Text.",
-                "SwiftUI prüft live auf Voice-Trigger.",
-                "Buttons führen Aktionen automatisch aus."
+                {
+                    "de": "SpeechManager veröffentlicht den erkannten Text.",
+                    "en": "SpeechManager publishes recognized text."
+                },
+                {
+                    "de": "SwiftUI prüft live auf Voice-Trigger.",
+                    "en": "SwiftUI checks live for voice triggers."
+                },
+                {
+                    "de": "Buttons führen Aktionen automatisch aus.",
+                    "en": "Buttons run actions automatically."
+                }
             ],
             "colors": {
                 "backgroundColors": [

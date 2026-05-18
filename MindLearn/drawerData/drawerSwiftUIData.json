@@ -1,13 +1,29 @@
     [
         {
             "id": "swiftui_001",
-            "title": "Button Erstellen",
-            "description":
-                "Erfahre, wie man in SwiftUI einen einfachen Button mit Aktion erstellt.",
+            "title": {
+                "de": "Button Erstellen",
+                "en": "Create button"
+            },
+            "description": {
+                "de":
+                    "Erfahre, wie man in SwiftUI einen einfachen Button mit Aktion erstellt.",
+                "en":
+                    "Learn how to create a simple button with an action in SwiftUI."
+            },
             "steps": [
-                "Button mit Label erstellen",
-                "Aktion mit Closure definieren",
-                "Design mit Modifiers anpassen"
+                {
+                    "de": "Button mit Label erstellen",
+                    "en": "Create a button with a label"
+                },
+                {
+                    "de": "Aktion mit Closure definieren",
+                    "en": "Define the action with a closure"
+                },
+                {
+                    "de": "Design mit Modifiers anpassen",
+                    "en": "Adjust design with modifiers"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -25,13 +41,29 @@
         },
         {
             "id": "swiftui_002",
-            "title": "Text Anzeigen",
-            "description":
-                "Lerne, wie man Text mit verschiedenen Schriftarten und Farben anzeigt.",
+            "title": {
+                "de": "Text Anzeigen",
+                "en": "Show text"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie man Text mit verschiedenen Schriftarten und Farben anzeigt.",
+                "en":
+                    "Learn how to display text with different fonts and colors."
+            },
             "steps": [
-                "Verwende Text() für statischen Inhalt",
-                "Passe Schriftgröße und Gewicht an",
-                "Nutze Farben für Stil"
+                {
+                    "de": "Verwende Text() für statischen Inhalt",
+                    "en": "Use Text() for static content"
+                },
+                {
+                    "de": "Passe Schriftgröße und Gewicht an",
+                    "en": "Adjust font size and weight"
+                },
+                {
+                    "de": "Nutze Farben für Stil",
+                    "en": "Use colors for style"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -49,13 +81,28 @@
         },
         {
             "id": "swiftui_003",
-            "title": "Liste Erstellen",
-            "description":
-                "Erstelle eine SwiftUI-Liste, um mehrere Einträge übersichtlich darzustellen.",
+            "title": {
+                "de": "Liste Erstellen",
+                "en": "Create list"
+            },
+            "description": {
+                "de":
+                    "Erstelle eine SwiftUI-Liste, um mehrere Einträge übersichtlich darzustellen.",
+                "en": "Create a SwiftUI list to show multiple entries clearly."
+            },
             "steps": [
-                "Verwende List für dynamische Inhalte",
-                "Nutze ForEach für wiederholte Elemente",
-                "Füge NavigationLinks hinzu"
+                {
+                    "de": "Verwende List für dynamische Inhalte",
+                    "en": "Use List for dynamic content"
+                },
+                {
+                    "de": "Nutze ForEach für wiederholte Elemente",
+                    "en": "Use ForEach for repeated elements"
+                },
+                {
+                    "de": "Füge NavigationLinks hinzu",
+                    "en": "Add NavigationLinks"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -73,13 +120,29 @@
         },
         {
             "id": "swiftui_004",
-            "title": "State verwenden",
-            "description":
-                "Lerne, wie du mit @State lokale Zustände verwaltest und UI-Updates automatisch auslöst.",
+            "title": {
+                "de": "State verwenden",
+                "en": "Use State"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du mit @State lokale Zustände verwaltest und UI-Updates automatisch auslöst.",
+                "en":
+                    "Learn how to manage local state with @State and trigger UI updates automatically."
+            },
             "steps": [
-                "Deklariere eine @State Variable",
-                "Ändere den Zustand im Button",
-                "UI aktualisiert sich automatisch"
+                {
+                    "de": "Deklariere eine @State Variable",
+                    "en": "Declare a @State variable"
+                },
+                {
+                    "de": "Ändere den Zustand im Button",
+                    "en": "Change the state in a button"
+                },
+                {
+                    "de": "UI aktualisiert sich automatisch",
+                    "en": "The UI updates automatically"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -97,13 +160,28 @@
         },
         {
             "id": "swiftui_005",
-            "title": "TextField & Eingaben",
-            "description":
-                "Erfahre, wie Nutzer Text eingeben und wie du die Eingabe weiterverarbeitest.",
+            "title": {
+                "de": "TextField & Eingaben",
+                "en": "TextField & input"
+            },
+            "description": {
+                "de":
+                    "Erfahre, wie Nutzer Text eingeben und wie du die Eingabe weiterverarbeitest.",
+                "en": "Learn how users enter text and how to process the input."
+            },
             "steps": [
-                "TextField mit Binding verbinden",
-                "UI per @State aktualisieren",
-                "Eingabetext anzeigen oder verarbeiten"
+                {
+                    "de": "TextField mit Binding verbinden",
+                    "en": "Connect TextField with a binding"
+                },
+                {
+                    "de": "UI per @State aktualisieren",
+                    "en": "Update UI through @State"
+                },
+                {
+                    "de": "Eingabetext anzeigen oder verarbeiten",
+                    "en": "Show or process the input text"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -121,13 +199,29 @@
         },
         {
             "id": "swiftui_006",
-            "title": "Toggle & Switch",
-            "description":
-                "Nutze einen Toggle, um Einstellungen wie Dark Mode oder Optionen zu aktivieren.",
+            "title": {
+                "de": "Toggle & Switch",
+                "en": "Toggle & switch"
+            },
+            "description": {
+                "de":
+                    "Nutze einen Toggle, um Einstellungen wie Dark Mode oder Optionen zu aktivieren.",
+                "en":
+                    "Use a Toggle to enable settings such as dark mode or options."
+            },
             "steps": [
-                "Toggle mit Bool-Variable verbinden",
-                "Zustandsänderung anzeigen",
-                "UI dynamisch anpassen"
+                {
+                    "de": "Toggle mit Bool-Variable verbinden",
+                    "en": "Connect Toggle with a Boolean variable"
+                },
+                {
+                    "de": "Zustandsänderung anzeigen",
+                    "en": "Show state changes"
+                },
+                {
+                    "de": "UI dynamisch anpassen",
+                    "en": "Adjust UI dynamically"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -139,18 +233,35 @@
                     "#FFFFFF"
                 ]
             },
-            "code": "import SwiftUI\n\nstruct ToggleExampleView: View {\n    @State private var isOn = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Toggle(\"Schalter\", isOn: $isOn)\n                .padding()\n\n            Text(isOn ? \"Aktiviert\" : \"Deaktiviert\")\n                .font(.title2)\n                .foregroundColor(isOn ? .green : .red)\n        }\n        .padding()\n    }\n}\n\n#Preview { ToggleExampleView() }",
+            "code":
+                "import SwiftUI\n\nstruct ToggleExampleView: View {\n    @State private var isOn = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Toggle(\"Schalter\", isOn: $isOn)\n                .padding()\n\n            Text(isOn ? \"Aktiviert\" : \"Deaktiviert\")\n                .font(.title2)\n                .foregroundColor(isOn ? .green : .red)\n        }\n        .padding()\n    }\n}\n\n#Preview { ToggleExampleView() }",
             "category": "SwiftUI"
         },
         {
             "id": "swiftui_007",
-            "title": "NavigationStack & NavigationLink",
-            "description":
-                "Baue Navigation zwischen Screens – ideal für jede App mit mehreren Views.",
+            "title": {
+                "de": "NavigationStack & NavigationLink",
+                "en": "NavigationStack & NavigationLink"
+            },
+            "description": {
+                "de":
+                    "Baue Navigation zwischen Screens – ideal für jede App mit mehreren Views.",
+                "en":
+                    "Build navigation between screens, ideal for any app with multiple views."
+            },
             "steps": [
-                "NavigationStack erstellen",
-                "NavigationLink hinzufügen",
-                "Ziel-View anzeigen"
+                {
+                    "de": "NavigationStack erstellen",
+                    "en": "Create NavigationStack"
+                },
+                {
+                    "de": "NavigationLink hinzufügen",
+                    "en": "Add NavigationLink"
+                },
+                {
+                    "de": "Ziel-View anzeigen",
+                    "en": "Show destination view"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -168,13 +279,27 @@
         },
         {
             "id": "swiftui_008",
-            "title": "Images Anzeigen",
-            "description":
-                "Zeige Bilder aus deinem Asset Catalog oder per URL an.",
+            "title": {
+                "de": "Images Anzeigen",
+                "en": "Show images"
+            },
+            "description": {
+                "de": "Zeige Bilder aus deinem Asset Catalog oder per URL an.",
+                "en": "Show images from your asset catalog or from a URL."
+            },
             "steps": [
-                "Image() mit Asset nutzen",
-                "Bildeigenschaften anpassen",
-                "Resizing und Scaling anwenden"
+                {
+                    "de": "Image() mit Asset nutzen",
+                    "en": "Use Image() with an asset"
+                },
+                {
+                    "de": "Bildeigenschaften anpassen",
+                    "en": "Adjust image properties"
+                },
+                {
+                    "de": "Resizing und Scaling anwenden",
+                    "en": "Apply resizing and scaling"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -192,13 +317,29 @@
         },
         {
             "id": "swiftui_009",
-            "title": "ZStack – Elemente übereinander legen",
-            "description":
-                "Platziere Views übereinander – ideal für Overlays, Badges und UI-Layer.",
+            "title": {
+                "de": "ZStack – Elemente übereinander legen",
+                "en": "ZStack - layer elements"
+            },
+            "description": {
+                "de":
+                    "Platziere Views übereinander – ideal für Overlays, Badges und UI-Layer.",
+                "en":
+                    "Place views on top of each other, ideal for overlays, badges and UI layers."
+            },
             "steps": [
-                "ZStack erstellen",
-                "Mehrere Views übereinander stapeln",
-                "Alignment definieren"
+                {
+                    "de": "ZStack erstellen",
+                    "en": "Create ZStack"
+                },
+                {
+                    "de": "Mehrere Views übereinander stapeln",
+                    "en": "Stack multiple views on top of each other"
+                },
+                {
+                    "de": "Alignment definieren",
+                    "en": "Define alignment"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -216,13 +357,29 @@
         },
         {
             "id": "swiftui_010",
-            "title": "HStack & VStack",
-            "description":
-                "Ordne Views horizontal oder vertikal an – die Basis jeder SwiftUI-UI.",
+            "title": {
+                "de": "HStack & VStack",
+                "en": "HStack & VStack"
+            },
+            "description": {
+                "de":
+                    "Ordne Views horizontal oder vertikal an – die Basis jeder SwiftUI-UI.",
+                "en":
+                    "Arrange views horizontally or vertically, the base of every SwiftUI UI."
+            },
             "steps": [
-                "HStack für horizontale Layouts",
-                "VStack für vertikale Layouts",
-                "Spacing und Alignment steuern"
+                {
+                    "de": "HStack für horizontale Layouts",
+                    "en": "Use HStack for horizontal layouts"
+                },
+                {
+                    "de": "VStack für vertikale Layouts",
+                    "en": "Use VStack for vertical layouts"
+                },
+                {
+                    "de": "Spacing und Alignment steuern",
+                    "en": "Control spacing and alignment"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -240,13 +397,29 @@
         },
         {
             "id": "swiftui_011",
-            "title": "Einfache Animationen",
-            "description":
-                "Lerne, wie du mit SwiftUI Animationen erstellst – z. B. eine skalierende View.",
+            "title": {
+                "de": "Einfache Animationen",
+                "en": "Simple animations"
+            },
+            "description": {
+                "de":
+                    "Lerne, wie du mit SwiftUI Animationen erstellst – z. B. eine skalierende View.",
+                "en":
+                    "Learn how to create SwiftUI animations, for example a scaling view."
+            },
             "steps": [
-                "Nutze @State für animierbare Werte",
-                "Verändere Zustand mit withAnimation",
-                "Verwende .animation() Modifier"
+                {
+                    "de": "Nutze @State für animierbare Werte",
+                    "en": "Use @State for animatable values"
+                },
+                {
+                    "de": "Verändere Zustand mit withAnimation",
+                    "en": "Change state with withAnimation"
+                },
+                {
+                    "de": "Verwende .animation() Modifier",
+                    "en": "Use the .animation() modifier"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -264,13 +437,29 @@
         },
         {
             "id": "swiftui_012",
-            "title": "Sheet (Popup) Anzeigen",
-            "description":
-                "Zeige ein SwiftUI-Sheet als Popup – ideal für Einstellungen, Details oder Modals.",
+            "title": {
+                "de": "Sheet (Popup) Anzeigen",
+                "en": "Show sheet"
+            },
+            "description": {
+                "de":
+                    "Zeige ein SwiftUI-Sheet als Popup – ideal für Einstellungen, Details oder Modals.",
+                "en":
+                    "Show a SwiftUI sheet as a popup, ideal for settings, details or modals."
+            },
             "steps": [
-                "Nutze @State für Sheet-Zustand",
-                "Verwende .sheet(isPresented:)",
-                "Baue eigenen Detail-View"
+                {
+                    "de": "Nutze @State für Sheet-Zustand",
+                    "en": "Use @State for sheet state"
+                },
+                {
+                    "de": "Verwende .sheet(isPresented:)",
+                    "en": "Use .sheet(isPresented:)"
+                },
+                {
+                    "de": "Baue eigenen Detail-View",
+                    "en": "Build a custom detail view"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -288,13 +477,29 @@
         },
         {
             "id": "swiftui_013",
-            "title": "TabView Erstellen",
-            "description":
-                "Baue eine App mit mehreren Tabs – wie Einstellungen, Start, Profil.",
+            "title": {
+                "de": "TabView Erstellen",
+                "en": "Create TabView"
+            },
+            "description": {
+                "de":
+                    "Baue eine App mit mehreren Tabs – wie Einstellungen, Start, Profil.",
+                "en":
+                    "Build an app with multiple tabs, such as settings, home and profile."
+            },
             "steps": [
-                "TabView erstellen",
-                "Tab mit Label und Symbol definieren",
-                "Views in einzelnen Tabs anzeigen"
+                {
+                    "de": "TabView erstellen",
+                    "en": "Create TabView"
+                },
+                {
+                    "de": "Tab mit Label und Symbol definieren",
+                    "en": "Define a tab with label and symbol"
+                },
+                {
+                    "de": "Views in einzelnen Tabs anzeigen",
+                    "en": "Show views in individual tabs"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -312,13 +517,29 @@
         },
         {
             "id": "swiftui_014",
-            "title": "@Binding verwenden",
-            "description":
-                "Teile Zustände zwischen Views – ein Muss für jedes Menü, Popup oder Komponenten.",
+            "title": {
+                "de": "@Binding verwenden",
+                "en": "Use @Binding"
+            },
+            "description": {
+                "de":
+                    "Teile Zustände zwischen Views – ein Muss für jedes Menü, Popup oder Komponenten.",
+                "en":
+                    "Share state between views, essential for menus, popups and components."
+            },
             "steps": [
-                "Erstelle @State im Parent",
-                "Nutze @Binding im Child",
-                "Synchronisiere Werte automatisch"
+                {
+                    "de": "Erstelle @State im Parent",
+                    "en": "Create @State in the parent"
+                },
+                {
+                    "de": "Nutze @Binding im Child",
+                    "en": "Use @Binding in the child"
+                },
+                {
+                    "de": "Synchronisiere Werte automatisch",
+                    "en": "Synchronize values automatically"
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -336,13 +557,29 @@
         },
         {
             "id": "swiftui_015",
-            "title": "Grid Layout (LazyVGrid)",
-            "description":
-                "Erstelle flexible Grid-Layouts wie App-Icons, Shop-Items oder Level-Auswahl.",
+            "title": {
+                "de": "Grid Layout (LazyVGrid)",
+                "en": "Grid layout (LazyVGrid)"
+            },
+            "description": {
+                "de":
+                    "Erstelle flexible Grid-Layouts wie App-Icons, Shop-Items oder Level-Auswahl.",
+                "en":
+                    "Create flexible grid layouts such as app icons, shop items or level selection."
+            },
             "steps": [
-                "GridItem-Spalten definieren",
-                "LazyVGrid für effiziente Listen",
-                "Items dynamisch generieren"
+                {
+                    "de": "GridItem-Spalten definieren",
+                    "en": "Define GridItem columns"
+                },
+                {
+                    "de": "LazyVGrid für effiziente Listen",
+                    "en": "Use LazyVGrid for efficient lists"
+                },
+                {
+                    "de": "Items dynamisch generieren",
+                    "en": "Generate items dynamically"
+                }
             ],
             "colors": {
                 "backgroundColors": [

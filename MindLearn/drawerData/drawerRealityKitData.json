@@ -1,362 +1,611 @@
-[
-    {
-        "id": "realitykit_001",
-        "title": "RealityKit 3D Objekt",
-        "description":
-            "Zeige ein 3D-Objekt direkt in SwiftUI mit RealityKit und ARView.",
-        "steps": [
-            "Importiere RealityKit und ARKit.",
-            "Erstelle eine ARView in einem UIViewRepresentable.",
-            "Lade oder generiere ein 3D-Modell und füge es zur Szene hinzu."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4895EF",
-                "#000000"
+    [
+        {
+            "id": "realitykit_001",
+            "title": {
+                "de": "RealityKit 3D Objekt",
+                "en": "RealityKit 3D object"
+            },
+            "description": {
+                "de":
+                    "Zeige ein 3D-Objekt direkt in SwiftUI mit RealityKit und ARView.",
+                "en":
+                    "Show a 3D object directly in SwiftUI with RealityKit and ARView."
+            },
+            "steps": [
+                {
+                    "de": "Importiere RealityKit und ARKit.",
+                    "en": "Import RealityKit and ARKit."
+                },
+                {
+                    "de": "Erstelle eine ARView in einem UIViewRepresentable.",
+                    "en": "Create an ARView inside UIViewRepresentable."
+                },
+                {
+                    "de":
+                        "Lade oder generiere ein 3D-Modell und füge es zur Szene hinzu.",
+                    "en": "Load or generate a 3D model and add it to the scene."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4895EF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct RealityKitView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let arView = ARView(frame: .zero)\n        let config = ARWorldTrackingConfiguration()\n        config.environmentTexturing = .automatic\n        arView.session.run(config)\n\n        / 🔹 Beispiel-Objekt (3D-Box)\n        let box = ModelEntity(mesh: .generateBox(size: 0.1))\n        box.model?.materials = [SimpleMaterial(color: .cyan, isMetallic: true)]\n\n        let anchor = AnchorEntity(world: [0, 0, -0.3])\n        anchor.addChild(box)\n        arView.scene.addAnchor(anchor)\n\n        return arView\n    }\n\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\nstruct RealityKitExampleView: View {\n    var body: some View {\n        RealityKitView()\n            .ignoresSafeArea()\n            .overlay(\n                Text(\"RealityKit 3D 🌐\")\n                    .font(.title)\n                    .foregroundColor(.white)\n                    .padding(),\n                alignment: .top\n            )\n    }\n}\n\n#Preview {\n    RealityKitExampleView()\n}",
+            "category": "RealityKit"
         },
-        "code":
-            "import SwiftUI\nimport RealityKit\nimport ARKit\n\nstruct RealityKitView: UIViewRepresentable {\n    func makeUIView(context: Context) -> ARView {\n        let arView = ARView(frame: .zero)\n        let config = ARWorldTrackingConfiguration()\n        config.environmentTexturing = .automatic\n        arView.session.run(config)\n\n        / 🔹 Beispiel-Objekt (3D-Box)\n        let box = ModelEntity(mesh: .generateBox(size: 0.1))\n        box.model?.materials = [SimpleMaterial(color: .cyan, isMetallic: true)]\n\n        let anchor = AnchorEntity(world: [0, 0, -0.3])\n        anchor.addChild(box)\n        arView.scene.addAnchor(anchor)\n\n        return arView\n    }\n\n    func updateUIView(_ uiView: ARView, context: Context) {}\n}\n\nstruct RealityKitExampleView: View {\n    var body: some View {\n        RealityKitView()\n            .ignoresSafeArea()\n            .overlay(\n                Text(\"RealityKit 3D 🌐\")\n                    .font(.title)\n                    .foregroundColor(.white)\n                    .padding(),\n                alignment: .top\n            )\n    }\n}\n\n#Preview {\n    RealityKitExampleView()\n}",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_002",
-        "title": "USDZ Modell laden",
-        "description":
-            "Lade ein eigenes 3D-Modell (.usdz) und platziere es in einer RealityKit-Szene.",
-        "steps": [
-            "USDZ-Datei ins Xcode Asset Catalog ziehen.",
-            "ModelEntity über ModelEntity(named:) laden.",
-            "Entity mit einem AnchorEntity in der Szene platzieren."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4361EE",
-                "#000000"
+        {
+            "id": "realitykit_002",
+            "title": {
+                "de": "USDZ Modell laden",
+                "en": "Load USDZ model"
+            },
+            "description": {
+                "de":
+                    "Lade ein eigenes 3D-Modell (.usdz) und platziere es in einer RealityKit-Szene.",
+                "en":
+                    "Load a custom 3D model (.usdz) and place it in a RealityKit scene."
+            },
+            "steps": [
+                {
+                    "de": "USDZ-Datei ins Xcode Asset Catalog ziehen.",
+                    "en": "Drag the USDZ file into the Xcode asset catalog."
+                },
+                {
+                    "de": "ModelEntity über ModelEntity(named:) laden.",
+                    "en": "Load the ModelEntity with ModelEntity(named:)."
+                },
+                {
+                    "de":
+                        "Entity mit einem AnchorEntity in der Szene platzieren.",
+                    "en": "Place the entity in the scene with an AnchorEntity."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4361EE",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport RealityKit\n\nstruct USDZModelView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity(world: [0,0,-0.5])\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { USDZModelView() }",
+            "category": "RealityKit"
         },
-        "code":
-            "import SwiftUI\nimport RealityKit\n\nstruct USDZModelView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity(world: [0,0,-0.5])\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { USDZModelView() }",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_003",
-        "title": "Animationen abspielen",
-        "description":
-            "Spiele eingebaute 3D-Modell Animationen mit RealityKit ab.",
-        "steps": [
-            "USDZ muss eine Animation enthalten.",
-            "Überprüfe die verfügbaren Animationen im ModelEntity.",
-            "Spiele Animation mit playAnimation(_:transitionDuration:loops:)."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#3A0CA3",
-                "#000000"
+        {
+            "id": "realitykit_003",
+            "title": {
+                "de": "Animationen abspielen",
+                "en": "Play animations"
+            },
+            "description": {
+                "de":
+                    "Spiele eingebaute 3D-Modell Animationen mit RealityKit ab.",
+                "en": "Play built-in 3D model animations with RealityKit."
+            },
+            "steps": [
+                {
+                    "de": "USDZ muss eine Animation enthalten.",
+                    "en": "The USDZ must contain an animation."
+                },
+                {
+                    "de":
+                        "Überprüfe die verfügbaren Animationen im ModelEntity.",
+                    "en": "Check available animations in the ModelEntity."
+                },
+                {
+                    "de":
+                        "Spiele Animation mit playAnimation(_:transitionDuration:loops:).",
+                    "en":
+                        "Play animation with playAnimation(_:transitionDuration:loops:)."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#3A0CA3",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "if let model = try? await ModelEntity(named: \"character\") {\n    if let animation = model.availableAnimations.first {\n        model.playAnimation(animation.repeat())\n    }\n}",
+            "category": "RealityKit"
         },
-        "code":
-            "if let model = try? await ModelEntity(named: \"character\") {\n    if let animation = model.availableAnimations.first {\n        model.playAnimation(animation.repeat())\n    }\n}",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_004",
-        "title": "Licht hinzufügen",
-        "description":
-            "Füge deiner 3D-Szene eine gerichtete Lichtquelle für realistischere Beleuchtung hinzu.",
-        "steps": [
-            "DirectionalLightComponent erstellen.",
-            "Intensity & Shadow Einstellungen anpassen.",
-            "Licht an einen AnchorEntity hängen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#7209B7",
-                "#000000"
+        {
+            "id": "realitykit_004",
+            "title": {
+                "de": "Licht hinzufügen",
+                "en": "Add light"
+            },
+            "description": {
+                "de":
+                    "Füge deiner 3D-Szene eine gerichtete Lichtquelle für realistischere Beleuchtung hinzu.",
+                "en":
+                    "Add a directional light source to your 3D scene for more realistic lighting."
+            },
+            "steps": [
+                {
+                    "de": "DirectionalLightComponent erstellen.",
+                    "en": "Create DirectionalLightComponent."
+                },
+                {
+                    "de": "Intensity & Shadow Einstellungen anpassen.",
+                    "en": "Adjust intensity and shadow settings."
+                },
+                {
+                    "de": "Licht an einen AnchorEntity hängen.",
+                    "en": "Attach the light to an AnchorEntity."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#7209B7",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let light = DirectionalLight()\nlight.light.intensity = 30000\nlight.light.color = .white\nlet lightAnchor = AnchorEntity(world: [0,1,0])\nlightAnchor.addChild(light)",
+            "category": "RealityKit"
         },
-        "code":
-            "let light = DirectionalLight()\nlight.light.intensity = 30000\nlight.light.color = .white\nlet lightAnchor = AnchorEntity(world: [0,1,0])\nlightAnchor.addChild(light)",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_005",
-        "title": "Physik: Boden + Gravitation",
-        "description":
-            "Erzeuge physikalische Körper mit Kollisions- und Gravitationsunterstützung.",
-        "steps": [
-            "CollisionComponent hinzufügen.",
-            "PhysicsBodyComponent (.dynamic oder .static) verwenden.",
-            "Boden als statisches Objekt hinzufügen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#560BAD",
-                "#000000"
+        {
+            "id": "realitykit_005",
+            "title": {
+                "de": "Physik: Boden + Gravitation",
+                "en": "Physics: floor + gravity"
+            },
+            "description": {
+                "de":
+                    "Erzeuge physikalische Körper mit Kollisions- und Gravitationsunterstützung.",
+                "en":
+                    "Create physical bodies with collision and gravity support."
+            },
+            "steps": [
+                {
+                    "de": "CollisionComponent hinzufügen.",
+                    "en": "Add CollisionComponent."
+                },
+                {
+                    "de":
+                        "PhysicsBodyComponent (.dynamic oder .static) verwenden.",
+                    "en": "Use PhysicsBodyComponent (.dynamic or .static)."
+                },
+                {
+                    "de": "Boden als statisches Objekt hinzufügen.",
+                    "en": "Add the floor as a static object."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#560BAD",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let sphere = ModelEntity(mesh: .generateSphere(radius: 0.1))\nsphere.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))\nsphere.components.set(PhysicsBodyComponent(massProperties: .default, material: .default, mode: .dynamic))",
+            "category": "RealityKit"
         },
-        "code":
-            "let sphere = ModelEntity(mesh: .generateSphere(radius: 0.1))\nsphere.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))\nsphere.components.set(PhysicsBodyComponent(massProperties: .default, material: .default, mode: .dynamic))",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_006",
-        "title": "Tap-Interaktion (Objekte antippen)",
-        "description":
-            "Ermögliche es dem Nutzer, 3D-Objekte durch Tippen auszuwählen.",
-        "steps": [
-            "Gesten mit ARView.installGestures aktivieren.",
-            "Raycasting verwenden, um Objekte zu finden.",
-            "Reaktion beim Treffer definieren (z. B. Skalierung)."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4CC9F0",
-                "#000000"
+        {
+            "id": "realitykit_006",
+            "title": {
+                "de": "Tap-Interaktion (Objekte antippen)",
+                "en": "Tap interaction"
+            },
+            "description": {
+                "de":
+                    "Ermögliche es dem Nutzer, 3D-Objekte durch Tippen auszuwählen.",
+                "en": "Allow users to select 3D objects by tapping."
+            },
+            "steps": [
+                {
+                    "de": "Gesten mit ARView.installGestures aktivieren.",
+                    "en": "Enable gestures with ARView.installGestures."
+                },
+                {
+                    "de": "Raycasting verwenden, um Objekte zu finden.",
+                    "en": "Use raycasting to find objects."
+                },
+                {
+                    "de":
+                        "Reaktion beim Treffer definieren (z. B. Skalierung).",
+                    "en": "Define a reaction on hit, such as scaling."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4CC9F0",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap))\narView.addGestureRecognizer(tap)\n\n@objc func handleTap(_ sender: UITapGestureRecognizer) {\n   let location = sender.location(in: arView)\n   if let result = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .any).first {\n      print(\"Treffer!\", result.worldTransform)\n   }\n}",
+            "category": "RealityKit"
         },
-        "code":
-            "let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleTap))\narView.addGestureRecognizer(tap)\n\n@objc func handleTap(_ sender: UITapGestureRecognizer) {\n   let location = sender.location(in: arView)\n   if let result = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .any).first {\n      print(\"Treffer!\", result.worldTransform)\n   }\n}",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_007",
-        "title": "Material Shader (RealityKit MaterialX)",
-        "description":
-            "Nutze RealityKit MaterialX Shader für stylische Oberflächen.",
-        "steps": [
-            "CustomMaterial mit ShaderGraph erstellen.",
-            "Farbe, Roughness und Emission definieren.",
-            "Material Entity zuweisen."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#F72585",
-                "#000000"
+        {
+            "id": "realitykit_007",
+            "title": {
+                "de": "Material Shader (RealityKit MaterialX)",
+                "en": "Material shader (RealityKit MaterialX)"
+            },
+            "description": {
+                "de":
+                    "Nutze RealityKit MaterialX Shader für stylische Oberflächen.",
+                "en": "Use RealityKit MaterialX shaders for stylish surfaces."
+            },
+            "steps": [
+                {
+                    "de": "CustomMaterial mit ShaderGraph erstellen.",
+                    "en": "Create CustomMaterial with ShaderGraph."
+                },
+                {
+                    "de": "Farbe, Roughness und Emission definieren.",
+                    "en": "Define color, roughness and emission."
+                },
+                {
+                    "de": "Material Entity zuweisen.",
+                    "en": "Assign material to the entity."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#F72585",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "var material = PhysicallyBasedMaterial()\nmaterial.baseColor = .init(tint: .purple)\nmaterial.emissiveColor = .init(tint: .cyan, intensity: 2)\nentity.model?.materials = [material]",
+            "category": "RealityKit"
         },
-        "code":
-            "var material = PhysicallyBasedMaterial()\nmaterial.baseColor = .init(tint: .purple)\nmaterial.emissiveColor = .init(tint: .cyan, intensity: 2)\nentity.model?.materials = [material]",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_008",
-        "title": "Animation per Swift steuern",
-        "description":
-            "Animierte Eigenschaften wie Scale, Rotation oder Position programmatisch mit RealityKit ändern.",
-        "steps": [
-            "Entity.transform nutzen.",
-            "Rotation und Scale animieren.",
-            "Mit SwiftUI Timer oder Task kombinieren."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#B5179E",
-                "#000000"
+        {
+            "id": "realitykit_008",
+            "title": {
+                "de": "Animation per Swift steuern",
+                "en": "Control animation with Swift"
+            },
+            "description": {
+                "de":
+                    "Animierte Eigenschaften wie Scale, Rotation oder Position programmatisch mit RealityKit ändern.",
+                "en":
+                    "Change animated properties such as scale, rotation or position programmatically with RealityKit."
+            },
+            "steps": [
+                {
+                    "de": "Entity.transform nutzen.",
+                    "en": "Use Entity.transform."
+                },
+                {
+                    "de": "Rotation und Scale animieren.",
+                    "en": "Animate rotation and scale."
+                },
+                {
+                    "de": "Mit SwiftUI Timer oder Task kombinieren.",
+                    "en": "Combine with SwiftUI Timer or Task."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#B5179E",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "entity.transform.translation.y += 0.01\nentity.transform.scale = [1.2,1.2,1.2]\nentity.transform.rotation = simd_quatf(angle: .pi/4, axis: [0,1,0])",
+            "category": "RealityKit"
         },
-        "code":
-            "entity.transform.translation.y += 0.01\nentity.transform.scale = [1.2,1.2,1.2]\nentity.transform.rotation = simd_quatf(angle: .pi/4, axis: [0,1,0])",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_009",
-        "title": "Custom Collision Events",
-        "description":
-            "Reagiere auf Kollisionen zwischen physikalischen Objekten.",
-        "steps": [
-            "CollisionComponent hinzufügen.",
-            "Scene.subscribe verwenden.",
-            "Kollision abfangen und darauf reagieren."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#3F37C9",
-                "#000000"
+        {
+            "id": "realitykit_009",
+            "title": {
+                "de": "Custom Collision Events",
+                "en": "Custom collision events"
+            },
+            "description": {
+                "de":
+                    "Reagiere auf Kollisionen zwischen physikalischen Objekten.",
+                "en": "React to collisions between physical objects."
+            },
+            "steps": [
+                {
+                    "de": "CollisionComponent hinzufügen.",
+                    "en": "Add CollisionComponent."
+                },
+                {
+                    "de": "Scene.subscribe verwenden.",
+                    "en": "Use Scene.subscribe."
+                },
+                {
+                    "de": "Kollision abfangen und darauf reagieren.",
+                    "en": "Catch collisions and react to them."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#3F37C9",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let subscription = arView.scene.subscribe(to: CollisionEvents.Began.self) { event in\n    print(\"💥 Kollision zwischen\", event.entityA, event.entityB)\n}",
+            "category": "RealityKit"
         },
-        "code":
-            "let subscription = arView.scene.subscribe(to: CollisionEvents.Began.self) { event in\n    print(\"💥 Kollision zwischen\", event.entityA, event.entityB)\n}",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_010",
-        "title": "RealityView (iOS 17+) – Neue API",
-        "description":
-            "Nutze die moderne RealityView API für bessere SwiftUI-Integration.",
-        "steps": [
-            "RealityView statt ARViewRepresentable verwenden.",
-            "ModelEntity asynchron laden.",
-            "Animation und Materialien direkt in SwiftUI steuern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4895EF",
-                "#000000"
+        {
+            "id": "realitykit_010",
+            "title": {
+                "de": "RealityView (iOS 17+) – Neue API",
+                "en": "RealityView (iOS 17+) - new API"
+            },
+            "description": {
+                "de":
+                    "Nutze die moderne RealityView API für bessere SwiftUI-Integration.",
+                "en":
+                    "Use the modern RealityView API for better SwiftUI integration."
+            },
+            "steps": [
+                {
+                    "de": "RealityView statt ARViewRepresentable verwenden.",
+                    "en": "Use RealityView instead of ARViewRepresentable."
+                },
+                {
+                    "de": "ModelEntity asynchron laden.",
+                    "en": "Load ModelEntity asynchronously."
+                },
+                {
+                    "de":
+                        "Animation und Materialien direkt in SwiftUI steuern.",
+                    "en": "Control animation and materials directly in SwiftUI."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4895EF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import RealityKit\nimport SwiftUI\n\nstruct NewRealityView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity()\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { NewRealityView() }",
+            "category": "RealityKit"
         },
-        "code":
-            "import RealityKit\nimport SwiftUI\n\nstruct NewRealityView: View {\n    var body: some View {\n        RealityView { content in\n            if let model = try? await ModelEntity(named: \"spirit1\") {\n                let anchor = AnchorEntity()\n                anchor.addChild(model)\n                content.add(anchor)\n            }\n        }\n        .ignoresSafeArea()\n    }\n}\n\n#Preview { NewRealityView() }",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_011",
-        "title": "Schatten aktivieren (Soft Shadows)",
-        "description":
-            "Aktiviere realistische, weiche Schatten für deine 3D-Modelle in RealityKit.",
-        "steps": [
-            "DirectionalLightComponent konfigurieren.",
-            "shadow = DirectionalLightComponent.Shadow(enable: true) setzen.",
-            "ShadowDepth oder Range verbessern."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4895EF",
-                "#000000"
+        {
+            "id": "realitykit_011",
+            "title": {
+                "de": "Schatten aktivieren (Soft Shadows)",
+                "en": "Enable shadows (soft shadows)"
+            },
+            "description": {
+                "de":
+                    "Aktiviere realistische, weiche Schatten für deine 3D-Modelle in RealityKit.",
+                "en":
+                    "Enable realistic soft shadows for your 3D models in RealityKit."
+            },
+            "steps": [
+                {
+                    "de": "DirectionalLightComponent konfigurieren.",
+                    "en": "Configure DirectionalLightComponent."
+                },
+                {
+                    "de":
+                        "shadow = DirectionalLightComponent.Shadow(enable: true) setzen.",
+                    "en":
+                        "Set shadow = DirectionalLightComponent.Shadow(enable: true)."
+                },
+                {
+                    "de": "ShadowDepth oder Range verbessern.",
+                    "en": "Improve shadow depth or range."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4895EF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let light = DirectionalLight()\nlight.light.intensity = 40000\nlight.shadow = DirectionalLightComponent.Shadow(maxDistance: 5, depthBias: 1)\nlet anchor = AnchorEntity(world: [0,1,0])\nanchor.addChild(light)",
+            "category": "RealityKit"
         },
-        "code":
-            "let light = DirectionalLight()\nlight.light.intensity = 40000\nlight.shadow = DirectionalLightComponent.Shadow(maxDistance: 5, depthBias: 1)\nlet anchor = AnchorEntity(world: [0,1,0])\nanchor.addChild(light)",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_012",
-        "title": "Skybox / Environment Map",
-        "description":
-            "Lade ein HDRI oder Bild als Skybox, um realistische Spiegelungen & Umgebungslicht zu erstellen.",
-        "steps": [
-            "Lade HDRI in TextureResource.",
-            "Erstelle EnvironmentResource.",
-            "Scene versteht automatisch Reflection Lighting."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#4361EE",
-                "#000000"
+        {
+            "id": "realitykit_012",
+            "title": {
+                "de": "Skybox / Environment Map",
+                "en": "Skybox / environment map"
+            },
+            "description": {
+                "de":
+                    "Lade ein HDRI oder Bild als Skybox, um realistische Spiegelungen & Umgebungslicht zu erstellen.",
+                "en":
+                    "Load an HDRI or image as a skybox to create realistic reflections and ambient light."
+            },
+            "steps": [
+                {
+                    "de": "Lade HDRI in TextureResource.",
+                    "en": "Load HDRI into TextureResource."
+                },
+                {
+                    "de": "Erstelle EnvironmentResource.",
+                    "en": "Create EnvironmentResource."
+                },
+                {
+                    "de": "Scene versteht automatisch Reflection Lighting.",
+                    "en": "The scene handles reflection lighting automatically."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#4361EE",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let texture = try! await TextureResource.load(named: \"sky.hdr\")\nlet environment = try! await EnvironmentResource(texture: texture)\narView.environment.scene = environment",
+            "category": "RealityKit"
         },
-        "code":
-            "let texture = try! await TextureResource.load(named: \"sky.hdr\")\nlet environment = try! await EnvironmentResource(texture: texture)\narView.environment.scene = environment",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_013",
-        "title": "LookAt Tracking (Objekt folgt Ziel)",
-        "description":
-            "Lasse ein 3D-Objekt automatisch ein anderes Entity anschauen – perfekt für Gegner, NPCs oder Kameras.",
-        "steps": [
-            "Positionen von Entity A und B vergleichen.",
-            "Berechne Rotation mit simd_normalize & simd_quatf.",
-            "Setze transform.rotation dynamisch."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#3A0CA3",
-                "#000000"
+        {
+            "id": "realitykit_013",
+            "title": {
+                "de": "LookAt Tracking (Objekt folgt Ziel)",
+                "en": "LookAt tracking"
+            },
+            "description": {
+                "de":
+                    "Lasse ein 3D-Objekt automatisch ein anderes Entity anschauen – perfekt für Gegner, NPCs oder Kameras.",
+                "en":
+                    "Make a 3D object automatically look at another entity, perfect for enemies, NPCs or cameras."
+            },
+            "steps": [
+                {
+                    "de": "Positionen von Entity A und B vergleichen.",
+                    "en": "Compare positions of entity A and B."
+                },
+                {
+                    "de": "Berechne Rotation mit simd_normalize & simd_quatf.",
+                    "en":
+                        "Calculate rotation with simd_normalize and simd_quatf."
+                },
+                {
+                    "de": "Setze transform.rotation dynamisch.",
+                    "en": "Set transform.rotation dynamically."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#3A0CA3",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let direction = normalize(target.position(relativeTo: nil) - entity.position(relativeTo: nil))\nentity.transform.rotation = simd_quatf(from: [0,0,1], to: direction)",
+            "category": "RealityKit"
         },
-        "code":
-            "let direction = normalize(target.position(relativeTo: nil) - entity.position(relativeTo: nil))\nentity.transform.rotation = simd_quatf(from: [0,0,1], to: direction)",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_014",
-        "title": "LiDAR Mesh Rendering",
-        "description":
-            "Zeige das ARKit-Mesh (gescannte Umgebung) als RealityKit-Geometrie an.",
-        "steps": [
-            "Aktiviere sceneReconstruction in ARWorldTrackingConfiguration.",
-            "Nutze ARMeshAnchors im SessionDelegate.",
-            "Konvertiere Mesh-Daten zu ModelEntity."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#7209B7",
-                "#000000"
+        {
+            "id": "realitykit_014",
+            "title": {
+                "de": "LiDAR Mesh Rendering",
+                "en": "LiDAR mesh rendering"
+            },
+            "description": {
+                "de":
+                    "Zeige das ARKit-Mesh (gescannte Umgebung) als RealityKit-Geometrie an.",
+                "en":
+                    "Show the ARKit mesh of the scanned environment as RealityKit geometry."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Aktiviere sceneReconstruction in ARWorldTrackingConfiguration.",
+                    "en":
+                        "Enable sceneReconstruction in ARWorldTrackingConfiguration."
+                },
+                {
+                    "de": "Nutze ARMeshAnchors im SessionDelegate.",
+                    "en": "Use ARMeshAnchors in SessionDelegate."
+                },
+                {
+                    "de": "Konvertiere Mesh-Daten zu ModelEntity.",
+                    "en": "Convert mesh data to ModelEntity."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#7209B7",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "config.sceneReconstruction = .mesh\n\narView.session.delegate = context.coordinator\n\nfunc session(_ session: ARSession, didAdd anchors: [ARAnchor]) {\n   for a in anchors {\n       if let mesh = a as? ARMeshAnchor {\n           let entity = ModelEntity(mesh: .init(mesh: mesh.geometry, device: arView.device!))\n           arView.scene.addAnchor(AnchorEntity(anchor: mesh))\n       }\n   }\n}",
+            "category": "RealityKit"
         },
-        "code":
-            "config.sceneReconstruction = .mesh\n\narView.session.delegate = context.coordinator\n\nfunc session(_ session: ARSession, didAdd anchors: [ARAnchor]) {\n   for a in anchors {\n       if let mesh = a as? ARMeshAnchor {\n           let entity = ModelEntity(mesh: .init(mesh: mesh.geometry, device: arView.device!))\n           arView.scene.addAnchor(AnchorEntity(anchor: mesh))\n       }\n   }\n}",
-        "category": "RealityKit"
-    },
-    {
-        "id": "realitykit_015",
-        "title": "Physik-Impulse (Explosionseffekt)",
-        "description":
-            "Wende eine Kraft auf Entities an – perfekt für Explosionen oder Treffer-Effekte.",
-        "steps": [
-            "Entity braucht PhysicsBodyComponent (.dynamic).",
-            "Erzeuge simd_float3 Kraftvektor.",
-            "Nutze applyImpulse(_:relativeTo:)."
-        ],
-        "colors": {
-            "backgroundColors": [
-                "#000000",
-                "#F72585",
-                "#000000"
+        {
+            "id": "realitykit_015",
+            "title": {
+                "de": "Physik-Impulse (Explosionseffekt)",
+                "en": "Physics impulses"
+            },
+            "description": {
+                "de":
+                    "Wende eine Kraft auf Entities an – perfekt für Explosionen oder Treffer-Effekte.",
+                "en":
+                    "Apply force to entities, perfect for explosions or hit effects."
+            },
+            "steps": [
+                {
+                    "de": "Entity braucht PhysicsBodyComponent (.dynamic).",
+                    "en": "Entity needs PhysicsBodyComponent (.dynamic)."
+                },
+                {
+                    "de": "Erzeuge simd_float3 Kraftvektor.",
+                    "en": "Create a simd_float3 force vector."
+                },
+                {
+                    "de": "Nutze applyImpulse(_:relativeTo:).",
+                    "en": "Use applyImpulse(_:relativeTo:)."
+                }
             ],
-            "textColors": [
-                "#FFFFFF"
-            ]
-        },
-        "code":
-            "let force = SIMD3<Float>(0, 2, -3)\nsphere.physicsBody?.applyImpulse(force, relativeTo: nil)",
-        "category": "RealityKit"
-    }
-]
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#F72585",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let force = SIMD3<Float>(0, 2, -3)\nsphere.physicsBody?.applyImpulse(force, relativeTo: nil)",
+            "category": "RealityKit"
+        }
+    ]

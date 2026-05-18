@@ -1,13 +1,34 @@
 [
     {
         "id": "rn_001",
-        "title": "Was ist React Native?",
-        "description":
-            "React Native ist ein Open-Source-Framework von Meta, mit dem du native iOS- und Android-Apps mit JavaScript oder TypeScript entwickeln kannst. Es kombiniert die React-Syntax mit nativen UI-Komponenten für echte mobile Performance.",
+        "title": {
+            "de": "Was ist React Native?",
+            "en": "What is React Native?"
+        },
+        "description": {
+            "de":
+                "React Native ist ein Open-Source-Framework von Meta, mit dem du native iOS- und Android-Apps mit JavaScript oder TypeScript entwickeln kannst. Es kombiniert die React-Syntax mit nativen UI-Komponenten für echte mobile Performance.",
+            "en":
+                "React Native is an open-source framework by Meta that lets you build native iOS and Android apps with JavaScript or TypeScript. It combines React syntax with native UI components for real mobile performance."
+        },
         "steps": [
-            "React Native basiert auf dem JavaScript-Framework React.",
-            "Es verwendet native APIs für UI und Performance – kein WebView.",
-            "Mit Expo oder Metro kannst du deine App starten, testen und debuggen."
+            {
+                "de":
+                    "React Native basiert auf dem JavaScript-Framework React.",
+                "en": "React Native is based on the JavaScript framework React."
+            },
+            {
+                "de":
+                    "Es verwendet native APIs für UI und Performance – kein WebView.",
+                "en":
+                    "It uses native APIs for UI and performance, not a WebView."
+            },
+            {
+                "de":
+                    "Mit Expo oder Metro kannst du deine App starten, testen und debuggen.",
+                "en":
+                    "With Expo or Metro you can start, test and debug your app."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,13 +46,30 @@
     },
     {
         "id": "rn_002",
-        "title": "Grundstruktur einer App",
-        "description":
-            "Verstehe den Aufbau einer React Native App und die Hauptkomponenten.",
+        "title": {
+            "de": "Grundstruktur einer App",
+            "en": "Basic app structure"
+        },
+        "description": {
+            "de":
+                "Verstehe den Aufbau einer React Native App und die Hauptkomponenten.",
+            "en":
+                "Understand the structure of a React Native app and its main components."
+        },
         "steps": [
-            "Jede App beginnt mit einer Hauptkomponente (z. B. App.js).",
-            "JSX beschreibt die UI-Struktur ähnlich wie HTML.",
-            "Styles werden mit JavaScript definiert."
+            {
+                "de":
+                    "Jede App beginnt mit einer Hauptkomponente (z. B. App.js).",
+                "en": "Every app starts with a main component, such as App.js."
+            },
+            {
+                "de": "JSX beschreibt die UI-Struktur ähnlich wie HTML.",
+                "en": "JSX describes the UI structure similar to HTML."
+            },
+            {
+                "de": "Styles werden mit JavaScript definiert.",
+                "en": "Styles are defined with JavaScript."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -49,13 +87,29 @@
     },
     {
         "id": "rn_003",
-        "title": "JSX & Komponenten",
-        "description":
-            "JSX kombiniert JavaScript und Layout. Du kannst UI-Komponenten wie Bausteine wiederverwenden.",
+        "title": {
+            "de": "JSX & Komponenten",
+            "en": "JSX & components"
+        },
+        "description": {
+            "de":
+                "JSX kombiniert JavaScript und Layout. Du kannst UI-Komponenten wie Bausteine wiederverwenden.",
+            "en":
+                "JSX combines JavaScript and layout. You can reuse UI components like building blocks."
+        },
         "steps": [
-            "JSX sieht aus wie HTML, ist aber JavaScript.",
-            "Erstelle eigene Komponenten als Funktionen.",
-            "Importiere und verwende sie in anderen Dateien."
+            {
+                "de": "JSX sieht aus wie HTML, ist aber JavaScript.",
+                "en": "JSX looks like HTML, but it is JavaScript."
+            },
+            {
+                "de": "Erstelle eigene Komponenten als Funktionen.",
+                "en": "Create custom components as functions."
+            },
+            {
+                "de": "Importiere und verwende sie in anderen Dateien.",
+                "en": "Import and use them in other files."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -73,13 +127,30 @@
     },
     {
         "id": "rn_004",
-        "title": "State & Props verstehen",
-        "description":
-            "State speichert Daten innerhalb einer Komponente, Props werden von außen übergeben.",
+        "title": {
+            "de": "State & Props verstehen",
+            "en": "Understanding state & props"
+        },
+        "description": {
+            "de":
+                "State speichert Daten innerhalb einer Komponente, Props werden von außen übergeben.",
+            "en":
+                "State stores data inside a component, props are passed in from outside."
+        },
         "steps": [
-            "useState() verwaltet Zustände innerhalb einer Komponente.",
-            "Props werden wie Parameter an Komponenten übergeben.",
-            "Änderungen am State führen zu automatischen UI-Updates."
+            {
+                "de":
+                    "useState() verwaltet Zustände innerhalb einer Komponente.",
+                "en": "useState() manages state inside a component."
+            },
+            {
+                "de": "Props werden wie Parameter an Komponenten übergeben.",
+                "en": "Props are passed to components like parameters."
+            },
+            {
+                "de": "Änderungen am State führen zu automatischen UI-Updates.",
+                "en": "State changes trigger automatic UI updates."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -97,13 +168,31 @@
     },
     {
         "id": "rn_005",
-        "title": "StyleSheet & Layout (Flexbox)",
-        "description":
-            "Nutze Flexbox für responsive Layouts und StyleSheet für sauberes Styling.",
+        "title": {
+            "de": "StyleSheet & Layout (Flexbox)",
+            "en": "StyleSheet & layout (Flexbox)"
+        },
+        "description": {
+            "de":
+                "Nutze Flexbox für responsive Layouts und StyleSheet für sauberes Styling.",
+            "en":
+                "Use Flexbox for responsive layouts and StyleSheet for clean styling."
+        },
         "steps": [
-            "StyleSheet.create() für strukturierte Styles.",
-            "Flexbox-Layout: justifyContent, alignItems, flexDirection.",
-            "Farben, Abstände und Text-Stile einfach anpassbar."
+            {
+                "de": "StyleSheet.create() für strukturierte Styles.",
+                "en": "Use StyleSheet.create() for structured styles."
+            },
+            {
+                "de":
+                    "Flexbox-Layout: justifyContent, alignItems, flexDirection.",
+                "en":
+                    "Flexbox layout: justifyContent, alignItems and flexDirection."
+            },
+            {
+                "de": "Farben, Abstände und Text-Stile einfach anpassbar.",
+                "en": "Colors, spacing and text styles are easy to adjust."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -121,13 +210,29 @@
     },
     {
         "id": "rn_006",
-        "title": "React Hooks verstehen (useState, useEffect)",
-        "description":
-            "Hooks sind das Herz moderner React Native Apps. Sie ermöglichen State und Logik in Funktionskomponenten.",
+        "title": {
+            "de": "React Hooks verstehen (useState, useEffect)",
+            "en": "Understanding React hooks"
+        },
+        "description": {
+            "de":
+                "Hooks sind das Herz moderner React Native Apps. Sie ermöglichen State und Logik in Funktionskomponenten.",
+            "en":
+                "Hooks are the heart of modern React Native apps. They enable state and logic in function components."
+        },
         "steps": [
-            "useState() für Zustände.",
-            "useEffect() für Seiteneffekte (z. B. Daten laden).",
-            "Cleanup-Funktion für Timer oder Event Listener nutzen."
+            {
+                "de": "useState() für Zustände.",
+                "en": "useState() for state."
+            },
+            {
+                "de": "useEffect() für Seiteneffekte (z. B. Daten laden).",
+                "en": "useEffect() for side effects such as loading data."
+            },
+            {
+                "de": "Cleanup-Funktion für Timer oder Event Listener nutzen.",
+                "en": "Use a cleanup function for timers or event listeners."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -145,13 +250,31 @@
     },
     {
         "id": "rn_007",
-        "title": "Navigation mit React Navigation",
-        "description":
-            "Wechsle zwischen Screens mit React Navigation – der Standard für Navigation in React Native.",
+        "title": {
+            "de": "Navigation mit React Navigation",
+            "en": "Navigation with React Navigation"
+        },
+        "description": {
+            "de":
+                "Wechsle zwischen Screens mit React Navigation – der Standard für Navigation in React Native.",
+            "en":
+                "Switch between screens with React Navigation, the standard navigation solution for React Native."
+        },
         "steps": [
-            "Installation: `npm install @react-navigation/native @react-navigation/native-stack`",
-            "NavigationContainer als Root definieren.",
-            "Mit createNativeStackNavigator() neue Screens anlegen."
+            {
+                "de":
+                    "Installation: `npm install @react-navigation/native @react-navigation/native-stack`",
+                "en":
+                    "Install with `npm install @react-navigation/native @react-navigation/native-stack`."
+            },
+            {
+                "de": "NavigationContainer als Root definieren.",
+                "en": "Define NavigationContainer as the root."
+            },
+            {
+                "de": "Mit createNativeStackNavigator() neue Screens anlegen.",
+                "en": "Create screens with createNativeStackNavigator()."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -169,13 +292,31 @@
     },
     {
         "id": "rn_008",
-        "title": "Daten speichern mit AsyncStorage",
-        "description":
-            "Speichere kleine Datenmengen lokal auf dem Gerät – perfekt für Einstellungen, Tokens oder Favoriten.",
+        "title": {
+            "de": "Daten speichern mit AsyncStorage",
+            "en": "Store data with AsyncStorage"
+        },
+        "description": {
+            "de":
+                "Speichere kleine Datenmengen lokal auf dem Gerät – perfekt für Einstellungen, Tokens oder Favoriten.",
+            "en":
+                "Store small amounts of data locally on the device, perfect for settings, tokens or favorites."
+        },
         "steps": [
-            "AsyncStorage aus `@react-native-async-storage/async-storage` importieren.",
-            "Mit `setItem` speichern und `getItem` abrufen.",
-            "Ideal in Kombination mit useEffect."
+            {
+                "de":
+                    "AsyncStorage aus `@react-native-async-storage/async-storage` importieren.",
+                "en":
+                    "Import AsyncStorage from `@react-native-async-storage/async-storage`."
+            },
+            {
+                "de": "Mit `setItem` speichern und `getItem` abrufen.",
+                "en": "Save with `setItem` and read with `getItem`."
+            },
+            {
+                "de": "Ideal in Kombination mit useEffect.",
+                "en": "Ideal in combination with useEffect."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -187,18 +328,36 @@
                 "#FFFFFF"
             ]
         },
-        "code": "import AsyncStorage from '@react-native-async-storage/async-storage';\nimport { useEffect, useState } from 'react';\nimport { View, Text, Button } from 'react-native';\n\nexport default function StorageExample() {\n  const [name, setName] = useState('');\n\n  useEffect(() => {\n    AsyncStorage.getItem('username').then(value => {\n      if (value) setName(value);\n    });\n  }, []);\n\n  const saveName = async () => {\n    await AsyncStorage.setItem('username', 'Tufan');\n    setName('Tufan');\n  };\n\n  return (\n    <View style={{ padding: 40 }}>\n      <Text style={{ fontSize: 22 }}>👋 Hallo, {name || 'Gast'}!</Text>\n      <Button title=\"Speichern\" onPress={saveName} />\n    </View>\n  );\n}",
+        "code":
+            "import AsyncStorage from '@react-native-async-storage/async-storage';\nimport { useEffect, useState } from 'react';\nimport { View, Text, Button } from 'react-native';\n\nexport default function StorageExample() {\n  const [name, setName] = useState('');\n\n  useEffect(() => {\n    AsyncStorage.getItem('username').then(value => {\n      if (value) setName(value);\n    });\n  }, []);\n\n  const saveName = async () => {\n    await AsyncStorage.setItem('username', 'Tufan');\n    setName('Tufan');\n  };\n\n  return (\n    <View style={{ padding: 40 }}>\n      <Text style={{ fontSize: 22 }}>👋 Hallo, {name || 'Gast'}!</Text>\n      <Button title=\"Speichern\" onPress={saveName} />\n    </View>\n  );\n}",
         "category": "React Native"
     },
     {
         "id": "rn_009",
-        "title": "Context API für globale Zustände",
-        "description":
-            "Mit React Context kannst du Daten global verwalten, z. B. Theme, User oder Coins.",
+        "title": {
+            "de": "Context API für globale Zustände",
+            "en": "Context API for global state"
+        },
+        "description": {
+            "de":
+                "Mit React Context kannst du Daten global verwalten, z. B. Theme, User oder Coins.",
+            "en":
+                "React Context lets you manage data globally, such as theme, user or coins."
+        },
         "steps": [
-            "Context mit `createContext()` erstellen.",
-            "Provider um deine App legen.",
-            "Daten in beliebigen Komponenten mit `useContext()` abrufen."
+            {
+                "de": "Context mit `createContext()` erstellen.",
+                "en": "Create context with `createContext()`."
+            },
+            {
+                "de": "Provider um deine App legen.",
+                "en": "Wrap your app in a provider."
+            },
+            {
+                "de":
+                    "Daten in beliebigen Komponenten mit `useContext()` abrufen.",
+                "en": "Access data in any component with `useContext()`."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -216,13 +375,35 @@
     },
     {
         "id": "rn_010",
-        "title": "Expo APIs (z. B. Kamera, Sensoren, Haptik)",
-        "description":
-            "Nutze Expo Module für native Features – ohne Xcode oder Android Studio zu öffnen.",
+        "title": {
+            "de": "Expo APIs (z. B. Kamera, Sensoren, Haptik)",
+            "en": "Expo APIs (camera, sensors, haptics)"
+        },
+        "description": {
+            "de":
+                "Nutze Expo Module für native Features – ohne Xcode oder Android Studio zu öffnen.",
+            "en":
+                "Use Expo modules for native features without opening Xcode or Android Studio."
+        },
         "steps": [
-            "Expo liefert APIs wie Camera, Haptics, Location oder FileSystem.",
-            "Installation: `npx expo install expo-camera expo-haptics`",
-            "Erfordert Permissions (z. B. Camera.requestPermissionsAsync())."
+            {
+                "de":
+                    "Expo liefert APIs wie Camera, Haptics, Location oder FileSystem.",
+                "en":
+                    "Expo provides APIs such as Camera, Haptics, Location and FileSystem."
+            },
+            {
+                "de":
+                    "Installation: `npx expo install expo-camera expo-haptics`",
+                "en":
+                    "Install with `npx expo install expo-camera expo-haptics`."
+            },
+            {
+                "de":
+                    "Erfordert Permissions (z. B. Camera.requestPermissionsAsync()).",
+                "en":
+                    "Requires permissions such as Camera.requestPermissionsAsync()."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -240,13 +421,30 @@
     },
     {
         "id": "rn_011",
-        "title": "Eigene Hooks erstellen (Custom Hooks)",
-        "description":
-            "Baue deine eigenen Hooks, um Logik wiederverwendbar zu machen – z. B. für API Calls oder Timer.",
+        "title": {
+            "de": "Eigene Hooks erstellen (Custom Hooks)",
+            "en": "Create custom hooks"
+        },
+        "description": {
+            "de":
+                "Baue deine eigenen Hooks, um Logik wiederverwendbar zu machen – z. B. für API Calls oder Timer.",
+            "en":
+                "Build your own hooks to reuse logic, for example API calls or timers."
+        },
         "steps": [
-            "Erstelle eine Funktion mit dem Prefix use.",
-            "Nutze andere Hooks (useState, useEffect) darin.",
-            "Exportiere sie und verwende sie in mehreren Komponenten."
+            {
+                "de": "Erstelle eine Funktion mit dem Prefix use.",
+                "en": "Create a function with the prefix use."
+            },
+            {
+                "de": "Nutze andere Hooks (useState, useEffect) darin.",
+                "en": "Use other hooks such as useState or useEffect inside it."
+            },
+            {
+                "de":
+                    "Exportiere sie und verwende sie in mehreren Komponenten.",
+                "en": "Export it and use it in multiple components."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -264,13 +462,29 @@
     },
     {
         "id": "rn_012",
-        "title": "API Requests mit Fetch & Axios",
-        "description":
-            "Hole Daten aus einer REST-API mit Fetch oder Axios und zeige sie in deiner App an.",
+        "title": {
+            "de": "API Requests mit Fetch & Axios",
+            "en": "API requests with Fetch & Axios"
+        },
+        "description": {
+            "de":
+                "Hole Daten aus einer REST-API mit Fetch oder Axios und zeige sie in deiner App an.",
+            "en":
+                "Fetch data from a REST API with Fetch or Axios and show it in your app."
+        },
         "steps": [
-            "Verwende useEffect, um beim Laden Daten abzurufen.",
-            "Nutze Fetch oder Axios für API Requests.",
-            "Zeige Lade- und Fehlerzustände im UI an."
+            {
+                "de": "Verwende useEffect, um beim Laden Daten abzurufen.",
+                "en": "Use useEffect to load data when the screen opens."
+            },
+            {
+                "de": "Nutze Fetch oder Axios für API Requests.",
+                "en": "Use Fetch or Axios for API requests."
+            },
+            {
+                "de": "Zeige Lade- und Fehlerzustände im UI an.",
+                "en": "Show loading and error states in the UI."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -288,13 +502,30 @@
     },
     {
         "id": "rn_013",
-        "title": "Animationen mit Reanimated & LayoutAnimation",
-        "description":
-            "Füge flüssige, native Animationen hinzu – für Übergänge, Gesten oder Effekte.",
+        "title": {
+            "de": "Animationen mit Reanimated & LayoutAnimation",
+            "en": "Animations with Reanimated & LayoutAnimation"
+        },
+        "description": {
+            "de":
+                "Füge flüssige, native Animationen hinzu – für Übergänge, Gesten oder Effekte.",
+            "en":
+                "Add smooth native animations for transitions, gestures and effects."
+        },
         "steps": [
-            "Mit Reanimated oder LayoutAnimation UI animieren.",
-            "useSharedValue für Werte, useAnimatedStyle für Styles.",
-            "Leistungsstarke GPU-basierte Bewegungen."
+            {
+                "de": "Mit Reanimated oder LayoutAnimation UI animieren.",
+                "en": "Animate UI with Reanimated or LayoutAnimation."
+            },
+            {
+                "de": "useSharedValue für Werte, useAnimatedStyle für Styles.",
+                "en":
+                    "Use useSharedValue for values and useAnimatedStyle for styles."
+            },
+            {
+                "de": "Leistungsstarke GPU-basierte Bewegungen.",
+                "en": "Powerful GPU-based motion."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -312,13 +543,29 @@
     },
     {
         "id": "rn_014",
-        "title": "Theme & Dark Mode umsetzen",
-        "description":
-            "Erstelle ein globales Theme-System, das zwischen Light & Dark Mode wechseln kann.",
+        "title": {
+            "de": "Theme & Dark Mode umsetzen",
+            "en": "Implement theme & dark mode"
+        },
+        "description": {
+            "de":
+                "Erstelle ein globales Theme-System, das zwischen Light & Dark Mode wechseln kann.",
+            "en":
+                "Create a global theme system that can switch between light and dark mode."
+        },
         "steps": [
-            "useColorScheme() von React Native verwenden.",
-            "Ein eigenes Theme-Object mit Farben definieren.",
-            "Dynamisch Styles anpassen."
+            {
+                "de": "useColorScheme() von React Native verwenden.",
+                "en": "Use useColorScheme() from React Native."
+            },
+            {
+                "de": "Ein eigenes Theme-Object mit Farben definieren.",
+                "en": "Define a custom theme object with colors."
+            },
+            {
+                "de": "Dynamisch Styles anpassen.",
+                "en": "Adjust styles dynamically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -336,13 +583,31 @@
     },
     {
         "id": "rn_015",
-        "title": "Dateien & Downloads mit expo-file-system",
-        "description":
-            "Lade Dateien aus dem Internet herunter und speichere sie lokal – z. B. Bilder oder JSON-Daten.",
+        "title": {
+            "de": "Dateien & Downloads mit expo-file-system",
+            "en": "Files & downloads with expo-file-system"
+        },
+        "description": {
+            "de":
+                "Lade Dateien aus dem Internet herunter und speichere sie lokal – z. B. Bilder oder JSON-Daten.",
+            "en":
+                "Download files from the internet and store them locally, such as images or JSON data."
+        },
         "steps": [
-            "expo-file-system installieren: `npx expo install expo-file-system`.",
-            "FileSystem.downloadAsync() nutzen.",
-            "Pfad und Status anzeigen."
+            {
+                "de":
+                    "expo-file-system installieren: `npx expo install expo-file-system`.",
+                "en":
+                    "Install expo-file-system with `npx expo install expo-file-system`."
+            },
+            {
+                "de": "FileSystem.downloadAsync() nutzen.",
+                "en": "Use FileSystem.downloadAsync()."
+            },
+            {
+                "de": "Pfad und Status anzeigen.",
+                "en": "Display path and status."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -360,13 +625,31 @@
     },
     {
         "id": "rn_016",
-        "title": "React Navigation Tabs & Drawer",
-        "description":
-            "Erstelle eine moderne App-Navigation mit Tabs und Drawer-Menü.",
+        "title": {
+            "de": "React Navigation Tabs & Drawer",
+            "en": "React Navigation tabs & drawer"
+        },
+        "description": {
+            "de":
+                "Erstelle eine moderne App-Navigation mit Tabs und Drawer-Menü.",
+            "en": "Create modern app navigation with tabs and a drawer menu."
+        },
         "steps": [
-            "Verwende createBottomTabNavigator() und createDrawerNavigator().",
-            "Icons mit react-native-vector-icons oder Expo Icons hinzufügen.",
-            "Stile an dein Theme anpassen."
+            {
+                "de":
+                    "Verwende createBottomTabNavigator() und createDrawerNavigator().",
+                "en":
+                    "Use createBottomTabNavigator() and createDrawerNavigator()."
+            },
+            {
+                "de":
+                    "Icons mit react-native-vector-icons oder Expo Icons hinzufügen.",
+                "en": "Add icons with react-native-vector-icons or Expo Icons."
+            },
+            {
+                "de": "Stile an dein Theme anpassen.",
+                "en": "Adapt styles to your theme."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -384,13 +667,29 @@
     },
     {
         "id": "rn_017",
-        "title": "FlatList & SectionList – effiziente Listen",
-        "description":
-            "Zeige große Datenmengen performant mit FlatList und SectionList an.",
+        "title": {
+            "de": "FlatList & SectionList – effiziente Listen",
+            "en": "FlatList & SectionList - efficient lists"
+        },
+        "description": {
+            "de":
+                "Zeige große Datenmengen performant mit FlatList und SectionList an.",
+            "en":
+                "Display large data sets efficiently with FlatList and SectionList."
+        },
         "steps": [
-            "FlatList rendert nur sichtbare Elemente.",
-            "Nutze keyExtractor und renderItem.",
-            "SectionList für gruppierte Listen."
+            {
+                "de": "FlatList rendert nur sichtbare Elemente.",
+                "en": "FlatList renders only visible items."
+            },
+            {
+                "de": "Nutze keyExtractor und renderItem.",
+                "en": "Use keyExtractor and renderItem."
+            },
+            {
+                "de": "SectionList für gruppierte Listen.",
+                "en": "Use SectionList for grouped lists."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -408,13 +707,29 @@
     },
     {
         "id": "rn_018",
-        "title": "Performance optimieren mit memo & useCallback",
-        "description":
-            "Vermeide unnötige Re-Renders durch Memoization und optimierte Callback-Funktionen.",
+        "title": {
+            "de": "Performance optimieren mit memo & useCallback",
+            "en": "Optimize performance with memo & useCallback"
+        },
+        "description": {
+            "de":
+                "Vermeide unnötige Re-Renders durch Memoization und optimierte Callback-Funktionen.",
+            "en":
+                "Avoid unnecessary rerenders with memoization and optimized callback functions."
+        },
         "steps": [
-            "React.memo() für Komponenten-Caching.",
-            "useCallback() für stabile Callback-Referenzen.",
-            "useMemo() für berechnete Werte."
+            {
+                "de": "React.memo() für Komponenten-Caching.",
+                "en": "Use React.memo() for component caching."
+            },
+            {
+                "de": "useCallback() für stabile Callback-Referenzen.",
+                "en": "Use useCallback() for stable callback references."
+            },
+            {
+                "de": "useMemo() für berechnete Werte.",
+                "en": "Use useMemo() for computed values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -432,13 +747,30 @@
     },
     {
         "id": "rn_019",
-        "title": "Modal- und Bottom-Sheet-Komponenten",
-        "description":
-            "Zeige zusätzliche Inhalte mit Modals oder Bottom Sheets an – perfekt für Dialoge, Aktionen oder Menüs.",
+        "title": {
+            "de": "Modal- und Bottom-Sheet-Komponenten",
+            "en": "Modal and bottom sheet components"
+        },
+        "description": {
+            "de":
+                "Zeige zusätzliche Inhalte mit Modals oder Bottom Sheets an – perfekt für Dialoge, Aktionen oder Menüs.",
+            "en":
+                "Show additional content with modals or bottom sheets, perfect for dialogs, actions or menus."
+        },
         "steps": [
-            "Nutze Modal aus react-native.",
-            "Erstelle eigene Bottom-Sheet-Komponenten.",
-            "Alternativ: react-native-bottom-sheet oder reanimated."
+            {
+                "de": "Nutze Modal aus react-native.",
+                "en": "Use Modal from react-native."
+            },
+            {
+                "de": "Erstelle eigene Bottom-Sheet-Komponenten.",
+                "en": "Create custom bottom sheet components."
+            },
+            {
+                "de": "Alternativ: react-native-bottom-sheet oder reanimated.",
+                "en":
+                    "Alternatively use react-native-bottom-sheet or Reanimated."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -456,12 +788,29 @@
     },
     {
         "id": "rn_020",
-        "title": "Gestensteuerung mit react-native-gesture-handler",
-        "description": "Füge intuitive Wisch-, Drag- und Tap-Gesten hinzu.",
+        "title": {
+            "de": "Gestensteuerung mit react-native-gesture-handler",
+            "en": "Gesture control with react-native-gesture-handler"
+        },
+        "description": {
+            "de": "Füge intuitive Wisch-, Drag- und Tap-Gesten hinzu.",
+            "en": "Add intuitive swipe, drag and tap gestures."
+        },
         "steps": [
-            "Installation: `npx expo install react-native-gesture-handler`.",
-            "PanGestureHandler oder TapGestureHandler nutzen.",
-            "Perfekt in Kombination mit Reanimated."
+            {
+                "de":
+                    "Installation: `npx expo install react-native-gesture-handler`.",
+                "en":
+                    "Install with `npx expo install react-native-gesture-handler`."
+            },
+            {
+                "de": "PanGestureHandler oder TapGestureHandler nutzen.",
+                "en": "Use PanGestureHandler or TapGestureHandler."
+            },
+            {
+                "de": "Perfekt in Kombination mit Reanimated.",
+                "en": "Perfect together with Reanimated."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -479,13 +828,31 @@
     },
     {
         "id": "rn_021",
-        "title": "Bilder & Icons einbinden",
-        "description":
-            "Lerne, wie du Bilder und Icons in deiner App nutzt – lokal oder aus dem Internet.",
+        "title": {
+            "de": "Bilder & Icons einbinden",
+            "en": "Add images & icons"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du Bilder und Icons in deiner App nutzt – lokal oder aus dem Internet.",
+            "en":
+                "Learn how to use images and icons in your app, locally or from the internet."
+        },
         "steps": [
-            "Verwende Image aus 'react-native' für lokale oder Remote-Bilder.",
-            "Nutze react-native-vector-icons oder Expo Icons für Symbole.",
-            "Achte auf Größe, Skalierung und Caching."
+            {
+                "de":
+                    "Verwende Image aus 'react-native' für lokale oder Remote-Bilder.",
+                "en": "Use Image from react-native for local or remote images."
+            },
+            {
+                "de":
+                    "Nutze react-native-vector-icons oder Expo Icons für Symbole.",
+                "en": "Use react-native-vector-icons or Expo Icons for symbols."
+            },
+            {
+                "de": "Achte auf Größe, Skalierung und Caching.",
+                "en": "Pay attention to size, scaling and caching."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -503,13 +870,30 @@
     },
     {
         "id": "rn_022",
-        "title": "Fonts & Custom Schriftarten",
-        "description":
-            "Importiere und verwende eigene Schriftarten, um deiner App einen individuellen Stil zu geben.",
+        "title": {
+            "de": "Fonts & Custom Schriftarten",
+            "en": "Fonts & custom typefaces"
+        },
+        "description": {
+            "de":
+                "Importiere und verwende eigene Schriftarten, um deiner App einen individuellen Stil zu geben.",
+            "en":
+                "Import and use custom fonts to give your app an individual style."
+        },
         "steps": [
-            "Platziere .ttf oder .otf Dateien im assets/fonts Ordner.",
-            "Nutze useFonts() aus 'expo-font' zum Laden.",
-            "Warte auf das Laden, bevor du Text rendert."
+            {
+                "de":
+                    "Platziere .ttf oder .otf Dateien im assets/fonts Ordner.",
+                "en": "Place .ttf or .otf files in assets/fonts."
+            },
+            {
+                "de": "Nutze useFonts() aus 'expo-font' zum Laden.",
+                "en": "Use useFonts() from expo-font to load them."
+            },
+            {
+                "de": "Warte auf das Laden, bevor du Text rendert.",
+                "en": "Wait until fonts are loaded before rendering text."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -527,13 +911,31 @@
     },
     {
         "id": "rn_023",
-        "title": "Lottie Animationen einbinden",
-        "description":
-            "Verwende animierte JSON-Dateien mit Lottie, um lebendige UI-Animationen hinzuzufügen.",
+        "title": {
+            "de": "Lottie Animationen einbinden",
+            "en": "Add Lottie animations"
+        },
+        "description": {
+            "de":
+                "Verwende animierte JSON-Dateien mit Lottie, um lebendige UI-Animationen hinzuzufügen.",
+            "en":
+                "Use animated JSON files with Lottie to add lively UI animations."
+        },
         "steps": [
-            "Installiere `lottie-react-native` oder `lottie-react` (bei Expo).",
-            "Importiere deine .json Animation.",
-            "Passe Größe und Loop an."
+            {
+                "de":
+                    "Installiere `lottie-react-native` oder `lottie-react` (bei Expo).",
+                "en":
+                    "Install `lottie-react-native` or `lottie-react` with Expo."
+            },
+            {
+                "de": "Importiere deine .json Animation.",
+                "en": "Import your .json animation."
+            },
+            {
+                "de": "Passe Größe und Loop an.",
+                "en": "Adjust size and loop behavior."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -551,13 +953,29 @@
     },
     {
         "id": "rn_024",
-        "title": "Push Notifications mit Expo",
-        "description":
-            "Lerne, wie du Benachrichtigungen mit Expo Notifications einrichtest und empfängst.",
+        "title": {
+            "de": "Push Notifications mit Expo",
+            "en": "Push notifications with Expo"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du Benachrichtigungen mit Expo Notifications einrichtest und empfängst.",
+            "en":
+                "Learn how to set up and receive notifications with Expo Notifications."
+        },
         "steps": [
-            "Installation: `npx expo install expo-notifications`.",
-            "Erlaube Berechtigungen mit `requestPermissionsAsync()`.",
-            "Sende lokale oder Remote-Notifications."
+            {
+                "de": "Installation: `npx expo install expo-notifications`.",
+                "en": "Install with `npx expo install expo-notifications`."
+            },
+            {
+                "de": "Erlaube Berechtigungen mit `requestPermissionsAsync()`.",
+                "en": "Allow permissions with `requestPermissionsAsync()`."
+            },
+            {
+                "de": "Sende lokale oder Remote-Notifications.",
+                "en": "Send local or remote notifications."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -575,13 +993,32 @@
     },
     {
         "id": "rn_025",
-        "title": "App Publishing – iOS & Android",
-        "description":
-            "Erfahre, wie du deine App für den App Store oder Google Play vorbereitest und veröffentlichst.",
+        "title": {
+            "de": "App Publishing – iOS & Android",
+            "en": "App publishing - iOS & Android"
+        },
+        "description": {
+            "de":
+                "Erfahre, wie du deine App für den App Store oder Google Play vorbereitest und veröffentlichst.",
+            "en":
+                "Learn how to prepare and publish your app for the App Store or Google Play."
+        },
         "steps": [
-            "Für Expo: `eas build` und `eas submit` verwenden.",
-            "App-Icon, Splash Screen, Version und Bundle-ID anpassen.",
-            "Metadaten und Screenshots in App Store Connect bzw. Play Console eintragen."
+            {
+                "de": "Für Expo: `eas build` und `eas submit` verwenden.",
+                "en": "For Expo, use `eas build` and `eas submit`."
+            },
+            {
+                "de":
+                    "App-Icon, Splash Screen, Version und Bundle-ID anpassen.",
+                "en": "Adjust app icon, splash screen, version and bundle ID."
+            },
+            {
+                "de":
+                    "Metadaten und Screenshots in App Store Connect bzw. Play Console eintragen.",
+                "en":
+                    "Enter metadata and screenshots in App Store Connect or Play Console."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -599,13 +1036,29 @@
     },
     {
         "id": "rn_026",
-        "title": "Testing mit Jest & React Native Testing Library",
-        "description":
-            "Lerne, wie du deine React Native Komponenten mit Jest und Testing Library testest.",
+        "title": {
+            "de": "Testing mit Jest & React Native Testing Library",
+            "en": "Testing with Jest & React Native Testing Library"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du deine React Native Komponenten mit Jest und Testing Library testest.",
+            "en":
+                "Learn how to test React Native components with Jest and Testing Library."
+        },
         "steps": [
-            "Installiere Jest & React Native Testing Library.",
-            "Schreibe Tests für Komponenten und Hooks.",
-            "Nutze Snapshot-Tests und Interaktions-Tests."
+            {
+                "de": "Installiere Jest & React Native Testing Library.",
+                "en": "Install Jest and React Native Testing Library."
+            },
+            {
+                "de": "Schreibe Tests für Komponenten und Hooks.",
+                "en": "Write tests for components and hooks."
+            },
+            {
+                "de": "Nutze Snapshot-Tests und Interaktions-Tests.",
+                "en": "Use snapshot tests and interaction tests."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -623,13 +1076,31 @@
     },
     {
         "id": "rn_027",
-        "title": "Performance Profiling & Optimierung",
-        "description":
-            "Analysiere und verbessere die Performance deiner App mit Profiler und useMemo.",
+        "title": {
+            "de": "Performance Profiling & Optimierung",
+            "en": "Performance profiling & optimization"
+        },
+        "description": {
+            "de":
+                "Analysiere und verbessere die Performance deiner App mit Profiler und useMemo.",
+            "en":
+                "Analyze and improve app performance with profiler and useMemo."
+        },
         "steps": [
-            "Nutze den React Profiler in Flipper oder Expo DevTools.",
-            "Identifiziere unnötige Re-Renders.",
-            "Verwende FlatList optimiert mit keyExtractor und memoized RenderItems."
+            {
+                "de": "Nutze den React Profiler in Flipper oder Expo DevTools.",
+                "en": "Use the React Profiler in Flipper or Expo DevTools."
+            },
+            {
+                "de": "Identifiziere unnötige Re-Renders.",
+                "en": "Identify unnecessary rerenders."
+            },
+            {
+                "de":
+                    "Verwende FlatList optimiert mit keyExtractor und memoized RenderItems.",
+                "en":
+                    "Optimize FlatList with keyExtractor and memoized render items."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -641,19 +1112,36 @@
                 "#FFFFFF"
             ]
         },
-        "code":
-            "import React, { memo } from 'react';\nimport { FlatList, Text } from 'react-native';\n\nconst Item = memo(({ title }) => <Text style={{ color: '#fff', padding: 8 }}>{title}</Text>);\n\nexport default function FastList() {\n  const data = Array.from({ length: 500 }).map((_, i) => `Eintrag ${i}`);\n  return <FlatList data={data} renderItem={({ item }) => <Item title={item} />} keyExtractor={(item, i) => i.toString()} />;\n}",
+        "code": "import React, { memo } from 'react';\nimport { FlatList, Text } from 'react-native';\n\nconst Item = memo(({ title }) => <Text style={{ color: '#fff', padding: 8 }}>{title}</Text>);\n\nexport default function FastList() {\n  const data = Array.from({ length: 500 }).map((_, i) => `Eintrag ${i}`);\n  return <FlatList data={data} renderItem={({ item }) => <Item title={item} />} keyExtractor={(item, i) => i.toString()} />;\n}",
         "category": "React Native"
     },
     {
         "id": "rn_028",
-        "title": "Sicherheit & Sensible Daten",
-        "description":
-            "Schütze sensible Informationen mit sicheren Speicherlösungen und Permissions.",
+        "title": {
+            "de": "Sicherheit & Sensible Daten",
+            "en": "Security & sensitive data"
+        },
+        "description": {
+            "de":
+                "Schütze sensible Informationen mit sicheren Speicherlösungen und Permissions.",
+            "en":
+                "Protect sensitive information with secure storage solutions and permissions."
+        },
         "steps": [
-            "Vermeide Klartext-Speicherung in AsyncStorage.",
-            "Nutze SecureStore oder Keychain für Passwörter.",
-            "Achte auf Permissions und Datenschutzrichtlinien (z. B. Kamera, Standort)."
+            {
+                "de": "Vermeide Klartext-Speicherung in AsyncStorage.",
+                "en": "Avoid storing plain text secrets in AsyncStorage."
+            },
+            {
+                "de": "Nutze SecureStore oder Keychain für Passwörter.",
+                "en": "Use SecureStore or Keychain for passwords."
+            },
+            {
+                "de":
+                    "Achte auf Permissions und Datenschutzrichtlinien (z. B. Kamera, Standort).",
+                "en":
+                    "Pay attention to permissions and privacy rules such as camera and location."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -671,13 +1159,29 @@
     },
     {
         "id": "rn_029",
-        "title": "Native Module einbinden (Swift / Kotlin)",
-        "description":
-            "Erweitere deine App mit eigenen nativen Modulen in Swift oder Kotlin.",
+        "title": {
+            "de": "Native Module einbinden (Swift / Kotlin)",
+            "en": "Add native modules (Swift / Kotlin)"
+        },
+        "description": {
+            "de":
+                "Erweitere deine App mit eigenen nativen Modulen in Swift oder Kotlin.",
+            "en":
+                "Extend your app with custom native modules in Swift or Kotlin."
+        },
         "steps": [
-            "Erstelle ein Native Module im iOS- oder Android-Ordner.",
-            "Exportiere Funktionen an JavaScript mit NativeModules.",
-            "Nutze Expo oder Bare Workflow für tiefe Integration."
+            {
+                "de": "Erstelle ein Native Module im iOS- oder Android-Ordner.",
+                "en": "Create a native module in the iOS or Android folder."
+            },
+            {
+                "de": "Exportiere Funktionen an JavaScript mit NativeModules.",
+                "en": "Export functions to JavaScript with NativeModules."
+            },
+            {
+                "de": "Nutze Expo oder Bare Workflow für tiefe Integration.",
+                "en": "Use Expo or Bare Workflow for deep integration."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -695,13 +1199,31 @@
     },
     {
         "id": "rn_030",
-        "title": "CI/CD mit Expo & GitHub Actions",
-        "description":
-            "Automatisiere Builds, Tests und Deployments deiner React Native App.",
+        "title": {
+            "de": "CI/CD mit Expo & GitHub Actions",
+            "en": "CI/CD with Expo & GitHub Actions"
+        },
+        "description": {
+            "de":
+                "Automatisiere Builds, Tests und Deployments deiner React Native App.",
+            "en":
+                "Automate builds, tests and deployments for your React Native app."
+        },
         "steps": [
-            "Nutze Expo Application Services (EAS Build, Submit, Update).",
-            "Erstelle GitHub Actions für automatische Builds.",
-            "Sichere deine Tokens und Variablen in GitHub Secrets."
+            {
+                "de":
+                    "Nutze Expo Application Services (EAS Build, Submit, Update).",
+                "en":
+                    "Use Expo Application Services (EAS Build, Submit, Update)."
+            },
+            {
+                "de": "Erstelle GitHub Actions für automatische Builds.",
+                "en": "Create GitHub Actions for automatic builds."
+            },
+            {
+                "de": "Sichere deine Tokens und Variablen in GitHub Secrets.",
+                "en": "Store tokens and variables securely in GitHub Secrets."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -719,13 +1241,33 @@
     },
     {
         "id": "rn_031",
-        "title": "Zustandsmanagement mit Zustand & Jotai",
-        "description":
-            "Lerne, wie du komplexe Zustände außerhalb von Context API verwaltest – mit modernen Libraries wie Zustand oder Jotai.",
+        "title": {
+            "de": "Zustandsmanagement mit Zustand & Jotai",
+            "en": "State management with Zustand & Jotai"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du komplexe Zustände außerhalb von Context API verwaltest – mit modernen Libraries wie Zustand oder Jotai.",
+            "en":
+                "Learn how to manage complex state outside Context API with modern libraries such as Zustand or Jotai."
+        },
         "steps": [
-            "Installation: `npm install zustand` oder `npm install jotai`.",
-            "Erstelle ein globales Store-Objekt.",
-            "Nutze Hooks wie `useStore` oder `useAtom` für reaktives State-Management."
+            {
+                "de":
+                    "Installation: `npm install zustand` oder `npm install jotai`.",
+                "en":
+                    "Install with `npm install zustand` or `npm install jotai`."
+            },
+            {
+                "de": "Erstelle ein globales Store-Objekt.",
+                "en": "Create a global store object."
+            },
+            {
+                "de":
+                    "Nutze Hooks wie `useStore` oder `useAtom` für reaktives State-Management.",
+                "en":
+                    "Use hooks such as `useStore` or `useAtom` for reactive state management."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -743,13 +1285,30 @@
     },
     {
         "id": "rn_032",
-        "title": "Deep Links & URL Routing",
-        "description":
-            "Ermögliche es, deine App über Links oder QR-Codes direkt zu öffnen – z. B. slayken:/profile/1.",
+        "title": {
+            "de": "Deep Links & URL Routing",
+            "en": "Deep links & URL routing"
+        },
+        "description": {
+            "de":
+                "Ermögliche es, deine App über Links oder QR-Codes direkt zu öffnen – z. B. slayken:/profile/1.",
+            "en":
+                "Allow your app to open directly through links or QR codes, for example slayken:/profile/1."
+        },
         "steps": [
-            "Konfiguriere Linking in deiner App.",
-            "Verwende `Linking.addEventListener` zum Reagieren auf URLs.",
-            "Definiere Pfade für Navigation mit Parametern."
+            {
+                "de": "Konfiguriere Linking in deiner App.",
+                "en": "Configure Linking in your app."
+            },
+            {
+                "de":
+                    "Verwende `Linking.addEventListener` zum Reagieren auf URLs.",
+                "en": "Use `Linking.addEventListener` to react to URLs."
+            },
+            {
+                "de": "Definiere Pfade für Navigation mit Parametern.",
+                "en": "Define paths for navigation with parameters."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -767,13 +1326,29 @@
     },
     {
         "id": "rn_033",
-        "title": "Dynamische Themes & Farbmodi",
-        "description":
-            "Erstelle mehrere Themes (z. B. Fire, Ice, Void) und wechsle sie dynamisch mit Context oder Zustand.",
+        "title": {
+            "de": "Dynamische Themes & Farbmodi",
+            "en": "Dynamic themes & color modes"
+        },
+        "description": {
+            "de":
+                "Erstelle mehrere Themes (z. B. Fire, Ice, Void) und wechsle sie dynamisch mit Context oder Zustand.",
+            "en":
+                "Create multiple themes, such as Fire, Ice or Void, and switch them dynamically with Context or Zustand."
+        },
         "steps": [
-            "Definiere Theme-Objekte mit Farbwerten.",
-            "Verwalte das aktive Theme über Context oder Zustand.",
-            "Passe UI-Elemente automatisch an das Theme an."
+            {
+                "de": "Definiere Theme-Objekte mit Farbwerten.",
+                "en": "Define theme objects with color values."
+            },
+            {
+                "de": "Verwalte das aktive Theme über Context oder Zustand.",
+                "en": "Manage the active theme through Context or Zustand."
+            },
+            {
+                "de": "Passe UI-Elemente automatisch an das Theme an.",
+                "en": "Adjust UI elements automatically to the theme."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -791,13 +1366,29 @@
     },
     {
         "id": "rn_034",
-        "title": "Lokalisierung (Mehrsprachigkeit)",
-        "description":
-            "Füge deiner App Unterstützung für mehrere Sprachen hinzu (Deutsch, Englisch usw.).",
+        "title": {
+            "de": "Lokalisierung (Mehrsprachigkeit)",
+            "en": "Localization (multiple languages)"
+        },
+        "description": {
+            "de":
+                "Füge deiner App Unterstützung für mehrere Sprachen hinzu (Deutsch, Englisch usw.).",
+            "en":
+                "Add support for multiple languages such as German and English to your app."
+        },
         "steps": [
-            "Nutze `expo-localization` und `i18n-js`.",
-            "Erstelle JSON-Dateien mit Übersetzungen.",
-            "Wechsle Sprache dynamisch über Settings."
+            {
+                "de": "Nutze `expo-localization` und `i18n-js`.",
+                "en": "Use `expo-localization` and `i18n-js`."
+            },
+            {
+                "de": "Erstelle JSON-Dateien mit Übersetzungen.",
+                "en": "Create JSON files with translations."
+            },
+            {
+                "de": "Wechsle Sprache dynamisch über Settings.",
+                "en": "Switch language dynamically through settings."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -815,13 +1406,31 @@
     },
     {
         "id": "rn_035",
-        "title": "AR & KI-Integration (z. B. Vision Camera + ML Kit)",
-        "description":
-            "Kombiniere Kamera mit Machine Learning, um AR- oder KI-Funktionen wie Objekterkennung zu nutzen.",
+        "title": {
+            "de": "AR & KI-Integration (z. B. Vision Camera + ML Kit)",
+            "en": "AR & AI integration"
+        },
+        "description": {
+            "de":
+                "Kombiniere Kamera mit Machine Learning, um AR- oder KI-Funktionen wie Objekterkennung zu nutzen.",
+            "en":
+                "Combine camera with machine learning to build AR or AI features such as object recognition."
+        },
         "steps": [
-            "Nutze `vision-camera` oder `expo-camera` für Zugriff auf das Kamerabild.",
-            "Verwende ML Kit oder TensorFlow.js für Bilderkennung.",
-            "Erstelle Echtzeit-Overlays für erkannte Objekte."
+            {
+                "de":
+                    "Nutze `vision-camera` oder `expo-camera` für Zugriff auf das Kamerabild.",
+                "en":
+                    "Use `vision-camera` or `expo-camera` to access the camera image."
+            },
+            {
+                "de": "Verwende ML Kit oder TensorFlow.js für Bilderkennung.",
+                "en": "Use ML Kit or TensorFlow.js for image recognition."
+            },
+            {
+                "de": "Erstelle Echtzeit-Overlays für erkannte Objekte.",
+                "en": "Create real-time overlays for detected objects."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -839,13 +1448,29 @@
     },
     {
         "id": "rn_036",
-        "title": "Netzwerkstatus & Online/Offline-Erkennung",
-        "description":
-            "Erkenne, ob der Nutzer online oder offline ist – perfekt für Apps mit Internet-Abhängigkeit.",
+        "title": {
+            "de": "Netzwerkstatus & Online/Offline-Erkennung",
+            "en": "Network status & online/offline detection"
+        },
+        "description": {
+            "de":
+                "Erkenne, ob der Nutzer online oder offline ist – perfekt für Apps mit Internet-Abhängigkeit.",
+            "en":
+                "Detect whether the user is online or offline, perfect for apps that depend on internet access."
+        },
         "steps": [
-            "Nutze `@react-native-community/netinfo`.",
-            "Überwache Netzwerkstatus in Echtzeit.",
-            "Passe UI oder Funktionen entsprechend an."
+            {
+                "de": "Nutze `@react-native-community/netinfo`.",
+                "en": "Use `@react-native-community/netinfo`."
+            },
+            {
+                "de": "Überwache Netzwerkstatus in Echtzeit.",
+                "en": "Observe network status in real time."
+            },
+            {
+                "de": "Passe UI oder Funktionen entsprechend an.",
+                "en": "Adapt UI or features accordingly."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -863,13 +1488,29 @@
     },
     {
         "id": "rn_037",
-        "title": "Hintergrundaufgaben mit TaskManager",
-        "description":
-            "Führe Aufgaben im Hintergrund aus – z. B. Standort-Updates oder Syncing.",
+        "title": {
+            "de": "Hintergrundaufgaben mit TaskManager",
+            "en": "Background tasks with TaskManager"
+        },
+        "description": {
+            "de":
+                "Führe Aufgaben im Hintergrund aus – z. B. Standort-Updates oder Syncing.",
+            "en":
+                "Run tasks in the background, such as location updates or syncing."
+        },
         "steps": [
-            "Nutze Expo TaskManager.",
-            "Registriere einen Background Task.",
-            "Führe periodische Berechnungen im Hintergrund aus."
+            {
+                "de": "Nutze Expo TaskManager.",
+                "en": "Use Expo TaskManager."
+            },
+            {
+                "de": "Registriere einen Background Task.",
+                "en": "Register a background task."
+            },
+            {
+                "de": "Führe periodische Berechnungen im Hintergrund aus.",
+                "en": "Run periodic calculations in the background."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -887,12 +1528,27 @@
     },
     {
         "id": "rn_038",
-        "title": "Offline Cache mit react-query",
-        "description": "Speichere API-Daten lokal und zeige sie offline an.",
+        "title": {
+            "de": "Offline Cache mit react-query",
+            "en": "Offline cache with react-query"
+        },
+        "description": {
+            "de": "Speichere API-Daten lokal und zeige sie offline an.",
+            "en": "Store API data locally and show it while offline."
+        },
         "steps": [
-            "Installiere React Query.",
-            "Nutze QueryClient & QueryClientProvider.",
-            "Aktiviere persistQueryClient für Offline-Support."
+            {
+                "de": "Installiere React Query.",
+                "en": "Install React Query."
+            },
+            {
+                "de": "Nutze QueryClient & QueryClientProvider.",
+                "en": "Use QueryClient and QueryClientProvider."
+            },
+            {
+                "de": "Aktiviere persistQueryClient für Offline-Support.",
+                "en": "Enable persistQueryClient for offline support."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -910,13 +1566,29 @@
     },
     {
         "id": "rn_039",
-        "title": "Clipboard & Teilen-Funktion",
-        "description":
-            "Kopiere Text in die Zwischenablage oder teile ihn über das System-Share-Menü.",
+        "title": {
+            "de": "Clipboard & Teilen-Funktion",
+            "en": "Clipboard & sharing"
+        },
+        "description": {
+            "de":
+                "Kopiere Text in die Zwischenablage oder teile ihn über das System-Share-Menü.",
+            "en":
+                "Copy text to the clipboard or share it through the system share menu."
+        },
         "steps": [
-            "Nutze Clipboard.setStringAsync.",
-            "Nutze `Share.share()` für Teilen-Funktionen.",
-            "Perfekt für Social Apps."
+            {
+                "de": "Nutze Clipboard.setStringAsync.",
+                "en": "Use Clipboard.setStringAsync."
+            },
+            {
+                "de": "Nutze `Share.share()` für Teilen-Funktionen.",
+                "en": "Use `Share.share()` for sharing."
+            },
+            {
+                "de": "Perfekt für Social Apps.",
+                "en": "Perfect for social apps."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -934,13 +1606,28 @@
     },
     {
         "id": "rn_040",
-        "title": "Lokale Datenbank mit SQLite",
-        "description":
-            "Speichere Daten strukturiert mit einer lokalen SQLite-Datenbank.",
+        "title": {
+            "de": "Lokale Datenbank mit SQLite",
+            "en": "Local database with SQLite"
+        },
+        "description": {
+            "de":
+                "Speichere Daten strukturiert mit einer lokalen SQLite-Datenbank.",
+            "en": "Store data in a structured local SQLite database."
+        },
         "steps": [
-            "Nutze `expo-sqlite`.",
-            "Erstelle Tabellen & führe Queries aus.",
-            "Perfekt für Notizen, Inventar oder Spiele."
+            {
+                "de": "Nutze `expo-sqlite`.",
+                "en": "Use `expo-sqlite`."
+            },
+            {
+                "de": "Erstelle Tabellen & führe Queries aus.",
+                "en": "Create tables and run queries."
+            },
+            {
+                "de": "Perfekt für Notizen, Inventar oder Spiele.",
+                "en": "Perfect for notes, inventory or games."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -958,13 +1645,27 @@
     },
     {
         "id": "rn_041",
-        "title": "Kamera-Effekte (Filter, Zoom, Flash)",
-        "description":
-            "Steuere Kamera-Funktionen wie Zoom, Fokus, Flash & mehr.",
+        "title": {
+            "de": "Kamera-Effekte (Filter, Zoom, Flash)",
+            "en": "Camera effects (filters, zoom, flash)"
+        },
+        "description": {
+            "de": "Steuere Kamera-Funktionen wie Zoom, Fokus, Flash & mehr.",
+            "en": "Control camera features such as zoom, focus, flash and more."
+        },
         "steps": [
-            "Nutze Expo Camera.",
-            "Setze Zoom über State.",
-            "Nutze props für Flash, Fokus & Weißabgleich."
+            {
+                "de": "Nutze Expo Camera.",
+                "en": "Use Expo Camera."
+            },
+            {
+                "de": "Setze Zoom über State.",
+                "en": "Set zoom through state."
+            },
+            {
+                "de": "Nutze props für Flash, Fokus & Weißabgleich.",
+                "en": "Use props for flash, focus and white balance."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -982,12 +1683,27 @@
     },
     {
         "id": "rn_042",
-        "title": "Audio aufnehmen & abspielen",
-        "description": "Recorde Audio mit expo-av und spiele es ab.",
+        "title": {
+            "de": "Audio aufnehmen & abspielen",
+            "en": "Record & play audio"
+        },
+        "description": {
+            "de": "Recorde Audio mit expo-av und spiele es ab.",
+            "en": "Record audio with expo-av and play it back."
+        },
         "steps": [
-            "Installation: expo-av.",
-            "Audio aufnehmen mit Recording API.",
-            "Audio mit Sound abspielen."
+            {
+                "de": "Installation: expo-av.",
+                "en": "Install expo-av."
+            },
+            {
+                "de": "Audio aufnehmen mit Recording API.",
+                "en": "Record audio with the Recording API."
+            },
+            {
+                "de": "Audio mit Sound abspielen.",
+                "en": "Play audio with Sound."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1005,13 +1721,29 @@
     },
     {
         "id": "rn_043",
-        "title": "SVG Grafiken & Animationen",
-        "description":
-            "Nutze react-native-svg, um Vektor-Grafiken & Animationen zu erstellen.",
+        "title": {
+            "de": "SVG Grafiken & Animationen",
+            "en": "SVG graphics & animations"
+        },
+        "description": {
+            "de":
+                "Nutze react-native-svg, um Vektor-Grafiken & Animationen zu erstellen.",
+            "en":
+                "Use react-native-svg to create vector graphics and animations."
+        },
         "steps": [
-            "Installation: react-native-svg.",
-            "Erstelle Pfade, Kreise, Polygone.",
-            "Nutze Animated für morphing Shapes."
+            {
+                "de": "Installation: react-native-svg.",
+                "en": "Install react-native-svg."
+            },
+            {
+                "de": "Erstelle Pfade, Kreise, Polygone.",
+                "en": "Create paths, circles and polygons."
+            },
+            {
+                "de": "Nutze Animated für morphing Shapes.",
+                "en": "Use Animated for morphing shapes."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1029,13 +1761,29 @@
     },
     {
         "id": "rn_044",
-        "title": "App Themes mit Tailwind (NativeWind)",
-        "description":
-            "Baue schnelle, utility-basierte Designs mit Tailwind in React Native.",
+        "title": {
+            "de": "App Themes mit Tailwind (NativeWind)",
+            "en": "App themes with Tailwind (NativeWind)"
+        },
+        "description": {
+            "de":
+                "Baue schnelle, utility-basierte Designs mit Tailwind in React Native.",
+            "en":
+                "Build fast utility-based designs with Tailwind in React Native."
+        },
         "steps": [
-            "Installation & Setup von NativeWind.",
-            "Verwende className für Styling.",
-            "Theme-Switching per Provider."
+            {
+                "de": "Installation & Setup von NativeWind.",
+                "en": "Install and set up NativeWind."
+            },
+            {
+                "de": "Verwende className für Styling.",
+                "en": "Use className for styling."
+            },
+            {
+                "de": "Theme-Switching per Provider.",
+                "en": "Switch themes through a provider."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1053,12 +1801,27 @@
     },
     {
         "id": "rn_045",
-        "title": "Onboarding Screens mit PagerView",
-        "description": "Erstelle ein Onboarding mit Wisch-Animationen.",
+        "title": {
+            "de": "Onboarding Screens mit PagerView",
+            "en": "Onboarding screens with PagerView"
+        },
+        "description": {
+            "de": "Erstelle ein Onboarding mit Wisch-Animationen.",
+            "en": "Create onboarding with swipe animations."
+        },
         "steps": [
-            "Nutze react-native-pager-view.",
-            "Füge mehrere Seiten hinzu.",
-            "Verwende Animationen beim Wechsel."
+            {
+                "de": "Nutze react-native-pager-view.",
+                "en": "Use react-native-pager-view."
+            },
+            {
+                "de": "Füge mehrere Seiten hinzu.",
+                "en": "Add multiple pages."
+            },
+            {
+                "de": "Verwende Animationen beim Wechsel.",
+                "en": "Use animations during page changes."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1076,13 +1839,27 @@
     },
     {
         "id": "rn_046",
-        "title": "Landschafts- & Portrait-Modus fixieren",
-        "description":
-            "Fixiere die Orientierung der App oder einzelner Screens.",
+        "title": {
+            "de": "Landschafts- & Portrait-Modus fixieren",
+            "en": "Lock landscape & portrait mode"
+        },
+        "description": {
+            "de": "Fixiere die Orientierung der App oder einzelner Screens.",
+            "en": "Lock the orientation of the app or individual screens."
+        },
         "steps": [
-            "Nutze `expo-screen-orientation`.",
-            "LockOrientation() z. B. auf Portrait.",
-            "Freigeben für dynamische Rotation."
+            {
+                "de": "Nutze `expo-screen-orientation`.",
+                "en": "Use `expo-screen-orientation`."
+            },
+            {
+                "de": "LockOrientation() z. B. auf Portrait.",
+                "en": "Call LockOrientation(), for example portrait."
+            },
+            {
+                "de": "Freigeben für dynamische Rotation.",
+                "en": "Release it for dynamic rotation."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1100,12 +1877,27 @@
     },
     {
         "id": "rn_047",
-        "title": "File Picker & Dokumente öffnen",
-        "description": "Erlaube Nutzern, Dateien auszuwählen und zu öffnen.",
+        "title": {
+            "de": "File Picker & Dokumente öffnen",
+            "en": "File picker & open documents"
+        },
+        "description": {
+            "de": "Erlaube Nutzern, Dateien auszuwählen und zu öffnen.",
+            "en": "Allow users to select and open files."
+        },
         "steps": [
-            "Nutze expo-document-picker.",
-            "Erlaube Auswahl verschiedener Dateitypen.",
-            "Verarbeite oder speichere Dateien lokal."
+            {
+                "de": "Nutze expo-document-picker.",
+                "en": "Use expo-document-picker."
+            },
+            {
+                "de": "Erlaube Auswahl verschiedener Dateitypen.",
+                "en": "Allow selection of different file types."
+            },
+            {
+                "de": "Verarbeite oder speichere Dateien lokal.",
+                "en": "Process or store files locally."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1123,13 +1915,29 @@
     },
     {
         "id": "rn_048",
-        "title": "Charts & Statistiken anzeigen",
-        "description":
-            "Baue grafische Diagramme für Statistiken, Scores oder Health-Apps.",
+        "title": {
+            "de": "Charts & Statistiken anzeigen",
+            "en": "Show charts & statistics"
+        },
+        "description": {
+            "de":
+                "Baue grafische Diagramme für Statistiken, Scores oder Health-Apps.",
+            "en":
+                "Build graphical charts for statistics, scores or health apps."
+        },
         "steps": [
-            "Nutze Victory Native oder react-native-chart-kit.",
-            "Erstelle Linien-, Balken- oder Kreisdiagramme.",
-            "Stile das Diagramm an dein Theme."
+            {
+                "de": "Nutze Victory Native oder react-native-chart-kit.",
+                "en": "Use Victory Native or react-native-chart-kit."
+            },
+            {
+                "de": "Erstelle Linien-, Balken- oder Kreisdiagramme.",
+                "en": "Create line, bar or pie charts."
+            },
+            {
+                "de": "Stile das Diagramm an dein Theme.",
+                "en": "Style the chart for your theme."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1147,13 +1955,29 @@
     },
     {
         "id": "rn_049",
-        "title": "Bluetooth Low Energy (BLE) Geräte verbinden",
-        "description":
-            "Verbinde dich mit IoT-Geräten per BLE – ideal für Fitness-Tracker oder Smart-Home.",
+        "title": {
+            "de": "Bluetooth Low Energy (BLE) Geräte verbinden",
+            "en": "Connect Bluetooth Low Energy devices"
+        },
+        "description": {
+            "de":
+                "Verbinde dich mit IoT-Geräten per BLE – ideal für Fitness-Tracker oder Smart-Home.",
+            "en":
+                "Connect to IoT devices through BLE, ideal for fitness trackers or smart home."
+        },
         "steps": [
-            "Nutze react-native-ble-plx.",
-            "Scanne Geräte in der Umgebung.",
-            "Verbinde dich & lese Werte aus."
+            {
+                "de": "Nutze react-native-ble-plx.",
+                "en": "Use react-native-ble-plx."
+            },
+            {
+                "de": "Scanne Geräte in der Umgebung.",
+                "en": "Scan nearby devices."
+            },
+            {
+                "de": "Verbinde dich & lese Werte aus.",
+                "en": "Connect and read values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1171,13 +1995,27 @@
     },
     {
         "id": "rn_050",
-        "title": "QR-Code Scanner & Generator",
-        "description":
-            "Scanne QR-Codes mit der Kamera oder erstelle eigene Codes.",
+        "title": {
+            "de": "QR-Code Scanner & Generator",
+            "en": "QR code scanner & generator"
+        },
+        "description": {
+            "de": "Scanne QR-Codes mit der Kamera oder erstelle eigene Codes.",
+            "en": "Scan QR codes with the camera or create your own codes."
+        },
         "steps": [
-            "Nutze expo-camera oder vision-camera für Scan.",
-            "Nutze react-native-qrcode-svg zum Generieren.",
-            "Perfekt für Login, Events oder Payments."
+            {
+                "de": "Nutze expo-camera oder vision-camera für Scan.",
+                "en": "Use expo-camera or vision-camera for scanning."
+            },
+            {
+                "de": "Nutze react-native-qrcode-svg zum Generieren.",
+                "en": "Use react-native-qrcode-svg to generate codes."
+            },
+            {
+                "de": "Perfekt für Login, Events oder Payments.",
+                "en": "Perfect for login, events or payments."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1195,13 +2033,29 @@
     },
     {
         "id": "rn_051",
-        "title": "Infinite Scroll & Pagination",
-        "description":
-            "Lade mehr Daten, sobald der Nutzer ans Ende der Liste scrollt – perfekt für Feeds, Chats oder News.",
+        "title": {
+            "de": "Infinite Scroll & Pagination",
+            "en": "Infinite scroll & pagination"
+        },
+        "description": {
+            "de":
+                "Lade mehr Daten, sobald der Nutzer ans Ende der Liste scrollt – perfekt für Feeds, Chats oder News.",
+            "en":
+                "Load more data when the user reaches the end of the list, perfect for feeds, chats or news."
+        },
         "steps": [
-            "Nutze FlatList.onEndReached, um neue Daten zu laden.",
-            "Halte eine page Variable im State.",
-            "Hänge neue Daten an die bestehende Liste an."
+            {
+                "de": "Nutze FlatList.onEndReached, um neue Daten zu laden.",
+                "en": "Use FlatList.onEndReached to load new data."
+            },
+            {
+                "de": "Halte eine page Variable im State.",
+                "en": "Keep a page variable in state."
+            },
+            {
+                "de": "Hänge neue Daten an die bestehende Liste an.",
+                "en": "Append new data to the existing list."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1219,13 +2073,29 @@
     },
     {
         "id": "rn_052",
-        "title": "Animationen mit Moti (Reanimated Wrapper)",
-        "description":
-            "Moti ist ein Wrapper für Reanimated und macht Animationen extrem einfach – ideal für UI Effekte.",
+        "title": {
+            "de": "Animationen mit Moti (Reanimated Wrapper)",
+            "en": "Animations with Moti"
+        },
+        "description": {
+            "de":
+                "Moti ist ein Wrapper für Reanimated und macht Animationen extrem einfach – ideal für UI Effekte.",
+            "en":
+                "Moti wraps Reanimated and makes animations very simple, ideal for UI effects."
+        },
         "steps": [
-            "Moti installieren: `npm install moti`.",
-            "AnimatePresence für Fade-In/Fade-Out.",
-            "MotiView für animierte Layouts nutzen."
+            {
+                "de": "Moti installieren: `npm install moti`.",
+                "en": "Install Moti with `npm install moti`."
+            },
+            {
+                "de": "AnimatePresence für Fade-In/Fade-Out.",
+                "en": "Use AnimatePresence for fade in and fade out."
+            },
+            {
+                "de": "MotiView für animierte Layouts nutzen.",
+                "en": "Use MotiView for animated layouts."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1243,13 +2113,29 @@
     },
     {
         "id": "rn_053",
-        "title": "Offline Image Cache mit FastImage",
-        "description":
-            "Lade Bilder extrem schnell mit intelligentem Caching – perfekt für Avatare, Galerien und Shops.",
+        "title": {
+            "de": "Offline Image Cache mit FastImage",
+            "en": "Offline image cache with FastImage"
+        },
+        "description": {
+            "de":
+                "Lade Bilder extrem schnell mit intelligentem Caching – perfekt für Avatare, Galerien und Shops.",
+            "en":
+                "Load images very fast with smart caching, perfect for avatars, galleries and shops."
+        },
         "steps": [
-            "Nutze react-native-fast-image für schnelles Caching.",
-            "Unterstützt Priority, Cache-Control und Preloading.",
-            "Kompatibel mit Expo Bare Workflow."
+            {
+                "de": "Nutze react-native-fast-image für schnelles Caching.",
+                "en": "Use react-native-fast-image for fast caching."
+            },
+            {
+                "de": "Unterstützt Priority, Cache-Control und Preloading.",
+                "en": "Supports priority, cache control and preloading."
+            },
+            {
+                "de": "Kompatibel mit Expo Bare Workflow.",
+                "en": "Compatible with Expo Bare Workflow."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1267,13 +2153,29 @@
     },
     {
         "id": "rn_054",
-        "title": "Multi-Touch Gesten: Pinch, Rotate, Pan",
-        "description":
-            "Reagiere auf Zoom-Gesten, Rotation und Drag – ideal für Bilder, Karten oder 3D-Objekte.",
+        "title": {
+            "de": "Multi-Touch Gesten: Pinch, Rotate, Pan",
+            "en": "Multi-touch gestures: pinch, rotate, pan"
+        },
+        "description": {
+            "de":
+                "Reagiere auf Zoom-Gesten, Rotation und Drag – ideal für Bilder, Karten oder 3D-Objekte.",
+            "en":
+                "React to zoom gestures, rotation and dragging, ideal for images, maps or 3D objects."
+        },
         "steps": [
-            "Nutze GestureHandler v2 (React Native Gesture Handler).",
-            "PinchGestureHandler für Zoom.",
-            "RotationGestureHandler für Drehung."
+            {
+                "de": "Nutze GestureHandler v2 (React Native Gesture Handler).",
+                "en": "Use GestureHandler v2 from React Native Gesture Handler."
+            },
+            {
+                "de": "PinchGestureHandler für Zoom.",
+                "en": "Use PinchGestureHandler for zoom."
+            },
+            {
+                "de": "RotationGestureHandler für Drehung.",
+                "en": "Use RotationGestureHandler for rotation."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -1291,13 +2193,29 @@
     },
     {
         "id": "rn_055",
-        "title": "Skeleton Loader / Shimmer Effekt",
-        "description":
-            "Zeige Ladezustände mit einem animierten Shimmer-Placeholder an – perfekt für Profile, Listen & Artikel.",
+        "title": {
+            "de": "Skeleton Loader / Shimmer Effekt",
+            "en": "Skeleton loader / shimmer effect"
+        },
+        "description": {
+            "de":
+                "Zeige Ladezustände mit einem animierten Shimmer-Placeholder an – perfekt für Profile, Listen & Artikel.",
+            "en":
+                "Show loading states with an animated shimmer placeholder, perfect for profiles, lists and articles."
+        },
         "steps": [
-            "Verwende react-native-linear-gradient.",
-            "Nutze Animated.loop für den Shimmer Move.",
-            "Positioniere das Overlay über das Placeholder-Element."
+            {
+                "de": "Verwende react-native-linear-gradient.",
+                "en": "Use react-native-linear-gradient."
+            },
+            {
+                "de": "Nutze Animated.loop für den Shimmer Move.",
+                "en": "Use Animated.loop for shimmer movement."
+            },
+            {
+                "de": "Positioniere das Overlay über das Placeholder-Element.",
+                "en": "Position the overlay above the placeholder element."
+            }
         ],
         "colors": {
             "backgroundColors": [

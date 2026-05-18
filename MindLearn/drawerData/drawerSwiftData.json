@@ -1,13 +1,31 @@
 [
     {
         "id": "swift_001",
-        "title": "Variablen & Konstanten",
-        "description":
-            "Lerne den Unterschied zwischen `let` und `var` in Swift und wie du Werte definierst.",
+        "title": {
+            "de": "Variablen & Konstanten",
+            "en": "Variables & constants"
+        },
+        "description": {
+            "de":
+                "Lerne den Unterschied zwischen `let` und `var` in Swift und wie du Werte definierst.",
+            "en":
+                "Learn the difference between `let` and `var` in Swift and how to define values."
+        },
         "steps": [
-            "Verwende `let` für Konstanten (unveränderbare Werte).",
-            "Verwende `var` für veränderbare Werte.",
-            "Achte auf Typinferenz – Swift erkennt Datentypen automatisch."
+            {
+                "de": "Verwende `let` für Konstanten (unveränderbare Werte).",
+                "en": "Use `let` for constants that cannot change."
+            },
+            {
+                "de": "Verwende `var` für veränderbare Werte.",
+                "en": "Use `var` for values that can change."
+            },
+            {
+                "de":
+                    "Achte auf Typinferenz – Swift erkennt Datentypen automatisch.",
+                "en":
+                    "Pay attention to type inference; Swift detects data types automatically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,14 +43,33 @@
     },
     {
         "id": "swift_002",
-        "title": "Datentypen in Swift",
-        "description":
-            "Erfahre die wichtigsten Datentypen in Swift wie Int, Double, String und Bool.",
+        "title": {
+            "de": "Datentypen in Swift",
+            "en": "Data types in Swift"
+        },
+        "description": {
+            "de":
+                "Erfahre die wichtigsten Datentypen in Swift wie Int, Double, String und Bool.",
+            "en":
+                "Learn the most important Swift data types such as Int, Double, String and Bool."
+        },
         "steps": [
-            "Nutze Int für ganze Zahlen.",
-            "Double speichert Dezimalzahlen.",
-            "String hält Textdaten.",
-            "Bool ist für true/false Werte."
+            {
+                "de": "Nutze Int für ganze Zahlen.",
+                "en": "Use Int for whole numbers."
+            },
+            {
+                "de": "Double speichert Dezimalzahlen.",
+                "en": "Double stores decimal numbers."
+            },
+            {
+                "de": "String hält Textdaten.",
+                "en": "String holds text data."
+            },
+            {
+                "de": "Bool ist für true/false Werte.",
+                "en": "Bool is for true/false values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -50,13 +87,28 @@
     },
     {
         "id": "swift_003",
-        "title": "Optionals verstehen",
-        "description":
-            "Optionals bedeuten, dass ein Wert existieren kann – oder nil sein darf.",
+        "title": {
+            "de": "Optionals verstehen",
+            "en": "Understanding optionals"
+        },
+        "description": {
+            "de":
+                "Optionals bedeuten, dass ein Wert existieren kann – oder nil sein darf.",
+            "en": "Optionals mean a value can exist, or it can be nil."
+        },
         "steps": [
-            "Nutze ? um einen Optional-Typ zu definieren.",
-            "Verwende if let zum sicheren Entpacken.",
-            "Nutze ?? für Default-Werte."
+            {
+                "de": "Nutze ? um einen Optional-Typ zu definieren.",
+                "en": "Use ? to define an optional type."
+            },
+            {
+                "de": "Verwende if let zum sicheren Entpacken.",
+                "en": "Use if let for safe unwrapping."
+            },
+            {
+                "de": "Nutze ?? für Default-Werte.",
+                "en": "Use ?? for default values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -74,13 +126,29 @@
     },
     {
         "id": "swift_004",
-        "title": "if / else Bedingungen",
-        "description":
-            "Lerne, wie du Bedingungen in Swift ausführst, um Entscheidungen im Code zu treffen.",
+        "title": {
+            "de": "if / else Bedingungen",
+            "en": "if / else conditions"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du Bedingungen in Swift ausführst, um Entscheidungen im Code zu treffen.",
+            "en":
+                "Learn how to run conditions in Swift to make decisions in code."
+        },
         "steps": [
-            "Vergleiche Werte mit ==, !=, <, >.",
-            "Nutze if, else if und else.",
-            "Kombiniere Bedingungen mit && und ||."
+            {
+                "de": "Vergleiche Werte mit ==, !=, <, >.",
+                "en": "Compare values with ==, !=, < and >."
+            },
+            {
+                "de": "Nutze if, else if und else.",
+                "en": "Use if, else if and else."
+            },
+            {
+                "de": "Kombiniere Bedingungen mit && und ||.",
+                "en": "Combine conditions with && and ||."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -98,13 +166,28 @@
     },
     {
         "id": "swift_005",
-        "title": "Funktionen erstellen",
-        "description":
-            "Erstelle wiederverwendbare Blöcke aus Code mit einer Swift-Funktion.",
+        "title": {
+            "de": "Funktionen erstellen",
+            "en": "Create functions"
+        },
+        "description": {
+            "de":
+                "Erstelle wiederverwendbare Blöcke aus Code mit einer Swift-Funktion.",
+            "en": "Create reusable blocks of code with a Swift function."
+        },
         "steps": [
-            "Nutze func als Schlüsselwort.",
-            "Definiere Parameter und Rückgabewerte.",
-            "Rufe Funktionen mehrfach auf."
+            {
+                "de": "Nutze func als Schlüsselwort.",
+                "en": "Use func as the keyword."
+            },
+            {
+                "de": "Definiere Parameter und Rückgabewerte.",
+                "en": "Define parameters and return values."
+            },
+            {
+                "de": "Rufe Funktionen mehrfach auf.",
+                "en": "Call functions multiple times."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -122,13 +205,28 @@
     },
     {
         "id": "swift_006",
-        "title": "Arrays & Loops",
-        "description":
-            "Lerne, wie du eine Liste aus Werten erstellst und sie mit einer Schleife durchläufst.",
+        "title": {
+            "de": "Arrays & Loops",
+            "en": "Arrays & loops"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du eine Liste aus Werten erstellst und sie mit einer Schleife durchläufst.",
+            "en": "Learn how to create a list of values and loop through it."
+        },
         "steps": [
-            "Erstelle ein Array mit [].",
-            "Nutze for-in, um über Elemente zu iterieren.",
-            "Greife per Index auf Elemente zu."
+            {
+                "de": "Erstelle ein Array mit [].",
+                "en": "Create an array with []."
+            },
+            {
+                "de": "Nutze for-in, um über Elemente zu iterieren.",
+                "en": "Use for-in to iterate over elements."
+            },
+            {
+                "de": "Greife per Index auf Elemente zu.",
+                "en": "Access elements by index."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -146,13 +244,29 @@
     },
     {
         "id": "swift_007",
-        "title": "Dictionaries (Key-Value Speicher)",
-        "description":
-            "Speichere Werte anhand von eindeutigen Schlüsseln – ideal für Zuordnungen wie Einstellungen oder Profile.",
+        "title": {
+            "de": "Dictionaries (Key-Value Speicher)",
+            "en": "Dictionaries"
+        },
+        "description": {
+            "de":
+                "Speichere Werte anhand von eindeutigen Schlüsseln – ideal für Zuordnungen wie Einstellungen oder Profile.",
+            "en":
+                "Store values by unique keys, ideal for mappings such as settings or profiles."
+        },
         "steps": [
-            "Nutze [Key: Value] für ein Dictionary.",
-            "Greife per Schlüssel auf Werte zu.",
-            "Füge neue Einträge per dictionary[key] = value hinzu."
+            {
+                "de": "Nutze [Key: Value] für ein Dictionary.",
+                "en": "Use [Key: Value] for a dictionary."
+            },
+            {
+                "de": "Greife per Schlüssel auf Werte zu.",
+                "en": "Access values by key."
+            },
+            {
+                "de": "Füge neue Einträge per dictionary[key] = value hinzu.",
+                "en": "Add new entries with dictionary[key] = value."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -170,13 +284,29 @@
     },
     {
         "id": "swift_008",
-        "title": "Enums (Aufzählungstypen)",
-        "description":
-            "Mit Enums definierst du feste Kategorien – ideal für Spielzustände, Charaktertypen oder Netzwerkstatus.",
+        "title": {
+            "de": "Enums (Aufzählungstypen)",
+            "en": "Enums"
+        },
+        "description": {
+            "de":
+                "Mit Enums definierst du feste Kategorien – ideal für Spielzustände, Charaktertypen oder Netzwerkstatus.",
+            "en":
+                "Enums define fixed categories, ideal for game states, character types or network status."
+        },
         "steps": [
-            "Erstelle ein enum mit festen Fällen.",
-            "Nutze switch für unterschiedliche Aktionen.",
-            "Enums können auch Werte speichern (Associated Values)."
+            {
+                "de": "Erstelle ein enum mit festen Fällen.",
+                "en": "Create an enum with fixed cases."
+            },
+            {
+                "de": "Nutze switch für unterschiedliche Aktionen.",
+                "en": "Use switch for different actions."
+            },
+            {
+                "de": "Enums können auch Werte speichern (Associated Values).",
+                "en": "Enums can also store values through associated values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -194,13 +324,29 @@
     },
     {
         "id": "swift_009",
-        "title": "Structs erstellen",
-        "description":
-            "Structs sind perfekte Bausteine für Datenmodelle – wie Spieler, Items oder Bosse.",
+        "title": {
+            "de": "Structs erstellen",
+            "en": "Create structs"
+        },
+        "description": {
+            "de":
+                "Structs sind perfekte Bausteine für Datenmodelle – wie Spieler, Items oder Bosse.",
+            "en":
+                "Structs are useful building blocks for data models such as players, items or bosses."
+        },
         "steps": [
-            "Struct mit Properties erstellen.",
-            "Initialisieren über Struct(...).",
-            "Instanz verwenden und Werte ändern."
+            {
+                "de": "Struct mit Properties erstellen.",
+                "en": "Create a struct with properties."
+            },
+            {
+                "de": "Initialisieren über Struct(...).",
+                "en": "Initialize it with Struct(...)."
+            },
+            {
+                "de": "Instanz verwenden und Werte ändern.",
+                "en": "Use the instance and change values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -218,13 +364,29 @@
     },
     {
         "id": "swift_010",
-        "title": "Klassen & Initializer",
-        "description":
-            "Klassen sind wie Structs – aber referenzbasiert und ideal für komplexe Logik und Game-Controller.",
+        "title": {
+            "de": "Klassen & Initializer",
+            "en": "Classes & initializers"
+        },
+        "description": {
+            "de":
+                "Klassen sind wie Structs – aber referenzbasiert und ideal für komplexe Logik und Game-Controller.",
+            "en":
+                "Classes are like structs, but reference-based and useful for complex logic or controllers."
+        },
         "steps": [
-            "Klasse mit class definieren.",
-            "Eigener init-Initializer.",
-            "Instanz erstellen und verwenden."
+            {
+                "de": "Klasse mit class definieren.",
+                "en": "Define a class with class."
+            },
+            {
+                "de": "Eigener init-Initializer.",
+                "en": "Create a custom init initializer."
+            },
+            {
+                "de": "Instanz erstellen und verwenden.",
+                "en": "Create and use an instance."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -242,13 +404,29 @@
     },
     {
         "id": "swift_011",
-        "title": "Closures (anonyme Funktionen)",
-        "description":
-            "Closures sind kleine, funktionale Code-Blöcke – ideal für Callbacks, Timer, Animationen oder SwiftUI-Aktionen.",
+        "title": {
+            "de": "Closures (anonyme Funktionen)",
+            "en": "Closures"
+        },
+        "description": {
+            "de":
+                "Closures sind kleine, funktionale Code-Blöcke – ideal für Callbacks, Timer, Animationen oder SwiftUI-Aktionen.",
+            "en":
+                "Closures are small functional code blocks, ideal for callbacks, timers, animations or SwiftUI actions."
+        },
         "steps": [
-            "Erstelle ein Closure direkt als Variable.",
-            "Gib Parameter & Rückgabewerte optional an.",
-            "Nutze Closures als Argumente für Funktionen."
+            {
+                "de": "Erstelle ein Closure direkt als Variable.",
+                "en": "Create a closure directly as a variable."
+            },
+            {
+                "de": "Gib Parameter & Rückgabewerte optional an.",
+                "en": "Optionally define parameters and return values."
+            },
+            {
+                "de": "Nutze Closures als Argumente für Funktionen.",
+                "en": "Use closures as arguments for functions."
+            }
         ],
         "colors": {
             "backgroundColors": [

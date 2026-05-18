@@ -1,13 +1,28 @@
 [
     {
         "id": "healthkit_001",
-        "title": "HealthKit Daten lesen",
-        "description":
-            "Greife sicher auf Gesundheitsdaten wie Schritte oder Puls zu.",
+        "title": {
+            "de": "HealthKit Daten lesen",
+            "en": "Read HealthKit data"
+        },
+        "description": {
+            "de":
+                "Greife sicher auf Gesundheitsdaten wie Schritte oder Puls zu.",
+            "en": "Access health data such as steps or heart rate safely."
+        },
         "steps": [
-            "HealthKit importieren und HKHealthStore erstellen.",
-            "Zugriff auf gewünschte Daten anfordern.",
-            "Beispiel: Schrittzahl auslesen und anzeigen."
+            {
+                "de": "HealthKit importieren und HKHealthStore erstellen.",
+                "en": "Import HealthKit and create an HKHealthStore."
+            },
+            {
+                "de": "Zugriff auf gewünschte Daten anfordern.",
+                "en": "Request access to the desired data."
+            },
+            {
+                "de": "Beispiel: Schrittzahl auslesen und anzeigen.",
+                "en": "Example: read and display step count."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,13 +40,29 @@
     },
     {
         "id": "healthkit_002",
-        "title": "HealthKit Berechtigungen anfordern",
-        "description":
-            "Lerne, wie du systematisch alle HealthKit Permissions korrekt abfragst.",
+        "title": {
+            "de": "HealthKit Berechtigungen anfordern",
+            "en": "Request HealthKit permissions"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du systematisch alle HealthKit Permissions korrekt abfragst.",
+            "en":
+                "Learn how to request all HealthKit permissions correctly and systematically."
+        },
         "steps": [
-            "HKHealthStore instanziieren.",
-            "Lesen- und Schreibrechte definieren.",
-            "requestAuthorization korrekt aufrufen."
+            {
+                "de": "HKHealthStore instanziieren.",
+                "en": "Instantiate HKHealthStore."
+            },
+            {
+                "de": "Lesen- und Schreibrechte definieren.",
+                "en": "Define read and write permissions."
+            },
+            {
+                "de": "requestAuthorization korrekt aufrufen.",
+                "en": "Call requestAuthorization correctly."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -49,12 +80,27 @@
     },
     {
         "id": "healthkit_003",
-        "title": "Herzfrequenz auslesen",
-        "description": "Lese Live- oder historische Herzfrequenz-Daten aus.",
+        "title": {
+            "de": "Herzfrequenz auslesen",
+            "en": "Read heart rate"
+        },
+        "description": {
+            "de": "Lese Live- oder historische Herzfrequenz-Daten aus.",
+            "en": "Read live or historical heart rate data."
+        },
         "steps": [
-            "heartRate Type definieren.",
-            "HKSampleQuery verwenden.",
-            "Werte extrahieren und anzeigen."
+            {
+                "de": "heartRate Type definieren.",
+                "en": "Define the heartRate type."
+            },
+            {
+                "de": "HKSampleQuery verwenden.",
+                "en": "Use HKSampleQuery."
+            },
+            {
+                "de": "Werte extrahieren und anzeigen.",
+                "en": "Extract and display values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -72,14 +118,29 @@
     },
     {
         "id": "healthkit_004",
-        "title": "Kalorienverbrauch lesen",
-        "description":
-            "Lese aktive Kalorien (Active Energy Burned) der letzten 24 Stunden.",
+        "title": {
+            "de": "Kalorienverbrauch lesen",
+            "en": "Read calories burned"
+        },
+        "description": {
+            "de":
+                "Lese aktive Kalorien (Active Energy Burned) der letzten 24 Stunden.",
+            "en": "Read active energy burned during the last 24 hours."
+        },
         "icon": "swift",
         "steps": [
-            "HKQuantityTypeIdentifier.activeEnergyBurned verwenden.",
-            "StatisticsQuery ausführen.",
-            "Kalorien anzeigen."
+            {
+                "de": "HKQuantityTypeIdentifier.activeEnergyBurned verwenden.",
+                "en": "Use HKQuantityTypeIdentifier.activeEnergyBurned."
+            },
+            {
+                "de": "StatisticsQuery ausführen.",
+                "en": "Run a statistics query."
+            },
+            {
+                "de": "Kalorien anzeigen.",
+                "en": "Display calories."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -97,12 +158,27 @@
     },
     {
         "id": "healthkit_005",
-        "title": "Schlafdaten lesen",
-        "description": "Greife auf Schlafanalyse-Daten (inBed, asleep) zu.",
+        "title": {
+            "de": "Schlafdaten lesen",
+            "en": "Read sleep data"
+        },
+        "description": {
+            "de": "Greife auf Schlafanalyse-Daten (inBed, asleep) zu.",
+            "en": "Access sleep analysis data such as inBed and asleep."
+        },
         "steps": [
-            "HKCategoryTypeIdentifier.sleepAnalysis verwenden.",
-            "Predicate für die Nacht setzen.",
-            "Samples analysieren."
+            {
+                "de": "HKCategoryTypeIdentifier.sleepAnalysis verwenden.",
+                "en": "Use HKCategoryTypeIdentifier.sleepAnalysis."
+            },
+            {
+                "de": "Predicate für die Nacht setzen.",
+                "en": "Set a predicate for the night."
+            },
+            {
+                "de": "Samples analysieren.",
+                "en": "Analyze samples."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -120,12 +196,27 @@
     },
     {
         "id": "healthkit_006",
-        "title": "Wasseraufnahme speichern",
-        "description": "Füge Wasser-Trinkdaten in HealthKit ein.",
+        "title": {
+            "de": "Wasseraufnahme speichern",
+            "en": "Save water intake"
+        },
+        "description": {
+            "de": "Füge Wasser-Trinkdaten in HealthKit ein.",
+            "en": "Add water intake data to HealthKit."
+        },
         "steps": [
-            "HKQuantityTypeIdentifier.dietaryWater verwenden.",
-            "HKQuantitySample erstellen.",
-            "Mit healthStore.save() speichern."
+            {
+                "de": "HKQuantityTypeIdentifier.dietaryWater verwenden.",
+                "en": "Use HKQuantityTypeIdentifier.dietaryWater."
+            },
+            {
+                "de": "HKQuantitySample erstellen.",
+                "en": "Create an HKQuantitySample."
+            },
+            {
+                "de": "Mit healthStore.save() speichern.",
+                "en": "Save with healthStore.save()."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -143,12 +234,27 @@
     },
     {
         "id": "healthkit_007",
-        "title": "Gewicht speichern (BodyMass)",
-        "description": "Speichere das aktuelle Körpergewicht in kg.",
+        "title": {
+            "de": "Gewicht speichern (BodyMass)",
+            "en": "Save weight (body mass)"
+        },
+        "description": {
+            "de": "Speichere das aktuelle Körpergewicht in kg.",
+            "en": "Save the current body weight in kilograms."
+        },
         "steps": [
-            "bodyMass Type wählen.",
-            "HKQuantitySample erstellen.",
-            "Speichern."
+            {
+                "de": "bodyMass Type wählen.",
+                "en": "Choose the bodyMass type."
+            },
+            {
+                "de": "HKQuantitySample erstellen.",
+                "en": "Create an HKQuantitySample."
+            },
+            {
+                "de": "Speichern.",
+                "en": "Save it."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -166,13 +272,29 @@
     },
     {
         "id": "healthkit_008",
-        "title": "Ruhepuls (Resting Heart Rate)",
-        "description":
-            "Zeige den Ruhepuls der letzten Tage über HKStatisticsQuery an.",
+        "title": {
+            "de": "Ruhepuls (Resting Heart Rate)",
+            "en": "Resting heart rate"
+        },
+        "description": {
+            "de":
+                "Zeige den Ruhepuls der letzten Tage über HKStatisticsQuery an.",
+            "en":
+                "Show resting heart rate for recent days with HKStatisticsQuery."
+        },
         "steps": [
-            "restingHeartRate Type definieren.",
-            "Predicate setzen.",
-            "Wert auslesen."
+            {
+                "de": "restingHeartRate Type definieren.",
+                "en": "Define the restingHeartRate type."
+            },
+            {
+                "de": "Predicate setzen.",
+                "en": "Set a predicate."
+            },
+            {
+                "de": "Wert auslesen.",
+                "en": "Read the value."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -190,12 +312,27 @@
     },
     {
         "id": "healthkit_009",
-        "title": "Workouts auslesen",
-        "description": "Greife auf alle aufgezeichneten Trainings-Sessions zu.",
+        "title": {
+            "de": "Workouts auslesen",
+            "en": "Read workouts"
+        },
+        "description": {
+            "de": "Greife auf alle aufgezeichneten Trainings-Sessions zu.",
+            "en": "Access all recorded workout sessions."
+        },
         "steps": [
-            "HKWorkoutType nutzen.",
-            "SampleQuery ausführen.",
-            "Dauer, Energie & Distanz anzeigen."
+            {
+                "de": "HKWorkoutType nutzen.",
+                "en": "Use HKWorkoutType."
+            },
+            {
+                "de": "SampleQuery ausführen.",
+                "en": "Run a sample query."
+            },
+            {
+                "de": "Dauer, Energie & Distanz anzeigen.",
+                "en": "Display duration, energy and distance."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -213,13 +350,28 @@
     },
     {
         "id": "healthkit_010",
-        "title": "Workouts speichern",
-        "description":
-            "Erstelle ein Training (z. B. Laufen) und speichere es in HealthKit.",
+        "title": {
+            "de": "Workouts speichern",
+            "en": "Save workouts"
+        },
+        "description": {
+            "de":
+                "Erstelle ein Training (z. B. Laufen) und speichere es in HealthKit.",
+            "en": "Create a workout, such as running, and save it to HealthKit."
+        },
         "steps": [
-            "HKWorkout konfigurieren.",
-            "Metadata hinzufügen.",
-            "Speichern."
+            {
+                "de": "HKWorkout konfigurieren.",
+                "en": "Configure an HKWorkout."
+            },
+            {
+                "de": "Metadata hinzufügen.",
+                "en": "Add metadata."
+            },
+            {
+                "de": "Speichern.",
+                "en": "Save it."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -237,12 +389,27 @@
     },
     {
         "id": "healthkit_011",
-        "title": "Blutzucker auslesen",
-        "description": "Lese Blutzuckerdaten (mg/dL oder mmol/L) aus.",
+        "title": {
+            "de": "Blutzucker auslesen",
+            "en": "Read blood glucose"
+        },
+        "description": {
+            "de": "Lese Blutzuckerdaten (mg/dL oder mmol/L) aus.",
+            "en": "Read blood glucose data in mg/dL or mmol/L."
+        },
         "steps": [
-            "HKQuantityTypeIdentifier.bloodGlucose nutzen.",
-            "SampleQuery ausführen.",
-            "Werte konvertieren."
+            {
+                "de": "HKQuantityTypeIdentifier.bloodGlucose nutzen.",
+                "en": "Use HKQuantityTypeIdentifier.bloodGlucose."
+            },
+            {
+                "de": "SampleQuery ausführen.",
+                "en": "Run a sample query."
+            },
+            {
+                "de": "Werte konvertieren.",
+                "en": "Convert values."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -260,12 +427,27 @@
     },
     {
         "id": "healthkit_012",
-        "title": "Atemfrequenz (Respiratory Rate) lesen",
-        "description": "Lese die Anzahl der Atemzüge pro Minute aus HealthKit.",
+        "title": {
+            "de": "Atemfrequenz (Respiratory Rate) lesen",
+            "en": "Read respiratory rate"
+        },
+        "description": {
+            "de": "Lese die Anzahl der Atemzüge pro Minute aus HealthKit.",
+            "en": "Read breaths per minute from HealthKit."
+        },
         "steps": [
-            "respiratoryRate Type definieren.",
-            "SampleQuery ausführen.",
-            "Wert in Atemzügen/Minute ausgeben."
+            {
+                "de": "respiratoryRate Type definieren.",
+                "en": "Define the respiratoryRate type."
+            },
+            {
+                "de": "SampleQuery ausführen.",
+                "en": "Run a sample query."
+            },
+            {
+                "de": "Wert in Atemzügen/Minute ausgeben.",
+                "en": "Output the value in breaths per minute."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -283,12 +465,27 @@
     },
     {
         "id": "healthkit_013",
-        "title": "VO₂ Max lesen",
-        "description": "Zeige den maximalen Sauerstoffverbrauch (VO₂ Max) an.",
+        "title": {
+            "de": "VO₂ Max lesen",
+            "en": "Read VO2 max"
+        },
+        "description": {
+            "de": "Zeige den maximalen Sauerstoffverbrauch (VO₂ Max) an.",
+            "en": "Show maximum oxygen uptake, VO2 max."
+        },
         "steps": [
-            "vo2Max Type anfordern.",
-            "StatisticsQuery ausführen.",
-            "ml/kg/min anzeigen."
+            {
+                "de": "vo2Max Type anfordern.",
+                "en": "Request the vo2Max type."
+            },
+            {
+                "de": "StatisticsQuery ausführen.",
+                "en": "Run a statistics query."
+            },
+            {
+                "de": "ml/kg/min anzeigen.",
+                "en": "Display ml/kg/min."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -306,13 +503,29 @@
     },
     {
         "id": "healthkit_014",
-        "title": "Blutdruck (Systole/Diastole) lesen",
-        "description":
-            "Lese den Blutdruck aus zwei verknüpften HealthKit-Werten aus.",
+        "title": {
+            "de": "Blutdruck (Systole/Diastole) lesen",
+            "en": "Read blood pressure (systolic/diastolic)"
+        },
+        "description": {
+            "de":
+                "Lese den Blutdruck aus zwei verknüpften HealthKit-Werten aus.",
+            "en": "Read blood pressure from two linked HealthKit values."
+        },
         "steps": [
-            "bloodPressureSystolic & bloodPressureDiastolic definieren.",
-            "SampleQuery für beide erstellen.",
-            "Werte zusammen anzeigen."
+            {
+                "de":
+                    "bloodPressureSystolic & bloodPressureDiastolic definieren.",
+                "en": "Define bloodPressureSystolic and bloodPressureDiastolic."
+            },
+            {
+                "de": "SampleQuery für beide erstellen.",
+                "en": "Create sample queries for both."
+            },
+            {
+                "de": "Werte zusammen anzeigen.",
+                "en": "Show the values together."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -330,13 +543,29 @@
     },
     {
         "id": "healthkit_015",
-        "title": "Menstruationszyklus auslesen",
-        "description":
-            "Lese HealthKit-Daten über Menstruationsphasen (Menstruation, Ovulation, usw.).",
+        "title": {
+            "de": "Menstruationszyklus auslesen",
+            "en": "Read menstrual cycle data"
+        },
+        "description": {
+            "de":
+                "Lese HealthKit-Daten über Menstruationsphasen (Menstruation, Ovulation, usw.).",
+            "en":
+                "Read HealthKit data about menstrual phases, such as menstruation or ovulation."
+        },
         "steps": [
-            "HKCategoryTypeIdentifier.menstrualFlow nutzen.",
-            "SampleQuery erstellen.",
-            "Phasen interpretieren."
+            {
+                "de": "HKCategoryTypeIdentifier.menstrualFlow nutzen.",
+                "en": "Use HKCategoryTypeIdentifier.menstrualFlow."
+            },
+            {
+                "de": "SampleQuery erstellen.",
+                "en": "Create a sample query."
+            },
+            {
+                "de": "Phasen interpretieren.",
+                "en": "Interpret phases."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -354,13 +583,27 @@
     },
     {
         "id": "healthkit_016",
-        "title": "Zyklusvorhersage anzeigen",
-        "description":
-            "Zeige vorhergesagte Fruchtbarkeits- und Zyklusfenster an.",
+        "title": {
+            "de": "Zyklusvorhersage anzeigen",
+            "en": "Show cycle predictions"
+        },
+        "description": {
+            "de": "Zeige vorhergesagte Fruchtbarkeits- und Zyklusfenster an.",
+            "en": "Show predicted fertility and cycle windows."
+        },
         "steps": [
-            "HKCategoryTypeIdentifier.ovulationTestResult nutzen.",
-            "HealthKit Predictions abfragen.",
-            "Fenster ausgeben."
+            {
+                "de": "HKCategoryTypeIdentifier.ovulationTestResult nutzen.",
+                "en": "Use HKCategoryTypeIdentifier.ovulationTestResult."
+            },
+            {
+                "de": "HealthKit Predictions abfragen.",
+                "en": "Request HealthKit predictions."
+            },
+            {
+                "de": "Fenster ausgeben.",
+                "en": "Output windows."
+            }
         ],
         "colors": {
             "backgroundColors": [

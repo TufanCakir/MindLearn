@@ -1,13 +1,30 @@
 [
     {
         "id": "swiftdata_001",
-        "title": "Einführung in SwiftData",
-        "description":
-            "Lerne, wie du mit SwiftData Objekte speicherst, abrufst und automatisch in SwiftUI synchronisierst.",
+        "title": {
+            "de": "Einführung in SwiftData",
+            "en": "Introduction to SwiftData"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du mit SwiftData Objekte speicherst, abrufst und automatisch in SwiftUI synchronisierst.",
+            "en":
+                "Learn how to store, fetch and automatically sync objects with SwiftData in SwiftUI."
+        },
         "steps": [
-            "Importiere SwiftData und definiere ein @Model.",
-            "Erstelle ein ModelContainer im App-Entry.",
-            "Nutze @Query oder ModelContext zum Speichern und Laden von Daten."
+            {
+                "de": "Importiere SwiftData und definiere ein @Model.",
+                "en": "Import SwiftData and define an @Model."
+            },
+            {
+                "de": "Erstelle ein ModelContainer im App-Entry.",
+                "en": "Create a ModelContainer in the app entry."
+            },
+            {
+                "de":
+                    "Nutze @Query oder ModelContext zum Speichern und Laden von Daten.",
+                "en": "Use @Query or ModelContext to save and load data."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,13 +42,29 @@
     },
     {
         "id": "swiftdata_002",
-        "title": "SwiftData Beziehungen (One-to-Many)",
-        "description":
-            "Erstelle zwei miteinander verknüpfte SwiftData-Modelle – z. B. Kategorien mit mehreren Einträgen.",
+        "title": {
+            "de": "SwiftData Beziehungen (One-to-Many)",
+            "en": "SwiftData relationships (one-to-many)"
+        },
+        "description": {
+            "de":
+                "Erstelle zwei miteinander verknüpfte SwiftData-Modelle – z. B. Kategorien mit mehreren Einträgen.",
+            "en":
+                "Create two linked SwiftData models, for example categories with multiple entries."
+        },
         "steps": [
-            "Erstelle zwei @Model-Klassen.",
-            "Verknüpfe sie mithilfe von @Relationship.",
-            "Nutze .cascade oder .nullify für Delete Rules."
+            {
+                "de": "Erstelle zwei @Model-Klassen.",
+                "en": "Create two @Model classes."
+            },
+            {
+                "de": "Verknüpfe sie mithilfe von @Relationship.",
+                "en": "Link them with @Relationship."
+            },
+            {
+                "de": "Nutze .cascade oder .nullify für Delete Rules.",
+                "en": "Use .cascade or .nullify for delete rules."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -49,13 +82,29 @@
     },
     {
         "id": "swiftdata_003",
-        "title": "Dynamische Filter mit @Query & Predicate",
-        "description":
-            "Filtere SwiftData-Einträge zur Laufzeit – perfekt für Suchfelder.",
+        "title": {
+            "de": "Dynamische Filter mit @Query & Predicate",
+            "en": "Dynamic filters with @Query & Predicate"
+        },
+        "description": {
+            "de":
+                "Filtere SwiftData-Einträge zur Laufzeit – perfekt für Suchfelder.",
+            "en":
+                "Filter SwiftData entries at runtime, perfect for search fields."
+        },
         "steps": [
-            "Verwende @Query mit einem dynamischen Predicate.",
-            "Nutze ein Suchfeld, um live zu filtern.",
-            "Predicate werden automatisch neu berechnet."
+            {
+                "de": "Verwende @Query mit einem dynamischen Predicate.",
+                "en": "Use @Query with a dynamic predicate."
+            },
+            {
+                "de": "Nutze ein Suchfeld, um live zu filtern.",
+                "en": "Use a search field to filter live."
+            },
+            {
+                "de": "Predicate werden automatisch neu berechnet.",
+                "en": "Predicates are recalculated automatically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -73,13 +122,29 @@
     },
     {
         "id": "swiftdata_004",
-        "title": "SwiftData Migration (Modeländerungen)",
-        "description":
-            "Lerne, wie du neue Felder, Defaults oder Umstrukturierungen in deinen Modellen vornimmst.",
+        "title": {
+            "de": "SwiftData Migration (Modeländerungen)",
+            "en": "SwiftData migration (model changes)"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du neue Felder, Defaults oder Umstrukturierungen in deinen Modellen vornimmst.",
+            "en":
+                "Learn how to add fields, defaults or restructuring to your models."
+        },
         "steps": [
-            "Füge neue Properties in deinem @Model hinzu.",
-            "Nutze Default-Werte zur einfachen Migration.",
-            "Die Migration passiert automatisch beim App-Start."
+            {
+                "de": "Füge neue Properties in deinem @Model hinzu.",
+                "en": "Add new properties to your @Model."
+            },
+            {
+                "de": "Nutze Default-Werte zur einfachen Migration.",
+                "en": "Use default values for simple migration."
+            },
+            {
+                "de": "Die Migration passiert automatisch beim App-Start.",
+                "en": "Migration happens automatically when the app starts."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -97,13 +162,29 @@
     },
     {
         "id": "swiftdata_005",
-        "title": "Undo & Redo mit ModelContext",
-        "description":
-            "SwiftData unterstützt Undo/Redo automatisch mit dem UndoManager aus SwiftUI.",
+        "title": {
+            "de": "Undo & Redo mit ModelContext",
+            "en": "Undo & redo with ModelContext"
+        },
+        "description": {
+            "de":
+                "SwiftData unterstützt Undo/Redo automatisch mit dem UndoManager aus SwiftUI.",
+            "en":
+                "SwiftData supports undo and redo automatically through SwiftUI UndoManager."
+        },
         "steps": [
-            "Hole dir den UndoManager aus @Environment.",
-            "Rufe undo() oder redo() auf.",
-            "Alle SwiftData-Änderungen sind automatisch integriert."
+            {
+                "de": "Hole dir den UndoManager aus @Environment.",
+                "en": "Get UndoManager from @Environment."
+            },
+            {
+                "de": "Rufe undo() oder redo() auf.",
+                "en": "Call undo() or redo()."
+            },
+            {
+                "de": "Alle SwiftData-Änderungen sind automatisch integriert.",
+                "en": "All SwiftData changes are integrated automatically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -121,13 +202,29 @@
     },
     {
         "id": "swiftdata_006",
-        "title": "SwiftData Performance – Batch Insert & Delete",
-        "description":
-            "Für große Datenmengen brauchst du schnelle Sammeloperationen. Nutze context.insert() in Schleifen und lösche mit .delete() effizient.",
+        "title": {
+            "de": "SwiftData Performance – Batch Insert & Delete",
+            "en": "SwiftData performance - batch insert & delete"
+        },
+        "description": {
+            "de":
+                "Für große Datenmengen brauchst du schnelle Sammeloperationen. Nutze context.insert() in Schleifen und lösche mit .delete() effizient.",
+            "en":
+                "Large data sets need fast batch operations. Use context.insert() in loops and delete efficiently with .delete()."
+        },
         "steps": [
-            "Erstelle viele Modelle mit einer Schleife.",
-            "Nutze context.save() erst am Ende.",
-            "Verwende context.delete(model) zum Entfernen."
+            {
+                "de": "Erstelle viele Modelle mit einer Schleife.",
+                "en": "Create many models with a loop."
+            },
+            {
+                "de": "Nutze context.save() erst am Ende.",
+                "en": "Call context.save() only at the end."
+            },
+            {
+                "de": "Verwende context.delete(model) zum Entfernen.",
+                "en": "Use context.delete(model) to remove items."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -145,13 +242,29 @@
     },
     {
         "id": "swiftdata_007",
-        "title": "Sortierung & Pagination",
-        "description":
-            "Sortiere SwiftData-Einträge und lade nur eine begrenzte Anzahl – ideal für Chats, Leaderboards oder große Listen.",
+        "title": {
+            "de": "Sortierung & Pagination",
+            "en": "Sorting & pagination"
+        },
+        "description": {
+            "de":
+                "Sortiere SwiftData-Einträge und lade nur eine begrenzte Anzahl – ideal für Chats, Leaderboards oder große Listen.",
+            "en":
+                "Sort SwiftData entries and load only a limited amount, ideal for chats, leaderboards or large lists."
+        },
         "steps": [
-            "Nutze Query(sort: ...) für Sortierung.",
-            "Begrenze die Anzahl mit fetchLimit.",
-            "Für Pagination mehrere Queries verwenden."
+            {
+                "de": "Nutze Query(sort: ...) für Sortierung.",
+                "en": "Use Query(sort: ...) for sorting."
+            },
+            {
+                "de": "Begrenze die Anzahl mit fetchLimit.",
+                "en": "Limit the count with fetchLimit."
+            },
+            {
+                "de": "Für Pagination mehrere Queries verwenden.",
+                "en": "Use multiple queries for pagination."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -169,13 +282,29 @@
     },
     {
         "id": "swiftdata_008",
-        "title": "Async/Await mit SwiftData",
-        "description":
-            "Verarbeite große Datensätze im Hintergrund – vermeide UI-Lags und steigere Performance.",
+        "title": {
+            "de": "Async/Await mit SwiftData",
+            "en": "Async/await with SwiftData"
+        },
+        "description": {
+            "de":
+                "Verarbeite große Datensätze im Hintergrund – vermeide UI-Lags und steigere Performance.",
+            "en":
+                "Process large data sets in the background, avoid UI lag and improve performance."
+        },
         "steps": [
-            "Nutze Task { ... } für Hintergrundarbeit.",
-            "insert() oder delete() in Tasks aufrufen.",
-            "Danach context.save() ausführen."
+            {
+                "de": "Nutze Task { ... } für Hintergrundarbeit.",
+                "en": "Use Task { ... } for background work."
+            },
+            {
+                "de": "insert() oder delete() in Tasks aufrufen.",
+                "en": "Call insert() or delete() in tasks."
+            },
+            {
+                "de": "Danach context.save() ausführen.",
+                "en": "Run context.save() afterward."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -193,13 +322,32 @@
     },
     {
         "id": "swiftdata_009",
-        "title": "Many-to-Many Beziehungen",
-        "description":
-            "Erstelle zwei Modelle, die sich gegenseitig referenzieren – z. B. Spieler, die an mehreren Events teilnehmen.",
+        "title": {
+            "de": "Many-to-Many Beziehungen",
+            "en": "Many-to-many relationships"
+        },
+        "description": {
+            "de":
+                "Erstelle zwei Modelle, die sich gegenseitig referenzieren – z. B. Spieler, die an mehreren Events teilnehmen.",
+            "en":
+                "Create two models that reference each other, for example players who join multiple events."
+        },
         "steps": [
-            "Verwende @Relationship(inverse:) für bidirektionale Beziehungen.",
-            "Both-Side Arrays für Many-to-Many definieren.",
-            "Daten automatisch über SwiftData synchronisieren lassen."
+            {
+                "de":
+                    "Verwende @Relationship(inverse:) für bidirektionale Beziehungen.",
+                "en":
+                    "Use @Relationship(inverse:) for bidirectional relationships."
+            },
+            {
+                "de": "Both-Side Arrays für Many-to-Many definieren.",
+                "en": "Define arrays on both sides for many-to-many."
+            },
+            {
+                "de":
+                    "Daten automatisch über SwiftData synchronisieren lassen.",
+                "en": "Let SwiftData sync data automatically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -217,13 +365,29 @@
     },
     {
         "id": "swiftdata_010",
-        "title": "SwiftData + @Bindable",
-        "description":
-            "Bearbeite SwiftData-Modelle direkt in der UI – ohne extra ViewModels.",
+        "title": {
+            "de": "SwiftData + @Bindable",
+            "en": "SwiftData + @Bindable"
+        },
+        "description": {
+            "de":
+                "Bearbeite SwiftData-Modelle direkt in der UI – ohne extra ViewModels.",
+            "en":
+                "Edit SwiftData models directly in the UI without extra view models."
+        },
         "steps": [
-            "@Bindable in der View verwenden.",
-            "Änderungen werden automatisch persistiert.",
-            "Ideal für Edit-Formulare und Settings."
+            {
+                "de": "@Bindable in der View verwenden.",
+                "en": "Use @Bindable in the view."
+            },
+            {
+                "de": "Änderungen werden automatisch persistiert.",
+                "en": "Changes are persisted automatically."
+            },
+            {
+                "de": "Ideal für Edit-Formulare und Settings.",
+                "en": "Ideal for edit forms and settings."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -241,13 +405,29 @@
     },
     {
         "id": "swiftdata_011",
-        "title": "SwiftData Export & JSON Backup",
-        "description":
-            "Exportiere Daten als JSON – ideal für Backups, Debugging oder Cloud-Sync.",
+        "title": {
+            "de": "SwiftData Export & JSON Backup",
+            "en": "SwiftData export & JSON backup"
+        },
+        "description": {
+            "de":
+                "Exportiere Daten als JSON – ideal für Backups, Debugging oder Cloud-Sync.",
+            "en":
+                "Export data as JSON, ideal for backups, debugging or cloud sync."
+        },
         "steps": [
-            "Model-Daten abrufen.",
-            "Codierbares Mirror-Struct erstellen.",
-            "Daten als JSON speichern oder teilen."
+            {
+                "de": "Model-Daten abrufen.",
+                "en": "Fetch model data."
+            },
+            {
+                "de": "Codierbares Mirror-Struct erstellen.",
+                "en": "Create a codable mirror struct."
+            },
+            {
+                "de": "Daten als JSON speichern oder teilen.",
+                "en": "Save or share data as JSON."
+            }
         ],
         "colors": {
             "backgroundColors": [

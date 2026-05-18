@@ -1,13 +1,30 @@
     [
         {
             "id": "vision_001",
-            "title": "Text-Erkennung mit Vision",
-            "description":
-                "Nutze Apples Vision Framework, um Text in Bildern automatisch zu erkennen.",
+            "title": {
+                "de": "Text-Erkennung mit Vision",
+                "en": "Text recognition with Vision"
+            },
+            "description": {
+                "de":
+                    "Nutze Apples Vision Framework, um Text in Bildern automatisch zu erkennen.",
+                "en":
+                    "Use Apple Vision to automatically recognize text in images."
+            },
             "steps": [
-                "Vision importieren und eine VNRecognizeTextRequest erstellen.",
-                "Bild in CIImage oder CGImage konvertieren.",
-                "Erkannte Texte im Completion Handler ausgeben."
+                {
+                    "de":
+                        "Vision importieren und eine VNRecognizeTextRequest erstellen.",
+                    "en": "Import Vision and create a VNRecognizeTextRequest."
+                },
+                {
+                    "de": "Bild in CIImage oder CGImage konvertieren.",
+                    "en": "Convert the image to CIImage or CGImage."
+                },
+                {
+                    "de": "Erkannte Texte im Completion Handler ausgeben.",
+                    "en": "Output recognized text in the completion handler."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -25,13 +42,28 @@
         },
         {
             "id": "vision_002",
-            "title": "Gesichtserkennung (Face Detection)",
-            "description":
-                "Erkenne Gesichter in Bildern mithilfe von Vision und markiere ihre Bereiche.",
+            "title": {
+                "de": "Gesichtserkennung (Face Detection)",
+                "en": "Face detection"
+            },
+            "description": {
+                "de":
+                    "Erkenne Gesichter in Bildern mithilfe von Vision und markiere ihre Bereiche.",
+                "en": "Detect faces in images with Vision and mark their areas."
+            },
             "steps": [
-                "Erstelle eine VNDetectFaceRectanglesRequest.",
-                "Konvertiere dein UIImage in CGImage.",
-                "Lies boundingBox der erkannten Gesichter aus."
+                {
+                    "de": "Erstelle eine VNDetectFaceRectanglesRequest.",
+                    "en": "Create a VNDetectFaceRectanglesRequest."
+                },
+                {
+                    "de": "Konvertiere dein UIImage in CGImage.",
+                    "en": "Convert your UIImage to CGImage."
+                },
+                {
+                    "de": "Lies boundingBox der erkannten Gesichter aus.",
+                    "en": "Read the boundingBox of detected faces."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -49,13 +81,29 @@
         },
         {
             "id": "vision_003",
-            "title": "Objekt-Erkennung (VNRecognizedObjectRequest)",
-            "description":
-                "Erkenne vordefinierte Objekte wie Menschen, Tiere, Fahrzeuge usw.",
+            "title": {
+                "de": "Objekt-Erkennung (VNRecognizedObjectRequest)",
+                "en": "Object recognition"
+            },
+            "description": {
+                "de":
+                    "Erkenne vordefinierte Objekte wie Menschen, Tiere, Fahrzeuge usw.",
+                "en":
+                    "Recognize predefined objects such as people, animals or vehicles."
+            },
             "steps": [
-                "Erstelle eine VNRecognizedObjectRequest.",
-                "Nutze ein Core ML Modell (z. B. YOLO).",
-                "Gib erkannte Objekte mit Confidence aus."
+                {
+                    "de": "Erstelle eine VNRecognizedObjectRequest.",
+                    "en": "Create a VNRecognizedObjectRequest."
+                },
+                {
+                    "de": "Nutze ein Core ML Modell (z. B. YOLO).",
+                    "en": "Use a Core ML model such as YOLO."
+                },
+                {
+                    "de": "Gib erkannte Objekte mit Confidence aus.",
+                    "en": "Output recognized objects with confidence."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -73,13 +121,29 @@
         },
         {
             "id": "vision_004",
-            "title": "Barcode-Erkennung (QR, EAN, PDF417)",
-            "description":
-                "Scanne Barcodes direkt aus einem Bild – QR, EAN, UPC und viele weitere.",
+            "title": {
+                "de": "Barcode-Erkennung (QR, EAN, PDF417)",
+                "en": "Barcode recognition (QR, EAN, PDF417)"
+            },
+            "description": {
+                "de":
+                    "Scanne Barcodes direkt aus einem Bild – QR, EAN, UPC und viele weitere.",
+                "en":
+                    "Scan barcodes directly from an image, including QR, EAN, UPC and more."
+            },
             "steps": [
-                "VNDetectBarcodesRequest erstellen.",
-                "Bild über VNImageRequestHandler analysieren.",
-                "Barcode-Inhalt ausgeben."
+                {
+                    "de": "VNDetectBarcodesRequest erstellen.",
+                    "en": "Create a VNDetectBarcodesRequest."
+                },
+                {
+                    "de": "Bild über VNImageRequestHandler analysieren.",
+                    "en": "Analyze the image with VNImageRequestHandler."
+                },
+                {
+                    "de": "Barcode-Inhalt ausgeben.",
+                    "en": "Output the barcode payload."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -97,13 +161,31 @@
         },
         {
             "id": "vision_005",
-            "title": "Handpose-Erkennung (VNDetectHumanHandPoseRequest)",
-            "description":
-                "Analysiere Handpositionen und Fingerpunkte – perfekt für AR- oder Gestensteuerung.",
+            "title": {
+                "de": "Handpose-Erkennung (VNDetectHumanHandPoseRequest)",
+                "en": "Hand pose detection"
+            },
+            "description": {
+                "de":
+                    "Analysiere Handpositionen und Fingerpunkte – perfekt für AR- oder Gestensteuerung.",
+                "en":
+                    "Analyze hand positions and finger points, perfect for AR or gesture control."
+            },
             "steps": [
-                "Erstelle eine VNDetectHumanHandPoseRequest.",
-                "Analysiere Landmark-Punkte wie Daumen oder Zeigefinger.",
-                "Nutze diese Daten für Gestenerkennung."
+                {
+                    "de": "Erstelle eine VNDetectHumanHandPoseRequest.",
+                    "en": "Create a VNDetectHumanHandPoseRequest."
+                },
+                {
+                    "de":
+                        "Analysiere Landmark-Punkte wie Daumen oder Zeigefinger.",
+                    "en":
+                        "Analyze landmark points such as thumb or index finger."
+                },
+                {
+                    "de": "Nutze diese Daten für Gestenerkennung.",
+                    "en": "Use this data for gesture recognition."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -121,13 +203,29 @@
         },
         {
             "id": "vision_006",
-            "title": "Körpererkennung (Human Body Pose)",
-            "description":
-                "Erkenne Körperhaltung und Skelettpunkte – ideal für Fitness-Apps oder Animation.",
+            "title": {
+                "de": "Körpererkennung (Human Body Pose)",
+                "en": "Human body pose detection"
+            },
+            "description": {
+                "de":
+                    "Erkenne Körperhaltung und Skelettpunkte – ideal für Fitness-Apps oder Animation.",
+                "en":
+                    "Detect body posture and skeleton points, ideal for fitness apps or animation."
+            },
             "steps": [
-                "VNDetectHumanBodyPoseRequest nutzen.",
-                "Landmarks wie Hüfte, Schultern oder Knie auslesen.",
-                "Pose-Daten weiterverarbeiten."
+                {
+                    "de": "VNDetectHumanBodyPoseRequest nutzen.",
+                    "en": "Use VNDetectHumanBodyPoseRequest."
+                },
+                {
+                    "de": "Landmarks wie Hüfte, Schultern oder Knie auslesen.",
+                    "en": "Read landmarks such as hips, shoulders or knees."
+                },
+                {
+                    "de": "Pose-Daten weiterverarbeiten.",
+                    "en": "Process pose data further."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -145,13 +243,31 @@
         },
         {
             "id": "vision_007",
-            "title": "Saliency Detection (Bild-Fokuspunkte)",
-            "description":
-                "Erkenne automatisch wichtige Bereiche eines Bildes – ideal für Cropping oder Fokus.",
+            "title": {
+                "de": "Saliency Detection (Bild-Fokuspunkte)",
+                "en": "Saliency detection (image focus areas)"
+            },
+            "description": {
+                "de":
+                    "Erkenne automatisch wichtige Bereiche eines Bildes – ideal für Cropping oder Fokus.",
+                "en":
+                    "Automatically detect important areas in an image, ideal for cropping or focus."
+            },
             "steps": [
-                "VNGenerateAttentionBasedSaliencyImageRequest erstellen.",
-                "Heatmap der wichtigen Bereiche ausgeben.",
-                "Bounding Box extrahieren."
+                {
+                    "de":
+                        "VNGenerateAttentionBasedSaliencyImageRequest erstellen.",
+                    "en":
+                        "Create a VNGenerateAttentionBasedSaliencyImageRequest."
+                },
+                {
+                    "de": "Heatmap der wichtigen Bereiche ausgeben.",
+                    "en": "Output a heatmap of important areas."
+                },
+                {
+                    "de": "Bounding Box extrahieren.",
+                    "en": "Extract the bounding box."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -169,13 +285,29 @@
         },
         {
             "id": "vision_008",
-            "title": "Texterkennung für mehrere Sprachen",
-            "description":
-                "Erkenne Text in Bildern und lege mehrere Sprachen fest.",
+            "title": {
+                "de": "Texterkennung für mehrere Sprachen",
+                "en": "Text recognition for multiple languages"
+            },
+            "description": {
+                "de": "Erkenne Text in Bildern und lege mehrere Sprachen fest.",
+                "en": "Recognize text in images and define multiple languages."
+            },
             "steps": [
-                "VNRecognizeTextRequest mit recognitionLanguages konfigurieren.",
-                "Mehrere Sprachen gleichzeitig analysieren.",
-                "Erkannte Texte ausgeben."
+                {
+                    "de":
+                        "VNRecognizeTextRequest mit recognitionLanguages konfigurieren.",
+                    "en":
+                        "Configure VNRecognizeTextRequest with recognitionLanguages."
+                },
+                {
+                    "de": "Mehrere Sprachen gleichzeitig analysieren.",
+                    "en": "Analyze multiple languages at the same time."
+                },
+                {
+                    "de": "Erkannte Texte ausgeben.",
+                    "en": "Output recognized text."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -193,12 +325,28 @@
         },
         {
             "id": "vision_009",
-            "title": "Contours – Linien & Umriss-Erkennung",
-            "description": "Erkenne Kanten, Shapes und Umrisse in einem Bild.",
+            "title": {
+                "de": "Contours – Linien & Umriss-Erkennung",
+                "en": "Contours - line and outline detection"
+            },
+            "description": {
+                "de": "Erkenne Kanten, Shapes und Umrisse in einem Bild.",
+                "en": "Detect edges, shapes and outlines in an image."
+            },
             "steps": [
-                "VNDetectContoursRequest erstellen.",
-                "Minimale Linienlänge und Empfindlichkeit einstellen.",
-                "Als Paths ausgeben."
+                {
+                    "de": "VNDetectContoursRequest erstellen.",
+                    "en": "Create a VNDetectContoursRequest."
+                },
+                {
+                    "de":
+                        "Minimale Linienlänge und Empfindlichkeit einstellen.",
+                    "en": "Set minimum line length and sensitivity."
+                },
+                {
+                    "de": "Als Paths ausgeben.",
+                    "en": "Output as paths."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -216,13 +364,29 @@
         },
         {
             "id": "vision_010",
-            "title": "Face Landmark Detection (Augen, Nase, Mund)",
-            "description":
-                "Erkenne präzise Gesichtsmerkmale wie Augen, Nase, Mund und Kiefer.",
+            "title": {
+                "de": "Face Landmark Detection (Augen, Nase, Mund)",
+                "en": "Face landmark detection"
+            },
+            "description": {
+                "de":
+                    "Erkenne präzise Gesichtsmerkmale wie Augen, Nase, Mund und Kiefer.",
+                "en":
+                    "Detect precise facial features such as eyes, nose, mouth and jaw."
+            },
             "steps": [
-                "Nutze VNDetectFaceLandmarksRequest.",
-                "Lese Punkte wie leftEye oder nose aus.",
-                "Ideal für Filter-Apps."
+                {
+                    "de": "Nutze VNDetectFaceLandmarksRequest.",
+                    "en": "Use VNDetectFaceLandmarksRequest."
+                },
+                {
+                    "de": "Lese Punkte wie leftEye oder nose aus.",
+                    "en": "Read points such as leftEye or nose."
+                },
+                {
+                    "de": "Ideal für Filter-Apps.",
+                    "en": "Ideal for filter apps."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -240,13 +404,29 @@
         },
         {
             "id": "vision_011",
-            "title": "Objekt-Tracking in Videos (VNTrackObjectRequest)",
-            "description":
-                "Verfolge ein Objekt über mehrere Videoframes hinweg – perfekt für AR und Analyse.",
+            "title": {
+                "de": "Objekt-Tracking in Videos (VNTrackObjectRequest)",
+                "en": "Object tracking in videos"
+            },
+            "description": {
+                "de":
+                    "Verfolge ein Objekt über mehrere Videoframes hinweg – perfekt für AR und Analyse.",
+                "en":
+                    "Track an object across multiple video frames, perfect for AR and analysis."
+            },
             "steps": [
-                "Erstelle VNDetectedObjectObservation.",
-                "Initialisiere Tracking-Request.",
-                "Aktualisiere die Bounding Box pro Frame."
+                {
+                    "de": "Erstelle VNDetectedObjectObservation.",
+                    "en": "Create a VNDetectedObjectObservation."
+                },
+                {
+                    "de": "Initialisiere Tracking-Request.",
+                    "en": "Initialize the tracking request."
+                },
+                {
+                    "de": "Aktualisiere die Bounding Box pro Frame.",
+                    "en": "Update the bounding box per frame."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -264,13 +444,29 @@
         },
         {
             "id": "vision_012",
-            "title": "Dokumenten-Segmentierung (Scanner)",
-            "description":
-                "Erkenne Dokumentränder automatisch – ideal für Scanner-Apps wie Adobe Scan.",
+            "title": {
+                "de": "Dokumenten-Segmentierung (Scanner)",
+                "en": "Document segmentation (scanner)"
+            },
+            "description": {
+                "de":
+                    "Erkenne Dokumentränder automatisch – ideal für Scanner-Apps wie Adobe Scan.",
+                "en":
+                    "Detect document edges automatically, ideal for scanner apps."
+            },
             "steps": [
-                "VNDetectDocumentSegmentationRequest erstellen.",
-                "Umrisspunkte extrahieren.",
-                "Dokument entzerren oder zuschneiden."
+                {
+                    "de": "VNDetectDocumentSegmentationRequest erstellen.",
+                    "en": "Create a VNDetectDocumentSegmentationRequest."
+                },
+                {
+                    "de": "Umrisspunkte extrahieren.",
+                    "en": "Extract outline points."
+                },
+                {
+                    "de": "Dokument entzerren oder zuschneiden.",
+                    "en": "Deskew or crop the document."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -288,13 +484,29 @@
         },
         {
             "id": "vision_013",
-            "title": "Personensegmentierung (Hintergrund entfernen)",
-            "description":
-                "Extrahiere Personen aus Bildern – perfekt für Portrait-Effekte, AI-Editing oder AR.",
+            "title": {
+                "de": "Personensegmentierung (Hintergrund entfernen)",
+                "en": "Person segmentation (remove background)"
+            },
+            "description": {
+                "de":
+                    "Extrahiere Personen aus Bildern – perfekt für Portrait-Effekte, AI-Editing oder AR.",
+                "en":
+                    "Extract people from images, perfect for portrait effects, AI editing or AR."
+            },
             "steps": [
-                "VNGeneratePersonSegmentationRequest nutzen.",
-                "Confidence Map auslesen.",
-                "Maske auf Bild anwenden (Matte)."
+                {
+                    "de": "VNGeneratePersonSegmentationRequest nutzen.",
+                    "en": "Use VNGeneratePersonSegmentationRequest."
+                },
+                {
+                    "de": "Confidence Map auslesen.",
+                    "en": "Read the confidence map."
+                },
+                {
+                    "de": "Maske auf Bild anwenden (Matte).",
+                    "en": "Apply the mask to the image."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -312,13 +524,29 @@
         },
         {
             "id": "vision_014",
-            "title": "CoreML Segmentierung (Objektmasken)",
-            "description":
-                "Nutze ein CoreML-Segmentation-Modell, um Pixel genau zu klassifizieren (Person, Himmel, Haare usw.).",
+            "title": {
+                "de": "CoreML Segmentierung (Objektmasken)",
+                "en": "Core ML segmentation (object masks)"
+            },
+            "description": {
+                "de":
+                    "Nutze ein CoreML-Segmentation-Modell, um Pixel genau zu klassifizieren (Person, Himmel, Haare usw.).",
+                "en":
+                    "Use a Core ML segmentation model to classify pixels precisely, such as person, sky or hair."
+            },
             "steps": [
-                "CoreML-Segmentation-Model laden.",
-                "VNCoreMLRequest erstellen.",
-                "Pixel-Labels ausgeben."
+                {
+                    "de": "CoreML-Segmentation-Model laden.",
+                    "en": "Load a Core ML segmentation model."
+                },
+                {
+                    "de": "VNCoreMLRequest erstellen.",
+                    "en": "Create a VNCoreMLRequest."
+                },
+                {
+                    "de": "Pixel-Labels ausgeben.",
+                    "en": "Output pixel labels."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -336,13 +564,29 @@
         },
         {
             "id": "vision_015",
-            "title": "Text-Layout Erkennung (Textblöcke finden)",
-            "description":
-                "Finde automatisch Textblöcke, Überschriften und Layout-Strukturen in einem Dokument.",
+            "title": {
+                "de": "Text-Layout Erkennung (Textblöcke finden)",
+                "en": "Text layout detection"
+            },
+            "description": {
+                "de":
+                    "Finde automatisch Textblöcke, Überschriften und Layout-Strukturen in einem Dokument.",
+                "en":
+                    "Find text blocks, headings and layout structures in a document automatically."
+            },
             "steps": [
-                "VNDetectTextRectanglesRequest erstellen.",
-                "Bounding Boxes pro Textblock auslesen.",
-                "Perfekt für OCR-Vorverarbeitung."
+                {
+                    "de": "VNDetectTextRectanglesRequest erstellen.",
+                    "en": "Create a VNDetectTextRectanglesRequest."
+                },
+                {
+                    "de": "Bounding Boxes pro Textblock auslesen.",
+                    "en": "Read bounding boxes for each text block."
+                },
+                {
+                    "de": "Perfekt für OCR-Vorverarbeitung.",
+                    "en": "Perfect for OCR preprocessing."
+                }
             ],
             "colors": {
                 "backgroundColors": [
@@ -360,13 +604,31 @@
         },
         {
             "id": "vision_016",
-            "title": "Bild-Ähnlichkeit (Image Similarity)",
-            "description":
-                "Vergleiche zwei Bilder und berechne ihre visuelle Ähnlichkeit. Ideal für KI-Apps oder Fotoverwaltung.",
+            "title": {
+                "de": "Bild-Ähnlichkeit (Image Similarity)",
+                "en": "Image similarity"
+            },
+            "description": {
+                "de":
+                    "Vergleiche zwei Bilder und berechne ihre visuelle Ähnlichkeit. Ideal für KI-Apps oder Fotoverwaltung.",
+                "en":
+                    "Compare two images and calculate their visual similarity, ideal for AI apps or photo management."
+            },
             "steps": [
-                "VNGenerateImageFeaturePrintRequest für beide Bilder ausführen.",
-                "Feature Vektoren extrahieren.",
-                "distance() berechnen → je kleiner, desto ähnlicher."
+                {
+                    "de":
+                        "VNGenerateImageFeaturePrintRequest für beide Bilder ausführen.",
+                    "en":
+                        "Run VNGenerateImageFeaturePrintRequest for both images."
+                },
+                {
+                    "de": "Feature Vektoren extrahieren.",
+                    "en": "Extract feature vectors."
+                },
+                {
+                    "de": "distance() berechnen → je kleiner, desto ähnlicher.",
+                    "en": "Calculate distance; smaller means more similar."
+                }
             ],
             "colors": {
                 "backgroundColors": [

@@ -20,6 +20,18 @@ struct DrawerDetailView: View {
         Bundle.main.appLocalization(language: language)
     }
 
+    private var localizedTitle: String {
+        section.title(language: language)
+    }
+
+    private var localizedDescription: String {
+        section.description(language: language)
+    }
+
+    private var localizedSteps: [String] {
+        section.steps(language: language)
+    }
+
     private var isPad: Bool {
         UIDevice.current.userInterfaceIdiom == .pad
     }
@@ -49,7 +61,7 @@ struct DrawerDetailView: View {
             .padding(.vertical, 24)
         }
         .background(background)
-        .navigationTitle(section.title)
+        .navigationTitle(localizedTitle)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -89,7 +101,7 @@ extension DrawerDetailView {
                     .foregroundStyle(.blue)
                     .accessibilityHidden(true)
 
-                Text(section.title)
+                Text(localizedTitle)
                     .font(.system(.title, design: .rounded).bold())
                     .multilineTextAlignment(.leading)
                     .accessibilityAddTraits(.isHeader)
@@ -115,7 +127,7 @@ extension DrawerDetailView {
     @ViewBuilder
     private var descriptionSection: some View {
 
-        if !section.description.isEmpty {
+        if !localizedDescription.isEmpty {
 
             VStack(alignment: .leading, spacing: 10) {
 
@@ -123,7 +135,7 @@ extension DrawerDetailView {
                     .font(.headline)
                     .accessibilityAddTraits(.isHeader)
 
-                Text(section.description)
+                Text(localizedDescription)
                     .font(.body)
                     .lineSpacing(5)
                     .foregroundStyle(.secondary)
@@ -142,7 +154,7 @@ extension DrawerDetailView {
     @ViewBuilder
     private var stepsSection: some View {
 
-        if !section.steps.isEmpty {
+        if !localizedSteps.isEmpty {
 
             VStack(alignment: .leading, spacing: 18) {
 
@@ -151,7 +163,7 @@ extension DrawerDetailView {
                     .padding(.horizontal)
                     .accessibilityAddTraits(.isHeader)
 
-                ForEach(Array(section.steps.enumerated()), id: \.offset) {
+                ForEach(Array(localizedSteps.enumerated()), id: \.offset) {
                     index,
                     step in
 

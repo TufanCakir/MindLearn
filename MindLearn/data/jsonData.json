@@ -1,13 +1,33 @@
 [
     {
         "id": "json_001",
-        "title": "JSON Escapen",
-        "description":
-            "Lerne, wie du Code-Snippets sicher in JSON-Strings umwandelst (escapest), damit sie korrekt gespeichert und verarbeitet werden können.",
+        "title": {
+            "de": "JSON Escapen",
+            "en": "Escaping JSON"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du Code-Snippets sicher in JSON-Strings umwandelst (escapest), damit sie korrekt gespeichert und verarbeitet werden können.",
+            "en":
+                "Learn how to safely convert code snippets into JSON strings by escaping them, so they can be stored and processed correctly."
+        },
         "steps": [
-            "Erstelle ein Beispiel-Code-Snippet, z. B. in Swift oder HTML.",
-            "Füge es in das JSON Escape Studio ein.",
-            "Wähle den Modus 'Escape → JSON', um den Code automatisch zu formatieren."
+            {
+                "de":
+                    "Erstelle ein Beispiel-Code-Snippet, z. B. in Swift oder HTML.",
+                "en":
+                    "Create an example code snippet, for example in Swift or HTML."
+            },
+            {
+                "de": "Füge es in das JSON Escape Studio ein.",
+                "en": "Paste it into the JSON escape workflow."
+            },
+            {
+                "de":
+                    "Wähle den Modus 'Escape → JSON', um den Code automatisch zu formatieren.",
+                "en":
+                    "Choose the Escape to JSON mode to format the code automatically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,13 +45,29 @@
     },
     {
         "id": "json_002",
-        "title": "JSON Validierung",
-        "description":
-            "Prüfe, ob ein JSON-String syntaktisch gültig ist – ideal, um Fehler im Code zu finden.",
+        "title": {
+            "de": "JSON Validierung",
+            "en": "JSON validation"
+        },
+        "description": {
+            "de":
+                "Prüfe, ob ein JSON-String syntaktisch gültig ist – ideal, um Fehler im Code zu finden.",
+            "en":
+                "Check whether a JSON string is syntactically valid, ideal for finding errors in code."
+        },
         "steps": [
-            "JSON als Text eingeben.",
-            "Mit JSONSerialization versuchen zu decodieren.",
-            "Bei Erfolg: gültig. Bei Fehler: Fehlermeldung anzeigen."
+            {
+                "de": "JSON als Text eingeben.",
+                "en": "Enter JSON as text."
+            },
+            {
+                "de": "Mit JSONSerialization versuchen zu decodieren.",
+                "en": "Try to decode it with JSONSerialization."
+            },
+            {
+                "de": "Bei Erfolg: gültig. Bei Fehler: Fehlermeldung anzeigen.",
+                "en": "On success: valid. On error: show the error message."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -49,13 +85,30 @@
     },
     {
         "id": "json_003",
-        "title": "JSON Pretty Print",
-        "description":
-            "Formatiere kompaktes JSON automatisch lesbar – ideal für Debugging.",
+        "title": {
+            "de": "JSON Pretty Print",
+            "en": "JSON pretty print"
+        },
+        "description": {
+            "de":
+                "Formatiere kompaktes JSON automatisch lesbar – ideal für Debugging.",
+            "en":
+                "Automatically format compact JSON into readable text, ideal for debugging."
+        },
         "steps": [
-            "JSON-String einfügen.",
-            "Mit JSONSerialization parsen.",
-            "Mit .prettyPrinted zurück in formatierten Text umwandeln."
+            {
+                "de": "JSON-String einfügen.",
+                "en": "Paste a JSON string."
+            },
+            {
+                "de": "Mit JSONSerialization parsen.",
+                "en": "Parse it with JSONSerialization."
+            },
+            {
+                "de":
+                    "Mit .prettyPrinted zurück in formatierten Text umwandeln.",
+                "en": "Convert it back into formatted text with .prettyPrinted."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -73,13 +126,29 @@
     },
     {
         "id": "json_004",
-        "title": "JSON → Swift Struct Generator",
-        "description":
-            "Konvertiere JSON automatisch in Swift Struct-Code – perfekt für API-Modelle.",
+        "title": {
+            "de": "JSON → Swift Struct Generator",
+            "en": "JSON to Swift Struct generator"
+        },
+        "description": {
+            "de":
+                "Konvertiere JSON automatisch in Swift Struct-Code – perfekt für API-Modelle.",
+            "en":
+                "Automatically convert JSON into Swift struct code, perfect for API models."
+        },
         "steps": [
-            "Füge ein JSON-Objekt ein.",
-            "Erkenne automatisch Keys & Typen.",
-            "Erzeuge daraus ein Codable Swift Struct."
+            {
+                "de": "Füge ein JSON-Objekt ein.",
+                "en": "Paste a JSON object."
+            },
+            {
+                "de": "Erkenne automatisch Keys & Typen.",
+                "en": "Detect keys and types automatically."
+            },
+            {
+                "de": "Erzeuge daraus ein Codable Swift Struct.",
+                "en": "Generate a Codable Swift struct from it."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -97,13 +166,29 @@
     },
     {
         "id": "json_005",
-        "title": "Swift Struct → JSON Template",
-        "description":
-            "Nimm eine Swift Struct Definition und erzeuge ein JSON-Gerüst als Vorlage.",
+        "title": {
+            "de": "Swift Struct → JSON Template",
+            "en": "Swift Struct to JSON template"
+        },
+        "description": {
+            "de":
+                "Nimm eine Swift Struct Definition und erzeuge ein JSON-Gerüst als Vorlage.",
+            "en":
+                "Use a Swift struct definition to create a JSON scaffold as a template."
+        },
         "steps": [
-            "Struct-Code einfügen.",
-            "Regex extrahiert Property-Namen.",
-            "Erstelle automatisch ein JSON-Gerüst."
+            {
+                "de": "Struct-Code einfügen.",
+                "en": "Paste the struct code."
+            },
+            {
+                "de": "Regex extrahiert Property-Namen.",
+                "en": "Extract property names with regex."
+            },
+            {
+                "de": "Erstelle automatisch ein JSON-Gerüst.",
+                "en": "Automatically create a JSON scaffold."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -121,13 +206,29 @@
     },
     {
         "id": "json_006",
-        "title": "JSON Diff Tool",
-        "description":
-            "Vergleiche zwei JSON-Dokumente und zeige Unterschiede – perfekt für API-Änderungen.",
+        "title": {
+            "de": "JSON Diff Tool",
+            "en": "JSON diff tool"
+        },
+        "description": {
+            "de":
+                "Vergleiche zwei JSON-Dokumente und zeige Unterschiede – perfekt für API-Änderungen.",
+            "en":
+                "Compare two JSON documents and show differences, perfect for API changes."
+        },
         "steps": [
-            "JSON A und JSON B eingeben.",
-            "Beide Dokumente als Dictionary parsen.",
-            "Unterschiedliche Schlüssel oder Werte ausgeben."
+            {
+                "de": "JSON A und JSON B eingeben.",
+                "en": "Enter JSON A and JSON B."
+            },
+            {
+                "de": "Beide Dokumente als Dictionary parsen.",
+                "en": "Parse both documents as dictionaries."
+            },
+            {
+                "de": "Unterschiedliche Schlüssel oder Werte ausgeben.",
+                "en": "Output different keys or values."
+            }
         ],
         "colors": {
             "backgroundColors": [

@@ -10,18 +10,36 @@ import Foundation
 struct LearningTopic: Identifiable, Codable {
 
     let id: String
-    let title: String
-    let description: String
+    let title: LocalizedTaskText
+    let description: LocalizedTaskText
 
     let icon: String?
 
-    let steps: [String]
+    let steps: [LocalizedTaskText]
 
     let colors: ColorInfo
 
     let code: String
 
     let category: String
+
+    func title(language: String) -> String {
+        title.value(for: language)
+    }
+
+    func description(language: String) -> String {
+        description.value(for: language)
+    }
+
+    func steps(language: String) -> [String] {
+        steps.map { $0.value(for: language) }
+    }
+
+    var searchableText: String {
+        ([title.de, title.en, description.de, description.en]
+            + steps.flatMap { [$0.de, $0.en] })
+            .joined(separator: " ")
+    }
 }
 
 struct ColorInfo: Codable {

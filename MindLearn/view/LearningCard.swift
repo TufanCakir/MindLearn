@@ -41,6 +41,14 @@ struct LearningCard: View {
         Bundle.main.appLocalization(language: language)
     }
 
+    private var localizedTitle: String {
+        topic.title(language: language)
+    }
+
+    private var localizedDescription: String {
+        topic.description(language: language)
+    }
+
     private var shouldReduceMotion: Bool {
         reduceMotion || reduceAppMotion
     }
@@ -91,11 +99,11 @@ extension LearningCard {
         return VStack(alignment: .leading, spacing: 14) {
             headerRow
             Spacer()
-            Text(topic.title)
+            Text(localizedTitle)
                 .font(titleFont)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? 4 : 2)
                 .accessibilityAddTraits(.isHeader)
-            Text(topic.description)
+            Text(localizedDescription)
                 .font(descriptionFont)
                 .foregroundStyle(.secondary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
@@ -329,7 +337,7 @@ extension LearningCard {
 
     private var cardAccessibilityLabel: String {
         guard enhancedAccessibilityLabels else {
-            return "\(topic.title). \(topic.description)"
+            return "\(localizedTitle). \(localizedDescription)"
         }
 
         let favorite =
@@ -338,7 +346,7 @@ extension LearningCard {
             : text.accessibility.notFavoriteStatus
 
         return """
-            \(topic.title). \(topic.description). \
+            \(localizedTitle). \(localizedDescription). \
             \(text.accessibility.categoryPrefix): \(topic.category). \
             \(text.progress.title): \(progressTitle(for: progressStatus)). \
             \(favorite).

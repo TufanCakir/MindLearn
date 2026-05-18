@@ -1,13 +1,31 @@
 [
     {
         "id": "kids_math_002",
-        "title": "Zahlen bis 10",
-        "description": "Zählen lernen mit Spaß.",
+        "title": {
+            "de": "Zahlen bis 10",
+            "en": "Numbers up to 10"
+        },
+        "description": {
+            "de": "Zählen lernen mit Spaß.",
+            "en": "Learn counting with fun."
+        },
         "steps": [
-            "Finger benutzen.",
-            "Langsam laut zählen.",
-            "Vorwärts zählen.",
-            "Rückwärts zählen."
+            {
+                "de": "Finger benutzen.",
+                "en": "Use fingers."
+            },
+            {
+                "de": "Langsam laut zählen.",
+                "en": "Count slowly out loud."
+            },
+            {
+                "de": "Vorwärts zählen.",
+                "en": "Count forward."
+            },
+            {
+                "de": "Rückwärts zählen.",
+                "en": "Count backward."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -24,13 +42,31 @@
     },
     {
         "id": "kids_color_001",
-        "title": "Farben lernen",
-        "description": "Grundfarben erkennen.",
+        "title": {
+            "de": "Farben lernen",
+            "en": "Learn colors"
+        },
+        "description": {
+            "de": "Grundfarben erkennen.",
+            "en": "Recognize basic colors."
+        },
         "steps": [
-            "Rot zeigen.",
-            "Blau finden.",
-            "Gelb vergleichen.",
-            "Farben laut sagen."
+            {
+                "de": "Rot zeigen.",
+                "en": "Show red."
+            },
+            {
+                "de": "Blau finden.",
+                "en": "Find blue."
+            },
+            {
+                "de": "Gelb vergleichen.",
+                "en": "Compare yellow."
+            },
+            {
+                "de": "Farben laut sagen.",
+                "en": "Say colors out loud."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -47,13 +83,31 @@
     },
     {
         "id": "kids_reading_001",
-        "title": "Erste Wörter lesen",
-        "description": "Kurze Wörter verstehen.",
+        "title": {
+            "de": "Erste Wörter lesen",
+            "en": "Read first words"
+        },
+        "description": {
+            "de": "Kurze Wörter verstehen.",
+            "en": "Understand short words."
+        },
         "steps": [
-            "Buchstaben einzeln lesen.",
-            "Laut aussprechen.",
-            "Zusammenziehen.",
-            "Wort erkennen."
+            {
+                "de": "Buchstaben einzeln lesen.",
+                "en": "Read letters one by one."
+            },
+            {
+                "de": "Laut aussprechen.",
+                "en": "Say them out loud."
+            },
+            {
+                "de": "Zusammenziehen.",
+                "en": "Put them together."
+            },
+            {
+                "de": "Wort erkennen.",
+                "en": "Recognize the word."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -70,13 +124,31 @@
     },
     {
         "id": "kids_shapes_001",
-        "title": "Formen erkennen",
-        "description": "Geometrische Formen lernen.",
+        "title": {
+            "de": "Formen erkennen",
+            "en": "Recognize shapes"
+        },
+        "description": {
+            "de": "Geometrische Formen lernen.",
+            "en": "Learn geometric shapes."
+        },
         "steps": [
-            "Kreis zeigen.",
-            "Quadrat finden.",
-            "Dreieck vergleichen.",
-            "Im Raum suchen."
+            {
+                "de": "Kreis zeigen.",
+                "en": "Show a circle."
+            },
+            {
+                "de": "Quadrat finden.",
+                "en": "Find a square."
+            },
+            {
+                "de": "Dreieck vergleichen.",
+                "en": "Compare a triangle."
+            },
+            {
+                "de": "Im Raum suchen.",
+                "en": "Search in the room."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -93,13 +165,31 @@
     },
     {
         "id": "kids_time_001",
-        "title": "Uhrzeit verstehen",
-        "description": "Erste Uhrzeiten lernen.",
+        "title": {
+            "de": "Uhrzeit verstehen",
+            "en": "Understand time"
+        },
+        "description": {
+            "de": "Erste Uhrzeiten lernen.",
+            "en": "Learn first times of day."
+        },
         "steps": [
-            "Kleine Uhr anschauen.",
-            "Stunden zählen.",
-            "Zeiger beobachten.",
-            "Beispiele üben."
+            {
+                "de": "Kleine Uhr anschauen.",
+                "en": "Look at a small clock."
+            },
+            {
+                "de": "Stunden zählen.",
+                "en": "Count the hours."
+            },
+            {
+                "de": "Zeiger beobachten.",
+                "en": "Watch the hands."
+            },
+            {
+                "de": "Beispiele üben.",
+                "en": "Practice examples."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -116,13 +206,31 @@
     },
     {
         "id": "kids_math_003",
-        "title": "Minus rechnen",
-        "description": "Wegnehmen verstehen.",
+        "title": {
+            "de": "Minus rechnen",
+            "en": "Subtraction"
+        },
+        "description": {
+            "de": "Wegnehmen verstehen.",
+            "en": "Understand taking away."
+        },
         "steps": [
-            "3 Bonbons zählen.",
-            "Eins wegnehmen.",
-            "Rest zählen.",
-            "Antwort sagen."
+            {
+                "de": "3 Bonbons zählen.",
+                "en": "Count 3 candies."
+            },
+            {
+                "de": "Eins wegnehmen.",
+                "en": "Take one away."
+            },
+            {
+                "de": "Rest zählen.",
+                "en": "Count what is left."
+            },
+            {
+                "de": "Antwort sagen.",
+                "en": "Say the answer."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -139,13 +247,31 @@
     },
     {
         "id": "kids_memory_001",
-        "title": "Gedächtnis trainieren",
-        "description": "Merkspiele für Kinder.",
+        "title": {
+            "de": "Gedächtnis trainieren",
+            "en": "Train memory"
+        },
+        "description": {
+            "de": "Merkspiele für Kinder.",
+            "en": "Memory games for children."
+        },
         "steps": [
-            "5 Dinge anschauen.",
-            "Augen schließen.",
-            "Erinnern.",
-            "Kontrollieren."
+            {
+                "de": "5 Dinge anschauen.",
+                "en": "Look at 5 things."
+            },
+            {
+                "de": "Augen schließen.",
+                "en": "Close your eyes."
+            },
+            {
+                "de": "Erinnern.",
+                "en": "Remember them."
+            },
+            {
+                "de": "Kontrollieren.",
+                "en": "Check."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -162,13 +288,31 @@
     },
     {
         "id": "kids_polite_001",
-        "title": "Höflich sein",
-        "description": "Gute Wörter lernen.",
+        "title": {
+            "de": "Höflich sein",
+            "en": "Be polite"
+        },
+        "description": {
+            "de": "Gute Wörter lernen.",
+            "en": "Learn good words."
+        },
         "steps": [
-            "Bitte sagen.",
-            "Danke sagen.",
-            "Hallo begrüßen.",
-            "Tschüss sagen."
+            {
+                "de": "Bitte sagen.",
+                "en": "Say please."
+            },
+            {
+                "de": "Danke sagen.",
+                "en": "Say thank you."
+            },
+            {
+                "de": "Hallo begrüßen.",
+                "en": "Greet with hello."
+            },
+            {
+                "de": "Tschüss sagen.",
+                "en": "Say goodbye."
+            }
         ],
         "colors": {
             "backgroundColors": [

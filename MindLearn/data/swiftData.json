@@ -1,13 +1,29 @@
 [
     {
         "id": "optinal_001",
-        "title": "Optionals verstehen",
-        "description":
-            "Erfahre, wie Optionals in Swift funktionieren und wie man sie sicher entpackt.",
+        "title": {
+            "de": "Optionals verstehen",
+            "en": "Understanding optionals"
+        },
+        "description": {
+            "de":
+                "Erfahre, wie Optionals in Swift funktionieren und wie man sie sicher entpackt.",
+            "en":
+                "Learn how optionals work in Swift and how to unwrap them safely."
+        },
         "steps": [
-            "Deklariere eine optionale Variable",
-            "Überprüfe mit if let",
-            "Nutze optional chaining"
+            {
+                "de": "Deklariere eine optionale Variable",
+                "en": "Declare an optional variable"
+            },
+            {
+                "de": "Überprüfe mit if let",
+                "en": "Check it with if let"
+            },
+            {
+                "de": "Nutze optional chaining",
+                "en": "Use optional chaining"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -25,13 +41,29 @@
     },
     {
         "id": "struct_001",
-        "title": "Structs verstehen",
-        "description":
-            "Lerne, wie man in Swift Strukturen erstellt, um eigene Datentypen zu definieren.",
+        "title": {
+            "de": "Structs verstehen",
+            "en": "Understanding structs"
+        },
+        "description": {
+            "de":
+                "Lerne, wie man in Swift Strukturen erstellt, um eigene Datentypen zu definieren.",
+            "en":
+                "Learn how to create structures in Swift to define your own data types."
+        },
         "steps": [
-            "Struct mit `struct`-Keyword deklarieren.",
-            "Eigene Properties und Methoden hinzufügen.",
-            "Instanz erzeugen und auf Eigenschaften zugreifen."
+            {
+                "de": "Struct mit `struct`-Keyword deklarieren.",
+                "en": "Declare a struct with the `struct` keyword."
+            },
+            {
+                "de": "Eigene Properties und Methoden hinzufügen.",
+                "en": "Add custom properties and methods."
+            },
+            {
+                "de": "Instanz erzeugen und auf Eigenschaften zugreifen.",
+                "en": "Create an instance and access its properties."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -49,13 +81,29 @@
     },
     {
         "id": "class_001",
-        "title": "Klassen & Vererbung",
-        "description":
-            "Lerne den Unterschied zwischen Klassen und Structs und wie Vererbung funktioniert.",
+        "title": {
+            "de": "Klassen & Vererbung",
+            "en": "Classes & inheritance"
+        },
+        "description": {
+            "de":
+                "Lerne den Unterschied zwischen Klassen und Structs und wie Vererbung funktioniert.",
+            "en":
+                "Learn the difference between classes and structs and how inheritance works."
+        },
         "steps": [
-            "Klasse mit `class`-Keyword erstellen.",
-            "Eigenschaften & Methoden definieren.",
-            "Unterklasse ableiten und überschreiben."
+            {
+                "de": "Klasse mit `class`-Keyword erstellen.",
+                "en": "Create a class with the `class` keyword."
+            },
+            {
+                "de": "Eigenschaften & Methoden definieren.",
+                "en": "Define properties and methods."
+            },
+            {
+                "de": "Unterklasse ableiten und überschreiben.",
+                "en": "Create a subclass and override behavior."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -73,13 +121,29 @@
     },
     {
         "id": "enum_001",
-        "title": "Enums & Switch",
-        "description":
-            "Nutze Aufzählungstypen (Enums) für feste Wertemengen und kombiniere sie mit Switch.",
+        "title": {
+            "de": "Enums & Switch",
+            "en": "Enums & switch"
+        },
+        "description": {
+            "de":
+                "Nutze Aufzählungstypen (Enums) für feste Wertemengen und kombiniere sie mit Switch.",
+            "en":
+                "Use enums for fixed sets of values and combine them with switch."
+        },
         "steps": [
-            "Enum mit `enum`-Keyword deklarieren.",
-            "Fälle definieren.",
-            "Switch verwenden, um je nach Wert zu reagieren."
+            {
+                "de": "Enum mit `enum`-Keyword deklarieren.",
+                "en": "Declare an enum with the `enum` keyword."
+            },
+            {
+                "de": "Fälle definieren.",
+                "en": "Define cases."
+            },
+            {
+                "de": "Switch verwenden, um je nach Wert zu reagieren.",
+                "en": "Use switch to react depending on the value."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -97,13 +161,28 @@
     },
     {
         "id": "protocol_001",
-        "title": "Protokolle (Interfaces)",
-        "description":
-            "Definiere Schnittstellen, die Klassen und Structs implementieren können.",
+        "title": {
+            "de": "Protokolle (Interfaces)",
+            "en": "Protocols (interfaces)"
+        },
+        "description": {
+            "de":
+                "Definiere Schnittstellen, die Klassen und Structs implementieren können.",
+            "en": "Define interfaces that classes and structs can implement."
+        },
         "steps": [
-            "Protocol mit Anforderungen deklarieren.",
-            "Struct oder Class implementieren.",
-            "Instanz nutzen."
+            {
+                "de": "Protocol mit Anforderungen deklarieren.",
+                "en": "Declare a protocol with requirements."
+            },
+            {
+                "de": "Struct oder Class implementieren.",
+                "en": "Implement it in a struct or class."
+            },
+            {
+                "de": "Instanz nutzen.",
+                "en": "Use an instance."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -121,12 +200,25 @@
     },
     {
         "id": "extension_001",
-        "title": "Extensions nutzen",
-        "description":
-            "Erweitere bestehende Typen um neue Funktionen ohne den Original-Code zu verändern.",
+        "title": {
+            "de": "Extensions nutzen",
+            "en": "Use extensions"
+        },
+        "description": {
+            "de":
+                "Erweitere bestehende Typen um neue Funktionen ohne den Original-Code zu verändern.",
+            "en":
+                "Extend existing types with new functions without changing the original code."
+        },
         "steps": [
-            "Mit `extension` bestehende Typen erweitern.",
-            "Neue Methoden oder Properties hinzufügen."
+            {
+                "de": "Mit `extension` bestehende Typen erweitern.",
+                "en": "Extend existing types with `extension`."
+            },
+            {
+                "de": "Neue Methoden oder Properties hinzufügen.",
+                "en": "Add new methods or properties."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -144,13 +236,27 @@
     },
     {
         "id": "error_001",
-        "title": "Error Handling",
-        "description":
-            "Lerne, wie man Fehler in Swift definiert und behandelt.",
+        "title": {
+            "de": "Error Handling",
+            "en": "Error handling"
+        },
+        "description": {
+            "de": "Lerne, wie man Fehler in Swift definiert und behandelt.",
+            "en": "Learn how to define and handle errors in Swift."
+        },
         "steps": [
-            "Eigenen Error-Typ definieren.",
-            "Funktionen mit `throws` markieren.",
-            "Mit `do`-`try`-`catch` abfangen."
+            {
+                "de": "Eigenen Error-Typ definieren.",
+                "en": "Define a custom error type."
+            },
+            {
+                "de": "Funktionen mit `throws` markieren.",
+                "en": "Mark functions with `throws`."
+            },
+            {
+                "de": "Mit `do`-`try`-`catch` abfangen.",
+                "en": "Catch errors with `do`-`try`-`catch`."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -168,13 +274,29 @@
     },
     {
         "id": "closure_001",
-        "title": "Closures & Funktionen",
-        "description":
-            "Nutze anonyme Funktionen (Closures) für Callbacks und Funktionsparameter.",
+        "title": {
+            "de": "Closures & Funktionen",
+            "en": "Closures & functions"
+        },
+        "description": {
+            "de":
+                "Nutze anonyme Funktionen (Closures) für Callbacks und Funktionsparameter.",
+            "en":
+                "Use anonymous functions for callbacks and function parameters."
+        },
         "steps": [
-            "Closure-Syntax kennenlernen.",
-            "Closure an eine Funktion übergeben.",
-            "Kurzschreibweise nutzen."
+            {
+                "de": "Closure-Syntax kennenlernen.",
+                "en": "Learn closure syntax."
+            },
+            {
+                "de": "Closure an eine Funktion übergeben.",
+                "en": "Pass a closure to a function."
+            },
+            {
+                "de": "Kurzschreibweise nutzen.",
+                "en": "Use shorthand syntax."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -192,13 +314,29 @@
     },
     {
         "id": "generics_001",
-        "title": "Generics verstehen",
-        "description":
-            "Nutze Generics, um Funktionen und Typen für verschiedene Datentypen wiederverwendbar zu machen.",
+        "title": {
+            "de": "Generics verstehen",
+            "en": "Understanding generics"
+        },
+        "description": {
+            "de":
+                "Nutze Generics, um Funktionen und Typen für verschiedene Datentypen wiederverwendbar zu machen.",
+            "en":
+                "Use generics to make functions and types reusable for different data types."
+        },
         "steps": [
-            "Funktion mit Platzhalter-Typ <T> definieren.",
-            "Mit beliebigen Datentypen aufrufen.",
-            "Sichert Typprüfung und vermeidet Code-Duplikate."
+            {
+                "de": "Funktion mit Platzhalter-Typ <T> definieren.",
+                "en": "Define a function with placeholder type <T>."
+            },
+            {
+                "de": "Mit beliebigen Datentypen aufrufen.",
+                "en": "Call it with different data types."
+            },
+            {
+                "de": "Sichert Typprüfung und vermeidet Code-Duplikate.",
+                "en": "Keep type safety and avoid duplicate code."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -216,13 +354,29 @@
     },
     {
         "id": "asyncawait_001",
-        "title": "Async / Await & Concurrency",
-        "description":
-            "Lerne, wie du asynchrone Aufgaben in Swift mit async/await modern und sicher schreibst.",
+        "title": {
+            "de": "Async / Await & Concurrency",
+            "en": "Async / await & concurrency"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du asynchrone Aufgaben in Swift mit async/await modern und sicher schreibst.",
+            "en":
+                "Learn how to write asynchronous tasks in Swift with async/await in a modern and safe way."
+        },
         "steps": [
-            "Mit async Funktionen erstellen, die await verwenden.",
-            "Daten mit URLSession laden.",
-            "Fehler mit do-catch behandeln."
+            {
+                "de": "Mit async Funktionen erstellen, die await verwenden.",
+                "en": "Create async functions that use await."
+            },
+            {
+                "de": "Daten mit URLSession laden.",
+                "en": "Load data with URLSession."
+            },
+            {
+                "de": "Fehler mit do-catch behandeln.",
+                "en": "Handle errors with do-catch."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -240,13 +394,30 @@
     },
     {
         "id": "debugging_001",
-        "title": "Debugging & Print Statements",
-        "description":
-            "Lerne, wie du deinen Code mit print(), dump() und Debugging-Werkzeugen besser verstehst.",
+        "title": {
+            "de": "Debugging & Print Statements",
+            "en": "Debugging & print statements"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du deinen Code mit print(), dump() und Debugging-Werkzeugen besser verstehst.",
+            "en":
+                "Learn how to understand your code better with print(), dump() and debugging tools."
+        },
         "steps": [
-            "Nutze print() für einfache Ausgaben in der Konsole.",
-            "Mit dump() kannst du komplexe Objekte anzeigen.",
-            "Verwende #file, #line und #function für genaue Fehlersuche."
+            {
+                "de": "Nutze print() für einfache Ausgaben in der Konsole.",
+                "en": "Use print() for simple console output."
+            },
+            {
+                "de": "Mit dump() kannst du komplexe Objekte anzeigen.",
+                "en": "Use dump() to inspect complex objects."
+            },
+            {
+                "de":
+                    "Verwende #file, #line und #function für genaue Fehlersuche.",
+                "en": "Use #file, #line and #function for precise debugging."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -264,13 +435,29 @@
     },
     {
         "id": "errorhandling_002",
-        "title": "Bug Fix & Fehlerbehandlung",
-        "description":
-            "So gehst du mit Fehlern um, findest Bugs und verhinderst Abstürze mit do-catch und guard.",
+        "title": {
+            "de": "Bug Fix & Fehlerbehandlung",
+            "en": "Bug fixing & error handling"
+        },
+        "description": {
+            "de":
+                "So gehst du mit Fehlern um, findest Bugs und verhinderst Abstürze mit do-catch und guard.",
+            "en":
+                "Handle errors, find bugs and prevent crashes with do-catch and guard."
+        },
         "steps": [
-            "Erstelle eigene Error-Typen.",
-            "Nutze do-try-catch für Fehlerbehandlung.",
-            "Verwende guard let, um Fehler frühzeitig abzufangen."
+            {
+                "de": "Erstelle eigene Error-Typen.",
+                "en": "Create custom error types."
+            },
+            {
+                "de": "Nutze do-try-catch für Fehlerbehandlung.",
+                "en": "Use do-try-catch for error handling."
+            },
+            {
+                "de": "Verwende guard let, um Fehler frühzeitig abzufangen.",
+                "en": "Use guard let to catch errors early."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -288,13 +475,31 @@
     },
     {
         "id": "logging_001",
-        "title": "Besseres Logging mit Date und Levels",
-        "description":
-            "Organisiere Log-Ausgaben mit Zeitstempel und Level (Info, Warnung, Fehler).",
+        "title": {
+            "de": "Besseres Logging mit Date und Levels",
+            "en": "Better logging with date and levels"
+        },
+        "description": {
+            "de":
+                "Organisiere Log-Ausgaben mit Zeitstempel und Level (Info, Warnung, Fehler).",
+            "en":
+                "Organize log output with timestamps and levels such as info, warning and error."
+        },
         "steps": [
-            "Definiere ein LogLevel-Enum mit verschiedenen Stufen.",
-            "Erstelle eine Funktion, die Zeitstempel und Nachricht kombiniert.",
-            "Nutze switch, um je nach Level farbige Symbole anzuzeigen."
+            {
+                "de": "Definiere ein LogLevel-Enum mit verschiedenen Stufen.",
+                "en": "Define a LogLevel enum with different levels."
+            },
+            {
+                "de":
+                    "Erstelle eine Funktion, die Zeitstempel und Nachricht kombiniert.",
+                "en": "Create a function that combines timestamp and message."
+            },
+            {
+                "de":
+                    "Nutze switch, um je nach Level farbige Symbole anzuzeigen.",
+                "en": "Use switch to show colored symbols depending on level."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -312,13 +517,33 @@
     },
     {
         "id": "profiling_001",
-        "title": "Performance messen mit Zeitstempel",
-        "description":
-            "Miss die Ausführungszeit deines Codes mit CFAbsoluteTime und analysiere langsame Funktionen.",
+        "title": {
+            "de": "Performance messen mit Zeitstempel",
+            "en": "Measure performance with timestamps"
+        },
+        "description": {
+            "de":
+                "Miss die Ausführungszeit deines Codes mit CFAbsoluteTime und analysiere langsame Funktionen.",
+            "en":
+                "Measure code execution time with CFAbsoluteTime and analyze slow functions."
+        },
         "steps": [
-            "Verwende CFAbsoluteTimeGetCurrent(), um Start- und Endzeit zu erfassen.",
-            "Berechne die Differenz, um die Laufzeit in Sekunden zu erhalten.",
-            "Perfekt zum Profilen von Loops oder Netzwerkoperationen."
+            {
+                "de":
+                    "Verwende CFAbsoluteTimeGetCurrent(), um Start- und Endzeit zu erfassen.",
+                "en":
+                    "Use CFAbsoluteTimeGetCurrent() to capture start and end time."
+            },
+            {
+                "de":
+                    "Berechne die Differenz, um die Laufzeit in Sekunden zu erhalten.",
+                "en": "Calculate the difference to get runtime in seconds."
+            },
+            {
+                "de":
+                    "Perfekt zum Profilen von Loops oder Netzwerkoperationen.",
+                "en": "Perfect for profiling loops or network operations."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -336,13 +561,32 @@
     },
     {
         "id": "benchmark_001",
-        "title": "Array vs Set Benchmark",
-        "description":
-            "Vergleiche die Geschwindigkeit von Array- und Set-Suchen, um Datenstrukturen besser zu verstehen.",
+        "title": {
+            "de": "Array vs Set Benchmark",
+            "en": "Array vs Set benchmark"
+        },
+        "description": {
+            "de":
+                "Vergleiche die Geschwindigkeit von Array- und Set-Suchen, um Datenstrukturen besser zu verstehen.",
+            "en":
+                "Compare lookup speed between arrays and sets to understand data structures better."
+        },
         "steps": [
-            "Erstelle ein großes Array und ein Set mit denselben Elementen.",
-            "Suche einen bestimmten Wert mit contains().",
-            "Miss die Zeit für beide Strukturen – Sets sind meist deutlich schneller."
+            {
+                "de":
+                    "Erstelle ein großes Array und ein Set mit denselben Elementen.",
+                "en": "Create a large array and set with the same elements."
+            },
+            {
+                "de": "Suche einen bestimmten Wert mit contains().",
+                "en": "Search for a value with contains()."
+            },
+            {
+                "de":
+                    "Miss die Zeit für beide Strukturen – Sets sind meist deutlich schneller.",
+                "en":
+                    "Measure time for both structures; sets are usually much faster."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -360,12 +604,32 @@
     },
     {
         "id": "memory_001",
-        "title": "Struct vs Class Performance",
-        "description": "Verstehe den Unterschied zwischen Value Types (Structs) und Reference Types (Classes) in Bezug auf Speicher und Kopien.",
+        "title": {
+            "de": "Struct vs Class Performance",
+            "en": "Struct vs class performance"
+        },
+        "description": {
+            "de":
+                "Verstehe den Unterschied zwischen Value Types (Structs) und Reference Types (Classes) in Bezug auf Speicher und Kopien.",
+            "en":
+                "Understand value types and reference types in relation to memory and copying."
+        },
         "steps": [
-            "Erstelle ein Struct und eine Class mit denselben Properties.",
-            "Teste Kopierverhalten und Speichernutzung.",
-            "Structs werden kopiert, Classes referenziert – das beeinflusst Performance."
+            {
+                "de":
+                    "Erstelle ein Struct und eine Class mit denselben Properties.",
+                "en": "Create a struct and a class with the same properties."
+            },
+            {
+                "de": "Teste Kopierverhalten und Speichernutzung.",
+                "en": "Test copy behavior and memory usage."
+            },
+            {
+                "de":
+                    "Structs werden kopiert, Classes referenziert – das beeinflusst Performance.",
+                "en":
+                    "Structs are copied, classes are referenced; this affects performance."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -383,13 +647,31 @@
     },
     {
         "id": "cli_001",
-        "title": "Kommandozeilenargumente lesen",
-        "description":
-            "Lerne, wie du Eingaben aus der Konsole mit CommandLine.arguments verarbeitest, um interaktive Tools zu erstellen.",
+        "title": {
+            "de": "Kommandozeilenargumente lesen",
+            "en": "Read command line arguments"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du Eingaben aus der Konsole mit CommandLine.arguments verarbeitest, um interaktive Tools zu erstellen.",
+            "en":
+                "Learn how to process console input with CommandLine.arguments to build interactive tools."
+        },
         "steps": [
-            "Verwende CommandLine.arguments, um übergebene Parameter zu erhalten.",
-            "Überprüfe die Anzahl der Argumente mit count.",
-            "Nutze diese Eingaben, um dein Programm dynamisch zu steuern."
+            {
+                "de":
+                    "Verwende CommandLine.arguments, um übergebene Parameter zu erhalten.",
+                "en": "Use CommandLine.arguments to get passed parameters."
+            },
+            {
+                "de": "Überprüfe die Anzahl der Argumente mit count.",
+                "en": "Check the number of arguments with count."
+            },
+            {
+                "de":
+                    "Nutze diese Eingaben, um dein Programm dynamisch zu steuern.",
+                "en": "Use the input to control your program dynamically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -407,13 +689,30 @@
     },
     {
         "id": "cli_002",
-        "title": "Dateien lesen & schreiben",
-        "description":
-            "Speichere und lade Textdateien in der Konsole, um einfache CLI-Tools zu erstellen.",
+        "title": {
+            "de": "Dateien lesen & schreiben",
+            "en": "Read & write files"
+        },
+        "description": {
+            "de":
+                "Speichere und lade Textdateien in der Konsole, um einfache CLI-Tools zu erstellen.",
+            "en":
+                "Save and load text files in the console to build simple CLI tools."
+        },
         "steps": [
-            "Nutze FileManager oder write(to:) zum Schreiben.",
-            "Verwende String(contentsOfFile:) zum Lesen.",
-            "Fehler mit do-try-catch behandeln, um Abstürze zu vermeiden."
+            {
+                "de": "Nutze FileManager oder write(to:) zum Schreiben.",
+                "en": "Use FileManager or write(to:) for writing."
+            },
+            {
+                "de": "Verwende String(contentsOfFile:) zum Lesen.",
+                "en": "Use String(contentsOfFile:) for reading."
+            },
+            {
+                "de":
+                    "Fehler mit do-try-catch behandeln, um Abstürze zu vermeiden.",
+                "en": "Handle errors with do-try-catch to avoid crashes."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -431,13 +730,32 @@
     },
     {
         "id": "cli_003",
-        "title": "JSON verarbeiten in der Konsole",
-        "description":
-            "Erstelle ein Swift-Tool, das JSON-Dateien liest, decodiert und formatiert ausgibt.",
+        "title": {
+            "de": "JSON verarbeiten in der Konsole",
+            "en": "Process JSON in the console"
+        },
+        "description": {
+            "de":
+                "Erstelle ein Swift-Tool, das JSON-Dateien liest, decodiert und formatiert ausgibt.",
+            "en":
+                "Create a Swift tool that reads, decodes and formats JSON files."
+        },
         "steps": [
-            "Definiere eine Codable-Struktur, die das JSON-Schema abbildet.",
-            "Nutze JSONDecoder, um die Datei in Swift-Objekte umzuwandeln.",
-            "Verwende JSONEncoder, um lesbare JSON-Strings zu erzeugen."
+            {
+                "de":
+                    "Definiere eine Codable-Struktur, die das JSON-Schema abbildet.",
+                "en": "Define a Codable structure matching the JSON schema."
+            },
+            {
+                "de":
+                    "Nutze JSONDecoder, um die Datei in Swift-Objekte umzuwandeln.",
+                "en": "Use JSONDecoder to convert the file into Swift objects."
+            },
+            {
+                "de":
+                    "Verwende JSONEncoder, um lesbare JSON-Strings zu erzeugen.",
+                "en": "Use JSONEncoder to create readable JSON strings."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -455,13 +773,29 @@
     },
     {
         "id": "networking_001",
-        "title": "Einfache API-Abfrage mit URLSession",
-        "description":
-            "Lerne, wie du mit URLSession Daten aus dem Internet abrufst und in Swift verwendest.",
+        "title": {
+            "de": "Einfache API-Abfrage mit URLSession",
+            "en": "Simple API request with URLSession"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du mit URLSession Daten aus dem Internet abrufst und in Swift verwendest.",
+            "en":
+                "Learn how to fetch internet data with URLSession and use it in Swift."
+        },
         "steps": [
-            "Erstelle eine URL und starte eine URLSession dataTask.",
-            "Verarbeite die empfangenen Daten als String oder JSON.",
-            "Nutze do-try-catch für sauberes Fehlerhandling."
+            {
+                "de": "Erstelle eine URL und starte eine URLSession dataTask.",
+                "en": "Create a URL and start a URLSession dataTask."
+            },
+            {
+                "de": "Verarbeite die empfangenen Daten als String oder JSON.",
+                "en": "Process received data as string or JSON."
+            },
+            {
+                "de": "Nutze do-try-catch für sauberes Fehlerhandling.",
+                "en": "Use do-try-catch for clean error handling."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -479,13 +813,29 @@
     },
     {
         "id": "networking_002",
-        "title": "API mit Codable & JSONDecoder",
-        "description":
-            "Lade Daten aus einer API und dekodiere sie direkt in Swift-Strukturen mit Codable.",
+        "title": {
+            "de": "API mit Codable & JSONDecoder",
+            "en": "API with Codable & JSONDecoder"
+        },
+        "description": {
+            "de":
+                "Lade Daten aus einer API und dekodiere sie direkt in Swift-Strukturen mit Codable.",
+            "en":
+                "Load data from an API and decode it directly into Swift structs with Codable."
+        },
         "steps": [
-            "Definiere ein Datenmodell mit Codable.",
-            "Dekodiere das empfangene JSON mit JSONDecoder.",
-            "Verarbeite die Daten im Completion Handler."
+            {
+                "de": "Definiere ein Datenmodell mit Codable.",
+                "en": "Define a data model with Codable."
+            },
+            {
+                "de": "Dekodiere das empfangene JSON mit JSONDecoder.",
+                "en": "Decode received JSON with JSONDecoder."
+            },
+            {
+                "de": "Verarbeite die Daten im Completion Handler.",
+                "en": "Process the data in the completion handler."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -503,13 +853,29 @@
     },
     {
         "id": "networking_003",
-        "title": "Async/Await API-Call mit Swift Concurrency",
-        "description":
-            "Verwende async/await für moderne, saubere API-Aufrufe mit Swift Concurrency.",
+        "title": {
+            "de": "Async/Await API-Call mit Swift Concurrency",
+            "en": "Async/await API call with Swift concurrency"
+        },
+        "description": {
+            "de":
+                "Verwende async/await für moderne, saubere API-Aufrufe mit Swift Concurrency.",
+            "en":
+                "Use async/await for modern, clean API calls with Swift concurrency."
+        },
         "steps": [
-            "Deklariere eine asynchrone Funktion mit async throws.",
-            "Nutze URLSession.shared.data(from:) für den API-Call.",
-            "Dekodiere die Daten mit JSONDecoder im modernen Stil."
+            {
+                "de": "Deklariere eine asynchrone Funktion mit async throws.",
+                "en": "Declare an async throwing function."
+            },
+            {
+                "de": "Nutze URLSession.shared.data(from:) für den API-Call.",
+                "en": "Use URLSession.shared.data(from:) for the API call."
+            },
+            {
+                "de": "Dekodiere die Daten mit JSONDecoder im modernen Stil.",
+                "en": "Decode the data with JSONDecoder in a modern style."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -527,13 +893,29 @@
     },
     {
         "id": "concurrency_001",
-        "title": "TaskGroup & Parallelität",
-        "description":
-            "Starte mehrere asynchrone Tasks parallel mit TaskGroup und sammle ihre Ergebnisse.",
+        "title": {
+            "de": "TaskGroup & Parallelität",
+            "en": "TaskGroup & parallelism"
+        },
+        "description": {
+            "de":
+                "Starte mehrere asynchrone Tasks parallel mit TaskGroup und sammle ihre Ergebnisse.",
+            "en":
+                "Start multiple asynchronous tasks in parallel with TaskGroup and collect their results."
+        },
         "steps": [
-            "Verwende `withTaskGroup` für parallele Aufgaben.",
-            "Starte mehrere async Tasks gleichzeitig.",
-            "Sammle die Ergebnisse mit `for await` ein."
+            {
+                "de": "Verwende `withTaskGroup` für parallele Aufgaben.",
+                "en": "Use `withTaskGroup` for parallel work."
+            },
+            {
+                "de": "Starte mehrere async Tasks gleichzeitig.",
+                "en": "Start multiple async tasks at the same time."
+            },
+            {
+                "de": "Sammle die Ergebnisse mit `for await` ein.",
+                "en": "Collect results with `for await`."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -551,13 +933,29 @@
     },
     {
         "id": "actor_001",
-        "title": "Actors verstehen (Thread-Safe State)",
-        "description":
-            "Actors schützen Daten vor Race Conditions bei gleichzeitigen Zugriffen.",
+        "title": {
+            "de": "Actors verstehen (Thread-Safe State)",
+            "en": "Understanding actors"
+        },
+        "description": {
+            "de":
+                "Actors schützen Daten vor Race Conditions bei gleichzeitigen Zugriffen.",
+            "en":
+                "Actors protect data from race conditions during concurrent access."
+        },
         "steps": [
-            "Deklariere einen Actor für gemeinsame Daten.",
-            "Verwende `await`, um sicher auf Properties zuzugreifen.",
-            "Ideal für Multithreading und Concurrency."
+            {
+                "de": "Deklariere einen Actor für gemeinsame Daten.",
+                "en": "Declare an actor for shared data."
+            },
+            {
+                "de": "Verwende `await`, um sicher auf Properties zuzugreifen.",
+                "en": "Use `await` to access properties safely."
+            },
+            {
+                "de": "Ideal für Multithreading und Concurrency.",
+                "en": "Ideal for multithreading and concurrency."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -575,13 +973,28 @@
     },
     {
         "id": "taskcancel_001",
-        "title": "Tasks abbrechen mit Cancellation",
-        "description":
-            "Lerne, wie du laufende asynchrone Tasks sicher abbrechen kannst.",
+        "title": {
+            "de": "Tasks abbrechen mit Cancellation",
+            "en": "Cancel tasks with cancellation"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du laufende asynchrone Tasks sicher abbrechen kannst.",
+            "en": "Learn how to safely cancel running asynchronous tasks."
+        },
         "steps": [
-            "Erstelle einen Task mit Abbruchprüfung.",
-            "Nutze `Task.isCancelled`, um Abbruch zu erkennen.",
-            "Breche Tasks mit `cancel()` aktiv ab."
+            {
+                "de": "Erstelle einen Task mit Abbruchprüfung.",
+                "en": "Create a task with cancellation checks."
+            },
+            {
+                "de": "Nutze `Task.isCancelled`, um Abbruch zu erkennen.",
+                "en": "Use `Task.isCancelled` to detect cancellation."
+            },
+            {
+                "de": "Breche Tasks mit `cancel()` aktiv ab.",
+                "en": "Cancel tasks actively with `cancel()`."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -599,13 +1012,29 @@
     },
     {
         "id": "swift_051",
-        "title": "Optionals sicher mit guard entpacken",
-        "description":
-            "Lerne, wie du mit guard let Optionals sicher frühzeitig entpackst und Fehlerwege klar trennst.",
+        "title": {
+            "de": "Optionals sicher mit guard entpacken",
+            "en": "Safely unwrap optionals with guard"
+        },
+        "description": {
+            "de":
+                "Lerne, wie du mit guard let Optionals sicher frühzeitig entpackst und Fehlerwege klar trennst.",
+            "en":
+                "Learn how to unwrap optionals early with guard let and keep error paths clear."
+        },
         "steps": [
-            "nutze guard let für frühe Rückgaben",
-            "halte den Hauptcode sauber",
-            "reduziere verschachtelte if-let Blöcke"
+            {
+                "de": "nutze guard let für frühe Rückgaben",
+                "en": "Use guard let for early returns"
+            },
+            {
+                "de": "halte den Hauptcode sauber",
+                "en": "Keep the main code clean"
+            },
+            {
+                "de": "reduziere verschachtelte if-let Blöcke",
+                "en": "Reduce nested if-let blocks"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -623,13 +1052,29 @@
     },
     {
         "id": "swift_052",
-        "title": "Computed Properties verstehen",
-        "description":
-            "Berechne Werte dynamisch ohne zusätzliche Variablen zu speichern.",
+        "title": {
+            "de": "Computed Properties verstehen",
+            "en": "Understanding computed properties"
+        },
+        "description": {
+            "de":
+                "Berechne Werte dynamisch ohne zusätzliche Variablen zu speichern.",
+            "en":
+                "Calculate values dynamically without storing additional variables."
+        },
         "steps": [
-            "berechnete Variable mit get anlegen",
-            "Abkürzung verwenden (ohne get {})",
-            "ideal für dynamische Zustände"
+            {
+                "de": "berechnete Variable mit get anlegen",
+                "en": "Create a computed variable with get"
+            },
+            {
+                "de": "Abkürzung verwenden (ohne get {})",
+                "en": "Use the shorthand form without get {}"
+            },
+            {
+                "de": "ideal für dynamische Zustände",
+                "en": "Ideal for dynamic state"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -647,13 +1092,28 @@
     },
     {
         "id": "swift_053",
-        "title": "Property Observers (willSet & didSet)",
-        "description":
-            "Verfolge Änderungen an Variablen, um UI oder Logik automatisch zu aktualisieren.",
+        "title": {
+            "de": "Property Observers (willSet & didSet)",
+            "en": "Property observers (willSet & didSet)"
+        },
+        "description": {
+            "de":
+                "Verfolge Änderungen an Variablen, um UI oder Logik automatisch zu aktualisieren.",
+            "en": "Track variable changes to update UI or logic automatically."
+        },
         "steps": [
-            "nutze willSet/didSet",
-            "Ideal für Debugging & UI-Updates",
-            "wird vor/nach Änderung ausgeführt"
+            {
+                "de": "nutze willSet/didSet",
+                "en": "Use willSet/didSet"
+            },
+            {
+                "de": "Ideal für Debugging & UI-Updates",
+                "en": "Ideal for debugging and UI updates"
+            },
+            {
+                "de": "wird vor/nach Änderung ausgeführt",
+                "en": "Runs before or after a change"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -671,13 +1131,29 @@
     },
     {
         "id": "swift_054",
-        "title": "Static Properties & Methods",
-        "description":
-            "Nutze statische Werte für zentrale Konstanten und globale Funktionen.",
+        "title": {
+            "de": "Static Properties & Methods",
+            "en": "Static properties & methods"
+        },
+        "description": {
+            "de":
+                "Nutze statische Werte für zentrale Konstanten und globale Funktionen.",
+            "en":
+                "Use static values for central constants and global functions."
+        },
         "steps": [
-            "mit static deklarieren",
-            "Instanz-Erzeugung nicht nötig",
-            "perfekt für Config oder Utils"
+            {
+                "de": "mit static deklarieren",
+                "en": "Declare with static"
+            },
+            {
+                "de": "Instanz-Erzeugung nicht nötig",
+                "en": "No instance creation needed"
+            },
+            {
+                "de": "perfekt für Config oder Utils",
+                "en": "Perfect for config or utilities"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -695,12 +1171,27 @@
     },
     {
         "id": "swift_055",
-        "title": "Mutating Functions in Structs",
-        "description": "Ändere Werte innerhalb eines Structs mit mutating.",
+        "title": {
+            "de": "Mutating Functions in Structs",
+            "en": "Mutating functions in structs"
+        },
+        "description": {
+            "de": "Ändere Werte innerhalb eines Structs mit mutating.",
+            "en": "Change values inside a struct with mutating."
+        },
         "steps": [
-            "Structs sind immutable ohne mutating",
-            "mutating erlaubt Eigenschaftsänderungen",
-            "ideal für Value Types"
+            {
+                "de": "Structs sind immutable ohne mutating",
+                "en": "Structs are immutable without mutating"
+            },
+            {
+                "de": "mutating erlaubt Eigenschaftsänderungen",
+                "en": "mutating allows property changes"
+            },
+            {
+                "de": "ideal für Value Types",
+                "en": "Ideal for value types"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -718,13 +1209,29 @@
     },
     {
         "id": "swift_056",
-        "title": "Lazy Properties korrekt nutzen",
-        "description":
-            "Initialisiere Variablen nur bei Bedarf – optimal für Performance.",
+        "title": {
+            "de": "Lazy Properties korrekt nutzen",
+            "en": "Use lazy properties correctly"
+        },
+        "description": {
+            "de":
+                "Initialisiere Variablen nur bei Bedarf – optimal für Performance.",
+            "en":
+                "Initialize variables only when needed, optimal for performance."
+        },
         "steps": [
-            "mit lazy deklarieren",
-            "wird erst beim ersten Zugriff erzeugt",
-            "perfekt für teure Berechnungen"
+            {
+                "de": "mit lazy deklarieren",
+                "en": "Declare with lazy"
+            },
+            {
+                "de": "wird erst beim ersten Zugriff erzeugt",
+                "en": "Created only on first access"
+            },
+            {
+                "de": "perfekt für teure Berechnungen",
+                "en": "Perfect for expensive calculations"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -742,13 +1249,28 @@
     },
     {
         "id": "swift_057",
-        "title": "Higher-Order Functions: map / filter / reduce",
-        "description":
-            "Verarbeite Listen extrem kompakt mit funktionalen Operationen.",
+        "title": {
+            "de": "Higher-Order Functions: map / filter / reduce",
+            "en": "Higher-order functions: map / filter / reduce"
+        },
+        "description": {
+            "de":
+                "Verarbeite Listen extrem kompakt mit funktionalen Operationen.",
+            "en": "Process lists compactly with functional operations."
+        },
         "steps": [
-            "map → transformiere Werte",
-            "filter → filtere Werte",
-            "reduce → kombiniere Werte"
+            {
+                "de": "map → transformiere Werte",
+                "en": "map transforms values"
+            },
+            {
+                "de": "filter → filtere Werte",
+                "en": "filter selects values"
+            },
+            {
+                "de": "reduce → kombiniere Werte",
+                "en": "reduce combines values"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -766,13 +1288,28 @@
     },
     {
         "id": "swift_058",
-        "title": "Subscripts nutzen",
-        "description":
-            "Erstelle eigene Zugriffsmethoden wie bei Arrays mit [] Syntax.",
+        "title": {
+            "de": "Subscripts nutzen",
+            "en": "Use subscripts"
+        },
+        "description": {
+            "de":
+                "Erstelle eigene Zugriffsmethoden wie bei Arrays mit [] Syntax.",
+            "en": "Create custom access methods with [] syntax like arrays."
+        },
         "steps": [
-            "Subscript definieren",
-            "Lesen & Schreiben unterstützen",
-            "ideal für Data-Container"
+            {
+                "de": "Subscript definieren",
+                "en": "Define a subscript"
+            },
+            {
+                "de": "Lesen & Schreiben unterstützen",
+                "en": "Support reading and writing"
+            },
+            {
+                "de": "ideal für Data-Container",
+                "en": "Ideal for data containers"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -790,13 +1327,28 @@
     },
     {
         "id": "swift_059",
-        "title": "Pattern Matching mit if case & guard case",
-        "description":
-            "Nutze Pattern Matching, um Enums und Werte extrem sauber zu prüfen.",
+        "title": {
+            "de": "Pattern Matching mit if case & guard case",
+            "en": "Pattern matching with if case & guard case"
+        },
+        "description": {
+            "de":
+                "Nutze Pattern Matching, um Enums und Werte extrem sauber zu prüfen.",
+            "en": "Use pattern matching to check enums and values cleanly."
+        },
         "steps": [
-            "if case zum Entpacken nutzen",
-            "guard case für frühes Verlassen",
-            "perfekt für elegante Switch-Alternativen"
+            {
+                "de": "if case zum Entpacken nutzen",
+                "en": "Use if case for unwrapping"
+            },
+            {
+                "de": "guard case für frühes Verlassen",
+                "en": "Use guard case for early exits"
+            },
+            {
+                "de": "perfekt für elegante Switch-Alternativen",
+                "en": "Perfect for elegant switch alternatives"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -814,13 +1366,29 @@
     },
     {
         "id": "swift_060",
-        "title": "Failable Initializer (init?)",
-        "description":
-            "Erstelle Initializer, die nil zurückgeben können – perfekt für Validierung.",
+        "title": {
+            "de": "Failable Initializer (init?)",
+            "en": "Failable initializer (init?)"
+        },
+        "description": {
+            "de":
+                "Erstelle Initializer, die nil zurückgeben können – perfekt für Validierung.",
+            "en":
+                "Create initializers that can return nil, perfect for validation."
+        },
         "steps": [
-            "Deklariere init?()",
-            "prüfe Werte vor Initialisierung",
-            "return nil bei ungültigem Zustand"
+            {
+                "de": "Deklariere init?()",
+                "en": "Declare init?()"
+            },
+            {
+                "de": "prüfe Werte vor Initialisierung",
+                "en": "Check values before initialization"
+            },
+            {
+                "de": "return nil bei ungültigem Zustand",
+                "en": "Return nil for invalid state"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -838,13 +1406,29 @@
     },
     {
         "id": "swift_061",
-        "title": "Result Type verwenden",
-        "description":
-            "Nutze den Result<T, Error> Typ, um Funktionen klar zwischen Erfolg und Fehler unterscheiden zu lassen.",
+        "title": {
+            "de": "Result Type verwenden",
+            "en": "Use Result type"
+        },
+        "description": {
+            "de":
+                "Nutze den Result<T, Error> Typ, um Funktionen klar zwischen Erfolg und Fehler unterscheiden zu lassen.",
+            "en":
+                "Use Result<T, Error> to clearly separate success and failure in functions."
+        },
         "steps": [
-            "Erstelle eine Funktion, die Result zurückgibt.",
-            "Nutze .success und .failure.",
-            "Verwende switch für Auswertung."
+            {
+                "de": "Erstelle eine Funktion, die Result zurückgibt.",
+                "en": "Create a function that returns Result."
+            },
+            {
+                "de": "Nutze .success und .failure.",
+                "en": "Use .success and .failure."
+            },
+            {
+                "de": "Verwende switch für Auswertung.",
+                "en": "Use switch for evaluation."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -862,13 +1446,29 @@
     },
     {
         "id": "swift_062",
-        "title": "Deinitializers (deinit)",
-        "description":
-            "Lerne, was passiert, wenn eine Klasse aus dem Speicher entfernt wird – perfekt für Cleanup, Timer stoppen, etc.",
+        "title": {
+            "de": "Deinitializers (deinit)",
+            "en": "Deinitializers (deinit)"
+        },
+        "description": {
+            "de":
+                "Lerne, was passiert, wenn eine Klasse aus dem Speicher entfernt wird – perfekt für Cleanup, Timer stoppen, etc.",
+            "en":
+                "Learn what happens when a class is removed from memory, useful for cleanup and stopping timers."
+        },
         "steps": [
-            "deinit in Klassen nutzen",
-            "Instanzen freigeben, um deinit auszulösen",
-            "wird automatisch vom ARC aufgerufen"
+            {
+                "de": "deinit in Klassen nutzen",
+                "en": "Use deinit in classes"
+            },
+            {
+                "de": "Instanzen freigeben, um deinit auszulösen",
+                "en": "Release instances to trigger deinit"
+            },
+            {
+                "de": "wird automatisch vom ARC aufgerufen",
+                "en": "Called automatically by ARC"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -886,13 +1486,29 @@
     },
     {
         "id": "swift_063",
-        "title": "Eigene Property Wrapper erstellen",
-        "description":
-            "Erstelle deinen eigenen Property Wrapper, wie @UserDefault, um Werte automatisch zu speichern.",
+        "title": {
+            "de": "Eigene Property Wrapper erstellen",
+            "en": "Create custom property wrappers"
+        },
+        "description": {
+            "de":
+                "Erstelle deinen eigenen Property Wrapper, wie @UserDefault, um Werte automatisch zu speichern.",
+            "en":
+                "Create your own property wrapper, such as @UserDefault, to store values automatically."
+        },
         "steps": [
-            "struct mit @propertyWrapper erstellen",
-            "wrappedValue implementieren",
-            "Wrapper an Properties verwenden"
+            {
+                "de": "struct mit @propertyWrapper erstellen",
+                "en": "Create a struct with @propertyWrapper"
+            },
+            {
+                "de": "wrappedValue implementieren",
+                "en": "Implement wrappedValue"
+            },
+            {
+                "de": "Wrapper an Properties verwenden",
+                "en": "Use the wrapper on properties"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -910,12 +1526,29 @@
     },
     {
         "id": "swift_064",
-        "title": "ARC – Speicherverwaltung in Swift",
-        "description": "Verstehe, warum Swift kein Garbage Collector braucht und wie Strong, Weak und Unowned funktionieren.",
+        "title": {
+            "de": "ARC – Speicherverwaltung in Swift",
+            "en": "ARC - memory management in Swift"
+        },
+        "description": {
+            "de":
+                "Verstehe, warum Swift kein Garbage Collector braucht und wie Strong, Weak und Unowned funktionieren.",
+            "en":
+                "Understand why Swift does not need a garbage collector and how strong, weak and unowned work."
+        },
         "steps": [
-            "Referenzzyklen erklären",
-            "weak für optionale Referenzen",
-            "unowned für non-optional, aber nicht-owning"
+            {
+                "de": "Referenzzyklen erklären",
+                "en": "Explain reference cycles"
+            },
+            {
+                "de": "weak für optionale Referenzen",
+                "en": "Use weak for optional references"
+            },
+            {
+                "de": "unowned für non-optional, aber nicht-owning",
+                "en": "Use unowned for non-optional, non-owning references"
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -933,13 +1566,29 @@
     },
     {
         "id": "swift_065",
-        "title": "KeyPaths verstehen",
-        "description":
-            "Nutze KeyPaths, um dynamisch auf Properties zuzugreifen – perfekt für Listen, Filter und Refactoring.",
+        "title": {
+            "de": "KeyPaths verstehen",
+            "en": "Understanding KeyPaths"
+        },
+        "description": {
+            "de":
+                "Nutze KeyPaths, um dynamisch auf Properties zuzugreifen – perfekt für Listen, Filter und Refactoring.",
+            "en":
+                "Use KeyPaths to access properties dynamically, perfect for lists, filters and refactoring."
+        },
         "steps": [
-            "KeyPath mit \\\\ Typ.property erstellen",
-            "Funktion mit KeyPath als Parameter",
-            "Werte dynamisch lesen"
+            {
+                "de": "KeyPath mit \\\\ Typ.property erstellen",
+                "en": "Create a KeyPath with \\Type.property"
+            },
+            {
+                "de": "Funktion mit KeyPath als Parameter",
+                "en": "Pass KeyPath as a function parameter"
+            },
+            {
+                "de": "Werte dynamisch lesen",
+                "en": "Read values dynamically"
+            }
         ],
         "colors": {
             "backgroundColors": [

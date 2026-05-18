@@ -1,15 +1,45 @@
 [
     {
         "id": "swiftui_completely_001",
-        "title": "SwiftUI Calculator Code",
-        "description":
-            "Kompletter SwiftUI-Taschenrechner-Code mit operatorischer Logik, Prozentrechnung und modernen Buttons.",
+        "title": {
+            "de": "SwiftUI Calculator Code",
+            "en": "SwiftUI calculator code"
+        },
+        "description": {
+            "de":
+                "Kompletter SwiftUI-Taschenrechner-Code mit operatorischer Logik, Prozentrechnung und modernen Buttons.",
+            "en":
+                "Complete SwiftUI calculator code with operator logic, percentage calculation and modern buttons."
+        },
         "steps": [
-            "SwiftUI View mit @State Variablen für Display und Operator-Status erstellen.",
-            "Taschenrechner-Layout mit Lazy Grid oder verschachtelten Stacks aufbauen.",
-            "Zahlen- und Operator-Eingaben über Button Actions verarbeiten.",
-            "Mathematische Operationen inklusive Prozent- und Vorzeichenwechsel implementieren.",
-            "Resultate berechnen und die Anzeige dynamisch aktualisieren."
+            {
+                "de":
+                    "SwiftUI View mit @State Variablen für Display und Operator-Status erstellen.",
+                "en":
+                    "Create a SwiftUI view with @State variables for display and operator state."
+            },
+            {
+                "de":
+                    "Taschenrechner-Layout mit Lazy Grid oder verschachtelten Stacks aufbauen.",
+                "en":
+                    "Build the calculator layout with Lazy Grid or nested stacks."
+            },
+            {
+                "de":
+                    "Zahlen- und Operator-Eingaben über Button Actions verarbeiten.",
+                "en": "Handle number and operator input through button actions."
+            },
+            {
+                "de":
+                    "Mathematische Operationen inklusive Prozent- und Vorzeichenwechsel implementieren.",
+                "en":
+                    "Implement math operations including percent and sign changes."
+            },
+            {
+                "de":
+                    "Resultate berechnen und die Anzeige dynamisch aktualisieren.",
+                "en": "Calculate results and update the display dynamically."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -27,15 +57,42 @@
     },
     {
         "id": "swiftui_completely_002",
-        "title": "SwiftUI Notes Template",
-        "description":
-            "Ein einfaches Notiz-Template mit SwiftUI, Navigation, Toolbar und Listenverwaltung. Perfekt für Einsteiger-Apps.",
+        "title": {
+            "de": "SwiftUI Notes Template",
+            "en": "SwiftUI notes template"
+        },
+        "description": {
+            "de":
+                "Ein einfaches Notiz-Template mit SwiftUI, Navigation, Toolbar und Listenverwaltung. Perfekt für Einsteiger-Apps.",
+            "en":
+                "A simple notes template with SwiftUI, navigation, toolbar and list management. Perfect for beginner apps."
+        },
         "steps": [
-            "SwiftUI View mit @State Variablen für Notizen und Eingabefeld erstellen.",
-            "NavigationView nutzen, um Titel und Toolbar zu integrieren.",
-            "TextField für neue Notizen und Button zum Hinzufügen implementieren.",
-            "Notizen dynamisch in einer List anzeigen.",
-            "Swipe-to-Delete Funktion mit onDelete hinzufügen."
+            {
+                "de":
+                    "SwiftUI View mit @State Variablen für Notizen und Eingabefeld erstellen.",
+                "en":
+                    "Create a SwiftUI view with @State variables for notes and input text."
+            },
+            {
+                "de":
+                    "NavigationView nutzen, um Titel und Toolbar zu integrieren.",
+                "en": "Use NavigationView to integrate title and toolbar."
+            },
+            {
+                "de":
+                    "TextField für neue Notizen und Button zum Hinzufügen implementieren.",
+                "en":
+                    "Implement a TextField for new notes and a button to add them."
+            },
+            {
+                "de": "Notizen dynamisch in einer List anzeigen.",
+                "en": "Display notes dynamically in a List."
+            },
+            {
+                "de": "Swipe-to-Delete Funktion mit onDelete hinzufügen.",
+                "en": "Add swipe-to-delete with onDelete."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -53,15 +110,44 @@
     },
     {
         "id": "swiftui_completely_003",
-        "title": "SwiftUI Journal Template",
-        "description":
-            "Ein voll funktionsfähiges SwiftUI-Journal mit Listen, Detailansicht und Eingabeformular. Ideal für persönliche Notiz- oder Tagebuch-Apps.",
+        "title": {
+            "de": "SwiftUI Journal Template",
+            "en": "SwiftUI journal template"
+        },
+        "description": {
+            "de":
+                "Ein voll funktionsfähiges SwiftUI-Journal mit Listen, Detailansicht und Eingabeformular. Ideal für persönliche Notiz- oder Tagebuch-Apps.",
+            "en":
+                "A fully functional SwiftUI journal with lists, detail view and input form. Ideal for personal notes or diary apps."
+        },
         "steps": [
-            "Datenmodell mit Identifiable Struktur für Journal-Einträge erstellen.",
-            "NavigationStack verwenden, um Listen- und Detailansichten zu verbinden.",
-            "Einträge dynamisch in einer List mit NavigationLink anzeigen.",
-            "Neue Einträge über ein Sheet mit Formular und TextEditor hinzufügen.",
-            "Speichern und Abbrechen Aktionen mit Toolbar Buttons implementieren."
+            {
+                "de":
+                    "Datenmodell mit Identifiable Struktur für Journal-Einträge erstellen.",
+                "en":
+                    "Create a data model with an Identifiable structure for journal entries."
+            },
+            {
+                "de":
+                    "NavigationStack verwenden, um Listen- und Detailansichten zu verbinden.",
+                "en": "Use NavigationStack to connect list and detail views."
+            },
+            {
+                "de":
+                    "Einträge dynamisch in einer List mit NavigationLink anzeigen.",
+                "en": "Show entries dynamically in a List with NavigationLink."
+            },
+            {
+                "de":
+                    "Neue Einträge über ein Sheet mit Formular und TextEditor hinzufügen.",
+                "en":
+                    "Add new entries through a sheet with form and TextEditor."
+            },
+            {
+                "de":
+                    "Speichern und Abbrechen Aktionen mit Toolbar Buttons implementieren.",
+                "en": "Implement save and cancel actions with toolbar buttons."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -79,15 +165,45 @@
     },
     {
         "id": "swiftui_completely_004",
-        "title": "SwiftUI Blog Template",
-        "description":
-            "Ein modernes Blog-System mit Liste, Detailansicht und dynamischer Post-Erstellung. Perfekt für Lern- oder News-Apps.",
+        "title": {
+            "de": "SwiftUI Blog Template",
+            "en": "SwiftUI blog template"
+        },
+        "description": {
+            "de":
+                "Ein modernes Blog-System mit Liste, Detailansicht und dynamischer Post-Erstellung. Perfekt für Lern- oder News-Apps.",
+            "en":
+                "A modern blog system with list, detail view and dynamic post creation. Perfect for learning or news apps."
+        },
         "steps": [
-            "BlogPost Datenmodell mit Identifizierbaren Eigenschaften erstellen.",
-            "NavigationStack verwenden, um Liste und Detailansicht zu verbinden.",
-            "Beiträge dynamisch mit List und NavigationLink anzeigen.",
-            "Neue Blogposts über Toolbar Button automatisch hinzufügen.",
-            "Detailansicht mit ScrollView für längere Inhalte gestalten."
+            {
+                "de":
+                    "BlogPost Datenmodell mit Identifizierbaren Eigenschaften erstellen.",
+                "en":
+                    "Create a BlogPost data model with identifiable properties."
+            },
+            {
+                "de":
+                    "NavigationStack verwenden, um Liste und Detailansicht zu verbinden.",
+                "en": "Use NavigationStack to connect list and detail view."
+            },
+            {
+                "de":
+                    "Beiträge dynamisch mit List und NavigationLink anzeigen.",
+                "en": "Display posts dynamically with List and NavigationLink."
+            },
+            {
+                "de":
+                    "Neue Blogposts über Toolbar Button automatisch hinzufügen.",
+                "en":
+                    "Add new blog posts automatically through a toolbar button."
+            },
+            {
+                "de":
+                    "Detailansicht mit ScrollView für längere Inhalte gestalten.",
+                "en":
+                    "Design the detail view with ScrollView for longer content."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -105,15 +221,43 @@
     },
     {
         "id": "swiftui_completely_005",
-        "title": "SwiftUI To-Do Template",
-        "description":
-            "Ein einfaches, aber elegantes To-Do-Listen-Template mit Add-, Toggle- und Delete-Funktion. Ideal für Lernzwecke oder kleine Produktivitäts-Apps.",
+        "title": {
+            "de": "SwiftUI To-Do Template",
+            "en": "SwiftUI to-do template"
+        },
+        "description": {
+            "de":
+                "Ein einfaches, aber elegantes To-Do-Listen-Template mit Add-, Toggle- und Delete-Funktion. Ideal für Lernzwecke oder kleine Produktivitäts-Apps.",
+            "en":
+                "A simple but elegant to-do list template with add, toggle and delete behavior. Ideal for learning or small productivity apps."
+        },
         "steps": [
-            "Todo Datenmodell mit Identifizierbarer Struktur erstellen.",
-            "NavigationView oder NavigationStack für die Hauptnavigation verwenden.",
-            "Neue Aufgaben über TextField Eingabe und Add Button hinzufügen.",
-            "Aufgaben mit Button Aktion als erledigt markieren oder zurücksetzen.",
-            "Swipe-to-Delete Funktion mit onDelete für das Entfernen implementieren."
+            {
+                "de":
+                    "Todo Datenmodell mit Identifizierbarer Struktur erstellen.",
+                "en": "Create a Todo data model with an identifiable structure."
+            },
+            {
+                "de":
+                    "NavigationView oder NavigationStack für die Hauptnavigation verwenden.",
+                "en":
+                    "Use NavigationView or NavigationStack for main navigation."
+            },
+            {
+                "de":
+                    "Neue Aufgaben über TextField Eingabe und Add Button hinzufügen.",
+                "en": "Add new tasks with TextField input and an Add button."
+            },
+            {
+                "de":
+                    "Aufgaben mit Button Aktion als erledigt markieren oder zurücksetzen.",
+                "en": "Mark tasks as done or reset them with a button action."
+            },
+            {
+                "de":
+                    "Swipe-to-Delete Funktion mit onDelete für das Entfernen implementieren.",
+                "en": "Implement swipe-to-delete with onDelete."
+            }
         ],
         "colors": {
             "backgroundColors": [
@@ -131,15 +275,45 @@
     },
     {
         "id": "swiftui_completely_006",
-        "title": "SwiftUI E-Commerce Template",
-        "description":
-            "Ein komplettes Shop-Template mit Produktübersicht, Warenkorb und Checkout-Demo. Ideal, um eigene Store-Funktionen oder In-App-Käufe zu lernen.",
+        "title": {
+            "de": "SwiftUI E-Commerce Template",
+            "en": "SwiftUI e-commerce template"
+        },
+        "description": {
+            "de":
+                "Ein komplettes Shop-Template mit Produktübersicht, Warenkorb und Checkout-Demo. Ideal, um eigene Store-Funktionen oder In-App-Käufe zu lernen.",
+            "en":
+                "A complete shop template with product overview, cart and checkout demo. Ideal for learning store features or in-app purchases."
+        },
         "steps": [
-            "Produkt Datenmodell mit Identifiable und Hashable Struktur erstellen.",
-            "Produkte übersichtlich mit LazyVGrid als Shop-Grid darstellen.",
-            "Artikel per Button Aktion dynamisch dem Warenkorb hinzufügen.",
-            "Warenkorb Status und Gesamtpreis mit State Management berechnen.",
-            "Checkout Übersicht als Sheet mit CartView und Toolbar Steuerung anzeigen."
+            {
+                "de":
+                    "Produkt Datenmodell mit Identifiable und Hashable Struktur erstellen.",
+                "en":
+                    "Create a product data model with Identifiable and Hashable."
+            },
+            {
+                "de":
+                    "Produkte übersichtlich mit LazyVGrid als Shop-Grid darstellen.",
+                "en": "Display products clearly with LazyVGrid as a shop grid."
+            },
+            {
+                "de":
+                    "Artikel per Button Aktion dynamisch dem Warenkorb hinzufügen.",
+                "en": "Add items dynamically to the cart with a button action."
+            },
+            {
+                "de":
+                    "Warenkorb Status und Gesamtpreis mit State Management berechnen.",
+                "en":
+                    "Calculate cart state and total price with state management."
+            },
+            {
+                "de":
+                    "Checkout Übersicht als Sheet mit CartView und Toolbar Steuerung anzeigen.",
+                "en":
+                    "Show a checkout overview as a sheet with CartView and toolbar controls."
+            }
         ],
         "colors": {
             "backgroundColors": [
