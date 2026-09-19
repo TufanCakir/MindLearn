@@ -80,7 +80,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct MyFirstView: View {\n    let bgColors = [Color(\"#F5F5F5\"), Color(\"#E0E0E0\")]\n    let textColors = [Color.black, Color.gray]\n\n    var body: some View {\n        ZStack {\n            LinearGradient(gradient: Gradient(colors: bgColors), startPoint: .top, endPoint: .bottom)\n                .ignoresSafeArea()\n            Text(\"Hallo SwiftUI!\")\n                .font(.title)\n                .foregroundColor(textColors.randomElement() ?? .black)\n                .padding()\n        }\n    }\n}\n\n#Preview {\n    MyFirstView()\n}",
+                "import SwiftUI\n\nstruct MyFirstView: View {\n    let bgColors = [Color(\"#F5F5F5\"), Color(\"#E0E0E0\")]\n    let textColors = [Color.black, Color.gray]\n\n    var body: some View {\n        ZStack {\n            LinearGradient(gradient: Gradient(colors: bgColors), startPoint: .top, endPoint: .bottom)\n                .ignoresSafeArea()\n            Text(\"Hallo SwiftUI!\")\n                .font(.title)\n                .foregroundStyle(textColors.randomElement() ?? .black)\n                .padding()\n        }\n    }\n}\n\n#Preview {\n    MyFirstView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -118,7 +118,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct DynamicBackgroundView: View {\n    let gradientColors = [Color.red, Color.orange, Color.yellow]\n    \n    var body: some View {\n        ZStack {\n            LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing)\n                .ignoresSafeArea()\n            Text(\"Dynamischer Hintergrund\")\n                .font(.headline)\n                .foregroundColor(.white)\n                .padding()\n        }\n    }\n}\n\n#Preview {\n    DynamicBackgroundView()\n}",
+                "import SwiftUI\n\nstruct DynamicBackgroundView: View {\n    let gradientColors = [Color.red, Color.orange, Color.yellow]\n    \n    var body: some View {\n        ZStack {\n            LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing)\n                .ignoresSafeArea()\n            Text(\"Dynamischer Hintergrund\")\n                .font(.headline)\n                .foregroundStyle(.white)\n                .padding()\n        }\n    }\n}\n\n#Preview {\n    DynamicBackgroundView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -264,7 +264,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct ButtonExampleView: View {\n    var body: some View {\n        Button(action: {\n            print(\"Button wurde gedrückt!\")\n        }) {\n            Text(\"Klick mich\")\n                .padding()\n                .background(Color.red)\n                .foregroundColor(.white)\n                .cornerRadius(8)\n        }\n    }\n}\n\n#Preview {\n    ButtonExampleView()\n}",
+                "import SwiftUI\n\nstruct ButtonExampleView: View {\n    var body: some View {\n        Button(action: {\n            print(\"Button wurde gedrückt!\")\n        }) {\n            Text(\"Klick mich\")\n                .padding()\n                .background(Color.red)\n                .foregroundStyle(.white)\n                .cornerRadius(8)\n        }\n    }\n}\n\n#Preview {\n    ButtonExampleView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -289,8 +289,8 @@
                     "en": "Add multiple views inside the TabView."
                 },
                 {
-                    "de": "Für jede View ein TabItem definieren.",
-                    "en": "Define a tabItem for each view."
+                    "de": "Für jeden Bereich einen typisierten Tab mit stabilem Auswahlwert definieren.",
+                    "en": "Define a typed Tab with a stable selection value for each section."
                 }
             ],
             "colors": {
@@ -304,7 +304,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct TabBarExampleView: View {\n    var body: some View {\n        TabView {\n            Text(\"🏠 Home\")\n                .tabItem {\n                    Image(systemName: \"house.fill\")\n                    Text(\"Home\")\n                }\n\n            Text(\"⚙️ Einstellungen\")\n                .tabItem {\n                    Image(systemName: \"gear\")\n                    Text(\"Settings\")\n                }\n        }\n    }\n}\n\n#Preview {\n    TabBarExampleView()\n}",
+                "import SwiftUI\n\nenum AppTab: Hashable {\n    case home\n    case settings\n}\n\nstruct TabBarExampleView: View {\n    @State private var selectedTab: AppTab = .home\n\n    var body: some View {\n        TabView(selection: $selectedTab) {\n            Tab(\"Home\", systemImage: \"house.fill\", value: .home) {\n                Text(\"🏠 Home\")\n            }\n\n            Tab(\"Einstellungen\", systemImage: \"gear\", value: .settings) {\n                Text(\"⚙️ Einstellungen\")\n            }\n        }\n    }\n}\n\n#Preview {\n    TabBarExampleView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -703,7 +703,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct HapticsExampleView: View {\n    var body: some View {\n        Button(\"Haptik testen\") {\n            let generator = UIImpactFeedbackGenerator(style: .medium)\n            generator.impactOccurred()\n        }\n        .padding()\n        .background(Color.red)\n        .foregroundColor(.white)\n        .cornerRadius(10)\n    }\n}\n\n#Preview {\n    HapticsExampleView()\n}",
+                "import SwiftUI\n\nstruct HapticsExampleView: View {\n    var body: some View {\n        Button(\"Haptik testen\") {\n            let generator = UIImpactFeedbackGenerator(style: .medium)\n            generator.impactOccurred()\n        }\n        .padding()\n        .background(Color.red)\n        .foregroundStyle(.white)\n        .cornerRadius(10)\n    }\n}\n\n#Preview {\n    HapticsExampleView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -782,7 +782,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct AsyncImageExampleView: View {\n    var body: some View {\n        AsyncImage(url: URL(string: \"https:/picsum.photos/300\")) { image in\n            image.resizable().scaledToFit().cornerRadius(12)\n        } placeholder: {\n            ProgressView()\n        }\n        .frame(width: 200, height: 200)\n        .padding()\n    }\n}\n\n#Preview {\n    AsyncImageExampleView()\n}",
+                "import SwiftUI\n\nstruct AsyncImageExampleView: View {\n    var body: some View {\n        AsyncImage(url: URL(string: \"https://picsum.photos/300\")) { image in\n            image.resizable().scaledToFit().cornerRadius(12)\n        } placeholder: {\n            ProgressView()\n        }\n        .frame(width: 200, height: 200)\n        .padding()\n    }\n}\n\n#Preview {\n    AsyncImageExampleView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -863,7 +863,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\nimport PhotosUI\n\nstruct CameraExampleView: View {\n    @State private var selectedImage: PhotosPickerItem?\n    @State private var image: Image?\n\n    var body: some View {\n        VStack(spacing: 20) {\n            if let image = image {\n                image\n                    .resizable()\n                    .scaledToFit()\n                    .frame(height: 300)\n                    .cornerRadius(12)\n            } else {\n                Rectangle().fill(.gray.opacity(0.3)).frame(height: 300).cornerRadius(12)\n            }\n\n            PhotosPicker(selection: $selectedImage, matching: .images) {\n                Label(\"Foto aufnehmen oder wählen\", systemImage: \"camera\")\n            }\n            .onChange(of: selectedImage) { newItem in\n                Task {\n                    if let data = try? await newItem?.loadTransferable(type: Data.self),\n                       let uiImage = UIImage(data: data) {\n                        image = Image(uiImage: uiImage)\n                    }\n                }\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    CameraExampleView()\n}",
+                "import SwiftUI\nimport PhotosUI\n\nstruct CameraExampleView: View {\n    @State private var selectedImage: PhotosPickerItem?\n    @State private var image: Image?\n\n    var body: some View {\n        VStack(spacing: 20) {\n            if let image = image {\n                image\n                    .resizable()\n                    .scaledToFit()\n                    .frame(height: 300)\n                    .cornerRadius(12)\n            } else {\n                Rectangle().fill(.gray.opacity(0.3)).frame(height: 300).cornerRadius(12)\n            }\n\n            PhotosPicker(selection: $selectedImage, matching: .images) {\n                Label(\"Foto aufnehmen oder wählen\", systemImage: \"camera\")\n            }\n            .onChange(of: selectedImage) { _, newItem in\n                Task {\n                    if let data = try? await newItem?.loadTransferable(type: Data.self),\n                       let uiImage = UIImage(data: data) {\n                        image = Image(uiImage: uiImage)\n                    }\n                }\n            }\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    CameraExampleView()\n}",
             "category": "SwiftUI"
         },
         {
@@ -904,7 +904,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\nimport CoreData\n\nstruct CoreDataExampleView: View {\n    @Environment(\\.managedObjectContext) private var viewContext\n    @FetchRequest(\n        sortDescriptors: [NSSortDescriptor(keyPath: \\Item.timestamp, ascending: true)],\n        animation: .default)\n    private var items: FetchedResults<Item>\n\n    var body: some View {\n        NavigationStack {\n            List {\n                ForEach(items) { item in\n                    Text(item.timestamp!, formatter: dateFormatter)\n                }\n                .onDelete(perform: deleteItems)\n            }\n            .navigationTitle(\"Core Data\")\n            .toolbar {\n                ToolbarItem(placement: .navigationBarTrailing) {\n                    Button(action: addItem) {\n                        Label(\"Add\", systemImage: \"plus\")\n                    }\n                }\n            }\n        }\n    }\n\n    private func addItem() {\n        let newItem = Item(context: viewContext)\n        newItem.timestamp = Date()\n        try? viewContext.save()\n    }\n\n    private func deleteItems(offsets: IndexSet) {\n        for index in offsets { viewContext.delete(items[index]) }\n        try? viewContext.save()\n    }\n}\n\nprivate let dateFormatter: DateFormatter = {\n    let formatter = DateFormatter()\n    formatter.dateStyle = .short\n    formatter.timeStyle = .short\n    return formatter\n}()\n\n#Preview {\n    CoreDataExampleView().environment(\\.managedObjectContext, PersistenceController.preview.container.viewContext)\n}",
+                "import SwiftUI\nimport CoreData\n\nstruct CoreDataExampleView: View {\n    @Environment(\\.managedObjectContext) private var viewContext\n    @FetchRequest(\n        sortDescriptors: [NSSortDescriptor(keyPath: \\Item.timestamp, ascending: true)],\n        animation: .default)\n    private var items: FetchedResults<Item>\n\n    var body: some View {\n        NavigationStack {\n            List {\n                ForEach(items) { item in\n                    Text(item.timestamp!, formatter: dateFormatter)\n                }\n                .onDelete(perform: deleteItems)\n            }\n            .navigationTitle(\"Core Data\")\n            .toolbar {\n                ToolbarItem(placement: .topBarTrailing) {\n                    Button(action: addItem) {\n                        Label(\"Add\", systemImage: \"plus\")\n                    }\n                }\n            }\n        }\n    }\n\n    private func addItem() {\n        let newItem = Item(context: viewContext)\n        newItem.timestamp = Date()\n        try? viewContext.save()\n    }\n\n    private func deleteItems(offsets: IndexSet) {\n        for index in offsets { viewContext.delete(items[index]) }\n        try? viewContext.save()\n    }\n}\n\nprivate let dateFormatter: DateFormatter = {\n    let formatter = DateFormatter()\n    formatter.dateStyle = .short\n    formatter.timeStyle = .short\n    return formatter\n}()\n\n#Preview {\n    CoreDataExampleView().environment(\\.managedObjectContext, PersistenceController.preview.container.viewContext)\n}",
             "category": "SwiftUI"
         },
         {
@@ -1309,7 +1309,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct AsyncImageAdvancedView: View {\n    let imageURL = URL(string: \"https:/picsum.photos/400\")!\n    @State private var loaded = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            AsyncImage(url: imageURL) { phase in\n                switch phase {\n                case .empty:\n                    ProgressView()\n                case .success(let image):\n                    image.resizable()\n                        .scaledToFit()\n                        .cornerRadius(12)\n                        .opacity(loaded ? 1 : 0)\n                        .onAppear { withAnimation(.easeIn(duration: 0.5)) { loaded = true } }\n                case .failure:\n                    Image(systemName: \"xmark.octagon.fill\")\n                        .font(.largeTitle)\n                        .foregroundColor(.red)\n                @unknown default:\n                    EmptyView()\n                }\n            }\n            .frame(width: 250, height: 250)\n        }\n        .padding()\n    }\n}\n\n#Preview { AsyncImageAdvancedView() }",
+                "import SwiftUI\n\nstruct AsyncImageAdvancedView: View {\n    let imageURL = URL(string: \"https://picsum.photos/400\")!\n    @State private var loaded = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            AsyncImage(url: imageURL) { phase in\n                switch phase {\n                case .empty:\n                    ProgressView()\n                case .success(let image):\n                    image.resizable()\n                        .scaledToFit()\n                        .cornerRadius(12)\n                        .opacity(loaded ? 1 : 0)\n                        .onAppear { withAnimation(.easeIn(duration: 0.5)) { loaded = true } }\n                case .failure:\n                    Image(systemName: \"xmark.octagon.fill\")\n                        .font(.largeTitle)\n                        .foregroundStyle(.red)\n                @unknown default:\n                    EmptyView()\n                }\n            }\n            .frame(width: 250, height: 250)\n        }\n        .padding()\n    }\n}\n\n#Preview { AsyncImageAdvancedView() }",
             "category": "SwiftUI"
         },
         {
@@ -1349,7 +1349,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct AnimatedTabBarView: View {\n    @State private var selectedTab = 0\n\n    var body: some View {\n        TabView(selection: $selectedTab) {\n            Text(\"🏠 Home Screen\")\n                .tabItem { Label(\"Home\", systemImage: \"house.fill\") }\n                .tag(0)\n\n            Text(\"🔍 Suche\")\n                .tabItem { Label(\"Suche\", systemImage: \"magnifyingglass\") }\n                .tag(1)\n\n            Text(\"👤 Profil\")\n                .tabItem { Label(\"Profil\", systemImage: \"person.circle.fill\") }\n                .tag(2)\n        }\n        .tint(.purple)\n        .animation(.easeInOut, value: selectedTab)\n    }\n}\n\n#Preview { AnimatedTabBarView() }",
+                "import SwiftUI\n\nenum AnimatedTab: Hashable {\n    case home, search, profile\n}\n\nstruct AnimatedTabBarView: View {\n    @State private var selectedTab: AnimatedTab = .home\n\n    var body: some View {\n        TabView(selection: $selectedTab) {\n            Tab(\"Home\", systemImage: \"house.fill\", value: .home) { Text(\"🏠 Home Screen\") }\n            Tab(\"Suche\", systemImage: \"magnifyingglass\", value: .search) { Text(\"🔍 Suche\") }\n            Tab(\"Profil\", systemImage: \"person.circle.fill\", value: .profile) { Text(\"👤 Profil\") }\n        }\n        .tint(.purple)\n        .animation(.easeInOut, value: selectedTab)\n    }\n}\n\n#Preview { AnimatedTabBarView() }",
             "category": "SwiftUI"
         },
         {
@@ -1389,7 +1389,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct GridExampleView: View {\n    let columns = [GridItem(.flexible()), GridItem(.flexible())]\n\n    var body: some View {\n        ScrollView {\n            LazyVGrid(columns: columns, spacing: 20) {\n                ForEach(1..<9) { i in\n                    RoundedRectangle(cornerRadius: 12)\n                        .fill(.purple.opacity(0.7))\n                        .frame(height: 100)\n                        .overlay(Text(\"Item \\(i)\").foregroundColor(.white))\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { GridExampleView() }",
+                "import SwiftUI\n\nstruct GridExampleView: View {\n    let columns = [GridItem(.flexible()), GridItem(.flexible())]\n\n    var body: some View {\n        ScrollView {\n            LazyVGrid(columns: columns, spacing: 20) {\n                ForEach(1..<9) { i in\n                    RoundedRectangle(cornerRadius: 12)\n                        .fill(.purple.opacity(0.7))\n                        .frame(height: 100)\n                        .overlay(Text(\"Item \\(i)\").foregroundStyle(.white))\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { GridExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -1468,7 +1468,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct ToolbarExampleView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Toolbar Beispiel\")\n                .navigationTitle(\"Start\")\n                .toolbar {\n                    ToolbarItem(placement: .navigationBarTrailing) {\n                        Button(action: {}) { Image(systemName: \"gear\") }\n                    }\n                    ToolbarItem(placement: .navigationBarLeading) {\n                        Button(action: {}) { Image(systemName: \"bell\") }\n                    }\n                }\n        }\n    }\n}\n\n#Preview { ToolbarExampleView() }",
+                "import SwiftUI\n\nstruct ToolbarExampleView: View {\n    var body: some View {\n        NavigationStack {\n            List(0..<30) { index in\n                Text(\"Eintrag \\(index + 1)\")\n            }\n            .navigationTitle(\"Start\")\n            .toolbar {\n                ToolbarItem(placement: .topBarTrailing) {\n                    Button(\"Einstellungen\", systemImage: \"gear\") { }\n                }\n                .visibilityPriority(.high)\n\n                ToolbarOverflowMenu {\n                    Button(\"Archivieren\", systemImage: \"archivebox\") { }\n                    Button(\"Teilen\", systemImage: \"square.and.arrow.up\") { }\n                }\n            }\n            .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)\n        }\n    }\n}\n\n#Preview { ToolbarExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -1546,7 +1546,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct SwipeActionsExampleView: View {\n    @State private var items = [\"Alpha\", \"Beta\", \"Gamma\"]\n\n    var body: some View {\n        List {\n            ForEach(items, id: \\.self) { item in\n                Text(item)\n                    .swipeActions(edge: .trailing) {\n                        Button(role: .destructive) { } label: {\n                            Label(\"Löschen\", systemImage: \"trash\")\n                        }\n                    }\n            }\n        }\n    }\n}\n\n#Preview { SwipeActionsExampleView() }",
+                "import SwiftUI\n\nstruct SwipeActionsExampleView: View {\n    @State private var items = [\"Alpha\", \"Beta\", \"Gamma\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                        .frame(maxWidth: .infinity, alignment: .leading)\n                        .padding()\n                        .swipeActions {\n                            Button(\"Löschen\", systemImage: \"trash\", role: .destructive) {\n                                items.removeAll { $0 == item }\n                            }\n                        }\n                }\n            }\n        }\n        .swipeActionsContainer()\n    }\n}\n\n#Preview { SwipeActionsExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -1625,7 +1625,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct BadgeExampleView: View {\n    var body: some View {\n        TabView {\n            Text(\"Home\")\n                .tabItem { Label(\"Home\", systemImage: \"house\") }\n                .badge(3)\n\n            Text(\"Nachrichten\")\n                .tabItem { Label(\"Chat\", systemImage: \"message\") }\n                .badge(\"Neu\")\n        }\n    }\n}\n\n#Preview { BadgeExampleView() }",
+                "import SwiftUI\n\nstruct BadgeExampleView: View {\n    var body: some View {\n        TabView {\n            Tab(\"Home\", systemImage: \"house\") { Text(\"Home\") }\n                .badge(3)\n            Tab(\"Chat\", systemImage: \"message\") { Text(\"Nachrichten\") }\n                .badge(\"Neu\")\n        }\n    }\n}\n\n#Preview { BadgeExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -1702,7 +1702,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct OnChangeExampleView: View {\n    @State private var text = \"\"\n    @State private var status = \"Noch nichts eingegeben\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            TextField(\"Tippe etwas…\", text: $text)\n                .textFieldStyle(.roundedBorder)\n\n            Text(status)\n                .font(.headline)\n                .foregroundColor(.purple)\n        }\n        .padding()\n        .onChange(of: text) { newValue in\n            status = newValue.isEmpty ? \"Leeres Feld\" : \"Eingabe: \\(newValue)\"\n        }\n    }\n}\n\n#Preview { OnChangeExampleView() }",
+                "import SwiftUI\n\nstruct OnChangeExampleView: View {\n    @State private var text = \"\"\n    @State private var status = \"Noch nichts eingegeben\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            TextField(\"Tippe etwas…\", text: $text)\n                .textFieldStyle(.roundedBorder)\n\n            Text(status)\n                .font(.headline)\n                .foregroundStyle(.purple)\n        }\n        .padding()\n        .onChange(of: text) { _, newValue in\n            status = newValue.isEmpty ? \"Leeres Feld\" : \"Eingabe: \\(newValue)\"\n        }\n    }\n}\n\n#Preview { OnChangeExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -1759,8 +1759,8 @@
             },
             "steps": [
                 {
-                    "de": "UIActivityViewController Wrapper erstellen.",
-                    "en": "Create a UIActivityViewController wrapper."
+                    "de": "ShareLink mit dem zu teilenden Inhalt erstellen.",
+                    "en": "Create a ShareLink with the content to share."
                 },
                 {
                     "de": "State für das Anzeigen anlegen.",
@@ -1782,7 +1782,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct ShareSheetView: UIViewControllerRepresentable {\n    let items: [Any]\n    func makeUIViewController(context: Context) -> UIActivityViewController {\n        UIActivityViewController(activityItems: items, applicationActivities: nil)\n    }\n    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}\n}\n\nstruct ShareExampleView: View {\n    @State private var showSheet = false\n\n    var body: some View {\n        Button(\"Teilen\") { showSheet = true }\n            .sheet(isPresented: $showSheet) {\n                ShareSheetView(items: [\"Hallo aus SwiftUI!\"])\n            }\n            .padding()\n    }\n}\n\n#Preview { ShareExampleView() }",
+                "import SwiftUI\n\nstruct ShareExampleView: View {\n    var body: some View {\n        ShareLink(\n            item: \"Hallo aus SwiftUI!\",\n            subject: Text(\"MindLearn\"),\n            message: Text(\"Schau dir dieses SwiftUI-Beispiel an.\")\n        ) {\n            Label(\"Teilen\", systemImage: \"square.and.arrow.up\")\n        }\n        .buttonStyle(.glass)\n        .padding()\n    }\n}\n\n#Preview { ShareExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -1861,7 +1861,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct NeonModifier: ViewModifier {\n    func body(content: Content) -> some View {\n        content\n            .padding()\n            .background(.purple)\n            .foregroundColor(.white)\n            .cornerRadius(12)\n            .shadow(color: .purple.opacity(0.6), radius: 10)\n    }\n}\n\nextension View {\n    func neonStyle() -> some View { self.modifier(NeonModifier()) }\n}\n\nstruct ModifierExampleView: View {\n    var body: some View {\n        Text(\"Custom Modifier\")\n            .neonStyle()\n    }\n}\n\n#Preview { ModifierExampleView() }",
+                "import SwiftUI\n\nstruct NeonModifier: ViewModifier {\n    func body(content: Content) -> some View {\n        content\n            .padding()\n            .background(.purple)\n            .foregroundStyle(.white)\n            .cornerRadius(12)\n            .shadow(color: .purple.opacity(0.6), radius: 10)\n    }\n}\n\nextension View {\n    func neonStyle() -> some View { self.modifier(NeonModifier()) }\n}\n\nstruct ModifierExampleView: View {\n    var body: some View {\n        Text(\"Custom Modifier\")\n            .neonStyle()\n    }\n}\n\n#Preview { ModifierExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -2097,7 +2097,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct TransformAnimationView: View {\n    @State private var animate = false\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Image(systemName: \"star.fill\")\n                .font(.system(size: 80))\n                .foregroundColor(.yellow)\n                .rotationEffect(.degrees(animate ? 360 : 0))\n                .scaleEffect(animate ? 1.4 : 1)\n                .opacity(animate ? 1 : 0.5)\n                .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: animate)\n\n            Button(\"Start Animation\") { animate.toggle() }\n        }\n        .padding()\n    }\n}\n\n#Preview { TransformAnimationView() }",
+                "import SwiftUI\n\nstruct TransformAnimationView: View {\n    @State private var animate = false\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Image(systemName: \"star.fill\")\n                .font(.system(size: 80))\n                .foregroundStyle(.yellow)\n                .rotationEffect(.degrees(animate ? 360 : 0))\n                .scaleEffect(animate ? 1.4 : 1)\n                .opacity(animate ? 1 : 0.5)\n                .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: animate)\n\n            Button(\"Start Animation\") { animate.toggle() }\n        }\n        .padding()\n    }\n}\n\n#Preview { TransformAnimationView() }",
             "category": "SwiftUI"
         },
         {
@@ -2216,7 +2216,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct BlurBackgroundExampleView: View {\n    var body: some View {\n        ZStack {\n            Image(\"example\")\n                .resizable()\n                .scaledToFill()\n                .ignoresSafeArea()\n\n            VStack(spacing: 20) {\n                Text(\"Glassmorphism Panel\")\n                    .font(.title2)\n                    .bold()\n                Text(\"Modern iOS Style\")\n                    .foregroundColor(.white.opacity(0.8))\n            }\n            .padding(30)\n            .background(.ultraThinMaterial)\n            .cornerRadius(20)\n            .shadow(radius: 20)\n            .padding()\n        }\n    }\n}\n\n#Preview { BlurBackgroundExampleView() }",
+                "import SwiftUI\n\nstruct BlurBackgroundExampleView: View {\n    var body: some View {\n        ZStack {\n            Image(\"example\")\n                .resizable()\n                .scaledToFill()\n                .ignoresSafeArea()\n\n            VStack(spacing: 20) {\n                Text(\"Glassmorphism Panel\")\n                    .font(.title2)\n                    .bold()\n                Text(\"Modern iOS Style\")\n                    .foregroundStyle(.white.opacity(0.8))\n            }\n            .padding(30)\n            .background(.ultraThinMaterial)\n            .cornerRadius(20)\n            .shadow(radius: 20)\n            .padding()\n        }\n    }\n}\n\n#Preview { BlurBackgroundExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -2255,7 +2255,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\nimport AVKit\n\nstruct VideoPlayerExampleView: View {\n    private let url = URL(string: \"https:/www.apple.com/105/media/us/iphone-15-pro/2023/29bb7999-545b-44d4-a2e5-743ffb391d4b/films/product/iphone-15-pro-product-tpl-cc-us-2023_1280x720h.mp4\")!\n\n    var body: some View {\n        VideoPlayer(player: AVPlayer(url: url))\n            .frame(height: 260)\n            .cornerRadius(16)\n            .padding()\n    }\n}\n\n#Preview { VideoPlayerExampleView() }",
+                "import SwiftUI\nimport AVKit\n\nstruct VideoPlayerExampleView: View {\n    private let url = URL(string: \"https://www.apple.com/105/media/us/iphone-15-pro/2023/29bb7999-545b-44d4-a2e5-743ffb391d4b/films/product/iphone-15-pro-product-tpl-cc-us-2023_1280x720h.mp4\")!\n\n    var body: some View {\n        VideoPlayer(player: AVPlayer(url: url))\n            .frame(height: 260)\n            .cornerRadius(16)\n            .padding()\n    }\n}\n\n#Preview { VideoPlayerExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -2333,7 +2333,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct HorizontalScrollExampleView: View {\n    var body: some View {\n        ScrollView(.horizontal, showsIndicators: false) {\n            LazyHStack(spacing: 20) {\n                ForEach(1..<10) { i in\n                    RoundedRectangle(cornerRadius: 16)\n                        .fill(.blue.opacity(0.7))\n                        .frame(width: 180, height: 120)\n                        .overlay(Text(\"Card \\(i)\").foregroundColor(.white).bold())\n                        .shadow(radius: 10)\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { HorizontalScrollExampleView() }",
+                "import SwiftUI\n\nstruct HorizontalScrollExampleView: View {\n    var body: some View {\n        ScrollView(.horizontal, showsIndicators: false) {\n            LazyHStack(spacing: 20) {\n                ForEach(1..<10) { i in\n                    RoundedRectangle(cornerRadius: 16)\n                        .fill(.blue.opacity(0.7))\n                        .frame(width: 180, height: 120)\n                        .overlay(Text(\"Card \\(i)\").foregroundStyle(.white).bold())\n                        .shadow(radius: 10)\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { HorizontalScrollExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -2374,6 +2374,58 @@
             },
             "code":
                 "import SwiftUI\n\nstruct SplitViewExample: View {\n    @State private var selection: String? = \"Swift\"\n\n    let items = [\"Swift\", \"SwiftUI\", \"Metal\"]\n\n    var body: some View {\n        NavigationSplitView {\n            List(items, selection: $selection) { item in\n                Text(item)\n            }\n        } detail: {\n            Text(selection ?? \"Keine Auswahl\")\n                .font(.largeTitle)\n        }\n    }\n}\n\n#Preview {\n    SplitViewExample()\n}",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_ios27_glass",
+            "title": {"de": "Liquid Glass gestalten", "en": "Design with Liquid Glass"},
+            "description": {"de": "Nutze die nativen Glass-Effekte von iOS 27 für adaptive Oberflächen und Bedienelemente.", "en": "Use the native iOS 27 glass effects for adaptive surfaces and controls."},
+            "steps": [
+                {"de": "Inhalte zuerst semantisch und zugänglich aufbauen.", "en": "Build semantic, accessible content first."},
+                {"de": "glassEffect auf wichtige Flächen anwenden.", "en": "Apply glassEffect to important surfaces."},
+                {"de": "Interaktive Aktionen mit dem nativen Glass-Button-Stil darstellen.", "en": "Present interactive actions with the native glass button style."}
+            ],
+            "colors": {"backgroundColors": ["#000000", "#64D2FF", "#000000"], "textColors": ["#FFFFFF"]},
+            "code": "import SwiftUI\n\nstruct GlassCardView: View {\n    var body: some View {\n        VStack(spacing: 16) {\n            Label(\"SwiftUI 27\", systemImage: \"sparkles\")\n                .font(.title2.bold())\n            Text(\"Native Effekte reagieren auf Inhalt und Umgebung.\")\n                .multilineTextAlignment(.center)\n            Button(\"Weiter\", systemImage: \"arrow.right\") { }\n                .buttonStyle(.glassProminent)\n        }\n        .padding(24)\n        .glassEffect(.regular, in: .rect(cornerRadius: 24))\n        .padding()\n    }\n}\n\n#Preview { GlassCardView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_ios27_item_alert",
+            "title": {"de": "Alert mit optionalem Element", "en": "Alert with an optional item"},
+            "description": {"de": "Ein optionales Modell steuert gleichzeitig, ob der Alert erscheint und für welches Element er gilt.", "en": "An optional model controls both whether the alert appears and which item it represents."},
+            "steps": [
+                {"de": "Ein Identifiable-Modell für die ausstehende Aktion definieren.", "en": "Define an Identifiable model for the pending action."},
+                {"de": "Das optionale Modell als @State speichern.", "en": "Store the optional model as @State."},
+                {"de": "Mit alert(item:) Titel, Aktionen und Nachricht aus demselben Wert erzeugen.", "en": "Use alert(item:) to build the title, actions, and message from the same value."}
+            ],
+            "colors": {"backgroundColors": ["#000000", "#FF453A", "#000000"], "textColors": ["#FFFFFF"]},
+            "code": "import SwiftUI\n\nstruct PendingDelete: Identifiable {\n    let id = UUID()\n    let name: String\n}\n\nstruct ItemAlertView: View {\n    @State private var pendingDelete: PendingDelete?\n\n    var body: some View {\n        Button(\"Projekt löschen\") {\n            pendingDelete = PendingDelete(name: \"MindLearn\")\n        }\n        .alert(\"Projekt löschen?\", item: $pendingDelete) { item in\n            Button(\"Löschen\", role: .destructive) {\n                print(\"Lösche \\(item.name)\")\n            }\n            Button(\"Abbrechen\", role: .cancel) { }\n        } message: { item in\n            Text(\"\\(item.name) wird dauerhaft gelöscht.\")\n        }\n    }\n}\n\n#Preview { ItemAlertView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_ios27_reordering",
+            "title": {"de": "Views nativ neu anordnen", "en": "Natively reorder views"},
+            "description": {"de": "iOS 27 kann Inhalte in Stacks, Grids und eigenen Layouts ohne eigenen DropDelegate neu anordnen.", "en": "iOS 27 can reorder content in stacks, grids, and custom layouts without a custom DropDelegate."},
+            "steps": [
+                {"de": "Identifiable-Elemente mit ForEach darstellen.", "en": "Present Identifiable elements with ForEach."},
+                {"de": "Den dynamischen Inhalt mit reorderable markieren.", "en": "Mark the dynamic content as reorderable."},
+                {"de": "Die Änderung im reorderContainer auf das Array anwenden.", "en": "Apply the change to the array in reorderContainer."}
+            ],
+            "colors": {"backgroundColors": ["#000000", "#BF5AF2", "#000000"], "textColors": ["#FFFFFF"]},
+            "code": "import SwiftUI\n\nstruct Lesson: Identifiable {\n    let id = UUID()\n    let title: String\n}\n\nstruct ReorderingView: View {\n    @State private var lessons = [\n        Lesson(title: \"TabView\"),\n        Lesson(title: \"Toolbar\"),\n        Lesson(title: \"Liquid Glass\")\n    ]\n\n    var body: some View {\n        VStack {\n            ForEach(lessons) { lesson in\n                Text(lesson.title)\n                    .frame(maxWidth: .infinity, alignment: .leading)\n                    .padding()\n            }\n            .reorderable()\n        }\n        .reorderContainer(for: Lesson.self) { difference in\n            lessons = lessons.applying(difference) ?? lessons\n        }\n    }\n}\n\n#Preview { ReorderingView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_ios27_asyncimage_request",
+            "title": {"de": "AsyncImage mit URLRequest", "en": "AsyncImage with URLRequest"},
+            "description": {"de": "iOS 27 unterstützt URLRequest direkt und erlaubt eine eigene URLSession für alle AsyncImages in einem View-Baum.", "en": "iOS 27 supports URLRequest directly and lets you provide a URLSession for all AsyncImages in a view tree."},
+            "steps": [
+                {"de": "Einen URLRequest mit passender Cache-Policy erstellen.", "en": "Create a URLRequest with an appropriate cache policy."},
+                {"de": "Lade-, Erfolgs- und Fehlerphase darstellen.", "en": "Render loading, success, and failure phases."},
+                {"de": "Optional mit asyncImageURLSession eine konfigurierte Session bereitstellen.", "en": "Optionally provide a configured session with asyncImageURLSession."}
+            ],
+            "colors": {"backgroundColors": ["#000000", "#30D158", "#000000"], "textColors": ["#FFFFFF"]},
+            "code": "import SwiftUI\n\nstruct RequestedImageView: View {\n    private let request = URLRequest(\n        url: URL(string: \"https://picsum.photos/600\")!,\n        cachePolicy: .returnCacheDataElseLoad\n    )\n\n    var body: some View {\n        AsyncImage(request: request) { phase in\n            switch phase {\n            case .empty:\n                ProgressView()\n            case .success(let image):\n                image.resizable().scaledToFit()\n            case .failure:\n                ContentUnavailableView(\"Bild nicht verfügbar\", systemImage: \"photo.badge.exclamationmark\")\n            @unknown default:\n                EmptyView()\n            }\n        }\n        .clipShape(.rect(cornerRadius: 20))\n    }\n}\n\n#Preview { RequestedImageView() }",
             "category": "SwiftUI"
         }
     ]

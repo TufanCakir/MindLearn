@@ -36,7 +36,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct ButtonExampleView: View {\n    var body: some View {\n        Button(action: {\n            print(\"Button gedrückt!\")\n        }) {\n            Text(\"Drücke mich\")\n                .padding()\n                .background(Color.orange)\n                .foregroundColor(.white)\n                .cornerRadius(10)\n        }\n    }\n}\n\n#Preview { ButtonExampleView() }",
+                "import SwiftUI\n\nstruct ButtonExampleView: View {\n    var body: some View {\n        Button(action: {\n            print(\"Button gedrückt!\")\n        }) {\n            Text(\"Drücke mich\")\n                .padding()\n                .background(Color.orange)\n                .foregroundStyle(.white)\n                .cornerRadius(10)\n        }\n    }\n}\n\n#Preview { ButtonExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -76,7 +76,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct TextExampleView: View {\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Hallo SwiftUI!\")\n                .font(.largeTitle)\n                .fontWeight(.bold)\n                .foregroundColor(.purple)\n\n            Text(\"Willkommen zu deiner ersten App!\")\n                .font(.headline)\n                .foregroundColor(.gray)\n        }\n    }\n}\n\n#Preview { TextExampleView() }",
+                "import SwiftUI\n\nstruct TextExampleView: View {\n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Hallo SwiftUI!\")\n                .font(.largeTitle)\n                .fontWeight(.bold)\n                .foregroundStyle(.purple)\n\n            Text(\"Willkommen zu deiner ersten App!\")\n                .font(.headline)\n                .foregroundStyle(.gray)\n        }\n    }\n}\n\n#Preview { TextExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -234,7 +234,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct ToggleExampleView: View {\n    @State private var isOn = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Toggle(\"Schalter\", isOn: $isOn)\n                .padding()\n\n            Text(isOn ? \"Aktiviert\" : \"Deaktiviert\")\n                .font(.title2)\n                .foregroundColor(isOn ? .green : .red)\n        }\n        .padding()\n    }\n}\n\n#Preview { ToggleExampleView() }",
+                "import SwiftUI\n\nstruct ToggleExampleView: View {\n    @State private var isOn = false\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Toggle(\"Schalter\", isOn: $isOn)\n                .padding()\n\n            Text(isOn ? \"Aktiviert\" : \"Deaktiviert\")\n                .font(.title2)\n                .foregroundStyle(isOn ? .green : .red)\n        }\n        .padding()\n    }\n}\n\n#Preview { ToggleExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -352,7 +352,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct ZStackExampleView: View {\n    var body: some View {\n        ZStack {\n            Color.blue.ignoresSafeArea()\n            Text(\"Vordergrund\")\n                .font(.largeTitle)\n                .foregroundColor(.white)\n        }\n    }\n}\n\n#Preview { ZStackExampleView() }",
+                "import SwiftUI\n\nstruct ZStackExampleView: View {\n    var body: some View {\n        ZStack {\n            Color.blue.ignoresSafeArea()\n            Text(\"Vordergrund\")\n                .font(.largeTitle)\n                .foregroundStyle(.white)\n        }\n    }\n}\n\n#Preview { ZStackExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -512,7 +512,7 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct TabViewExampleView: View {\n    var body: some View {\n        TabView {\n            Text(\"Start\")\n                .tabItem { Label(\"Home\", systemImage: \"house.fill\") }\n\n            Text(\"Suche\")\n                .tabItem { Label(\"Search\", systemImage: \"magnifyingglass\") }\n\n            Text(\"Profil\")\n                .tabItem { Label(\"Profil\", systemImage: \"person.fill\") }\n        }\n    }\n}\n\n#Preview { TabViewExampleView() }",
+                "import SwiftUI\n\nenum MainTab: Hashable {\n    case home, search, profile\n}\n\nstruct TabViewExampleView: View {\n    @State private var selection: MainTab = .home\n\n    var body: some View {\n        TabView(selection: $selection) {\n            Tab(\"Home\", systemImage: \"house.fill\", value: .home) { Text(\"Start\") }\n            Tab(\"Suche\", systemImage: \"magnifyingglass\", value: .search) { Text(\"Suche\") }\n            Tab(\"Profil\", systemImage: \"person.fill\", value: .profile) { Text(\"Profil\") }\n        }\n    }\n}\n\n#Preview { TabViewExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -592,7 +592,33 @@
                 ]
             },
             "code":
-                "import SwiftUI\n\nstruct GridExampleView: View {\n    let columns = [\n        GridItem(.flexible()),\n        GridItem(.flexible()),\n        GridItem(.flexible())\n    ]\n\n    var body: some View {\n        ScrollView {\n            LazyVGrid(columns: columns, spacing: 20) {\n                ForEach(1...12, id: \\.self) { i in\n                    RoundedRectangle(cornerRadius: 12)\n                        .fill(Color.blue)\n                        .frame(height: 80)\n                        .overlay(Text(\"Item \\(i)\").foregroundColor(.white))\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { GridExampleView() }",
+                "import SwiftUI\n\nstruct GridExampleView: View {\n    let columns = [\n        GridItem(.flexible()),\n        GridItem(.flexible()),\n        GridItem(.flexible())\n    ]\n\n    var body: some View {\n        ScrollView {\n            LazyVGrid(columns: columns, spacing: 20) {\n                ForEach(1...12, id: \\.self) { i in\n                    RoundedRectangle(cornerRadius: 12)\n                        .fill(Color.blue)\n                        .frame(height: 80)\n                        .overlay(Text(\"Item \\(i)\").foregroundStyle(.white))\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { GridExampleView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_ios27_toolbar_reference",
+            "title": {"de": "iOS 27 Toolbar", "en": "iOS 27 toolbar"},
+            "description": {"de": "Priorisiere wichtige Aktionen, verschiebe weitere Aktionen ins Overflow-Menü und minimiere die Leiste beim Scrollen.", "en": "Prioritize important actions, move secondary actions into the overflow menu, and minimize the bar while scrolling."},
+            "steps": [
+                {"de": "ToolbarItem mit topBarTrailing platzieren", "en": "Place a ToolbarItem with topBarTrailing"},
+                {"de": "visibilityPriority für wichtige Aktionen setzen", "en": "Set visibilityPriority for important actions"},
+                {"de": "ToolbarOverflowMenu und toolbarMinimizationBehavior ergänzen", "en": "Add ToolbarOverflowMenu and toolbarMinimizationBehavior"}
+            ],
+            "colors": {"backgroundColors": ["#000000", "#0A84FF", "#000000"], "textColors": ["#FFFFFF"]},
+            "code": "NavigationStack {\n    List(0..<50) { Text(\"Zeile \\($0)\") }\n        .toolbar {\n            ToolbarItem(placement: .topBarTrailing) {\n                Button(\"Neu\", systemImage: \"plus\") { }\n            }\n            .visibilityPriority(.high)\n\n            ToolbarOverflowMenu {\n                Button(\"Exportieren\", systemImage: \"square.and.arrow.up\") { }\n                Button(\"Archiv\", systemImage: \"archivebox\") { }\n            }\n        }\n        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)\n}",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_ios27_modifiers_reference",
+            "title": {"de": "Neue iOS 27 Modifier", "en": "New iOS 27 modifiers"},
+            "description": {"de": "Kurzübersicht für Glass, Swipe Actions außerhalb von List, Neuordnung und AsyncImage-Konfiguration.", "en": "Quick reference for glass, swipe actions outside List, reordering, and AsyncImage configuration."},
+            "steps": [
+                {"de": "glassEffect und Glass-Button-Stile für adaptive Oberflächen", "en": "glassEffect and glass button styles for adaptive surfaces"},
+                {"de": "swipeActionsContainer für ScrollView oder LazyVStack", "en": "swipeActionsContainer for ScrollView or LazyVStack"},
+                {"de": "reorderable und reorderContainer für native Neuordnung", "en": "reorderable and reorderContainer for native reordering"}
+            ],
+            "colors": {"backgroundColors": ["#000000", "#64D2FF", "#000000"], "textColors": ["#FFFFFF"]},
+            "code": "Text(\"Glass\")\n    .padding()\n    .glassEffect(.regular, in: .capsule)\n\nScrollView {\n    LazyVStack {\n        ForEach(items) { item in\n            Row(item: item)\n                .swipeActions { Button(\"Löschen\", role: .destructive) { } }\n        }\n    }\n}\n.swipeActionsContainer()",
             "category": "SwiftUI"
         }
     ]

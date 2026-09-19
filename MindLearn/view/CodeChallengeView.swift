@@ -14,17 +14,15 @@ struct CodeChallengeView: View {
     @State private var result: CodingTaskResult?
     @State private var showHint = false
     @State private var showSolution = false
-    @State private var shareItems: [Any] = []
-    @State private var showShareSheet = false
 
     @FocusState private var isFocused: Bool
 
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     init(task: CodingTask) {
@@ -46,13 +44,11 @@ struct CodeChallengeView: View {
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(task.title(language: language))
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.inline)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
         .toolbar {
             keyboardToolbar
             shareToolbar
-        }
-        .sheet(isPresented: $showShareSheet) {
-            ShareSheet(activityItems: shareItems)
         }
     }
 }
@@ -104,16 +100,14 @@ extension CodeChallengeView {
                 Label(text.challenge.check, systemImage: "checkmark.circle")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.glassProminent)
 
             HStack(spacing: 10) {
-                Button {
-                    shareProgress()
-                } label: {
+                ShareLink(item: shareText(includeSolution: false)) {
                     Label(text.common.share, systemImage: "square.and.arrow.up")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.glass)
 
                 Button {
                     showHint.toggle()
@@ -179,15 +173,13 @@ extension CodeChallengeView {
 
                     Spacer()
 
-                    Button {
-                        shareSolution()
-                    } label: {
+                    ShareLink(item: shareText(includeSolution: true)) {
                         Label(
                             text.challenge.shareSolution,
                             systemImage: "square.and.arrow.up"
                         )
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.glass)
                 }
 
                 CodeView(code: task.solution)
@@ -206,27 +198,11 @@ extension CodeChallengeView {
 
     private var shareToolbar: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                shareProgress()
-            } label: {
+            ShareLink(item: shareText(includeSolution: false)) {
                 Image(systemName: "square.and.arrow.up")
             }
             .accessibilityLabel(text.challenge.shareProgress)
         }
-    }
-
-    private func shareProgress() {
-        if result == nil {
-            result = task.evaluate(code)
-        }
-
-        shareItems = [shareText(includeSolution: false)]
-        showShareSheet = true
-    }
-
-    private func shareSolution() {
-        shareItems = [shareText(includeSolution: true)]
-        showShareSheet = true
     }
 
     private func shareText(includeSolution: Bool) -> String {
@@ -239,7 +215,7 @@ extension CodeChallengeView {
         var output = """
             MindLearn
             \(text.challenge.taskLabel): \(task.title(language: language))
-            \(text.challenge.languageLabel): \(task.language)
+            \(text.challenge.languageLabel): \(task.language.rawValue)
             \(text.challenge.statusLabel): \(status)
             """
 

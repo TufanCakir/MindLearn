@@ -15,12 +15,12 @@ struct OnboardingView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @AppStorage("reduceAppMotion")
     private var reduceAppMotion = false
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     private var shouldReduceMotion: Bool {
@@ -128,7 +128,7 @@ extension OnboardingView {
                 }
             }
 
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.glassProminent)
             .controlSize(.large)
             .accessibilityLabel(
                 page < 2 ? text.onboarding.next : text.onboarding.start

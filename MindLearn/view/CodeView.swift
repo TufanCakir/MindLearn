@@ -13,12 +13,13 @@ struct CodeView: View {
 
     @State private var highlighted = AttributedString("")
     @State private var showCopied = false
-    @AppStorage("language")
-    private var appLanguage =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @State private var copyFeedbackTask: Task<Void, Never>?
+    @Environment(LocalizationStore.self) private var localization
+
+    private var appLanguage: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: appLanguage)
+        localization.text
     }
 
     private var codeLabel: String {
@@ -38,6 +39,7 @@ struct CodeView: View {
                     Text(highlighted)
                         .font(.system(.body, design: .monospaced))
                         .textSelection(.enabled)
+                        .copyable([code])
                         .accessibilityLabel(codeLabel)
                         .padding(18)
                         .frame(
@@ -69,6 +71,9 @@ struct CodeView: View {
                 await SyntaxHighlighter
                 .shared
                 .highlight(code)
+        }
+        .onDisappear {
+            copyFeedbackTask?.cancel()
         }
     }
 }
@@ -102,10 +107,10 @@ extension CodeView {
                     showCopied = true
                 }
 
-                DispatchQueue.main.asyncAfter(
-                    deadline: .now() + 1.3
-                ) {
-
+                copyFeedbackTask?.cancel()
+                copyFeedbackTask = Task {
+                    try? await Task.sleep(for: .seconds(1.3))
+                    guard !Task.isCancelled else { return }
                     withAnimation(.easeOut) {
                         showCopied = false
                     }

@@ -7,6 +7,18 @@
 
 import Foundation
 
+enum ContentLanguage: String, Codable, CaseIterable, Identifiable {
+    case swiftUI = "SwiftUI"
+    case swift = "Swift"
+    case html = "HTML"
+    case json = "JSON"
+    case reactNative = "React Native"
+    case swiftData = "SwiftData"
+    case general = "General"
+
+    var id: String { rawValue }
+}
+
 enum ProgrammingLanguage: String, CaseIterable, Identifiable, Codable {
     case swiftUI
     case swift
@@ -39,25 +51,36 @@ enum ProgrammingLanguage: String, CaseIterable, Identifiable, Codable {
         }
     }
 
-    var topicCategory: String {
+    var topicCategory: ContentCategory {
         switch self {
-        case .swiftUI: "SwiftUI"
-        case .swift: "Swift"
-        case .html: "HTML"
-        case .json: "JSON"
-        case .reactNative: "React Native"
-        case .swiftData: "SwiftData"
+        case .swiftUI: .swiftUI
+        case .swift: .swift
+        case .html: .html
+        case .json: .json
+        case .reactNative: .reactNative
+        case .swiftData: .swiftData
         }
     }
 
-    var taskFileName: String {
+    var taskFile: CodingTaskFile {
         switch self {
-        case .swiftUI: "swiftUITasks"
-        case .swift: "swiftTasks"
-        case .html: "htmlTasks"
-        case .json: "jsonTasks"
-        case .reactNative: "reactNativeTasks"
-        case .swiftData: "swiftDataTasks"
+        case .swiftUI: .swiftUI
+        case .swift: .swift
+        case .html: .html
+        case .json: .json
+        case .reactNative: .reactNative
+        case .swiftData: .swiftData
+        }
+    }
+
+    var contentLanguage: ContentLanguage {
+        switch self {
+        case .swiftUI: .swiftUI
+        case .swift: .swift
+        case .html: .html
+        case .json: .json
+        case .reactNative: .reactNative
+        case .swiftData: .swiftData
         }
     }
 }

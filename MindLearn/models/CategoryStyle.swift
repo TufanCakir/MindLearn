@@ -16,14 +16,14 @@ struct CategoryStyle {
 extension CategoryStyle {
 
     static func style(
-        for category: String
+        for category: ContentCategory
     ) -> CategoryStyle {
 
         switch category {
 
         // MARK: ARKit
 
-        case "ARKit":
+        case .arKit:
 
             return .init(
                 icon: "arkit",
@@ -32,7 +32,7 @@ extension CategoryStyle {
 
         // MARK: RealityKit
 
-        case "RealityKit":
+        case .realityKit:
 
             return .init(
                 icon: "cube.transparent.fill",
@@ -41,7 +41,7 @@ extension CategoryStyle {
 
         // MARK: SpriteKit
 
-        case "SpriteKit":
+        case .spriteKit:
 
             return .init(
                 icon: "gamecontroller.fill",
@@ -50,7 +50,7 @@ extension CategoryStyle {
 
         // MARK: SwiftUI
 
-        case "SwiftUI":
+        case .swiftUI:
 
             return .init(
                 icon: "swift",
@@ -59,7 +59,7 @@ extension CategoryStyle {
 
         // MARK: Swift
 
-        case "Swift":
+        case .swift:
 
             return .init(
                 icon: "swift",
@@ -68,7 +68,7 @@ extension CategoryStyle {
 
         // MARK: SwiftData
 
-        case "SwiftData":
+        case .swiftData:
 
             return .init(
                 icon: "swiftdata",
@@ -77,7 +77,7 @@ extension CategoryStyle {
 
         // MARK: Metal
 
-        case "Metal":
+        case .metal:
 
             return .init(
                 icon: "cpu.fill",
@@ -86,7 +86,7 @@ extension CategoryStyle {
 
         // MARK: Vision
 
-        case "Vision":
+        case .vision:
 
             return .init(
                 icon: "vision.pro",
@@ -95,7 +95,7 @@ extension CategoryStyle {
 
         // MARK: WidgetKit
 
-        case "WidgetKit":
+        case .widgetKit:
 
             return .init(
                 icon: "widget.large",
@@ -104,7 +104,7 @@ extension CategoryStyle {
 
         // MARK: HealthKit
 
-        case "HealthKit":
+        case .healthKit:
 
             return .init(
                 icon: "heart.fill",
@@ -113,7 +113,7 @@ extension CategoryStyle {
 
         // MARK: Speech
 
-        case "Speech":
+        case .speech:
 
             return .init(
                 icon: "microphone.fill",
@@ -122,7 +122,7 @@ extension CategoryStyle {
 
         // MARK: HTML
 
-        case "HTML":
+        case .html:
 
             return .init(
                 icon: "chevron.left.forwardslash.chevron.right",
@@ -131,7 +131,7 @@ extension CategoryStyle {
 
         // MARK: JSON
 
-        case "JSON":
+        case .json:
 
             return .init(
                 icon: "curlybraces",
@@ -140,7 +140,7 @@ extension CategoryStyle {
 
         // MARK: React Native
 
-        case "React Native":
+        case .reactNative:
 
             return .init(
                 icon: "atom",
@@ -149,7 +149,7 @@ extension CategoryStyle {
 
         // MARK: School
 
-        case "School":
+        case .school:
 
             return .init(
                 icon: "graduationcap.fill",
@@ -158,7 +158,7 @@ extension CategoryStyle {
 
         // MARK: Kids
 
-        case "Children":
+        case .children:
 
             return .init(
                 icon: "figure.child",
@@ -167,7 +167,7 @@ extension CategoryStyle {
 
         // MARK: Completely
 
-        case "Completely":
+        case .completely:
 
             return .init(
                 icon: "swift",
@@ -176,7 +176,7 @@ extension CategoryStyle {
 
         // MARK: General
 
-        case "General":
+        case .general:
 
             return .init(
                 icon: "book.fill",
@@ -185,12 +185,6 @@ extension CategoryStyle {
 
         // MARK: Default
 
-        default:
-
-            return .init(
-                icon: "doc.text",
-                color: .accentColor
-            )
         }
     }
 }

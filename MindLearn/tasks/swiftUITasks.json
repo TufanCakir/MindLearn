@@ -64,5 +64,49 @@
             "de": "Nutze VStack { ... } und platziere beide Text-Views darin.",
             "en": "Use VStack { ... } and place both Text views inside."
         }
+    },
+    {
+        "id": "swiftui_task_003",
+        "language": "SwiftUI",
+        "title": {"de": "Moderne Tabs bauen", "en": "Build modern tabs"},
+        "explanation": {"de": "Übe die typisierte Tab-API von SwiftUI.", "en": "Practice SwiftUI's typed Tab API."},
+        "instruction": {"de": "Erstelle eine TabView mit den Tabs Home und Suche. Verwende Tab, systemImage und stabile value-Werte.", "en": "Create a TabView with Home and Search tabs. Use Tab, systemImage, and stable value values."},
+        "starterCode": "import SwiftUI\n\nenum AppTab: Hashable {\n    case home, search\n}\n\nstruct PracticeView: View {\n    @State private var selection: AppTab = .home\n\n    var body: some View {\n        // Deine Tabs\n    }\n}",
+        "expectedKeywords": ["TabView", "Tab(", "systemImage:", "value:"],
+        "solution": "import SwiftUI\n\nenum AppTab: Hashable {\n    case home, search\n}\n\nstruct PracticeView: View {\n    @State private var selection: AppTab = .home\n\n    var body: some View {\n        TabView(selection: $selection) {\n            Tab(\"Home\", systemImage: \"house\", value: .home) { Text(\"Home\") }\n            Tab(\"Suche\", systemImage: \"magnifyingglass\", value: .search) { Text(\"Suche\") }\n        }\n    }\n}",
+        "hint": {"de": "Jeder Tab erhält Titel, SF Symbol und einen Wert aus AppTab.", "en": "Give each tab a title, SF Symbol, and a value from AppTab."}
+    },
+    {
+        "id": "swiftui_task_004",
+        "language": "SwiftUI",
+        "title": {"de": "iOS 27 Toolbar", "en": "iOS 27 toolbar"},
+        "explanation": {"de": "Übe wichtige und sekundäre Toolbar-Aktionen.", "en": "Practice primary and secondary toolbar actions."},
+        "instruction": {"de": "Füge einen wichtigen Plus-Button und ein ToolbarOverflowMenu mit einer Archiv-Aktion hinzu.", "en": "Add an important plus button and a ToolbarOverflowMenu with an archive action."},
+        "starterCode": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Inhalt\")\n                .toolbar {\n                    // Toolbar ergänzen\n                }\n        }\n    }\n}",
+        "expectedKeywords": ["ToolbarItem", "topBarTrailing", "visibilityPriority", "ToolbarOverflowMenu"],
+        "solution": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Inhalt\")\n                .toolbar {\n                    ToolbarItem(placement: .topBarTrailing) {\n                        Button(\"Neu\", systemImage: \"plus\") { }\n                    }\n                    .visibilityPriority(.high)\n                    ToolbarOverflowMenu {\n                        Button(\"Archiv\", systemImage: \"archivebox\") { }\n                    }\n                }\n        }\n    }\n}",
+        "hint": {"de": "Das Overflow-Menü kommt direkt in den toolbar-Builder.", "en": "Place the overflow menu directly in the toolbar builder."}
+    },
+    {
+        "id": "swiftui_task_005",
+        "language": "SwiftUI",
+        "title": {"de": "Liquid Glass anwenden", "en": "Apply Liquid Glass"},
+        "explanation": {"de": "Übe native Glass-Flächen und Buttons.", "en": "Practice native glass surfaces and buttons."},
+        "instruction": {"de": "Gestalte eine gepolsterte Textfläche mit glassEffect und einen Button mit glassProminent.", "en": "Style a padded text surface with glassEffect and a button with glassProminent."},
+        "starterCode": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack {\n            Text(\"MindLearn\")\n            Button(\"Weiter\") { }\n        }\n    }\n}",
+        "expectedKeywords": ["glassEffect", "buttonStyle", "glassProminent"],
+        "solution": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack(spacing: 16) {\n            Text(\"MindLearn\")\n                .padding()\n                .glassEffect(.regular, in: .capsule)\n            Button(\"Weiter\") { }\n                .buttonStyle(.glassProminent)\n        }\n    }\n}",
+        "hint": {"de": "glassEffect gehört an die Fläche, glassProminent an den Button-Stil.", "en": "Apply glassEffect to the surface and glassProminent as the button style."}
+    },
+    {
+        "id": "swiftui_task_006",
+        "language": "SwiftUI",
+        "title": {"de": "Swipe Actions im ScrollView", "en": "Swipe actions in a ScrollView"},
+        "explanation": {"de": "Übe koordinierte Swipe-Aktionen außerhalb einer List.", "en": "Practice coordinated swipe actions outside a List."},
+        "instruction": {"de": "Füge Zeilen in einem ScrollView eine destruktive Swipe-Aktion hinzu und koordiniere sie am Container.", "en": "Add a destructive swipe action to rows in a ScrollView and coordinate them at the container."},
+        "starterCode": "import SwiftUI\n\nstruct PracticeView: View {\n    let items = [\"A\", \"B\", \"C\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                }\n            }\n        }\n    }\n}",
+        "expectedKeywords": ["swipeActions", "destructive", "swipeActionsContainer"],
+        "solution": "import SwiftUI\n\nstruct PracticeView: View {\n    let items = [\"A\", \"B\", \"C\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                        .swipeActions {\n                            Button(\"Löschen\", role: .destructive) { }\n                        }\n                }\n            }\n        }\n        .swipeActionsContainer()\n    }\n}",
+        "hint": {"de": "swipeActions kommt an die Zeile, swipeActionsContainer an den ScrollView.", "en": "Apply swipeActions to each row and swipeActionsContainer to the ScrollView."}
     }
 ]

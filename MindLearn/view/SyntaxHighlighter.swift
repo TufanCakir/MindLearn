@@ -18,50 +18,50 @@ actor SyntaxHighlighter {
     private enum Regex {
 
         static let swift =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
 
                 pattern:
                     "\\b(import|struct|class|actor|enum|protocol|extension|func|init|let|var|if|else|guard|return|async|await|private|public|internal|static|override)\\b"
             )
 
         static let jsonKey =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
                 pattern: "\"[^\"]+\"(?=\\s*:)"
             )
 
         static let htmlTag =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
                 pattern: "</?[a-zA-Z0-9\\-]+[^>]*>"
             )
 
         static let htmlAttribute =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
 
                 pattern:
                     "\\b(href|src|class|id|style|type|name|rel|alt|width|height)\\b"
             )
 
         static let css =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
 
                 pattern:
                     "\\b(display|flex|grid|color|background|padding|margin|position|width|height|gap)\\b"
             )
 
         static let js =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
 
                 pattern:
                     "\\b(function|const|let|var|return|document|console|log|useState|useEffect)\\b"
             )
 
         static let string =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
                 pattern: "\"([^\"\\\\]|\\\\.)*\""
             )
 
         static let comment =
-            try! NSRegularExpression(
+            try? NSRegularExpression(
 
                 pattern: "(//.*?$)|(/\\*.*?\\*/)|<!--.*?-->",
 
@@ -110,7 +110,7 @@ actor SyntaxHighlighter {
 
     private func apply(
 
-        _ regex: NSRegularExpression,
+        _ regex: NSRegularExpression?,
 
         _ color: Color,
 
@@ -119,6 +119,8 @@ actor SyntaxHighlighter {
         _ code: String
 
     ) {
+
+        guard let regex else { return }
 
         let nsRange = NSRange(
 

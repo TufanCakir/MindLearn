@@ -440,7 +440,7 @@
                 ]
             },
             "code":
-                "func sendToWhisper(_ url: URL) async throws -> String {\n    / Beispiel API Call\n    let apiURL = URL(string: \"https:/api.openai.com/v1/audio/transcriptions\")!\n\n    var request = URLRequest(apiURL)\n    request.httpMethod = \"POST\"\n\n    / Multipart-FormData mit File\n    / In echter App: Whisper.cpp für Offline-Mode nutzen\n\n    return \"Transkript von Whisper\"\n}",
+                "func sendToWhisper(_ url: URL) async throws -> String {\n    / Beispiel API Call\n    let apiURL = URL(string: \"https://api.openai.com/v1/audio/transcriptions\")!\n\n    var request = URLRequest(apiURL)\n    request.httpMethod = \"POST\"\n\n    / Multipart-FormData mit File\n    / In echter App: Whisper.cpp für Offline-Mode nutzen\n\n    return \"Transkript von Whisper\"\n}",
             "category": "Speech"
         }
     ]

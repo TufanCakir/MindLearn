@@ -10,32 +10,71 @@ import SwiftUI
 
 struct LanguageSelectionView: View {
     @Query private var progressRecords: [LearningProgress]
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+    @State private var loadState: ContentLoadState<LanguageOverviewContent> = .loading
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     private let columns = [
         GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 12)
     ]
 
+    private var overview: LanguageOverviewContent? {
+        guard case .loaded(let overview) = loadState else { return nil }
+        return overview
+    }
+
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                header
-                languageGrid
-                allCardsLink
+            switch loadState {
+            case .loading:
+                ProgressView()
+                    .frame(maxWidth: .infinity, minHeight: 300)
+            case .loaded:
+                VStack(alignment: .leading, spacing: 20) {
+                    header
+                    languageGrid
+                    allCardsLink
+                }
+                .padding()
+            case .failed(let details):
+                ContentLoadingFailureView(
+                    title: text.common.loadErrorTitle,
+                    description: text.common.loadErrorDescription,
+                    details: details
+                )
+                .frame(maxWidth: .infinity, minHeight: 300)
+                .padding()
             }
-            .padding()
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .task {
+            loadOverview()
+        }
     }
 }
 
 extension LanguageSelectionView {
+    private func loadOverview() {
+        do {
+            let topics = try LearningTopicLoader.shared.loadAllTopics()
+            var taskCounts: [ProgrammingLanguage: Int] = [:]
+            for language in ProgrammingLanguage.allCases {
+                taskCounts[language] = try CodingTaskLoader.shared
+                    .loadTasks(for: language).count
+            }
+            loadState = .loaded(
+                LanguageOverviewContent(topics: topics, taskCounts: taskCounts)
+            )
+        } catch {
+            loadState = .failed(error.localizedDescription)
+        }
+    }
+
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(text.learningMode.title)
@@ -63,7 +102,7 @@ extension LanguageSelectionView {
     private func languageCard(_ language: ProgrammingLanguage) -> some View {
         let style = CategoryStyle.style(for: language.topicCategory)
         let topics = topics(for: language)
-        let tasks = CodingTaskLoader.shared.loadTasks(for: language)
+        let taskCount = overview?.taskCounts[language] ?? 0
         let completed = completedTopicCount(for: topics)
 
         return VStack(alignment: .leading, spacing: 12) {
@@ -81,7 +120,7 @@ extension LanguageSelectionView {
                     .font(.headline)
 
                 Text(
-                    "\(tasks.count) \(text.learningMode.tasks) • \(topics.count) \(text.learningMode.cards)"
+                    "\(taskCount) \(text.learningMode.tasks) • \(topics.count) \(text.learningMode.cards)"
                 )
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -120,9 +159,9 @@ extension LanguageSelectionView {
     }
 
     private func topics(for language: ProgrammingLanguage) -> [LearningTopic] {
-        LearningTopicLoader.shared.loadAllTopics().filter {
+        overview?.topics.filter {
             $0.category == language.topicCategory
-        }
+        } ?? []
     }
 
     private func completedTopicCount(for topics: [LearningTopic]) -> Int {
@@ -134,8 +173,15 @@ extension LanguageSelectionView {
     }
 }
 
+private struct LanguageOverviewContent {
+    let topics: [LearningTopic]
+    let taskCounts: [ProgrammingLanguage: Int]
+}
+
 #Preview {
-    NavigationStack {
-        LanguageSelectionView()
+    PreviewRoot {
+        NavigationStack {
+            LanguageSelectionView()
+        }
     }
 }

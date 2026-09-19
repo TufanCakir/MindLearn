@@ -10,13 +10,13 @@ import SwiftUI
 struct SideDrawerView: View {
 
     @Binding var showDrawer: Bool
-    @StateObject private var vm = DrawerViewModel()
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @State private var vm = DrawerViewModel()
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     var body: some View {
@@ -55,7 +55,7 @@ extension SideDrawerView {
     }
 
     private func categoryButton(
-        _ category: String
+        _ category: ContentCategoryFilter
     ) -> some View {
 
         let selected = vm.selectedCategory == category
@@ -72,7 +72,7 @@ extension SideDrawerView {
                     .font(.caption.bold())
                     .foregroundStyle(selected ? color : .secondary)
 
-                Text(category)
+                Text(category.title(allTitle: text.drawer.all))
                     .font(.caption.bold())
                     .foregroundStyle(selected ? color : .primary)
             }
@@ -86,7 +86,7 @@ extension SideDrawerView {
             .clipShape(Capsule())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(category)
+        .accessibilityLabel(category.title(allTitle: text.drawer.all))
     }
 }
 
@@ -113,7 +113,7 @@ extension SideDrawerView {
             Text(text.drawer.close)
                 .frame(maxWidth: .infinity)
         }
-        .buttonStyle(.borderedProminent)
+        .buttonStyle(.glassProminent)
         .controlSize(.regular)
         .padding(16)
         .accessibilityLabel(text.accessibility.closeDrawer)
@@ -131,8 +131,9 @@ extension SideDrawerView {
 }
 
 #Preview {
-
-    SideDrawerView(
-        showDrawer: .constant(false)
-    )
+    PreviewRoot {
+        SideDrawerView(
+            showDrawer: .constant(false)
+        )
+    }
 }

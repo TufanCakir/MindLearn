@@ -10,14 +10,14 @@ import SwiftUI
 struct ConceptDetailView: View {
     let concept: LearningConcept
 
-    @AppStorage("language")
-    private var appLanguage =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var appLanguage: String { localization.language }
 
     @State private var playgroundCode: String
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: appLanguage)
+        localization.text
     }
 
     init(concept: LearningConcept) {
@@ -38,14 +38,14 @@ struct ConceptDetailView: View {
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(concept.title(language: appLanguage))
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.inline)
     }
 }
 
 extension ConceptDetailView {
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(concept.language)
+            Text(concept.language.rawValue)
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(.secondary)
 

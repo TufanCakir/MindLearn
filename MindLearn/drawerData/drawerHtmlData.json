@@ -150,7 +150,7 @@
             ]
         },
         "code":
-            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Links Beispiel</title>\n</head>\n<body>\n    <a href=\"https:/example.com\" target=\"_blank\">Besuche Example</a>\n</body>\n</html>",
+            "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Links Beispiel</title>\n</head>\n<body>\n    <a href=\"https://example.com\" target=\"_blank\">Besuche Example</a>\n</body>\n</html>",
         "category": "HTML"
     },
     {
@@ -689,7 +689,7 @@
             ]
         },
         "code":
-            "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\" target=\"_blank\">\n    <img src=\"bild.png\" width=\"200\">\n</a>\n</body>\n</html>",
+            "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https://example.com\" target=\"_blank\">\n    <img src=\"bild.png\" width=\"200\">\n</a>\n</body>\n</html>",
         "category": "HTML"
     },
     {
@@ -727,7 +727,7 @@
             ]
         },
         "code":
-            "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\"https:/example.com\" width=\"300\" height=\"200\"></iframe>\n</body>\n</html>",
+            "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\"https://example.com\" width=\"300\" height=\"200\"></iframe>\n</body>\n</html>",
         "category": "HTML"
     },
     {
@@ -803,7 +803,7 @@
             ]
         },
         "code":
-            "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https:/example.com\">\n    <button style=\"padding:10px;\">Go!</button>\n</a>\n</body>\n</html>",
+            "<!DOCTYPE html>\n<html>\n<body>\n<a href=\"https://example.com\">\n    <button style=\"padding:10px;\">Go!</button>\n</a>\n</body>\n</html>",
         "category": "HTML"
     },
     {

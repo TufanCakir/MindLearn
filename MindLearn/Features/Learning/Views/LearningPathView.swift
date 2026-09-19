@@ -12,22 +12,24 @@ struct LearningPathView: View {
     let language: ProgrammingLanguage
 
     @Query private var progressRecords: [LearningProgress]
-    @AppStorage("language")
-    private var appLanguage =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+    @State private var taskLoadState: ContentLoadState<[CodingTask]> = .loading
+    @State private var topicLoadState: ContentLoadState<[LearningTopic]> = .loading
+
+    private var appLanguage: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: appLanguage)
+        localization.text
     }
 
     private var tasks: [CodingTask] {
-        CodingTaskLoader.shared.loadTasks(for: language)
+        guard case .loaded(let tasks) = taskLoadState else { return [] }
+        return tasks
     }
 
     private var topics: [LearningTopic] {
-        LearningTopicLoader.shared.loadAllTopics().filter {
-            $0.category == language.topicCategory
-        }
+        guard case .loaded(let topics) = topicLoadState else { return [] }
+        return topics
     }
 
     var body: some View {
@@ -40,24 +42,58 @@ struct LearningPathView: View {
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(language.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.inline)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
+        .task(id: language) {
+            loadContent()
+        }
     }
 }
 
 extension LearningPathView {
+    private func loadContent() {
+        do {
+            taskLoadState = .loaded(
+                try CodingTaskLoader.shared.loadTasks(for: language)
+            )
+        } catch {
+            taskLoadState = .failed(error.localizedDescription)
+        }
+
+        do {
+            let topics = try LearningTopicLoader.shared.loadAllTopics().filter {
+                $0.category == language.topicCategory
+            }
+            topicLoadState = .loaded(topics)
+        } catch {
+            topicLoadState = .failed(error.localizedDescription)
+        }
+    }
+
     private var taskSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(text.learningMode.practice)
                 .font(.headline)
                 .accessibilityAddTraits(.isHeader)
 
-            if tasks.isEmpty {
+            switch taskLoadState {
+            case .loading:
+                ProgressView()
+                    .frame(maxWidth: .infinity, minHeight: 180)
+            case .failed(let details):
+                ContentLoadingFailureView(
+                    title: text.common.loadErrorTitle,
+                    description: text.common.loadErrorDescription,
+                    details: details
+                )
+                .frame(maxWidth: .infinity, minHeight: 180)
+            case .loaded where tasks.isEmpty:
                 ContentUnavailableView(
                     text.learningMode.noTasks,
                     systemImage: "keyboard"
                 )
                 .frame(maxWidth: .infinity, minHeight: 180)
-            } else {
+            case .loaded:
                 ForEach(tasks) { task in
                     NavigationLink {
                         CodeChallengeView(task: task)
@@ -111,13 +147,24 @@ extension LearningPathView {
                 .font(.headline)
                 .accessibilityAddTraits(.isHeader)
 
-            if topics.isEmpty {
+            switch topicLoadState {
+            case .loading:
+                ProgressView()
+                    .frame(maxWidth: .infinity, minHeight: 180)
+            case .failed(let details):
+                ContentLoadingFailureView(
+                    title: text.common.loadErrorTitle,
+                    description: text.common.loadErrorDescription,
+                    details: details
+                )
+                .frame(maxWidth: .infinity, minHeight: 180)
+            case .loaded where topics.isEmpty:
                 ContentUnavailableView(
                     text.learningList.emptyTitle,
                     systemImage: "rectangle.grid.2x2"
                 )
                 .frame(maxWidth: .infinity, minHeight: 180)
-            } else {
+            case .loaded:
                 LearningGrid(
                     topics: topics,
                     gridLayout: [GridItem(.flexible())]

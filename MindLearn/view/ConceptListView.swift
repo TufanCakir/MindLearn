@@ -8,29 +8,32 @@
 import SwiftUI
 
 struct ConceptListView: View {
-    @AppStorage("language")
-    private var appLanguage =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var appLanguage: String { localization.language }
 
     @State private var searchText = ""
-    @State private var selectedLanguage = "all"
+    @State private var selectedLanguage: ContentLanguage?
+    @State private var loadState: ContentLoadState<[LearningConcept]> = .loading
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: appLanguage)
+        localization.text
     }
 
     private var concepts: [LearningConcept] {
-        LearningConceptLoader.shared.loadAllConcepts()
+        guard case .loaded(let concepts) = loadState else { return [] }
+        return concepts
     }
 
-    private var languageFilters: [String] {
-        ["all"] + Array(Set(concepts.map(\.language))).sorted()
+    private var languageFilters: [ContentLanguage?] {
+        [nil] + Array(Set(concepts.map(\.language)))
+            .sorted { $0.rawValue < $1.rawValue }
     }
 
     private var filteredConcepts: [LearningConcept] {
         concepts.filter { concept in
             let matchesLanguage =
-                selectedLanguage == "all"
+                selectedLanguage == nil
                 || concept.language == selectedLanguage
             let query = searchText.trimmingCharacters(
                 in: .whitespacesAndNewlines
@@ -53,24 +56,53 @@ struct ConceptListView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                header
-                filterRow
-                conceptRows
+            switch loadState {
+            case .loading:
+                ProgressView()
+                    .frame(maxWidth: .infinity, minHeight: 300)
+            case .loaded:
+                VStack(alignment: .leading, spacing: 18) {
+                    header
+                    filterRow
+                    conceptRows
+                }
+                .padding()
+            case .failed(let details):
+                ContentLoadingFailureView(
+                    title: text.common.loadErrorTitle,
+                    description: text.common.loadErrorDescription,
+                    details: details
+                )
+                .frame(maxWidth: .infinity, minHeight: 300)
+                .padding()
             }
-            .padding()
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(text.concepts.title)
         .searchable(
             text: $searchText,
-            placement: .navigationBarDrawer(displayMode: .always),
+            placement: .toolbar,
             prompt: text.concepts.searchPlaceholder
         )
+        .searchToolbarBehavior(.minimize)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
+        .task {
+            loadConcepts()
+        }
     }
 }
 
 extension ConceptListView {
+    private func loadConcepts() {
+        do {
+            loadState = .loaded(
+                try LearningConceptLoader.shared.loadAllConcepts()
+            )
+        } catch {
+            loadState = .failed(error.localizedDescription)
+        }
+    }
+
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(text.concepts.title)
@@ -181,26 +213,29 @@ extension ConceptListView {
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 
-    private func title(for language: String) -> String {
-        guard language != "all" else {
+    private func title(for language: ContentLanguage?) -> String {
+        guard let language else {
             return text.concepts.all
         }
 
-        return language
+        return language.rawValue
     }
 
-    private func iconName(for language: String) -> String {
+    private func iconName(for language: ContentLanguage) -> String {
         switch language {
-        case "HTML": "chevron.left.forwardslash.chevron.right"
-        case "React Native": "atom"
-        case "Swift", "SwiftUI": "swift"
-        default: "lightbulb"
+        case .html: "chevron.left.forwardslash.chevron.right"
+        case .reactNative: "atom"
+        case .swift, .swiftUI, .swiftData: "swift"
+        case .json: "curlybraces"
+        case .general: "lightbulb"
         }
     }
 }
 
 #Preview {
-    NavigationStack {
-        ConceptListView()
+    PreviewRoot {
+        NavigationStack {
+            ConceptListView()
+        }
     }
 }

@@ -9,12 +9,10 @@ import SwiftUI
 
 struct InfoView: View {
 
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
 
     private var content: InfoContent {
-        Bundle.main.appLocalization(language: language).info
+        localization.text.info
     }
 
     var body: some View {
@@ -38,7 +36,7 @@ struct InfoView: View {
                 .ignoresSafeArea()
         )
         .navigationTitle(content.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.inline)
     }
 }
 
@@ -119,7 +117,9 @@ extension InfoView {
 }
 
 #Preview {
-    NavigationStack {
-        InfoView()
+    PreviewRoot {
+        NavigationStack {
+            InfoView()
+        }
     }
 }

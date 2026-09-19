@@ -9,7 +9,7 @@ import Foundation
 
 struct CodingTask: Identifiable, Codable {
     let id: String
-    let language: String
+    let language: ContentLanguage
     let title: LocalizedTaskText
     let explanation: LocalizedTaskText
     let instruction: LocalizedTaskText
@@ -89,49 +89,34 @@ struct CodingTaskResult {
     let missingKeywords: [String]
 }
 
+enum CodingTaskFile: String, CaseIterable {
+    case swiftUI = "swiftUITasks"
+    case swift = "swiftTasks"
+    case html = "htmlTasks"
+    case json = "jsonTasks"
+    case reactNative = "reactNativeTasks"
+    case swiftData = "swiftDataTasks"
+}
+
 @MainActor
 final class CodingTaskLoader {
     static let shared = CodingTaskLoader()
 
-    private let decoder = JSONDecoder()
-    private var cache: [ProgrammingLanguage: [CodingTask]] = [:]
+    private let repository: BundleContentRepository<CodingTask, CodingTaskFile>
 
-    private init() {}
-
-    func loadTasks(for language: ProgrammingLanguage) -> [CodingTask] {
-        if let cached = cache[language] {
-            return cached
-        }
-
-        guard let url = taskURL(for: language) else {
-            assertionFailure(
-                "Task file not found: \(language.taskFileName).json"
-            )
-            return []
-        }
-
-        do {
-            let data = try Data(contentsOf: url)
-            let tasks = try decoder.decode([CodingTask].self, from: data)
-            cache[language] = tasks
-            return tasks
-        } catch {
-            assertionFailure(
-                "Task decode failed \(language.taskFileName): \(error)"
-            )
-            return []
-        }
+    convenience init() {
+        self.init(repository: BundleContentRepository(subdirectory: "tasks"))
     }
 
-    private func taskURL(for language: ProgrammingLanguage) -> URL? {
-        Bundle.main.url(
-            forResource: language.taskFileName,
-            withExtension: "json",
-            subdirectory: "tasks"
-        )
-            ?? Bundle.main.url(
-                forResource: language.taskFileName,
-                withExtension: "json"
-            )
+    init(repository: BundleContentRepository<CodingTask, CodingTaskFile>) {
+        self.repository = repository
+    }
+
+    func loadTasks(for language: ProgrammingLanguage) throws -> [CodingTask] {
+        try repository.load(language.taskFile)
+    }
+
+    func loadAllTasks() throws -> [CodingTask] {
+        try repository.loadAll(CodingTaskFile.allCases)
     }
 }

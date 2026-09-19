@@ -5,6 +5,7 @@
 //  Created by Tufan Cakir on 31.10.25.
 //
 
+import SwiftData
 import SwiftUI
 
 struct FavoritesView: View {
@@ -12,15 +13,13 @@ struct FavoritesView: View {
     @Environment(\.horizontalSizeClass)
     private var sizeClass
 
-    @StateObject
-    private var favoritesStore =
-        FavoritesStore.shared
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Query private var favorites: [Favorite]
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     var body: some View {
@@ -48,6 +47,7 @@ struct FavoritesView: View {
         )
 
         .navigationTitle(text.favorites.title)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
     }
 }
 
@@ -55,16 +55,18 @@ extension FavoritesView {
 
     private var favoriteTopics: [LearningTopic] {
 
-        LearningTopicLoader
+        (try? LearningTopicLoader
             .shared
-            .loadAllTopics()
+            .loadAllTopics()) ?? []
 
             .filter {
 
-                favoritesStore
-                    .favorites
-                    .contains($0.id)
+                favoriteIDs.contains($0.id)
             }
+    }
+
+    private var favoriteIDs: Set<String> {
+        Set(favorites.map(\.topicID))
     }
 }
 

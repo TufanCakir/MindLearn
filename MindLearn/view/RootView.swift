@@ -8,92 +8,60 @@
 import SwiftUI
 
 struct RootView: View {
+    @Environment(AppRouter.self) private var router
+    @Environment(LocalizationStore.self) private var localization
 
-    @State private var selectedTab: Tab = .home
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
-    }
-
-    enum Tab: CaseIterable, Hashable {
-        case home
-        case help
-        case favorites
-        case settings
-
-        func title(_ text: AppLocalization) -> String {
-            switch self {
-            case .home: text.tabs.learn
-            case .help: text.tabs.help
-            case .favorites: text.tabs.favorites
-            case .settings: text.tabs.settings
-            }
-        }
-
-        var systemImage: String {
-            switch self {
-            case .home: "book"
-            case .help: "lightbulb"
-            case .favorites: "star.fill"
-            case .settings: "gear"
-            }
-        }
-
-        init?(_ destination: AppNavigation.Destination) {
-            switch destination {
-            case .favorites: self = .favorites
-            }
-        }
-
-        @ViewBuilder
-        var rootView: some View {
-            switch self {
-            case .home: HomeView()
-            case .help: ConceptListView()
-            case .favorites: FavoritesView()
-            case .settings: SettingsView()
-            }
-        }
+        localization.text
     }
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            ForEach(Tab.allCases, id: \.self) { tab in
-                NavigationStack {
-                    tab.rootView
+        @Bindable var router = router
+
+        TabView(selection: $router.selectedTab) {
+            ForEach(AppTab.allCases, id: \.self) { tab in
+                Tab(
+                    tab.title(text),
+                    systemImage: tab.systemImage,
+                    value: tab
+                ) {
+                    NavigationStack {
+                        tab.rootView
+                    }
                 }
-                .tabItem {
-                    Label(tab.title(text), systemImage: tab.systemImage)
-                }
-                .tag(tab)
             }
         }
-        .onReceive(
-            NotificationCenter.default.publisher(
-                for: .openAppDestination
-            )
-        ) { notification in
-            guard
-                let destination = notification.object
-                    as? AppNavigation.Destination,
-                let tab = Tab(destination)
-            else { return }
+    }
+}
 
-            open(tab)
+private extension AppTab {
+    func title(_ text: AppLocalization) -> String {
+        switch self {
+        case .home: text.tabs.learn
+        case .help: text.tabs.help
+        case .favorites: text.tabs.favorites
+        case .settings: text.tabs.settings
         }
     }
 
-    private func open(_ tab: Tab) {
-        withAnimation(
-            .spring(
-                response: 0.45,
-                dampingFraction: 0.85
-            )
-        ) {
-            selectedTab = tab
+    var systemImage: String {
+        switch self {
+        case .home: "book"
+        case .help: "lightbulb"
+        case .favorites: "star.fill"
+        case .settings: "gear"
+        }
+    }
+
+    @ViewBuilder
+    var rootView: some View {
+        switch self {
+        case .home: HomeView()
+        case .help: ConceptListView()
+        case .favorites: FavoritesView()
+        case .settings: SettingsView()
         }
     }
 }

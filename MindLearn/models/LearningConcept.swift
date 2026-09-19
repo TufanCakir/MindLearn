@@ -9,7 +9,7 @@ import Foundation
 
 struct LearningConcept: Identifiable, Codable {
     let id: String
-    let language: String
+    let language: ContentLanguage
     let title: LocalizedTaskText
     let summary: LocalizedTaskText
     let explanation: LocalizedTaskText
@@ -30,48 +30,27 @@ struct LearningConcept: Identifiable, Codable {
     }
 }
 
+enum LearningConceptFile: String, CaseIterable {
+    case concepts
+}
+
 @MainActor
 final class LearningConceptLoader {
     static let shared = LearningConceptLoader()
 
-    private let decoder = JSONDecoder()
-    private var cache: [LearningConcept]?
+    private let repository: BundleContentRepository<LearningConcept, LearningConceptFile>
 
-    private init() {}
-
-    func loadAllConcepts() -> [LearningConcept] {
-        if let cache {
-            return cache
-        }
-
-        guard let url = conceptURL() else {
-            assertionFailure("Concept file not found: concepts.json")
-            return []
-        }
-
-        do {
-            let data = try Data(contentsOf: url)
-            let concepts = try decoder.decode(
-                [LearningConcept].self,
-                from: data
-            )
-            cache = concepts
-            return concepts
-        } catch {
-            assertionFailure("Concept decode failed: \(error)")
-            return []
-        }
+    convenience init() {
+        self.init(repository: BundleContentRepository(subdirectory: "concepts"))
     }
 
-    private func conceptURL() -> URL? {
-        Bundle.main.url(
-            forResource: "concepts",
-            withExtension: "json",
-            subdirectory: "concepts"
-        )
-            ?? Bundle.main.url(
-                forResource: "concepts",
-                withExtension: "json"
-            )
+    init(
+        repository: BundleContentRepository<LearningConcept, LearningConceptFile>
+    ) {
+        self.repository = repository
+    }
+
+    func loadAllConcepts() throws -> [LearningConcept] {
+        try repository.load(.concepts)
     }
 }

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
 
     @AppStorage("enhancedAccessibilityLabels")
     private var enhancedAccessibilityLabels = true
@@ -22,7 +20,7 @@ struct SettingsView: View {
     private var largeLearningCards = false
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     var body: some View {
@@ -39,8 +37,8 @@ struct SettingsView: View {
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(text.settings.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .environment(\.locale, Locale(identifier: language))
+        .toolbarTitleDisplayMode(.inline)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
     }
 }
 
@@ -48,11 +46,13 @@ struct SettingsView: View {
 
 extension SettingsView {
     private var languageSection: some View {
-        SettingsSection(
+        @Bindable var localization = localization
+
+        return SettingsSection(
             title: text.settings.languageSection,
             systemImage: "globe"
         ) {
-            Picker(text.settings.languagePicker, selection: $language) {
+            Picker(text.settings.languagePicker, selection: $localization.language) {
                 Text(text.settings.languageDE).tag("de")
                 Text(text.settings.languageEN).tag("en")
             }

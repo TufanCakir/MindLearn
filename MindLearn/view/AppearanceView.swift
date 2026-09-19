@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AppearanceView: View {
 
-    @EnvironmentObject private var themeManager: ThemeManager
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(ThemeManager.self) private var themeManager
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     var body: some View {
@@ -35,7 +35,7 @@ struct AppearanceView: View {
             .scrollContentBackground(.hidden)
         }
         .navigationTitle(text.appearance.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.inline)
     }
 }
 
@@ -71,7 +71,7 @@ extension AppearanceView {
 
                     Text(themeDescription(theme))
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
 
                 Spacer()
@@ -79,7 +79,7 @@ extension AppearanceView {
                 // MARK: - Checkmark
                 if theme.id == themeManager.selectedTheme.id {
                     Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.accentColor)
+                        .foregroundStyle(.tint)
                         .transition(.scale)
                 }
             }

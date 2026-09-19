@@ -10,12 +10,12 @@ import SwiftUI
 struct DrawerListView: View {
 
     let sections: [DrawerSection]
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     var body: some View {

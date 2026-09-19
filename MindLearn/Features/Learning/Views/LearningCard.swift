@@ -11,15 +11,21 @@ struct LearningCard: View {
 
     let topic: LearningTopic
     let progressStatus: LearningProgressStatus
+    let isFavorite: Bool
+    let onToggleFavorite: () -> Void
 
-    init(topic: LearningTopic, progressStatus: LearningProgressStatus = .unread)
+    init(
+        topic: LearningTopic,
+        progressStatus: LearningProgressStatus = .unread,
+        isFavorite: Bool = false,
+        onToggleFavorite: @escaping () -> Void = {}
+    )
     {
         self.topic = topic
         self.progressStatus = progressStatus
+        self.isFavorite = isFavorite
+        self.onToggleFavorite = onToggleFavorite
     }
-
-    @ObservedObject private var favoritesStore = FavoritesStore.shared
-    @State private var showShareSheet = false
 
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -33,12 +39,12 @@ struct LearningCard: View {
     @AppStorage("largeLearningCards")
     private var largeLearningCards = false
 
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     private var localizedTitle: String {
@@ -62,9 +68,6 @@ struct LearningCard: View {
         .accessibilityElement(children: .contain)
         .accessibilityLabel(cardAccessibilityLabel)
         .accessibilityHint(text.accessibility.learningCardHint)
-        .sheet(isPresented: $showShareSheet) {
-            ShareSheet(activityItems: [topic.code])
-        }
     }
 }
 
@@ -192,12 +195,9 @@ extension LearningCard {
 extension LearningCard {
 
     private var favoriteButton: some View {
-        let isFavorite =
-            favoritesStore.favorites.contains(topic.id)
-
         return Button {
             if shouldReduceMotion {
-                favoritesStore.toggle(id: topic.id)
+                onToggleFavorite()
             } else {
                 withAnimation(
                     .spring(
@@ -205,7 +205,7 @@ extension LearningCard {
                         dampingFraction: 0.6
                     )
                 ) {
-                    favoritesStore.toggle(id: topic.id)
+                    onToggleFavorite()
                 }
             }
         } label: {
@@ -245,9 +245,7 @@ extension LearningCard {
     private var footerRow: some View {
         return HStack {
             Spacer()
-            Button {
-                showShareSheet = true
-            } label: {
+            ShareLink(item: topic.code) {
                 Label(
                     text.common.share,
                     systemImage:
@@ -255,7 +253,7 @@ extension LearningCard {
                 )
                 .font(actionFont)
             }
-            .buttonStyle(.bordered)
+            .buttonStyle(.glass)
             .accessibilityLabel(text.accessibility.shareCode)
         }
     }
@@ -340,14 +338,13 @@ extension LearningCard {
             return "\(localizedTitle). \(localizedDescription)"
         }
 
-        let favorite =
-            favoritesStore.favorites.contains(topic.id)
+        let favorite = isFavorite
             ? text.accessibility.favoriteStatus
             : text.accessibility.notFavoriteStatus
 
         return """
             \(localizedTitle). \(localizedDescription). \
-            \(text.accessibility.categoryPrefix): \(topic.category). \
+            \(text.accessibility.categoryPrefix): \(topic.category.rawValue). \
             \(text.progress.title): \(progressTitle(for: progressStatus)). \
             \(favorite).
             """
@@ -361,28 +358,4 @@ extension LearningCard {
         case .review: text.progress.review
         }
     }
-}
-// MARK: ShareSheet
-
-struct ShareSheet:
-    UIViewControllerRepresentable
-{
-
-    let activityItems: [Any]
-
-    func makeUIViewController(
-        context: Context
-    ) -> UIActivityViewController {
-
-        UIActivityViewController(
-
-            activityItems: activityItems,
-            applicationActivities: nil
-        )
-    }
-
-    func updateUIViewController(
-        _ uiViewController: UIActivityViewController,
-        context: Context
-    ) {}
 }

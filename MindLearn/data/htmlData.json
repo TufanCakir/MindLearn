@@ -235,7 +235,7 @@
                 ]
             },
             "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n  <a href=\\\"https:/example.com\\\" target=\\\"_blank\\\">Öffne Example</a>\n</body>\n</html>",
+                "<!DOCTYPE html>\n<html>\n<body>\n  <a href=\\\"https://example.com\\\" target=\\\"_blank\\\">Öffne Example</a>\n</body>\n</html>",
             "category": "HTML"
         },
         {
@@ -699,7 +699,7 @@
                 ]
             },
             "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<a href=\\\"https:/example.com\\\" target=\\\"_blank\\\">\n  <img src=\\\"bild.png\\\" width=\\\"200\\\">\n</a>\n</body>\n</html>",
+                "<!DOCTYPE html>\n<html>\n<body>\n<a href=\\\"https://example.com\\\" target=\\\"_blank\\\">\n  <img src=\\\"bild.png\\\" width=\\\"200\\\">\n</a>\n</body>\n</html>",
             "category": "HTML"
         },
         {
@@ -737,7 +737,7 @@
                 ]
             },
             "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\\\"https:/example.com\\\" width=\\\"300\\\" height=\\\"200\\\"></iframe>\n</body>\n</html>",
+                "<!DOCTYPE html>\n<html>\n<body>\n<iframe src=\\\"https://example.com\\\" width=\\\"300\\\" height=\\\"200\\\"></iframe>\n</body>\n</html>",
             "category": "HTML"
         },
         {
@@ -815,7 +815,7 @@
                 ]
             },
             "code":
-                "<!DOCTYPE html>\n<html>\n<body>\n<a href=\\\"https:/google.com\\\">\n  <button style=\\\"padding:10px;\\\">Go</button>\n</a>\n</body>\n</html>",
+                "<!DOCTYPE html>\n<html>\n<body>\n<a href=\\\"https://google.com\\\">\n  <button style=\\\"padding:10px;\\\">Go</button>\n</a>\n</body>\n</html>",
             "category": "HTML"
         },
         {
@@ -968,7 +968,7 @@
                 ]
             },
             "code":
-                "<!DOCTYPE html>\\n<html>\\n<head>\\n<link href=\\\"https:/fonts.googleapis.com/css2?family=Roboto&display=swap\\\" rel=\\\"stylesheet\\\">\\n<style>\\nbody { font-family: 'Roboto', sans-serif; }\\n</style>\\n</head>\\n<body>Text</body>\\n</html>",
+                "<!DOCTYPE html>\\n<html>\\n<head>\\n<link href=\\\"https://fonts.googleapis.com/css2?family=Roboto&display=swap\\\" rel=\\\"stylesheet\\\">\\n<style>\\nbody { font-family: 'Roboto', sans-serif; }\\n</style>\\n</head>\\n<body>Text</body>\\n</html>",
             "category": "HTML"
         },
         {

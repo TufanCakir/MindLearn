@@ -320,5 +320,45 @@
             "let points = 10\npoints == 10\n\n// JavaScript:\n10 === \"10\" // false",
         "playgroundCode":
             "let score = 5\nlet isPerfect = score == 10\n\n// Try changing score"
+    },
+    {
+        "id": "swiftui-modern-tab",
+        "language": "SwiftUI",
+        "title": {"de": "Tab und TabView", "en": "Tab and TabView"},
+        "summary": {"de": "Tab beschreibt einen Bereich mit Titel, Symbol und optionalem Auswahlwert.", "en": "Tab describes a section with a title, symbol, and optional selection value."},
+        "explanation": {"de": "Die moderne API bündelt Inhalt und Metadaten in Tab. Typisierte Werte machen programmatische Auswahl sicherer und ersetzen die ältere Kombination aus tabItem und tag.", "en": "The modern API combines content and metadata in Tab. Typed values make programmatic selection safer and replace the older tabItem and tag combination."},
+        "symbols": ["TabView", "Tab", "selection", "value"],
+        "exampleCode": "TabView(selection: $selection) {\n    Tab(\"Home\", systemImage: \"house\", value: .home) {\n        HomeView()\n    }\n}",
+        "playgroundCode": "enum AppTab: Hashable { case home, settings }\n@State private var selection: AppTab = .home"
+    },
+    {
+        "id": "swiftui-liquid-glass",
+        "language": "SwiftUI",
+        "title": {"de": "Liquid Glass", "en": "Liquid Glass"},
+        "summary": {"de": "Native Glass-Effekte passen Material und Interaktion an ihre Umgebung an.", "en": "Native glass effects adapt material and interaction to their environment."},
+        "explanation": {"de": "Nutze Glass gezielt für Navigation und interaktive Flächen. Lesbarkeit, klare Hierarchie und semantische Controls bleiben wichtiger als möglichst viele Effekte.", "en": "Use glass intentionally for navigation and interactive surfaces. Readability, clear hierarchy, and semantic controls remain more important than maximizing effects."},
+        "symbols": ["glassEffect", "glass", "glassProminent"],
+        "exampleCode": "Text(\"Lernen\")\n    .padding()\n    .glassEffect(.regular, in: .capsule)",
+        "playgroundCode": "Button(\"Start\") { }\n    .buttonStyle(.glassProminent)"
+    },
+    {
+        "id": "swiftui-toolbar-overflow",
+        "language": "SwiftUI",
+        "title": {"de": "Toolbar-Priorität und Overflow", "en": "Toolbar priority and overflow"},
+        "summary": {"de": "Wichtige Aktionen bleiben sichtbar, weitere Aktionen liegen verlässlich im Overflow-Menü.", "en": "Important actions stay visible while secondary actions reliably live in the overflow menu."},
+        "explanation": {"de": "ToolbarOverflowMenu platziert Aktionen immer im Überlauf. visibilityPriority hilft SwiftUI zu entscheiden, welche normalen Toolbar-Elemente zuerst sichtbar bleiben.", "en": "ToolbarOverflowMenu always places actions in overflow. visibilityPriority helps SwiftUI decide which regular toolbar items remain visible first."},
+        "symbols": ["ToolbarItem", "ToolbarOverflowMenu", "visibilityPriority", "toolbarMinimizationBehavior"],
+        "exampleCode": ".toolbar {\n    ToolbarItem(placement: .topBarTrailing) { Button(\"Neu\") { } }\n        .visibilityPriority(.high)\n    ToolbarOverflowMenu { Button(\"Archiv\") { } }\n}",
+        "playgroundCode": ".toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)"
+    },
+    {
+        "id": "swiftui-reordering",
+        "language": "SwiftUI",
+        "title": {"de": "Native Neuordnung", "en": "Native reordering"},
+        "summary": {"de": "Dynamische Inhalte lassen sich in beliebigen Containern systemkonform neu anordnen.", "en": "Dynamic content can be reordered with system behavior in arbitrary containers."},
+        "explanation": {"de": "reorderable markiert die Elemente. reorderContainer definiert den Bereich und liefert eine CollectionDifference, die du auf dein Modell anwendest.", "en": "reorderable marks the items. reorderContainer defines the scope and provides a CollectionDifference that you apply to your model."},
+        "symbols": ["reorderable", "reorderContainer", "CollectionDifference"],
+        "exampleCode": "ForEach(items) { item in\n    Row(item: item)\n}\n.reorderable()",
+        "playgroundCode": ".reorderContainer(for: Item.self) { difference in\n    items = items.applying(difference) ?? items\n}"
     }
 ]

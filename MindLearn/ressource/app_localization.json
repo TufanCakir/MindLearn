@@ -34,7 +34,9 @@
             "done": "Fertig",
             "description": "Beschreibung",
             "steps": "Schritte",
-            "codeExample": "Code-Beispiel"
+            "codeExample": "Code-Beispiel",
+            "loadErrorTitle": "Inhalte konnten nicht geladen werden",
+            "loadErrorDescription": "Bitte prüfe die enthaltenen Inhaltsdateien."
         },
         "home": {
             "title": "Lernen"
@@ -47,11 +49,13 @@
         "drawer": {
             "title": "Dokumentation",
             "close": "Schließen",
+            "all": "Alle",
             "emptyTitle": "Keine Dokumentation",
             "emptyDescription": "Keine Inhalte gefunden."
         },
         "learningList": {
             "searchPlaceholder": "Suche...",
+            "all": "Alle",
             "emptyTitle": "Keine Ergebnisse",
             "emptyDescription": "Versuche andere Suchbegriffe."
         },
@@ -218,7 +222,9 @@
             "done": "Done",
             "description": "Description",
             "steps": "Steps",
-            "codeExample": "Code Example"
+            "codeExample": "Code Example",
+            "loadErrorTitle": "Content Could Not Be Loaded",
+            "loadErrorDescription": "Please check the bundled content files."
         },
         "home": {
             "title": "Learn"
@@ -231,11 +237,13 @@
         "drawer": {
             "title": "Documentation",
             "close": "Close",
+            "all": "All",
             "emptyTitle": "No Documentation",
             "emptyDescription": "No content found."
         },
         "learningList": {
             "searchPlaceholder": "Search...",
+            "all": "All",
             "emptyTitle": "No Results",
             "emptyDescription": "Try different search terms."
         },

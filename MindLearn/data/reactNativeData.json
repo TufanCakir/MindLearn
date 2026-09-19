@@ -497,7 +497,7 @@
             ]
         },
         "code":
-            "import { useState, useEffect } from 'react';\nimport { View, Text, ActivityIndicator } from 'react-native';\n\nexport default function ApiExample() {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    fetch('https:/jsonplaceholder.typicode.com/posts/1')\n      .then(res => res.json())\n      .then(json => setData(json))\n      .catch(err => console.error(err))\n      .finally(() => setLoading(false));\n  }, []);\n\n  if (loading) return <ActivityIndicator size=\"large\" />;\n\n  return (\n    <View style={{ padding: 20 }}>\n      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{data.title}</Text>\n      <Text>{data.body}</Text>\n    </View>\n  );\n}",
+            "import { useState, useEffect } from 'react';\nimport { View, Text, ActivityIndicator } from 'react-native';\n\nexport default function ApiExample() {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    fetch('https://jsonplaceholder.typicode.com/posts/1')\n      .then(res => res.json())\n      .then(json => setData(json))\n      .catch(err => console.error(err))\n      .finally(() => setLoading(false));\n  }, []);\n\n  if (loading) return <ActivityIndicator size=\"large\" />;\n\n  return (\n    <View style={{ padding: 20 }}>\n      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{data.title}</Text>\n      <Text>{data.body}</Text>\n    </View>\n  );\n}",
         "category": "React Native"
     },
     {
@@ -620,7 +620,7 @@
             ]
         },
         "code":
-            "import * as FileSystem from 'expo-file-system';\nimport { useState } from 'react';\nimport { Button, Text, View } from 'react-native';\n\nexport default function DownloadExample() {\n  const [path, setPath] = useState(null);\n\n  const download = async () => {\n    const result = await FileSystem.downloadAsync(\n      'https:/picsum.photos/400',\n      FileSystem.documentDirectory + 'image.jpg'\n    );\n    setPath(result.uri);\n  };\n\n  return (\n    <View style={{ padding: 30 }}>\n      <Button title=\"Bild herunterladen\" onPress={download} />\n      {path && <Text style={{ marginTop: 10 }}>📁 Gespeichert unter: {path}</Text>}\n    </View>\n  );\n}",
+            "import * as FileSystem from 'expo-file-system';\nimport { useState } from 'react';\nimport { Button, Text, View } from 'react-native';\n\nexport default function DownloadExample() {\n  const [path, setPath] = useState(null);\n\n  const download = async () => {\n    const result = await FileSystem.downloadAsync(\n      'https://picsum.photos/400',\n      FileSystem.documentDirectory + 'image.jpg'\n    );\n    setPath(result.uri);\n  };\n\n  return (\n    <View style={{ padding: 30 }}>\n      <Button title=\"Bild herunterladen\" onPress={download} />\n      {path && <Text style={{ marginTop: 10 }}>📁 Gespeichert unter: {path}</Text>}\n    </View>\n  );\n}",
         "category": "React Native"
     },
     {
@@ -865,7 +865,7 @@
             ]
         },
         "code":
-            "import { View, Image } from 'react-native';\nimport { Ionicons } from '@expo/vector-icons';\n\nexport default function ImageExample() {\n  return (\n    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: 20 }}>\n      <Image source={require('./assets/logo.png')} style={{ width: 100, height: 100 }} />\n      <Image source={{ uri: 'https:/picsum.photos/200' }} style={{ width: 100, height: 100, borderRadius: 20 }} />\n      <Ionicons name=\"rocket\" size={48} color=\"#61DAFB\" />\n    </View>\n  );\n}",
+            "import { View, Image } from 'react-native';\nimport { Ionicons } from '@expo/vector-icons';\n\nexport default function ImageExample() {\n  return (\n    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: 20 }}>\n      <Image source={require('./assets/logo.png')} style={{ width: 100, height: 100 }} />\n      <Image source={{ uri: 'https://picsum.photos/200' }} style={{ width: 100, height: 100, borderRadius: 20 }} />\n      <Ionicons name=\"rocket\" size={48} color=\"#61DAFB\" />\n    </View>\n  );\n}",
         "category": "React Native"
     },
     {
@@ -1561,7 +1561,7 @@
             ]
         },
         "code":
-            "import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';\n\nconst qc = new QueryClient();\n\nfunction Data() {\n  const { data } = useQuery(['posts'], () => fetch('https:/jsonplaceholder.typicode.com/posts/1').then(r => r.json()));\n  return <Text style={{color:'#fff'}}>{data?.title}</Text>;\n}\n\nexport default function App() {\n  return <QueryClientProvider client={qc}><Data/></QueryClientProvider>;\n}",
+            "import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';\n\nconst qc = new QueryClient();\n\nfunction Data() {\n  const { data } = useQuery(['posts'], () => fetch('https://jsonplaceholder.typicode.com/posts/1').then(r => r.json()));\n  return <Text style={{color:'#fff'}}>{data?.title}</Text>;\n}\n\nexport default function App() {\n  return <QueryClientProvider client={qc}><Data/></QueryClientProvider>;\n}",
         "category": "React Native"
     },
     {
@@ -2028,7 +2028,7 @@
             ]
         },
         "code":
-            "import QRCode from 'react-native-qrcode-svg';\n\nexport default function QRExample() {\n  return <QRCode value=\"https:/slayken.com\" size={160} />;\n}",
+            "import QRCode from 'react-native-qrcode-svg';\n\nexport default function QRExample() {\n  return <QRCode value=\"https://slayken.com\" size={160} />;\n}",
         "category": "React Native"
     },
     {
@@ -2068,7 +2068,7 @@
             ]
         },
         "code":
-            "import { useState, useEffect } from 'react';\nimport { FlatList, Text, View } from 'react-native';\n\nexport default function InfiniteScroll() {\n  const [page, setPage] = useState(1);\n  const [items, setItems] = useState([]);\n\n  const loadMore = () => setPage(p => p + 1);\n\n  useEffect(() => {\n    fetch(`https:/jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`)\n      .then(res => res.json())\n      .then(json => setItems(prev => [...prev, ...json]));\n  }, [page]);\n\n  return (\n    <FlatList\n      data={items}\n      keyExtractor={i => i.id.toString()}\n      renderItem={({ item }) => <Text style={{ color:'#fff', padding:12 }}>{item.title}</Text>}\n      onEndReached={loadMore}\n      onEndReachedThreshold={0.5}\n    />\n  );\n}",
+            "import { useState, useEffect } from 'react';\nimport { FlatList, Text, View } from 'react-native';\n\nexport default function InfiniteScroll() {\n  const [page, setPage] = useState(1);\n  const [items, setItems] = useState([]);\n\n  const loadMore = () => setPage(p => p + 1);\n\n  useEffect(() => {\n    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`)\n      .then(res => res.json())\n      .then(json => setItems(prev => [...prev, ...json]));\n  }, [page]);\n\n  return (\n    <FlatList\n      data={items}\n      keyExtractor={i => i.id.toString()}\n      renderItem={({ item }) => <Text style={{ color:'#fff', padding:12 }}>{item.title}</Text>}\n      onEndReached={loadMore}\n      onEndReachedThreshold={0.5}\n    />\n  );\n}",
         "category": "React Native"
     },
     {
@@ -2148,7 +2148,7 @@
             ]
         },
         "code":
-            "import FastImage from 'react-native-fast-image';\n\nexport default function CacheImage() {\n  return (\n    <FastImage\n      style={{ width: 180, height: 180, borderRadius:20 }}\n      source={{ uri:'https:/picsum.photos/300', priority: FastImage.priority.high }}\n      resizeMode={FastImage.resizeMode.cover}\n    />\n  );\n}",
+            "import FastImage from 'react-native-fast-image';\n\nexport default function CacheImage() {\n  return (\n    <FastImage\n      style={{ width: 180, height: 180, borderRadius:20 }}\n      source={{ uri:'https://picsum.photos/300', priority: FastImage.priority.high }}\n      resizeMode={FastImage.resizeMode.cover}\n    />\n  );\n}",
         "category": "React Native"
     },
     {

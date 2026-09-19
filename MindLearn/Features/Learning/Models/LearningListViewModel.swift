@@ -5,34 +5,35 @@
 //  Created by Tufan Cakir on 31.10.25.
 //
 
-internal import Combine
 import Foundation
+import Observation
 import SwiftUI
 
 @MainActor
-final class LearningListViewModel: ObservableObject {
+@Observable
+final class LearningListViewModel {
 
     // MARK: Published
 
-    @Published private(set)
-        var topics: [LearningTopic] = []
+    private(set) var topics: [LearningTopic] = []
 
-    @Published var searchText = ""
+    var searchText = ""
 
-    @Published var selectedCategory =
-        Category.all
+    var selectedCategory: ContentCategoryFilter = .all
 
-    @Published private(set)
-        var categories: [String] = []
+    private(set) var categories: [ContentCategoryFilter] = []
 
-    enum Category {
+    private(set) var loadingError: Error?
 
-        static let all = "Alle"
-    }
+    private let topicProvider: any LearningTopicProviding
 
     // MARK: Init
-    init() {
+    convenience init() {
+        self.init(topicProvider: LearningTopicLoader.shared)
+    }
 
+    init(topicProvider: any LearningTopicProviding) {
+        self.topicProvider = topicProvider
         loadTopics()
     }
 
@@ -67,21 +68,9 @@ extension LearningListViewModel {
         _ topic: LearningTopic
     ) -> Bool {
 
-        selectedCategory == Category.all
+        guard let category = selectedCategory.category else { return true }
 
-            ||
-
-            topic.category
-                .trimmingCharacters(
-                    in: .whitespacesAndNewlines
-                )
-
-                ==
-
-                selectedCategory
-                .trimmingCharacters(
-                    in: .whitespacesAndNewlines
-                )
+        return topic.category == category
     }
 
     fileprivate func matchesSearch(
@@ -104,12 +93,9 @@ extension LearningListViewModel {
 extension LearningListViewModel {
 
     func colorForCategory(
-        _ category: String
+        _ filter: ContentCategoryFilter
     ) -> Color {
-
-        guard category != Category.all else {
-            return .accentColor
-        }
+        guard let category = filter.category else { return .accentColor }
 
         // Use the color associated with the category style.
         return
@@ -125,10 +111,13 @@ extension LearningListViewModel {
 
     fileprivate func loadTopics() {
 
-        topics =
-            LearningTopicLoader
-            .shared
-            .loadAllTopics()
+        do {
+            topics = try topicProvider.loadAllTopics()
+            loadingError = nil
+        } catch {
+            topics = []
+            loadingError = error
+        }
 
         categories =
             buildCategories(
@@ -138,20 +127,11 @@ extension LearningListViewModel {
 
     fileprivate func buildCategories(
         from topics: [LearningTopic]
-    ) -> [String] {
+    ) -> [ContentCategoryFilter] {
 
-        let unique = Set(
+        let unique = Set(topics.map(\.category))
 
-            topics.map {
-
-                $0.category
-                    .trimmingCharacters(
-                        in: .whitespacesAndNewlines
-                    )
-            }
-        )
-
-        return [Category.all]
-            + unique.sorted()
+        return [.all] + unique.sorted { $0.rawValue < $1.rawValue }
+            .map(ContentCategoryFilter.category)
     }
 }

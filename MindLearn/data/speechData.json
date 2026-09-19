@@ -244,7 +244,7 @@
                 ]
             },
             "code":
-                "class SpeechManager: NSObject, ObservableObject {\n    @Published var text = \"Sag etwas…\"\n    / Starte hier AudioEngine & Task (aus speech_002)\n}\n\nstruct SpeechView: View {\n    @StateObject private var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 40) {\n            Text(speech.text)\n                .font(.title2)\n                .foregroundColor(.white)\n                .padding()\n\n            Button(\"🎤 Start\") {\n                try? speech.start()\n            }\n            .buttonStyle(.borderedProminent)\n        }\n    }\n}",
+                "class SpeechManager: NSObject, ObservableObject {\n    @Published var text = \"Sag etwas…\"\n    / Starte hier AudioEngine & Task (aus speech_002)\n}\n\nstruct SpeechView: View {\n    @StateObject private var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 40) {\n            Text(speech.text)\n                .font(.title2)\n                .foregroundStyle(.white)\n                .padding()\n\n            Button(\"🎤 Start\") {\n                try? speech.start()\n            }\n            .buttonStyle(.borderedProminent)\n        }\n    }\n}",
             "category": "Speech"
         },
         {
@@ -483,7 +483,7 @@
                 ]
             },
             "code":
-                "struct VoiceUIExample: View {\n    @StateObject var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Text(\"Befehl: \\(speech.text)\")\n                .foregroundColor(.white)\n\n            Button(\"⚔️ Attack\") {\n                print(\"Attack gedrückt\")\n            }\n            .onChange(of: speech.text) { text in\n                if text.lowercased().contains(\"attack\") {\n                    print(\"⚔️ Voice Attack ausgelöst!\")\n                }\n            }\n\n            Button(\"💚 Heal\") {\n                print(\"Heal gedrückt\")\n            }\n            .onChange(of: speech.text) { text in\n                if text.lowercased().contains(\"heal\") {\n                    print(\"💚 Voice Heal ausgelöst!\")\n                }\n            }\n        }\n        .padding()\n    }\n}",
+                "struct VoiceUIExample: View {\n    @StateObject var speech = SpeechManager()\n\n    var body: some View {\n        VStack(spacing: 30) {\n            Text(\"Befehl: \\(speech.text)\")\n                .foregroundStyle(.white)\n\n            Button(\"⚔️ Attack\") {\n                print(\"Attack gedrückt\")\n            }\n            .onChange(of: speech.text) { _, text in\n                if text.lowercased().contains(\"attack\") {\n                    print(\"⚔️ Voice Attack ausgelöst!\")\n                }\n            }\n\n            Button(\"💚 Heal\") {\n                print(\"Heal gedrückt\")\n            }\n            .onChange(of: speech.text) { _, text in\n                if text.lowercased().contains(\"heal\") {\n                    print(\"💚 Voice Heal ausgelöst!\")\n                }\n            }\n        }\n        .padding()\n    }\n}",
             "category": "Speech"
         }
     ]

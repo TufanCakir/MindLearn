@@ -13,18 +13,19 @@ struct LearningListView: View {
     @Environment(\.horizontalSizeClass)
     private var sizeClass
 
-    @StateObject
+    @State
     private var vm =
         LearningListViewModel()
-    @AppStorage("language")
-    private var language =
-        Locale.current.language.languageCode?.identifier ?? "en"
+    @Environment(LocalizationStore.self) private var localization
+
+    private var language: String { localization.language }
 
     private var text: AppLocalization {
-        Bundle.main.appLocalization(language: language)
+        localization.text
     }
 
     var body: some View {
+        @Bindable var vm = vm
 
         VStack(spacing: 0) {
 
@@ -39,6 +40,13 @@ struct LearningListView: View {
             Color(.systemGroupedBackground)
                 .ignoresSafeArea()
         )
+        .searchable(
+            text: $vm.searchText,
+            placement: .toolbar,
+            prompt: text.learningList.searchPlaceholder
+        )
+        .searchToolbarBehavior(.minimize)
+        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
     }
 }
 
@@ -47,8 +55,6 @@ extension LearningListView {
     private var stickyHeader: some View {
 
         VStack(spacing: 14) {
-
-            searchBar
 
             categoryTabs
         }
@@ -100,6 +106,8 @@ struct LearningGrid: View {
     let gridLayout: [GridItem]
 
     @Query private var progressRecords: [LearningProgress]
+    @Query private var favorites: [Favorite]
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
 
@@ -116,7 +124,9 @@ struct LearningGrid: View {
                 } label: {
                     LearningCard(
                         topic: topic,
-                        progressStatus: progressStatus(for: topic.id)
+                        progressStatus: progressStatus(for: topic.id),
+                        isFavorite: isFavorite(topic.id),
+                        onToggleFavorite: { toggleFavorite(topic.id) }
                     )
                 }
                 .buttonStyle(PressableCardStyle())
@@ -138,55 +148,28 @@ struct LearningGrid: View {
     private func progressStatus(for topicID: String) -> LearningProgressStatus {
         progressRecords.first { $0.topicID == topicID }?.status ?? .unread
     }
+
+    private func isFavorite(_ topicID: String) -> Bool {
+        favorites.contains { $0.topicID == topicID }
+    }
+
+    private func toggleFavorite(_ topicID: String) {
+        do {
+            try FavoritesRepository.toggle(
+                topicID: topicID,
+                favorites: favorites,
+                in: modelContext
+            )
+        } catch {
+            assertionFailure("Could not update favorite: \(error)")
+        }
+    }
 }
 
 extension LearningListView {
     // Horizontal padding used across the view; adapts to size class
     var horizontalPadding: CGFloat {
         sizeClass == .regular ? 24 : 16
-    }
-}
-
-extension LearningListView {
-
-    private var searchBar: some View {
-
-        HStack(spacing: 10) {
-
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
-
-            TextField(
-                text.learningList.searchPlaceholder,
-                text: $vm.searchText
-            )
-            .textInputAutocapitalization(.never)
-            .disableAutocorrection(true)
-
-            if !vm.searchText.isEmpty {
-
-                Button {
-
-                    vm.searchText = ""
-
-                } label: {
-
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.secondary)
-                }
-            }
-        }
-
-        .padding(12)
-
-        .background {
-
-            RoundedRectangle(
-                cornerRadius: 14,
-                style: .continuous
-            )
-            .fill(.thinMaterial)
-        }
     }
 }
 
@@ -211,16 +194,21 @@ extension LearningListView {
 extension LearningListView {
 
     private func categoryButton(
-        _ category: String
+        _ category: ContentCategoryFilter
     ) -> some View {
 
         let selected =
             vm.selectedCategory == category
 
-        let style =
-            CategoryStyle.style(
-                for: category
+        let style: CategoryStyle
+        if let categoryName = category.category {
+            style = CategoryStyle.style(for: categoryName)
+        } else {
+            style = CategoryStyle(
+                icon: "square.grid.2x2",
+                color: .accentColor
             )
+        }
 
         let color = style.color
 
@@ -246,7 +234,7 @@ extension LearningListView {
                             : .primary
                     )
 
-                Text(category)
+                Text(category.title(allTitle: text.learningList.all))
 
                     .font(.caption.bold())
 
@@ -322,5 +310,7 @@ extension LearningListView {
 }
 
 #Preview {
-    LearningListView()
+    PreviewRoot {
+        LearningListView()
+    }
 }

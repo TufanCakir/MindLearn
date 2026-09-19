@@ -7,6 +7,26 @@
 
 import Foundation
 
+enum LocalizationLoadingError: LocalizedError {
+    case missingResource
+    case unreadableResource(Error)
+    case invalidResource(Error)
+    case missingFallbackLanguage
+
+    var errorDescription: String? {
+        switch self {
+        case .missingResource:
+            "The localization file is missing."
+        case .unreadableResource:
+            "The localization file could not be read."
+        case .invalidResource:
+            "The localization file contains invalid data."
+        case .missingFallbackLanguage:
+            "The English fallback localization is missing."
+        }
+    }
+}
+
 struct AppLocalization: Decodable {
     let tabs: TabText
     let settings: SettingsText
@@ -64,6 +84,8 @@ struct CommonText: Decodable {
     let description: String
     let steps: String
     let codeExample: String
+    let loadErrorTitle: String
+    let loadErrorDescription: String
 }
 
 struct HomeText: Decodable {
@@ -79,12 +101,14 @@ struct FavoritesText: Decodable {
 struct DrawerText: Decodable {
     let title: String
     let close: String
+    let all: String
     let emptyTitle: String
     let emptyDescription: String
 }
 
 struct LearningListText: Decodable {
     let searchPlaceholder: String
+    let all: String
     let emptyTitle: String
     let emptyDescription: String
 }
@@ -186,35 +210,28 @@ struct AccessibilityText: Decodable {
 }
 
 extension Bundle {
-    func appLocalization(language: String, fallback: String = "en")
-        -> AppLocalization
-    {
-        if let localization = loadAppLocalization(language: language) {
-            return localization
+    func appLocalizations() throws -> [String: AppLocalization] {
+        guard let url = url(
+            forResource: "app_localization",
+            withExtension: "json"
+        ) else {
+            throw LocalizationLoadingError.missingResource
         }
 
-        if let localization = loadAppLocalization(language: fallback) {
-            return localization
+        let data: Data
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            throw LocalizationLoadingError.unreadableResource(error)
         }
 
-        fatalError("Missing app_localization.json")
-    }
-
-    private func loadAppLocalization(language: String) -> AppLocalization? {
-        guard
-            let url = url(
-                forResource: "app_localization",
-                withExtension: "json"
-            ),
-            let data = try? Data(contentsOf: url),
-            let all = try? JSONDecoder().decode(
+        do {
+            return try JSONDecoder().decode(
                 [String: AppLocalization].self,
                 from: data
             )
-        else {
-            return nil
+        } catch {
+            throw LocalizationLoadingError.invalidResource(error)
         }
-
-        return all[language]
     }
 }

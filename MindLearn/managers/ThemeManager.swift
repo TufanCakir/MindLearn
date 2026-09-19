@@ -5,19 +5,22 @@
 //  Created by Tufan Cakir on 31.10.25.
 //
 
-internal import Combine
+import Observation
 import SwiftUI
 
 @MainActor
-final class ThemeManager: ObservableObject {
+@Observable
+final class ThemeManager {
 
-    @Published private(set) var themes: [AppTheme]
+    private(set) var themes: [AppTheme]
 
-    @AppStorage("selectedThemeID")
-    private var selectedThemeID: String = "system"
+    private var selectedThemeID: String
+    private let defaults: UserDefaults
 
     // MARK: - Init
-    init() {
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+        self.selectedThemeID = defaults.string(forKey: "selectedThemeID") ?? "system"
         let loadedThemes = Bundle.main.loadThemes()
         self.themes =
             loadedThemes.isEmpty
@@ -29,7 +32,7 @@ final class ThemeManager: ObservableObject {
     var selectedTheme: AppTheme {
         themes.first { $0.id == selectedThemeID }
             ?? themes.first { $0.id == "system" }
-            ?? themes.first!
+            ?? ThemeManager.fallbackTheme
     }
 
     // MARK: - Background Color
@@ -77,6 +80,7 @@ final class ThemeManager: ObservableObject {
     func selectTheme(_ theme: AppTheme) {
         guard theme.id != selectedThemeID else { return }
         selectedThemeID = theme.id
+        defaults.set(theme.id, forKey: "selectedThemeID")
     }
 }
 

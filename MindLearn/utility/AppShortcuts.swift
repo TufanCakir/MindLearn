@@ -15,9 +15,9 @@ struct AppShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: OpenAppIntent(),
             phrases: [
-                "Open ${applicationName}",
-                "Start ${applicationName}",
-                "Launch ${applicationName}",
+                "Open \(.applicationName)",
+                "Start \(.applicationName)",
+                "Launch \(.applicationName)",
             ],
             shortTitle: "Open App",
             systemImageName: "sparkles"
@@ -26,8 +26,8 @@ struct AppShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: OpenFavoritesIntent(),
             phrases: [
-                "Open favorites in ${applicationName}",
-                "Show my favorites in ${applicationName}",
+                "Open favorites in \(.applicationName)",
+                "Show my favorites in \(.applicationName)",
             ],
             shortTitle: "Favorites",
             systemImageName: "star.fill"
@@ -40,7 +40,7 @@ struct AppShortcuts: AppShortcutsProvider {
 struct OpenAppIntent: AppIntent {
     static var title: LocalizedStringResource = "Open MindLearn"
     static var description = IntentDescription("Opens the MindLearn app.")
-    static var openAppWhenRun: Bool = true
+    static var supportedModes: IntentModes { .foreground(.immediate) }
 
     func perform() async throws -> some IntentResult {
         .result()
@@ -54,10 +54,12 @@ struct OpenFavoritesIntent: AppIntent {
     static var description = IntentDescription(
         "Shows your favorite learning topics."
     )
-    static var openAppWhenRun: Bool = true
+    static var supportedModes: IntentModes { .foreground(.immediate) }
 
     func perform() async throws -> some IntentResult {
-        await AppNavigation.open(.favorites)
+        await MainActor.run {
+            AppRouter.shared.open(.favorites)
+        }
         return .result()
     }
 }
