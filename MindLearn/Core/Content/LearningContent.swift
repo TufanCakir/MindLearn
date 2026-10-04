@@ -19,6 +19,7 @@ enum ContentCategory: String, Codable, CaseIterable, Hashable {
     case children = "Children"
     case completely = "Completely"
     case general = "General"
+    case artificialIntelligence = "KI"
 }
 
 /// The UI-independent shape shared by MindLearn learning units.

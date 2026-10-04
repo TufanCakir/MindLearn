@@ -64,6 +64,7 @@ enum LearningTopicFile: String, CaseIterable {
 
     case html = "htmlData"
     case json = "jsonData"
+    case artificialIntelligence = "aiData"
 }
 
 // MARK: - Loader Service
@@ -77,13 +78,15 @@ protocol LearningTopicProviding {
 final class LearningTopicLoader: LearningTopicProviding {
     static let shared = LearningTopicLoader()
 
-    private let repository: BundleContentRepository<LearningTopic, LearningTopicFile>
+    private let repository:
+        BundleContentRepository<LearningTopic, LearningTopicFile>
 
     convenience init() {
         self.init(repository: BundleContentRepository())
     }
 
-    init(repository: BundleContentRepository<LearningTopic, LearningTopicFile>) {
+    init(repository: BundleContentRepository<LearningTopic, LearningTopicFile>)
+    {
         self.repository = repository
     }
 

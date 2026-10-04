@@ -597,28 +597,294 @@
         },
         {
             "id": "swiftui_ios27_toolbar_reference",
-            "title": {"de": "iOS 27 Toolbar", "en": "iOS 27 toolbar"},
-            "description": {"de": "Priorisiere wichtige Aktionen, verschiebe weitere Aktionen ins Overflow-Menü und minimiere die Leiste beim Scrollen.", "en": "Prioritize important actions, move secondary actions into the overflow menu, and minimize the bar while scrolling."},
+            "title": {
+                "de": "iOS 27 Toolbar",
+                "en": "iOS 27 toolbar"
+            },
+            "description": {
+                "de":
+                    "Priorisiere wichtige Aktionen, verschiebe weitere Aktionen ins Overflow-Menü und minimiere die Leiste beim Scrollen.",
+                "en":
+                    "Prioritize important actions, move secondary actions into the overflow menu, and minimize the bar while scrolling."
+            },
             "steps": [
-                {"de": "ToolbarItem mit topBarTrailing platzieren", "en": "Place a ToolbarItem with topBarTrailing"},
-                {"de": "visibilityPriority für wichtige Aktionen setzen", "en": "Set visibilityPriority for important actions"},
-                {"de": "ToolbarOverflowMenu und toolbarMinimizationBehavior ergänzen", "en": "Add ToolbarOverflowMenu and toolbarMinimizationBehavior"}
+                {
+                    "de": "ToolbarItem mit topBarTrailing platzieren",
+                    "en": "Place a ToolbarItem with topBarTrailing"
+                },
+                {
+                    "de": "visibilityPriority für wichtige Aktionen setzen",
+                    "en": "Set visibilityPriority for important actions"
+                },
+                {
+                    "de":
+                        "ToolbarOverflowMenu und toolbarMinimizationBehavior ergänzen",
+                    "en":
+                        "Add ToolbarOverflowMenu and toolbarMinimizationBehavior"
+                }
             ],
-            "colors": {"backgroundColors": ["#000000", "#0A84FF", "#000000"], "textColors": ["#FFFFFF"]},
-            "code": "NavigationStack {\n    List(0..<50) { Text(\"Zeile \\($0)\") }\n        .toolbar {\n            ToolbarItem(placement: .topBarTrailing) {\n                Button(\"Neu\", systemImage: \"plus\") { }\n            }\n            .visibilityPriority(.high)\n\n            ToolbarOverflowMenu {\n                Button(\"Exportieren\", systemImage: \"square.and.arrow.up\") { }\n                Button(\"Archiv\", systemImage: \"archivebox\") { }\n            }\n        }\n        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)\n}",
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#0A84FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "NavigationStack {\n    List(0..<50) { Text(\"Zeile \\($0)\") }\n        .toolbar {\n            ToolbarItem(placement: .topBarTrailing) {\n                Button(\"Neu\", systemImage: \"plus\") { }\n            }\n            .visibilityPriority(.high)\n\n            ToolbarOverflowMenu {\n                Button(\"Exportieren\", systemImage: \"square.and.arrow.up\") { }\n                Button(\"Archiv\", systemImage: \"archivebox\") { }\n            }\n        }\n        .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)\n}",
             "category": "SwiftUI"
         },
         {
             "id": "swiftui_ios27_modifiers_reference",
-            "title": {"de": "Neue iOS 27 Modifier", "en": "New iOS 27 modifiers"},
-            "description": {"de": "Kurzübersicht für Glass, Swipe Actions außerhalb von List, Neuordnung und AsyncImage-Konfiguration.", "en": "Quick reference for glass, swipe actions outside List, reordering, and AsyncImage configuration."},
+            "title": {
+                "de": "Neue iOS 27 Modifier",
+                "en": "New iOS 27 modifiers"
+            },
+            "description": {
+                "de":
+                    "Kurzübersicht für Glass, Swipe Actions außerhalb von List, Neuordnung und AsyncImage-Konfiguration.",
+                "en":
+                    "Quick reference for glass, swipe actions outside List, reordering, and AsyncImage configuration."
+            },
             "steps": [
-                {"de": "glassEffect und Glass-Button-Stile für adaptive Oberflächen", "en": "glassEffect and glass button styles for adaptive surfaces"},
-                {"de": "swipeActionsContainer für ScrollView oder LazyVStack", "en": "swipeActionsContainer for ScrollView or LazyVStack"},
-                {"de": "reorderable und reorderContainer für native Neuordnung", "en": "reorderable and reorderContainer for native reordering"}
+                {
+                    "de":
+                        "glassEffect und Glass-Button-Stile für adaptive Oberflächen",
+                    "en":
+                        "glassEffect and glass button styles for adaptive surfaces"
+                },
+                {
+                    "de":
+                        "swipeActionsContainer für ScrollView oder LazyVStack",
+                    "en": "swipeActionsContainer for ScrollView or LazyVStack"
+                },
+                {
+                    "de":
+                        "reorderable und reorderContainer für native Neuordnung",
+                    "en":
+                        "reorderable and reorderContainer for native reordering"
+                }
             ],
-            "colors": {"backgroundColors": ["#000000", "#64D2FF", "#000000"], "textColors": ["#FFFFFF"]},
-            "code": "Text(\"Glass\")\n    .padding()\n    .glassEffect(.regular, in: .capsule)\n\nScrollView {\n    LazyVStack {\n        ForEach(items) { item in\n            Row(item: item)\n                .swipeActions { Button(\"Löschen\", role: .destructive) { } }\n        }\n    }\n}\n.swipeActionsContainer()",
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#64D2FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "Text(\"Glass\")\n    .padding()\n    .glassEffect(.regular, in: .capsule)\n\nScrollView {\n    LazyVStack {\n        ForEach(items) { item in\n            Row(item: item)\n                .swipeActions { Button(\"Löschen\", role: .destructive) { } }\n        }\n    }\n}\n.swipeActionsContainer()",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_game_state_reference",
+            "title": {
+                "de": "Game-State: Welche Property?",
+                "en": "Game state: which property?"
+            },
+            "description": {
+                "de":
+                    "Kurzübersicht für lokalen, weitergereichten und global geteilten Zustand.",
+                "en":
+                    "Quick reference for local, passed-through, and globally shared state."
+            },
+            "steps": [
+                {
+                    "de": "@State: Die View besitzt den lokalen Wert",
+                    "en": "@State: the view owns the local value"
+                },
+                {
+                    "de":
+                        "@Binding: Eine Child-View verändert den Wert des Parents",
+                    "en": "@Binding: a child changes the parent's value"
+                },
+                {
+                    "de":
+                        "@Observable + @Environment: Viele Views teilen ein Modell",
+                    "en":
+                        "@Observable + @Environment: many views share one model"
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#071A14",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "@State private var isPaused = false\n\nstruct Shop: View {\n    @Binding var coins: Int\n}\n\n@Observable final class GameSession {\n    var hp = 100\n}\n\n@Environment(GameSession.self) private var game",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_game_logic_reference",
+            "title": {
+                "de": "Sichere Kampf- und Shop-Logik",
+                "en": "Safe combat and shop logic"
+            },
+            "description": {
+                "de":
+                    "Grundregeln für HP, Schaden, Guthaben und abgeleitete Zustände.",
+                "en": "Core rules for HP, damage, balances, and derived state."
+            },
+            "steps": [
+                {
+                    "de": "Eingaben validieren und Werte begrenzen",
+                    "en": "Validate inputs and clamp values"
+                },
+                {
+                    "de": "Vor Käufen guard und disabled einsetzen",
+                    "en": "Use guard and disabled before purchases"
+                },
+                {
+                    "de": "isDefeated und canBuy aus Grundwerten berechnen",
+                    "en": "Calculate isDefeated and canBuy from source values"
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#1A0707",
+                    "#FF453A",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "func receiveAttack(power: Int) {\n    hp = max(0, hp - max(0, power))\n}\n\nvar isDefeated: Bool { hp == 0 }\nvar canBuyPotion: Bool { coins >= potionPrice }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_symbol_effect_reference",
+            "title": {
+                "de": "SF Symbol Effects",
+                "en": "SF Symbol effects"
+            },
+            "description": {
+                "de":
+                    "Schnelle Auswahl zwischen einmaligen und laufenden Symbolanimationen.",
+                "en":
+                    "Quickly choose between one-shot and ongoing symbol animations."
+            },
+            "steps": [
+                {
+                    "de": "value für Ereignisse wie Treffer oder Likes",
+                    "en": "Use value for events like hits or likes"
+                },
+                {
+                    "de": "isActive für laufende Zustände wie Laden",
+                    "en": "Use isActive for ongoing states like loading"
+                },
+                {
+                    "de":
+                        "Effekte sparsam als verständliches Feedback einsetzen",
+                    "en": "Use effects sparingly as understandable feedback"
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#110A22",
+                    "#BF5AF2",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "Image(systemName: \"heart.fill\")\n    .symbolEffect(.bounce, value: likes)\n\nImage(systemName: \"wifi\")\n    .symbolEffect(.variableColor.iterative, isActive: isLoading)",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_layout_choice_reference",
+            "title": {
+                "de": "Layout richtig auswählen",
+                "en": "Choose the right layout"
+            },
+            "description": {
+                "de":
+                    "Stack, Grid und LazyVGrid lösen unterschiedliche Bildschirmaufteilungen.",
+                "en":
+                    "Stacks, Grid, and LazyVGrid solve different screen arrangements."
+            },
+            "steps": [
+                {
+                    "de": "HStack/VStack für kleine lineare Gruppen",
+                    "en": "HStack/VStack for small linear groups"
+                },
+                {
+                    "de": "Grid/GridRow für exakt ausgerichtete Zeilen",
+                    "en": "Grid/GridRow for precisely aligned rows"
+                },
+                {
+                    "de": "LazyVGrid mit adaptive für viele responsive Karten",
+                    "en": "LazyVGrid with adaptive for many responsive cards"
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#06141E",
+                    "#5AC8FA",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "let columns = [GridItem(.adaptive(minimum: 150), spacing: 12)]\n\nScrollView {\n    LazyVGrid(columns: columns, spacing: 12) {\n        ForEach(items) { item in\n            Card(item: item)\n        }\n    }\n}",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_custom_bar_reference",
+            "title": {
+                "de": "Custom Bottom Bar",
+                "en": "Custom bottom bar"
+            },
+            "description": {
+                "de":
+                    "Eine eigene Leiste reserviert mit safeAreaInset Platz und kann mit Glass gestaltet werden.",
+                "en":
+                    "A custom bar reserves space with safeAreaInset and can use glass styling."
+            },
+            "steps": [
+                {
+                    "de": "Auswahl in einem Enum statt Magic Numbers speichern",
+                    "en": "Store selection in an enum instead of magic numbers"
+                },
+                {
+                    "de": "Bar mit safeAreaInset statt overlay platzieren",
+                    "en": "Place the bar using safeAreaInset instead of overlay"
+                },
+                {
+                    "de":
+                        "Aktiven Tab visuell und für Bedienungshilfen kennzeichnen",
+                    "en":
+                        "Identify the active tab visually and for accessibility"
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#08132B",
+                    "#007AFF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "content\n    .safeAreaInset(edge: .bottom) {\n        HStack {\n            ForEach(AppTab.allCases) { tab in\n                Button { selection = tab } label: {\n                    Label(tab.title, systemImage: tab.icon)\n                }\n            }\n        }\n        .padding()\n        .glassEffect(.regular, in: .capsule)\n    }",
             "category": "SwiftUI"
         }
     ]

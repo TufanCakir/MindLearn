@@ -324,41 +324,297 @@
     {
         "id": "swiftui-modern-tab",
         "language": "SwiftUI",
-        "title": {"de": "Tab und TabView", "en": "Tab and TabView"},
-        "summary": {"de": "Tab beschreibt einen Bereich mit Titel, Symbol und optionalem Auswahlwert.", "en": "Tab describes a section with a title, symbol, and optional selection value."},
-        "explanation": {"de": "Die moderne API bündelt Inhalt und Metadaten in Tab. Typisierte Werte machen programmatische Auswahl sicherer und ersetzen die ältere Kombination aus tabItem und tag.", "en": "The modern API combines content and metadata in Tab. Typed values make programmatic selection safer and replace the older tabItem and tag combination."},
-        "symbols": ["TabView", "Tab", "selection", "value"],
-        "exampleCode": "TabView(selection: $selection) {\n    Tab(\"Home\", systemImage: \"house\", value: .home) {\n        HomeView()\n    }\n}",
-        "playgroundCode": "enum AppTab: Hashable { case home, settings }\n@State private var selection: AppTab = .home"
+        "title": {
+            "de": "Tab und TabView",
+            "en": "Tab and TabView"
+        },
+        "summary": {
+            "de":
+                "Tab beschreibt einen Bereich mit Titel, Symbol und optionalem Auswahlwert.",
+            "en":
+                "Tab describes a section with a title, symbol, and optional selection value."
+        },
+        "explanation": {
+            "de":
+                "Die moderne API bündelt Inhalt und Metadaten in Tab. Typisierte Werte machen programmatische Auswahl sicherer und ersetzen die ältere Kombination aus tabItem und tag.",
+            "en":
+                "The modern API combines content and metadata in Tab. Typed values make programmatic selection safer and replace the older tabItem and tag combination."
+        },
+        "symbols": [
+            "TabView",
+            "Tab",
+            "selection",
+            "value"
+        ],
+        "exampleCode":
+            "TabView(selection: $selection) {\n    Tab(\"Home\", systemImage: \"house\", value: .home) {\n        HomeView()\n    }\n}",
+        "playgroundCode":
+            "enum AppTab: Hashable { case home, settings }\n@State private var selection: AppTab = .home"
     },
     {
         "id": "swiftui-liquid-glass",
         "language": "SwiftUI",
-        "title": {"de": "Liquid Glass", "en": "Liquid Glass"},
-        "summary": {"de": "Native Glass-Effekte passen Material und Interaktion an ihre Umgebung an.", "en": "Native glass effects adapt material and interaction to their environment."},
-        "explanation": {"de": "Nutze Glass gezielt für Navigation und interaktive Flächen. Lesbarkeit, klare Hierarchie und semantische Controls bleiben wichtiger als möglichst viele Effekte.", "en": "Use glass intentionally for navigation and interactive surfaces. Readability, clear hierarchy, and semantic controls remain more important than maximizing effects."},
-        "symbols": ["glassEffect", "glass", "glassProminent"],
-        "exampleCode": "Text(\"Lernen\")\n    .padding()\n    .glassEffect(.regular, in: .capsule)",
-        "playgroundCode": "Button(\"Start\") { }\n    .buttonStyle(.glassProminent)"
+        "title": {
+            "de": "Liquid Glass",
+            "en": "Liquid Glass"
+        },
+        "summary": {
+            "de":
+                "Native Glass-Effekte passen Material und Interaktion an ihre Umgebung an.",
+            "en":
+                "Native glass effects adapt material and interaction to their environment."
+        },
+        "explanation": {
+            "de":
+                "Nutze Glass gezielt für Navigation und interaktive Flächen. Lesbarkeit, klare Hierarchie und semantische Controls bleiben wichtiger als möglichst viele Effekte.",
+            "en":
+                "Use glass intentionally for navigation and interactive surfaces. Readability, clear hierarchy, and semantic controls remain more important than maximizing effects."
+        },
+        "symbols": [
+            "glassEffect",
+            "glass",
+            "glassProminent"
+        ],
+        "exampleCode":
+            "Text(\"Lernen\")\n    .padding()\n    .glassEffect(.regular, in: .capsule)",
+        "playgroundCode":
+            "Button(\"Start\") { }\n    .buttonStyle(.glassProminent)"
     },
     {
         "id": "swiftui-toolbar-overflow",
         "language": "SwiftUI",
-        "title": {"de": "Toolbar-Priorität und Overflow", "en": "Toolbar priority and overflow"},
-        "summary": {"de": "Wichtige Aktionen bleiben sichtbar, weitere Aktionen liegen verlässlich im Overflow-Menü.", "en": "Important actions stay visible while secondary actions reliably live in the overflow menu."},
-        "explanation": {"de": "ToolbarOverflowMenu platziert Aktionen immer im Überlauf. visibilityPriority hilft SwiftUI zu entscheiden, welche normalen Toolbar-Elemente zuerst sichtbar bleiben.", "en": "ToolbarOverflowMenu always places actions in overflow. visibilityPriority helps SwiftUI decide which regular toolbar items remain visible first."},
-        "symbols": ["ToolbarItem", "ToolbarOverflowMenu", "visibilityPriority", "toolbarMinimizationBehavior"],
-        "exampleCode": ".toolbar {\n    ToolbarItem(placement: .topBarTrailing) { Button(\"Neu\") { } }\n        .visibilityPriority(.high)\n    ToolbarOverflowMenu { Button(\"Archiv\") { } }\n}",
-        "playgroundCode": ".toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)"
+        "title": {
+            "de": "Toolbar-Priorität und Overflow",
+            "en": "Toolbar priority and overflow"
+        },
+        "summary": {
+            "de":
+                "Wichtige Aktionen bleiben sichtbar, weitere Aktionen liegen verlässlich im Overflow-Menü.",
+            "en":
+                "Important actions stay visible while secondary actions reliably live in the overflow menu."
+        },
+        "explanation": {
+            "de":
+                "ToolbarOverflowMenu platziert Aktionen immer im Überlauf. visibilityPriority hilft SwiftUI zu entscheiden, welche normalen Toolbar-Elemente zuerst sichtbar bleiben.",
+            "en":
+                "ToolbarOverflowMenu always places actions in overflow. visibilityPriority helps SwiftUI decide which regular toolbar items remain visible first."
+        },
+        "symbols": [
+            "ToolbarItem",
+            "ToolbarOverflowMenu",
+            "visibilityPriority",
+            "toolbarMinimizationBehavior"
+        ],
+        "exampleCode":
+            ".toolbar {\n    ToolbarItem(placement: .topBarTrailing) { Button(\"Neu\") { } }\n        .visibilityPriority(.high)\n    ToolbarOverflowMenu { Button(\"Archiv\") { } }\n}",
+        "playgroundCode":
+            ".toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)"
     },
     {
         "id": "swiftui-reordering",
         "language": "SwiftUI",
-        "title": {"de": "Native Neuordnung", "en": "Native reordering"},
-        "summary": {"de": "Dynamische Inhalte lassen sich in beliebigen Containern systemkonform neu anordnen.", "en": "Dynamic content can be reordered with system behavior in arbitrary containers."},
-        "explanation": {"de": "reorderable markiert die Elemente. reorderContainer definiert den Bereich und liefert eine CollectionDifference, die du auf dein Modell anwendest.", "en": "reorderable marks the items. reorderContainer defines the scope and provides a CollectionDifference that you apply to your model."},
-        "symbols": ["reorderable", "reorderContainer", "CollectionDifference"],
-        "exampleCode": "ForEach(items) { item in\n    Row(item: item)\n}\n.reorderable()",
-        "playgroundCode": ".reorderContainer(for: Item.self) { difference in\n    items = items.applying(difference) ?? items\n}"
+        "title": {
+            "de": "Native Neuordnung",
+            "en": "Native reordering"
+        },
+        "summary": {
+            "de":
+                "Dynamische Inhalte lassen sich in beliebigen Containern systemkonform neu anordnen.",
+            "en":
+                "Dynamic content can be reordered with system behavior in arbitrary containers."
+        },
+        "explanation": {
+            "de":
+                "reorderable markiert die Elemente. reorderContainer definiert den Bereich und liefert eine CollectionDifference, die du auf dein Modell anwendest.",
+            "en":
+                "reorderable marks the items. reorderContainer defines the scope and provides a CollectionDifference that you apply to your model."
+        },
+        "symbols": [
+            "reorderable",
+            "reorderContainer",
+            "CollectionDifference"
+        ],
+        "exampleCode":
+            "ForEach(items) { item in\n    Row(item: item)\n}\n.reorderable()",
+        "playgroundCode":
+            ".reorderContainer(for: Item.self) { difference in\n    items = items.applying(difference) ?? items\n}"
+    },
+    {
+        "id": "swiftui-state-ownership",
+        "language": "SwiftUI",
+        "title": {
+            "de": "@State: lokaler Besitz",
+            "en": "@State: local ownership"
+        },
+        "summary": {
+            "de":
+                "Eine View besitzt mit @State kleinen, lokalen und veränderbaren UI-Zustand.",
+            "en": "A view owns small, local, mutable UI state with @State."
+        },
+        "explanation":
+            {
+                "de":
+                    "Nutze @State für Werte, deren Lebenszyklus zur View gehört, etwa ob ein Overlay sichtbar ist. Markiere State als private und leite sichtbare UI direkt daraus ab.",
+                "en":
+                    "Use @State for values whose lifecycle belongs to the view, such as whether an overlay is visible. Keep state private and derive visible UI directly from it."
+            },
+        "symbols": [
+            "@State",
+            "private",
+            "Binding",
+            "animation"
+        ],
+        "exampleCode":
+            "@State private var isPaused = false\n\nif isPaused { PauseOverlay() }",
+        "playgroundCode": "Button(\"Pause\") { isPaused.toggle() }"
+    },
+    {
+        "id": "swiftui-binding-dataflow",
+        "language": "SwiftUI",
+        "title": {
+            "de": "@Binding: Zustand weiterreichen",
+            "en": "@Binding: pass state through"
+        },
+        "summary": {
+            "de":
+                "Ein Binding gibt einer Child-View Lese- und Schreibzugriff, aber keinen Besitz.",
+            "en":
+                "A binding gives a child view read and write access, but not ownership."
+        },
+        "explanation": {
+            "de":
+                "Der Parent besitzt die Quelle als @State. Die Child-View erhält mit $value ein Binding und kann gezielt Änderungen zurückschreiben. Das eignet sich etwa für Shop-, Formular- und Einstellungs-Komponenten.",
+            "en":
+                "The parent owns the source as @State. The child receives a binding using $value and can deliberately write changes back. This suits shop, form, and settings components."
+        },
+        "symbols": [
+            "@State",
+            "@Binding",
+            "$value"
+        ],
+        "exampleCode": "struct ShopRow: View {\n    @Binding var coins: Int\n}",
+        "playgroundCode":
+            "@State private var coins = 100\nShopRow(coins: $coins)"
+    },
+    {
+        "id": "swiftui-observable-environment",
+        "language": "SwiftUI",
+        "title": {
+            "de": "@Observable im Environment",
+            "en": "@Observable in the environment"
+        },
+        "summary": {
+            "de":
+                "Gemeinsame App- oder Spieldaten lassen sich typisiert durch den View-Baum bereitstellen.",
+            "en":
+                "Shared app or game data can be provided through the view tree by type."
+        },
+        "explanation": {
+            "de":
+                "Besitze eine stabile @Observable-Instanz weit oben mit @State, setze sie mit environment(_:) ein und lies sie mit @Environment(Model.self). Das ersetzt für Observation-Modelle den älteren EnvironmentObject-Weg.",
+            "en":
+                "Own a stable @Observable instance high in the hierarchy with @State, insert it using environment(_:), and read it with @Environment(Model.self). For Observation models, this replaces the older EnvironmentObject path."
+        },
+        "symbols": [
+            "@Observable",
+            "@Environment",
+            "environment",
+            "@MainActor"
+        ],
+        "exampleCode":
+            "@State private var game = GameSession()\nContentView().environment(game)",
+        "playgroundCode": "@Environment(GameSession.self) private var game"
+    },
+    {
+        "id": "swiftui-derived-game-state",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Abgeleiteter Spielzustand",
+            "en": "Derived game state"
+        },
+        "summary": {
+            "de":
+                "Speichere Grundwerte und berechne Fortschritt, Niederlage oder Kaufbarkeit daraus.",
+            "en":
+                "Store source values and calculate progress, defeat, or affordability from them."
+        },
+        "explanation": {
+            "de":
+                "Doppelt gespeicherte Werte können auseinanderlaufen. Speichere zum Beispiel hp und maximumHP, aber berechne progress und isDefeated als Properties. So bleibt Kampf- und Shop-Logik konsistent.",
+            "en":
+                "Duplicated stored values can drift apart. Store hp and maximumHP, for example, but calculate progress and isDefeated as properties. This keeps combat and shop logic consistent."
+        },
+        "symbols": [
+            "computed property",
+            "max",
+            "guard",
+            "isDefeated"
+        ],
+        "exampleCode":
+            "var progress: Double { Double(hp) / Double(maximumHP) }\nvar isDefeated: Bool { hp == 0 }",
+        "playgroundCode":
+            "mutating func attack(_ damage: Int) {\n    hp = max(0, hp - max(0, damage))\n}"
+    },
+    {
+        "id": "swiftui-symbol-effect",
+        "language": "SwiftUI",
+        "title": {
+            "de": "symbolEffect",
+            "en": "symbolEffect"
+        },
+        "summary": {
+            "de":
+                "SF Symbols reagieren mit nativen Effekten auf Werte oder Aktivitätszustände.",
+            "en":
+                "SF Symbols react to values or active states with native effects."
+        },
+        "explanation": {
+            "de":
+                "Die value-Variante startet den Effekt bei jeder Wertänderung und eignet sich für Treffer, Likes oder Käufe. isActive steuert einen laufenden Effekt, etwa für Suche oder Synchronisierung.",
+            "en":
+                "The value variant starts the effect on every value change and suits hits, likes, or purchases. isActive controls an ongoing effect, such as searching or syncing."
+        },
+        "symbols": [
+            "symbolEffect",
+            "bounce",
+            "variableColor",
+            "value",
+            "isActive"
+        ],
+        "exampleCode":
+            "Image(systemName: \"heart.fill\")\n    .symbolEffect(.bounce, value: likes)",
+        "playgroundCode":
+            "Image(systemName: \"wifi\")\n    .symbolEffect(.variableColor.iterative, isActive: isLoading)"
+    },
+    {
+        "id": "swiftui-grid-layout",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Grid oder LazyVGrid?",
+            "en": "Grid or LazyVGrid?"
+        },
+        "summary": {
+            "de":
+                "Grid richtet bekannte Zeilen exakt aus; LazyVGrid eignet sich für viele dynamische Karten.",
+            "en":
+                "Grid precisely aligns known rows; LazyVGrid suits many dynamic cards."
+        },
+        "explanation": {
+            "de":
+                "Nutze Grid und GridRow für Rechner, Formulare oder Tabellen mit festen Zeilen. Nutze LazyVGrid für scrollende Sammlungen. Adaptive GridItems passen die Spaltenzahl automatisch an die Breite an.",
+            "en":
+                "Use Grid and GridRow for calculators, forms, or tables with fixed rows. Use LazyVGrid for scrolling collections. Adaptive GridItems automatically adjust the column count to the width."
+        },
+        "symbols": [
+            "Grid",
+            "GridRow",
+            "LazyVGrid",
+            "GridItem",
+            "gridCellColumns"
+        ],
+        "exampleCode":
+            "Grid {\n    GridRow { Text(\"7\"); Text(\"8\"); Text(\"9\") }\n}",
+        "playgroundCode":
+            "let columns = [GridItem(.adaptive(minimum: 140))]\nLazyVGrid(columns: columns) { /* cards */ }"
     }
 ]

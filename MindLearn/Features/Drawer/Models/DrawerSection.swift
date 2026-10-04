@@ -46,6 +46,7 @@ enum DrawerDataFile: String, CaseIterable {
     case vision = "drawerVisionData"
     case speech = "drawerSpeechData"
     case html = "drawerHtmlData"
+    case artificialIntelligence = "drawerAIData"
 }
 
 // MARK: - Loader Service

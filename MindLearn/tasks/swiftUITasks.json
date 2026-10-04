@@ -68,45 +68,332 @@
     {
         "id": "swiftui_task_003",
         "language": "SwiftUI",
-        "title": {"de": "Moderne Tabs bauen", "en": "Build modern tabs"},
-        "explanation": {"de": "Übe die typisierte Tab-API von SwiftUI.", "en": "Practice SwiftUI's typed Tab API."},
-        "instruction": {"de": "Erstelle eine TabView mit den Tabs Home und Suche. Verwende Tab, systemImage und stabile value-Werte.", "en": "Create a TabView with Home and Search tabs. Use Tab, systemImage, and stable value values."},
-        "starterCode": "import SwiftUI\n\nenum AppTab: Hashable {\n    case home, search\n}\n\nstruct PracticeView: View {\n    @State private var selection: AppTab = .home\n\n    var body: some View {\n        // Deine Tabs\n    }\n}",
-        "expectedKeywords": ["TabView", "Tab(", "systemImage:", "value:"],
-        "solution": "import SwiftUI\n\nenum AppTab: Hashable {\n    case home, search\n}\n\nstruct PracticeView: View {\n    @State private var selection: AppTab = .home\n\n    var body: some View {\n        TabView(selection: $selection) {\n            Tab(\"Home\", systemImage: \"house\", value: .home) { Text(\"Home\") }\n            Tab(\"Suche\", systemImage: \"magnifyingglass\", value: .search) { Text(\"Suche\") }\n        }\n    }\n}",
-        "hint": {"de": "Jeder Tab erhält Titel, SF Symbol und einen Wert aus AppTab.", "en": "Give each tab a title, SF Symbol, and a value from AppTab."}
+        "title": {
+            "de": "Moderne Tabs bauen",
+            "en": "Build modern tabs"
+        },
+        "explanation": {
+            "de": "Übe die typisierte Tab-API von SwiftUI.",
+            "en": "Practice SwiftUI's typed Tab API."
+        },
+        "instruction": {
+            "de":
+                "Erstelle eine TabView mit den Tabs Home und Suche. Verwende Tab, systemImage und stabile value-Werte.",
+            "en":
+                "Create a TabView with Home and Search tabs. Use Tab, systemImage, and stable value values."
+        },
+        "starterCode":
+            "import SwiftUI\n\nenum AppTab: Hashable {\n    case home, search\n}\n\nstruct PracticeView: View {\n    @State private var selection: AppTab = .home\n\n    var body: some View {\n        // Deine Tabs\n    }\n}",
+        "expectedKeywords": [
+            "TabView",
+            "Tab(",
+            "systemImage:",
+            "value:"
+        ],
+        "solution":
+            "import SwiftUI\n\nenum AppTab: Hashable {\n    case home, search\n}\n\nstruct PracticeView: View {\n    @State private var selection: AppTab = .home\n\n    var body: some View {\n        TabView(selection: $selection) {\n            Tab(\"Home\", systemImage: \"house\", value: .home) { Text(\"Home\") }\n            Tab(\"Suche\", systemImage: \"magnifyingglass\", value: .search) { Text(\"Suche\") }\n        }\n    }\n}",
+        "hint": {
+            "de":
+                "Jeder Tab erhält Titel, SF Symbol und einen Wert aus AppTab.",
+            "en": "Give each tab a title, SF Symbol, and a value from AppTab."
+        }
     },
     {
         "id": "swiftui_task_004",
         "language": "SwiftUI",
-        "title": {"de": "iOS 27 Toolbar", "en": "iOS 27 toolbar"},
-        "explanation": {"de": "Übe wichtige und sekundäre Toolbar-Aktionen.", "en": "Practice primary and secondary toolbar actions."},
-        "instruction": {"de": "Füge einen wichtigen Plus-Button und ein ToolbarOverflowMenu mit einer Archiv-Aktion hinzu.", "en": "Add an important plus button and a ToolbarOverflowMenu with an archive action."},
-        "starterCode": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Inhalt\")\n                .toolbar {\n                    // Toolbar ergänzen\n                }\n        }\n    }\n}",
-        "expectedKeywords": ["ToolbarItem", "topBarTrailing", "visibilityPriority", "ToolbarOverflowMenu"],
-        "solution": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Inhalt\")\n                .toolbar {\n                    ToolbarItem(placement: .topBarTrailing) {\n                        Button(\"Neu\", systemImage: \"plus\") { }\n                    }\n                    .visibilityPriority(.high)\n                    ToolbarOverflowMenu {\n                        Button(\"Archiv\", systemImage: \"archivebox\") { }\n                    }\n                }\n        }\n    }\n}",
-        "hint": {"de": "Das Overflow-Menü kommt direkt in den toolbar-Builder.", "en": "Place the overflow menu directly in the toolbar builder."}
+        "title": {
+            "de": "iOS 27 Toolbar",
+            "en": "iOS 27 toolbar"
+        },
+        "explanation": {
+            "de": "Übe wichtige und sekundäre Toolbar-Aktionen.",
+            "en": "Practice primary and secondary toolbar actions."
+        },
+        "instruction": {
+            "de":
+                "Füge einen wichtigen Plus-Button und ein ToolbarOverflowMenu mit einer Archiv-Aktion hinzu.",
+            "en":
+                "Add an important plus button and a ToolbarOverflowMenu with an archive action."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Inhalt\")\n                .toolbar {\n                    // Toolbar ergänzen\n                }\n        }\n    }\n}",
+        "expectedKeywords": [
+            "ToolbarItem",
+            "topBarTrailing",
+            "visibilityPriority",
+            "ToolbarOverflowMenu"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        NavigationStack {\n            Text(\"Inhalt\")\n                .toolbar {\n                    ToolbarItem(placement: .topBarTrailing) {\n                        Button(\"Neu\", systemImage: \"plus\") { }\n                    }\n                    .visibilityPriority(.high)\n                    ToolbarOverflowMenu {\n                        Button(\"Archiv\", systemImage: \"archivebox\") { }\n                    }\n                }\n        }\n    }\n}",
+        "hint": {
+            "de": "Das Overflow-Menü kommt direkt in den toolbar-Builder.",
+            "en": "Place the overflow menu directly in the toolbar builder."
+        }
     },
     {
         "id": "swiftui_task_005",
         "language": "SwiftUI",
-        "title": {"de": "Liquid Glass anwenden", "en": "Apply Liquid Glass"},
-        "explanation": {"de": "Übe native Glass-Flächen und Buttons.", "en": "Practice native glass surfaces and buttons."},
-        "instruction": {"de": "Gestalte eine gepolsterte Textfläche mit glassEffect und einen Button mit glassProminent.", "en": "Style a padded text surface with glassEffect and a button with glassProminent."},
-        "starterCode": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack {\n            Text(\"MindLearn\")\n            Button(\"Weiter\") { }\n        }\n    }\n}",
-        "expectedKeywords": ["glassEffect", "buttonStyle", "glassProminent"],
-        "solution": "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack(spacing: 16) {\n            Text(\"MindLearn\")\n                .padding()\n                .glassEffect(.regular, in: .capsule)\n            Button(\"Weiter\") { }\n                .buttonStyle(.glassProminent)\n        }\n    }\n}",
-        "hint": {"de": "glassEffect gehört an die Fläche, glassProminent an den Button-Stil.", "en": "Apply glassEffect to the surface and glassProminent as the button style."}
+        "title": {
+            "de": "Liquid Glass anwenden",
+            "en": "Apply Liquid Glass"
+        },
+        "explanation": {
+            "de": "Übe native Glass-Flächen und Buttons.",
+            "en": "Practice native glass surfaces and buttons."
+        },
+        "instruction": {
+            "de":
+                "Gestalte eine gepolsterte Textfläche mit glassEffect und einen Button mit glassProminent.",
+            "en":
+                "Style a padded text surface with glassEffect and a button with glassProminent."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack {\n            Text(\"MindLearn\")\n            Button(\"Weiter\") { }\n        }\n    }\n}",
+        "expectedKeywords": [
+            "glassEffect",
+            "buttonStyle",
+            "glassProminent"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        VStack(spacing: 16) {\n            Text(\"MindLearn\")\n                .padding()\n                .glassEffect(.regular, in: .capsule)\n            Button(\"Weiter\") { }\n                .buttonStyle(.glassProminent)\n        }\n    }\n}",
+        "hint": {
+            "de":
+                "glassEffect gehört an die Fläche, glassProminent an den Button-Stil.",
+            "en":
+                "Apply glassEffect to the surface and glassProminent as the button style."
+        }
     },
     {
         "id": "swiftui_task_006",
         "language": "SwiftUI",
-        "title": {"de": "Swipe Actions im ScrollView", "en": "Swipe actions in a ScrollView"},
-        "explanation": {"de": "Übe koordinierte Swipe-Aktionen außerhalb einer List.", "en": "Practice coordinated swipe actions outside a List."},
-        "instruction": {"de": "Füge Zeilen in einem ScrollView eine destruktive Swipe-Aktion hinzu und koordiniere sie am Container.", "en": "Add a destructive swipe action to rows in a ScrollView and coordinate them at the container."},
-        "starterCode": "import SwiftUI\n\nstruct PracticeView: View {\n    let items = [\"A\", \"B\", \"C\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                }\n            }\n        }\n    }\n}",
-        "expectedKeywords": ["swipeActions", "destructive", "swipeActionsContainer"],
-        "solution": "import SwiftUI\n\nstruct PracticeView: View {\n    let items = [\"A\", \"B\", \"C\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                        .swipeActions {\n                            Button(\"Löschen\", role: .destructive) { }\n                        }\n                }\n            }\n        }\n        .swipeActionsContainer()\n    }\n}",
-        "hint": {"de": "swipeActions kommt an die Zeile, swipeActionsContainer an den ScrollView.", "en": "Apply swipeActions to each row and swipeActionsContainer to the ScrollView."}
+        "title": {
+            "de": "Swipe Actions im ScrollView",
+            "en": "Swipe actions in a ScrollView"
+        },
+        "explanation": {
+            "de": "Übe koordinierte Swipe-Aktionen außerhalb einer List.",
+            "en": "Practice coordinated swipe actions outside a List."
+        },
+        "instruction": {
+            "de":
+                "Füge Zeilen in einem ScrollView eine destruktive Swipe-Aktion hinzu und koordiniere sie am Container.",
+            "en":
+                "Add a destructive swipe action to rows in a ScrollView and coordinate them at the container."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    let items = [\"A\", \"B\", \"C\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                }\n            }\n        }\n    }\n}",
+        "expectedKeywords": [
+            "swipeActions",
+            "destructive",
+            "swipeActionsContainer"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    let items = [\"A\", \"B\", \"C\"]\n\n    var body: some View {\n        ScrollView {\n            LazyVStack {\n                ForEach(items, id: \\.self) { item in\n                    Text(item)\n                        .swipeActions {\n                            Button(\"Löschen\", role: .destructive) { }\n                        }\n                }\n            }\n        }\n        .swipeActionsContainer()\n    }\n}",
+        "hint": {
+            "de":
+                "swipeActions kommt an die Zeile, swipeActionsContainer an den ScrollView.",
+            "en":
+                "Apply swipeActions to each row and swipeActionsContainer to the ScrollView."
+        }
+    },
+    {
+        "id": "swiftui_task_007",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Pause-Overlay bauen",
+            "en": "Build a pause overlay"
+        },
+        "explanation": {
+            "de": "Übe lokales UI-State-Management mit einem eigenen Overlay.",
+            "en": "Practice local UI state management with a custom overlay."
+        },
+        "instruction": {
+            "de":
+                "Lege Spielinhalt und Pause-Menü in einen ZStack. Zeige das Menü nur, wenn isPaused true ist.",
+            "en":
+                "Place game content and a pause menu in a ZStack. Show the menu only when isPaused is true."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    @State private var isPaused = false\n\n    var body: some View {\n        // Overlay ergänzen\n    }\n}",
+        "expectedKeywords": [
+            "@State",
+            "ZStack",
+            "if isPaused",
+            "isPaused.toggle"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    @State private var isPaused = false\n\n    var body: some View {\n        ZStack {\n            Button(\"Pause\") { isPaused.toggle() }\n            if isPaused {\n                Color.black.opacity(0.4).ignoresSafeArea()\n                Button(\"Weiter\") { isPaused.toggle() }\n                    .buttonStyle(.glassProminent)\n            }\n        }\n    }\n}",
+        "hint": {
+            "de":
+                "Ein if im ZStack reicht aus, um ein eigenes Overlay zu präsentieren.",
+            "en":
+                "An if statement in the ZStack is enough to present a custom overlay."
+        }
+    },
+    {
+        "id": "swiftui_task_008",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Shop mit @Binding",
+            "en": "Shop with @Binding"
+        },
+        "explanation": {
+            "de":
+                "Übe, wie eine Child-View den Zustand ihres Parents kontrolliert verändert.",
+            "en":
+                "Practice how a child view deliberately changes its parent's state."
+        },
+        "instruction": {
+            "de":
+                "Erstelle einen Kauf-Button, der über @Binding 25 Münzen abzieht und einen Trank hinzufügt.",
+            "en":
+                "Create a purchase button that subtracts 25 coins and adds a potion through @Binding."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct ShopButton: View {\n    @Binding var coins: Int\n    @Binding var potions: Int\n\n    var body: some View {\n        // Kaufen\n    }\n}",
+        "expectedKeywords": [
+            "@Binding",
+            "guard coins >= 25",
+            "coins -= 25",
+            "potions += 1"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct ShopButton: View {\n    @Binding var coins: Int\n    @Binding var potions: Int\n\n    var body: some View {\n        Button(\"Trank kaufen\") {\n            guard coins >= 25 else { return }\n            coins -= 25\n            potions += 1\n        }\n        .disabled(coins < 25)\n    }\n}",
+        "hint": {
+            "de": "Prüfe zuerst das Guthaben und ändere danach beide Bindings.",
+            "en": "Check the balance first, then change both bindings."
+        }
+    },
+    {
+        "id": "swiftui_task_009",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Angriff und HP berechnen",
+            "en": "Calculate attacks and HP"
+        },
+        "explanation": {
+            "de": "Übe einfache, sichere Kampflogik unabhängig vom Layout.",
+            "en": "Practice simple, safe combat logic independently of layout."
+        },
+        "instruction": {
+            "de":
+                "Implementiere receiveAttack(power:), sodass HP niemals kleiner als null werden.",
+            "en":
+                "Implement receiveAttack(power:) so HP never becomes less than zero."
+        },
+        "starterCode":
+            "struct Enemy {\n    var hp = 100\n\n    mutating func receiveAttack(power: Int) {\n        // Schaden anwenden\n    }\n}",
+        "expectedKeywords": [
+            "mutating",
+            "max(0",
+            "hp -",
+            "power"
+        ],
+        "solution":
+            "struct Enemy {\n    var hp = 100\n\n    mutating func receiveAttack(power: Int) {\n        hp = max(0, hp - max(0, power))\n    }\n}",
+        "hint": {
+            "de": "max(0, neuerWert) begrenzt HP nach unten.",
+            "en": "max(0, newValue) clamps HP at the lower bound."
+        }
+    },
+    {
+        "id": "swiftui_task_010",
+        "language": "SwiftUI",
+        "title": {
+            "de": "SF Symbol animieren",
+            "en": "Animate an SF Symbol"
+        },
+        "explanation": {
+            "de": "Übe wertgesteuerte SF-Symbol-Effekte.",
+            "en": "Practice value-driven SF Symbol effects."
+        },
+        "instruction": {
+            "de":
+                "Lass ein Herz bei jedem Tippen mit dem Bounce-Effekt animieren.",
+            "en": "Make a heart animate with the bounce effect on every tap."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    @State private var taps = 0\n\n    var body: some View {\n        Button { taps += 1 } label: {\n            Image(systemName: \"heart.fill\")\n        }\n    }\n}",
+        "expectedKeywords": [
+            "symbolEffect",
+            ".bounce",
+            "value: taps"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    @State private var taps = 0\n\n    var body: some View {\n        Button { taps += 1 } label: {\n            Image(systemName: \"heart.fill\")\n                .symbolEffect(.bounce, value: taps)\n        }\n    }\n}",
+        "hint": {
+            "de": "Übergib taps als value des symbolEffect.",
+            "en": "Pass taps as the symbolEffect value."
+        }
+    },
+    {
+        "id": "swiftui_task_011",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Dashboard-Grid",
+            "en": "Dashboard grid"
+        },
+        "explanation": {
+            "de": "Übe ein responsives, platzsparendes Layout.",
+            "en": "Practice a responsive, space-efficient layout."
+        },
+        "instruction": {
+            "de":
+                "Zeige zwölf Karten in einem LazyVGrid mit adaptiven Spalten ab 140 Punkten Breite.",
+            "en":
+                "Show twelve cards in a LazyVGrid with adaptive columns starting at 140 points wide."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    var body: some View {\n        ScrollView {\n            // Grid ergänzen\n        }\n    }\n}",
+        "expectedKeywords": [
+            "GridItem(.adaptive",
+            "minimum: 140",
+            "LazyVGrid",
+            "ForEach"
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    private let columns = [GridItem(.adaptive(minimum: 140), spacing: 12)]\n\n    var body: some View {\n        ScrollView {\n            LazyVGrid(columns: columns, spacing: 12) {\n                ForEach(1...12, id: \\.self) { number in\n                    Text(\"Karte \\(number)\")\n                        .frame(maxWidth: .infinity, minHeight: 100)\n                        .background(.thinMaterial, in: .rect(cornerRadius: 16))\n                }\n            }\n            .padding()\n        }\n    }\n}",
+        "hint": {
+            "de":
+                "Adaptive Spalten bestimmen ihre Anzahl automatisch aus der verfügbaren Breite.",
+            "en":
+                "Adaptive columns determine their count automatically from available width."
+        }
+    },
+    {
+        "id": "swiftui_task_012",
+        "language": "SwiftUI",
+        "title": {
+            "de": "Eigene Bottom Bar",
+            "en": "Custom bottom bar"
+        },
+        "explanation": {
+            "de":
+                "Übe eine eigene Navigation, die den sicheren Bildschirmbereich respektiert.",
+            "en":
+                "Practice custom navigation that respects the safe screen area."
+        },
+        "instruction": {
+            "de":
+                "Platziere drei Buttons mit safeAreaInset am unteren Rand und speichere die Auswahl in @State.",
+            "en":
+                "Place three buttons at the bottom with safeAreaInset and store selection in @State."
+        },
+        "starterCode":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    @State private var selection = 0\n\n    var body: some View {\n        Text(\"Inhalt\")\n    }\n}",
+        "expectedKeywords": [
+            "safeAreaInset",
+            "edge: .bottom",
+            "HStack",
+            "selection ="
+        ],
+        "solution":
+            "import SwiftUI\n\nstruct PracticeView: View {\n    @State private var selection = 0\n\n    var body: some View {\n        Text(\"Tab \\(selection + 1)\")\n            .frame(maxWidth: .infinity, maxHeight: .infinity)\n            .safeAreaInset(edge: .bottom) {\n                HStack {\n                    ForEach(0..<3) { index in\n                        Button(\"\\(index + 1)\") { selection = index }\n                            .frame(maxWidth: .infinity)\n                    }\n                }\n                .padding()\n                .glassEffect(.regular, in: .capsule)\n                .padding(.horizontal)\n            }\n    }\n}",
+        "hint": {
+            "de":
+                "safeAreaInset reserviert Platz; ein overlay würde den Inhalt möglicherweise verdecken.",
+            "en":
+                "safeAreaInset reserves space; an overlay could cover the content."
+        }
     }
 ]

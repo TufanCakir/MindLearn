@@ -183,6 +183,15 @@ extension CategoryStyle {
                 color: Color(hex: "#6E6E73") ?? .gray
             )
 
+        // MARK: Artificial Intelligence
+
+        case .artificialIntelligence:
+
+            return .init(
+                icon: "brain.head.profile",
+                color: Color(hex: "#7D5CFF") ?? .purple
+            )
+
         // MARK: Default
 
         }

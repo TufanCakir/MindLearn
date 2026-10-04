@@ -289,8 +289,10 @@
                     "en": "Add multiple views inside the TabView."
                 },
                 {
-                    "de": "Für jeden Bereich einen typisierten Tab mit stabilem Auswahlwert definieren.",
-                    "en": "Define a typed Tab with a stable selection value for each section."
+                    "de":
+                        "Für jeden Bereich einen typisierten Tab mit stabilem Auswahlwert definieren.",
+                    "en":
+                        "Define a typed Tab with a stable selection value for each section."
                 }
             ],
             "colors": {
@@ -1663,7 +1665,8 @@
                     "#FFFFFF"
                 ]
             },
-            "code": "import SwiftUI\n\nstruct AsyncTaskExampleView: View {\n    @State private var text = \"Lade…\"\n\n    var body: some View {\n        Text(text)\n            .task {\n                async let first = fetchTitle()\n                async let second = fetchSubtitle()\n                text = await \"\\(first) – \\(second)\"\n            }\n            .padding()\n    }\n\n    func fetchTitle() async -> String { \"Titel\" }\n    func fetchSubtitle() async -> String { \"Untertitel\" }\n}\n\n#Preview { AsyncTaskExampleView() }",
+            "code":
+                "import SwiftUI\n\nstruct AsyncTaskExampleView: View {\n    @State private var text = \"Lade…\"\n\n    var body: some View {\n        Text(text)\n            .task {\n                async let first = fetchTitle()\n                async let second = fetchSubtitle()\n                text = await \"\\(first) – \\(second)\"\n            }\n            .padding()\n    }\n\n    func fetchTitle() async -> String { \"Titel\" }\n    func fetchSubtitle() async -> String { \"Untertitel\" }\n}\n\n#Preview { AsyncTaskExampleView() }",
             "category": "SwiftUI"
         },
         {
@@ -2378,54 +2381,592 @@
         },
         {
             "id": "swiftui_ios27_glass",
-            "title": {"de": "Liquid Glass gestalten", "en": "Design with Liquid Glass"},
-            "description": {"de": "Nutze die nativen Glass-Effekte von iOS 27 für adaptive Oberflächen und Bedienelemente.", "en": "Use the native iOS 27 glass effects for adaptive surfaces and controls."},
+            "title": {
+                "de": "Liquid Glass gestalten",
+                "en": "Design with Liquid Glass"
+            },
+            "description": {
+                "de":
+                    "Nutze die nativen Glass-Effekte von iOS 27 für adaptive Oberflächen und Bedienelemente.",
+                "en":
+                    "Use the native iOS 27 glass effects for adaptive surfaces and controls."
+            },
             "steps": [
-                {"de": "Inhalte zuerst semantisch und zugänglich aufbauen.", "en": "Build semantic, accessible content first."},
-                {"de": "glassEffect auf wichtige Flächen anwenden.", "en": "Apply glassEffect to important surfaces."},
-                {"de": "Interaktive Aktionen mit dem nativen Glass-Button-Stil darstellen.", "en": "Present interactive actions with the native glass button style."}
+                {
+                    "de": "Inhalte zuerst semantisch und zugänglich aufbauen.",
+                    "en": "Build semantic, accessible content first."
+                },
+                {
+                    "de": "glassEffect auf wichtige Flächen anwenden.",
+                    "en": "Apply glassEffect to important surfaces."
+                },
+                {
+                    "de":
+                        "Interaktive Aktionen mit dem nativen Glass-Button-Stil darstellen.",
+                    "en":
+                        "Present interactive actions with the native glass button style."
+                }
             ],
-            "colors": {"backgroundColors": ["#000000", "#64D2FF", "#000000"], "textColors": ["#FFFFFF"]},
-            "code": "import SwiftUI\n\nstruct GlassCardView: View {\n    var body: some View {\n        VStack(spacing: 16) {\n            Label(\"SwiftUI 27\", systemImage: \"sparkles\")\n                .font(.title2.bold())\n            Text(\"Native Effekte reagieren auf Inhalt und Umgebung.\")\n                .multilineTextAlignment(.center)\n            Button(\"Weiter\", systemImage: \"arrow.right\") { }\n                .buttonStyle(.glassProminent)\n        }\n        .padding(24)\n        .glassEffect(.regular, in: .rect(cornerRadius: 24))\n        .padding()\n    }\n}\n\n#Preview { GlassCardView() }",
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#64D2FF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct GlassCardView: View {\n    var body: some View {\n        VStack(spacing: 16) {\n            Label(\"SwiftUI 27\", systemImage: \"sparkles\")\n                .font(.title2.bold())\n            Text(\"Native Effekte reagieren auf Inhalt und Umgebung.\")\n                .multilineTextAlignment(.center)\n            Button(\"Weiter\", systemImage: \"arrow.right\") { }\n                .buttonStyle(.glassProminent)\n        }\n        .padding(24)\n        .glassEffect(.regular, in: .rect(cornerRadius: 24))\n        .padding()\n    }\n}\n\n#Preview { GlassCardView() }",
             "category": "SwiftUI"
         },
         {
             "id": "swiftui_ios27_item_alert",
-            "title": {"de": "Alert mit optionalem Element", "en": "Alert with an optional item"},
-            "description": {"de": "Ein optionales Modell steuert gleichzeitig, ob der Alert erscheint und für welches Element er gilt.", "en": "An optional model controls both whether the alert appears and which item it represents."},
+            "title": {
+                "de": "Alert mit optionalem Element",
+                "en": "Alert with an optional item"
+            },
+            "description": {
+                "de":
+                    "Ein optionales Modell steuert gleichzeitig, ob der Alert erscheint und für welches Element er gilt.",
+                "en":
+                    "An optional model controls both whether the alert appears and which item it represents."
+            },
             "steps": [
-                {"de": "Ein Identifiable-Modell für die ausstehende Aktion definieren.", "en": "Define an Identifiable model for the pending action."},
-                {"de": "Das optionale Modell als @State speichern.", "en": "Store the optional model as @State."},
-                {"de": "Mit alert(item:) Titel, Aktionen und Nachricht aus demselben Wert erzeugen.", "en": "Use alert(item:) to build the title, actions, and message from the same value."}
+                {
+                    "de":
+                        "Ein Identifiable-Modell für die ausstehende Aktion definieren.",
+                    "en": "Define an Identifiable model for the pending action."
+                },
+                {
+                    "de": "Das optionale Modell als @State speichern.",
+                    "en": "Store the optional model as @State."
+                },
+                {
+                    "de":
+                        "Mit alert(item:) Titel, Aktionen und Nachricht aus demselben Wert erzeugen.",
+                    "en":
+                        "Use alert(item:) to build the title, actions, and message from the same value."
+                }
             ],
-            "colors": {"backgroundColors": ["#000000", "#FF453A", "#000000"], "textColors": ["#FFFFFF"]},
-            "code": "import SwiftUI\n\nstruct PendingDelete: Identifiable {\n    let id = UUID()\n    let name: String\n}\n\nstruct ItemAlertView: View {\n    @State private var pendingDelete: PendingDelete?\n\n    var body: some View {\n        Button(\"Projekt löschen\") {\n            pendingDelete = PendingDelete(name: \"MindLearn\")\n        }\n        .alert(\"Projekt löschen?\", item: $pendingDelete) { item in\n            Button(\"Löschen\", role: .destructive) {\n                print(\"Lösche \\(item.name)\")\n            }\n            Button(\"Abbrechen\", role: .cancel) { }\n        } message: { item in\n            Text(\"\\(item.name) wird dauerhaft gelöscht.\")\n        }\n    }\n}\n\n#Preview { ItemAlertView() }",
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF453A",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct PendingDelete: Identifiable {\n    let id = UUID()\n    let name: String\n}\n\nstruct ItemAlertView: View {\n    @State private var pendingDelete: PendingDelete?\n\n    var body: some View {\n        Button(\"Projekt löschen\") {\n            pendingDelete = PendingDelete(name: \"MindLearn\")\n        }\n        .alert(\"Projekt löschen?\", item: $pendingDelete) { item in\n            Button(\"Löschen\", role: .destructive) {\n                print(\"Lösche \\(item.name)\")\n            }\n            Button(\"Abbrechen\", role: .cancel) { }\n        } message: { item in\n            Text(\"\\(item.name) wird dauerhaft gelöscht.\")\n        }\n    }\n}\n\n#Preview { ItemAlertView() }",
             "category": "SwiftUI"
         },
         {
             "id": "swiftui_ios27_reordering",
-            "title": {"de": "Views nativ neu anordnen", "en": "Natively reorder views"},
-            "description": {"de": "iOS 27 kann Inhalte in Stacks, Grids und eigenen Layouts ohne eigenen DropDelegate neu anordnen.", "en": "iOS 27 can reorder content in stacks, grids, and custom layouts without a custom DropDelegate."},
+            "title": {
+                "de": "Views nativ neu anordnen",
+                "en": "Natively reorder views"
+            },
+            "description": {
+                "de":
+                    "iOS 27 kann Inhalte in Stacks, Grids und eigenen Layouts ohne eigenen DropDelegate neu anordnen.",
+                "en":
+                    "iOS 27 can reorder content in stacks, grids, and custom layouts without a custom DropDelegate."
+            },
             "steps": [
-                {"de": "Identifiable-Elemente mit ForEach darstellen.", "en": "Present Identifiable elements with ForEach."},
-                {"de": "Den dynamischen Inhalt mit reorderable markieren.", "en": "Mark the dynamic content as reorderable."},
-                {"de": "Die Änderung im reorderContainer auf das Array anwenden.", "en": "Apply the change to the array in reorderContainer."}
+                {
+                    "de": "Identifiable-Elemente mit ForEach darstellen.",
+                    "en": "Present Identifiable elements with ForEach."
+                },
+                {
+                    "de": "Den dynamischen Inhalt mit reorderable markieren.",
+                    "en": "Mark the dynamic content as reorderable."
+                },
+                {
+                    "de":
+                        "Die Änderung im reorderContainer auf das Array anwenden.",
+                    "en": "Apply the change to the array in reorderContainer."
+                }
             ],
-            "colors": {"backgroundColors": ["#000000", "#BF5AF2", "#000000"], "textColors": ["#FFFFFF"]},
-            "code": "import SwiftUI\n\nstruct Lesson: Identifiable {\n    let id = UUID()\n    let title: String\n}\n\nstruct ReorderingView: View {\n    @State private var lessons = [\n        Lesson(title: \"TabView\"),\n        Lesson(title: \"Toolbar\"),\n        Lesson(title: \"Liquid Glass\")\n    ]\n\n    var body: some View {\n        VStack {\n            ForEach(lessons) { lesson in\n                Text(lesson.title)\n                    .frame(maxWidth: .infinity, alignment: .leading)\n                    .padding()\n            }\n            .reorderable()\n        }\n        .reorderContainer(for: Lesson.self) { difference in\n            lessons = lessons.applying(difference) ?? lessons\n        }\n    }\n}\n\n#Preview { ReorderingView() }",
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#BF5AF2",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct Lesson: Identifiable {\n    let id = UUID()\n    let title: String\n}\n\nstruct ReorderingView: View {\n    @State private var lessons = [\n        Lesson(title: \"TabView\"),\n        Lesson(title: \"Toolbar\"),\n        Lesson(title: \"Liquid Glass\")\n    ]\n\n    var body: some View {\n        VStack {\n            ForEach(lessons) { lesson in\n                Text(lesson.title)\n                    .frame(maxWidth: .infinity, alignment: .leading)\n                    .padding()\n            }\n            .reorderable()\n        }\n        .reorderContainer(for: Lesson.self) { difference in\n            lessons = lessons.applying(difference) ?? lessons\n        }\n    }\n}\n\n#Preview { ReorderingView() }",
             "category": "SwiftUI"
         },
         {
             "id": "swiftui_ios27_asyncimage_request",
-            "title": {"de": "AsyncImage mit URLRequest", "en": "AsyncImage with URLRequest"},
-            "description": {"de": "iOS 27 unterstützt URLRequest direkt und erlaubt eine eigene URLSession für alle AsyncImages in einem View-Baum.", "en": "iOS 27 supports URLRequest directly and lets you provide a URLSession for all AsyncImages in a view tree."},
+            "title": {
+                "de": "AsyncImage mit URLRequest",
+                "en": "AsyncImage with URLRequest"
+            },
+            "description": {
+                "de":
+                    "iOS 27 unterstützt URLRequest direkt und erlaubt eine eigene URLSession für alle AsyncImages in einem View-Baum.",
+                "en":
+                    "iOS 27 supports URLRequest directly and lets you provide a URLSession for all AsyncImages in a view tree."
+            },
             "steps": [
-                {"de": "Einen URLRequest mit passender Cache-Policy erstellen.", "en": "Create a URLRequest with an appropriate cache policy."},
-                {"de": "Lade-, Erfolgs- und Fehlerphase darstellen.", "en": "Render loading, success, and failure phases."},
-                {"de": "Optional mit asyncImageURLSession eine konfigurierte Session bereitstellen.", "en": "Optionally provide a configured session with asyncImageURLSession."}
+                {
+                    "de":
+                        "Einen URLRequest mit passender Cache-Policy erstellen.",
+                    "en":
+                        "Create a URLRequest with an appropriate cache policy."
+                },
+                {
+                    "de": "Lade-, Erfolgs- und Fehlerphase darstellen.",
+                    "en": "Render loading, success, and failure phases."
+                },
+                {
+                    "de":
+                        "Optional mit asyncImageURLSession eine konfigurierte Session bereitstellen.",
+                    "en":
+                        "Optionally provide a configured session with asyncImageURLSession."
+                }
             ],
-            "colors": {"backgroundColors": ["#000000", "#30D158", "#000000"], "textColors": ["#FFFFFF"]},
-            "code": "import SwiftUI\n\nstruct RequestedImageView: View {\n    private let request = URLRequest(\n        url: URL(string: \"https://picsum.photos/600\")!,\n        cachePolicy: .returnCacheDataElseLoad\n    )\n\n    var body: some View {\n        AsyncImage(request: request) { phase in\n            switch phase {\n            case .empty:\n                ProgressView()\n            case .success(let image):\n                image.resizable().scaledToFit()\n            case .failure:\n                ContentUnavailableView(\"Bild nicht verfügbar\", systemImage: \"photo.badge.exclamationmark\")\n            @unknown default:\n                EmptyView()\n            }\n        }\n        .clipShape(.rect(cornerRadius: 20))\n    }\n}\n\n#Preview { RequestedImageView() }",
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct RequestedImageView: View {\n    private let request = URLRequest(\n        url: URL(string: \"https://picsum.photos/600\")!,\n        cachePolicy: .returnCacheDataElseLoad\n    )\n\n    var body: some View {\n        AsyncImage(request: request) { phase in\n            switch phase {\n            case .empty:\n                ProgressView()\n            case .success(let image):\n                image.resizable().scaledToFit()\n            case .failure:\n                ContentUnavailableView(\"Bild nicht verfügbar\", systemImage: \"photo.badge.exclamationmark\")\n            @unknown default:\n                EmptyView()\n            }\n        }\n        .clipShape(.rect(cornerRadius: 20))\n    }\n}\n\n#Preview { RequestedImageView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_game_overlay_state",
+            "title": {
+                "de": "Eigenes Game-Overlay mit @State",
+                "en": "Custom game overlay with @State"
+            },
+            "description": {
+                "de":
+                    "Blende Pause-, Inventar- oder Game-over-Oberflächen mit einem lokalen Boolean ein und aus.",
+                "en":
+                    "Show and hide pause, inventory, or game-over interfaces with a local Boolean."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Den sichtbaren Zustand mit @State private speichern.",
+                    "en": "Store presentation state with private @State."
+                },
+                {
+                    "de":
+                        "Spiel und Overlay in einem ZStack übereinanderlegen.",
+                    "en": "Layer the game and overlay in a ZStack."
+                },
+                {
+                    "de":
+                        "Das Overlay mit Transition und Animation einblenden.",
+                    "en": "Present the overlay with a transition and animation."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#050816",
+                    "#5856D6",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct GameOverlayExample: View {\n    @State private var isPaused = false\n\n    var body: some View {\n        ZStack {\n            LinearGradient(colors: [.indigo, .black], startPoint: .top, endPoint: .bottom)\n                .ignoresSafeArea()\n\n            Button(\"Pause\", systemImage: \"pause.fill\") {\n                isPaused = true\n            }\n            .buttonStyle(.glassProminent)\n\n            if isPaused {\n                Color.black.opacity(0.45)\n                    .ignoresSafeArea()\n                    .onTapGesture { isPaused = false }\n\n                VStack(spacing: 16) {\n                    Text(\"Pausiert\").font(.largeTitle.bold())\n                    Button(\"Weiterspielen\") { isPaused = false }\n                        .buttonStyle(.glassProminent)\n                }\n                .padding(32)\n                .glassEffect(.regular, in: .rect(cornerRadius: 28))\n                .transition(.scale.combined(with: .opacity))\n            }\n        }\n        .animation(.snappy, value: isPaused)\n    }\n}\n\n#Preview { GameOverlayExample() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_game_shop_binding",
+            "title": {
+                "de": "Game-Shop mit @Binding",
+                "en": "Game shop with @Binding"
+            },
+            "description": {
+                "de":
+                    "Eine Shop-Zeile verändert Münzen und Inventar des Parent-Views, ohne diese Daten selbst zu besitzen.",
+                "en":
+                    "A shop row changes the parent view's coins and inventory without owning that data."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Münzen und Inventar im übergeordneten View als @State besitzen.",
+                    "en":
+                        "Own coins and inventory as @State in the parent view."
+                },
+                {
+                    "de":
+                        "Veränderbare Werte mit @Binding an die Shop-Komponente übergeben.",
+                    "en":
+                        "Pass mutable values to the shop component with @Binding."
+                },
+                {
+                    "de": "Vor dem Kauf Preis und Bestand prüfen.",
+                    "en": "Check price and inventory before purchasing."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#101820",
+                    "#FF9F0A",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct GameShopView: View {\n    @State private var coins = 120\n    @State private var potions = 0\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Label(\"\\(coins) Münzen\", systemImage: \"circle.fill\")\n                .font(.title2.bold())\n                .foregroundStyle(.yellow)\n            PotionShopRow(coins: $coins, potions: $potions)\n            Text(\"Tränke: \\(potions)\")\n        }\n        .padding()\n    }\n}\n\nstruct PotionShopRow: View {\n    @Binding var coins: Int\n    @Binding var potions: Int\n    let price = 30\n\n    var body: some View {\n        Button {\n            guard coins >= price else { return }\n            coins -= price\n            potions += 1\n        } label: {\n            Label(\"Heiltrank kaufen · \\(price)\", systemImage: \"cross.case.fill\")\n        }\n        .buttonStyle(.borderedProminent)\n        .disabled(coins < price)\n    }\n}\n\n#Preview { GameShopView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_game_environment",
+            "title": {
+                "de": "Gemeinsamer Spielzustand im Environment",
+                "en": "Shared game state in the environment"
+            },
+            "description": {
+                "de":
+                    "Ein @Observable-Modell stellt Münzen, Level und HP mehreren tief verschachtelten Views bereit.",
+                "en":
+                    "An @Observable model provides coins, level, and HP to multiple deeply nested views."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Das Modell mit @Observable definieren und auf dem MainActor halten.",
+                    "en":
+                        "Define the model with @Observable and keep it on the MainActor."
+                },
+                {
+                    "de":
+                        "Eine stabile Instanz im Root-View mit @State besitzen.",
+                    "en": "Own a stable instance in the root view with @State."
+                },
+                {
+                    "de":
+                        "Das Modell mit environment einsetzen und per @Environment(Type.self) lesen.",
+                    "en":
+                        "Insert the model with environment and read it using @Environment(Type.self)."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#071A14",
+                    "#30D158",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport Observation\n\n@MainActor\n@Observable\nfinal class GameSession {\n    var coins = 100\n    var level = 1\n    var hitPoints = 100\n}\n\nstruct GameRootView: View {\n    @State private var session = GameSession()\n\n    var body: some View {\n        PlayerHUD()\n            .environment(session)\n    }\n}\n\nstruct PlayerHUD: View {\n    @Environment(GameSession.self) private var session\n\n    var body: some View {\n        HStack {\n            Label(\"\\(session.hitPoints)\", systemImage: \"heart.fill\")\n            Spacer()\n            Text(\"Level \\(session.level)\")\n            Spacer()\n            Label(\"\\(session.coins)\", systemImage: \"circle.fill\")\n        }\n        .padding()\n        .glassEffect(.regular, in: .capsule)\n        .padding()\n    }\n}\n\n#Preview { GameRootView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_game_attack_hp",
+            "title": {
+                "de": "Angriff, Schaden und HP",
+                "en": "Attack, damage, and HP"
+            },
+            "description": {
+                "de":
+                    "Trenne Kampfregeln vom Layout: Das Modell berechnet Schaden, begrenzt HP und liefert den Game-over-Zustand.",
+                "en":
+                    "Separate combat rules from layout: the model calculates damage, clamps HP, and exposes game-over state."
+            },
+            "steps": [
+                {
+                    "de": "HP und maximale HP im Modell speichern.",
+                    "en": "Store HP and maximum HP in the model."
+                },
+                {
+                    "de": "Schaden mit max auf mindestens null begrenzen.",
+                    "en": "Clamp damage to a minimum of zero."
+                },
+                {
+                    "de": "UI aus hp, progress und isDefeated ableiten.",
+                    "en": "Derive the UI from hp, progress, and isDefeated."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#1A0707",
+                    "#FF453A",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\nimport Observation\n\n@MainActor\n@Observable\nfinal class Enemy {\n    let maximumHP = 100\n    var hp = 100\n\n    var progress: Double { Double(hp) / Double(maximumHP) }\n    var isDefeated: Bool { hp == 0 }\n\n    func receiveAttack(power: Int) {\n        hp = max(0, hp - max(0, power))\n    }\n}\n\nstruct BattleView: View {\n    @State private var enemy = Enemy()\n    @State private var attackCount = 0\n\n    var body: some View {\n        VStack(spacing: 24) {\n            Image(systemName: enemy.isDefeated ? \"checkmark.seal.fill\" : \"shield.lefthalf.filled\")\n                .font(.system(size: 72))\n                .symbolEffect(.bounce, value: attackCount)\n            ProgressView(value: enemy.progress)\n                .tint(enemy.hp < 30 ? .red : .green)\n            Text(\"HP: \\(enemy.hp) / \\(enemy.maximumHP)\")\n                .contentTransition(.numericText())\n            Button(\"Angreifen\", systemImage: \"bolt.fill\") {\n                enemy.receiveAttack(power: 18)\n                attackCount += 1\n            }\n            .buttonStyle(.glassProminent)\n            .disabled(enemy.isDefeated)\n        }\n        .padding()\n    }\n}\n\n#Preview { BattleView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_symbol_effects",
+            "title": {
+                "de": "SF Symbols einfach animieren",
+                "en": "Animate SF Symbols easily"
+            },
+            "description": {
+                "de":
+                    "symbolEffect animiert SF Symbols deklarativ, sobald sich ein Wert oder Aktivitätszustand ändert.",
+                "en":
+                    "symbolEffect animates SF Symbols declaratively when a value or active state changes."
+            },
+            "steps": [
+                {
+                    "de": "Ein SF Symbol mit Image(systemName:) anzeigen.",
+                    "en": "Display an SF Symbol with Image(systemName:)."
+                },
+                {
+                    "de":
+                        "Einen Zähler oder Boolean als Animationstrigger verwenden.",
+                    "en": "Use a counter or Boolean as the animation trigger."
+                },
+                {
+                    "de": "symbolEffect mit value oder isActive verbinden.",
+                    "en": "Connect symbolEffect using value or isActive."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#110A22",
+                    "#BF5AF2",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct SymbolEffectsView: View {\n    @State private var likes = 0\n    @State private var isSearching = false\n\n    var body: some View {\n        HStack(spacing: 40) {\n            Button { likes += 1 } label: {\n                Image(systemName: \"heart.fill\")\n                    .font(.largeTitle)\n                    .foregroundStyle(.pink)\n                    .symbolEffect(.bounce, value: likes)\n            }\n\n            Button { isSearching.toggle() } label: {\n                Image(systemName: \"wifi\")\n                    .font(.largeTitle)\n                    .symbolEffect(.variableColor.iterative, isActive: isSearching)\n            }\n        }\n        .buttonStyle(.plain)\n    }\n}\n\n#Preview { SymbolEffectsView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_custom_bottom_tabs",
+            "title": {
+                "de": "Eigene Bottom Tabs",
+                "en": "Custom bottom tabs"
+            },
+            "description": {
+                "de":
+                    "Baue eine eigene Tab-Leiste als sichere Bottom Bar, ohne Inhalte zu überdecken.",
+                "en":
+                    "Build a custom tab bar as a safe bottom bar without covering content."
+            },
+            "steps": [
+                {
+                    "de": "Die Auswahl mit einem Hashable Enum modellieren.",
+                    "en": "Model the selection with a Hashable enum."
+                },
+                {
+                    "de": "Den Inhalt abhängig von der Auswahl wechseln.",
+                    "en": "Switch content based on the selection."
+                },
+                {
+                    "de": "Die Leiste mit safeAreaInset und Glass platzieren.",
+                    "en": "Place the bar using safeAreaInset and glass."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#06141E",
+                    "#5AC8FA",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code": "import SwiftUI\n\nenum GameTab: String, CaseIterable, Identifiable {\n    case map, battle, bag\n    var id: Self { self }\n    var icon: String {\n        switch self {\n        case .map: \"map.fill\"\n        case .battle: \"flame.fill\"\n        case .bag: \"backpack.fill\"\n        }\n    }\n}\n\nstruct CustomGameTabs: View {\n    @State private var selection: GameTab = .map\n\n    var body: some View {\n        ZStack {\n            switch selection {\n            case .map: Text(\"Weltkarte\")\n            case .battle: Text(\"Kampf\")\n            case .bag: Text(\"Inventar\")\n            }\n        }\n        .frame(maxWidth: .infinity, maxHeight: .infinity)\n        .safeAreaInset(edge: .bottom) {\n            HStack {\n                ForEach(GameTab.allCases) { tab in\n                    Button { selection = tab } label: {\n                        Image(systemName: tab.icon)\n                            .frame(maxWidth: .infinity)\n                            .symbolEffect(.bounce, value: selection)\n                    }\n                    .foregroundStyle(selection == tab ? .primary : .secondary)\n                }\n            }\n            .padding()\n            .glassEffect(.regular, in: .capsule)\n            .padding(.horizontal)\n        }\n    }\n}\n\n#Preview { CustomGameTabs() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_custom_shape_header",
+            "title": {
+                "de": "Eigener Shape-Header",
+                "en": "Custom shape header"
+            },
+            "description": {
+                "de":
+                    "Ein eigener Shape erzeugt einen markanten, skalierbaren Header für Profil-, Level- oder Dashboard-Screens.",
+                "en":
+                    "A custom Shape creates a distinctive, scalable header for profile, level, or dashboard screens."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Koordinaten relativ zu rect.width und rect.height berechnen.",
+                    "en":
+                        "Calculate coordinates relative to rect.width and rect.height."
+                },
+                {
+                    "de": "Den Pfad schließen und mit einem Gradient füllen.",
+                    "en": "Close the path and fill it with a gradient."
+                },
+                {
+                    "de": "Text und Statuswerte im Overlay platzieren.",
+                    "en": "Place text and status values in an overlay."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#08132B",
+                    "#007AFF",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct WaveHeaderShape: Shape {\n    func path(in rect: CGRect) -> Path {\n        Path { path in\n            path.move(to: .zero)\n            path.addLine(to: CGPoint(x: rect.maxX, y: 0))\n            path.addLine(to: CGPoint(x: rect.maxX, y: rect.height * 0.72))\n            path.addCurve(\n                to: CGPoint(x: 0, y: rect.height * 0.9),\n                control1: CGPoint(x: rect.width * 0.7, y: rect.height),\n                control2: CGPoint(x: rect.width * 0.3, y: rect.height * 0.58)\n            )\n            path.closeSubpath()\n        }\n    }\n}\n\nstruct ProfileHeaderView: View {\n    var body: some View {\n        WaveHeaderShape()\n            .fill(.linearGradient(colors: [.blue, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing))\n            .frame(height: 230)\n            .overlay(alignment: .topLeading) {\n                VStack(alignment: .leading, spacing: 8) {\n                    Text(\"Willkommen zurück\").font(.headline)\n                    Text(\"Level 12\").font(.largeTitle.bold())\n                    Label(\"2.450 XP\", systemImage: \"star.fill\")\n                }\n                .foregroundStyle(.white)\n                .padding(28)\n            }\n            .ignoresSafeArea(edges: .top)\n    }\n}\n\n#Preview { ProfileHeaderView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_dashboard_grid",
+            "title": {
+                "de": "Platzsparendes Dashboard-Grid",
+                "en": "Space-efficient dashboard grid"
+            },
+            "description": {
+                "de":
+                    "Adaptive Spalten, klare Karten und eine volle Header-Zeile nutzen kleine und große Screens sinnvoll aus.",
+                "en":
+                    "Adaptive columns, clear cards, and a full-width header row use small and large screens effectively."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Semantische, Identifiable Dashboard-Einträge modellieren.",
+                    "en": "Model semantic, Identifiable dashboard entries."
+                },
+                {
+                    "de": "LazyVGrid mit adaptiver Mindestbreite verwenden.",
+                    "en": "Use LazyVGrid with an adaptive minimum width."
+                },
+                {
+                    "de":
+                        "Karten mit einheitlicher Höhe, Ausrichtung und Abständen gestalten.",
+                    "en":
+                        "Style cards with consistent height, alignment, and spacing."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#0B1220",
+                    "#34C759",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct DashboardItem: Identifiable {\n    let id: String\n    let title: String\n    let value: String\n    let icon: String\n    let color: Color\n}\n\nstruct DashboardGridView: View {\n    private let columns = [GridItem(.adaptive(minimum: 150), spacing: 12)]\n    private let items = [\n        DashboardItem(id: \"hp\", title: \"Leben\", value: \"84%\", icon: \"heart.fill\", color: .red),\n        DashboardItem(id: \"coins\", title: \"Münzen\", value: \"320\", icon: \"circle.fill\", color: .yellow),\n        DashboardItem(id: \"quests\", title: \"Quests\", value: \"3 offen\", icon: \"checklist\", color: .green)\n    ]\n\n    var body: some View {\n        ScrollView {\n            VStack(alignment: .leading, spacing: 16) {\n                Text(\"Übersicht\").font(.largeTitle.bold())\n                LazyVGrid(columns: columns, spacing: 12) {\n                    ForEach(items) { item in\n                        VStack(alignment: .leading, spacing: 12) {\n                            Image(systemName: item.icon).foregroundStyle(item.color)\n                            Text(item.value).font(.title.bold())\n                            Text(item.title).foregroundStyle(.secondary)\n                        }\n                        .frame(maxWidth: .infinity, minHeight: 120, alignment: .leading)\n                        .padding()\n                        .background(.background.secondary, in: .rect(cornerRadius: 20))\n                    }\n                }\n            }\n            .padding()\n        }\n    }\n}\n\n#Preview { DashboardGridView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_calculator_layout",
+            "title": {
+                "de": "Taschenrechner sauber aufteilen",
+                "en": "Structure a calculator cleanly"
+            },
+            "description": {
+                "de":
+                    "Grid und GridRow richten Tasten in echten Zeilen und Spalten aus; eine Taste kann mehrere Spalten belegen.",
+                "en":
+                    "Grid and GridRow align buttons in true rows and columns; one button can span multiple columns."
+            },
+            "steps": [
+                {
+                    "de":
+                        "Anzeige und Tastatur als getrennte Bereiche aufbauen.",
+                    "en": "Build the display and keypad as separate sections."
+                },
+                {
+                    "de": "Tasten mit GridRow exakt ausrichten.",
+                    "en": "Align keys precisely with GridRow."
+                },
+                {
+                    "de": "Breite Sondertasten mit gridCellColumns erstellen.",
+                    "en": "Create wide special keys with gridCellColumns."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#000000",
+                    "#FF9500",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct CalculatorLayoutView: View {\n    @State private var display = \"0\"\n\n    var body: some View {\n        VStack(spacing: 16) {\n            Text(display)\n                .font(.system(size: 56, weight: .light, design: .rounded))\n                .contentTransition(.numericText())\n                .frame(maxWidth: .infinity, alignment: .trailing)\n\n            Grid(horizontalSpacing: 12, verticalSpacing: 12) {\n                GridRow { key(\"7\"); key(\"8\"); key(\"9\"); key(\"÷\") }\n                GridRow { key(\"4\"); key(\"5\"); key(\"6\"); key(\"×\") }\n                GridRow { key(\"1\"); key(\"2\"); key(\"3\"); key(\"−\") }\n                GridRow {\n                    key(\"0\").gridCellColumns(2)\n                    key(\".\"); key(\"+\")\n                }\n            }\n        }\n        .padding()\n    }\n\n    private func key(_ title: String) -> some View {\n        Button(title) { display = title }\n            .font(.title2.bold())\n            .frame(maxWidth: .infinity, minHeight: 56)\n            .buttonStyle(.glass)\n    }\n}\n\n#Preview { CalculatorLayoutView() }",
+            "category": "SwiftUI"
+        },
+        {
+            "id": "swiftui_todo_notes",
+            "title": {
+                "de": "To-do- und Notizlogik",
+                "en": "To-do and note logic"
+            },
+            "description": {
+                "de":
+                    "Identifiable-Modelle, abgeleitete Filter und Bindings ergeben eine übersichtliche Grundlage für To-do- und Notiz-Apps.",
+                "en":
+                    "Identifiable models, derived filters, and bindings form a clean foundation for to-do and notes apps."
+            },
+            "steps": [
+                {
+                    "de": "Jeden Eintrag mit einer stabilen ID modellieren.",
+                    "en": "Model every entry with a stable ID."
+                },
+                {
+                    "de":
+                        "Gefilterte Werte aus dem Zustand ableiten statt doppelt speichern.",
+                    "en":
+                        "Derive filtered values from state instead of storing duplicates."
+                },
+                {
+                    "de": "Zeilenaktionen gezielt an das Modell weiterleiten.",
+                    "en": "Forward row actions to the model deliberately."
+                }
+            ],
+            "colors": {
+                "backgroundColors": [
+                    "#121212",
+                    "#FFD60A",
+                    "#000000"
+                ],
+                "textColors": [
+                    "#FFFFFF"
+                ]
+            },
+            "code":
+                "import SwiftUI\n\nstruct Todo: Identifiable {\n    let id = UUID()\n    var title: String\n    var isDone = false\n}\n\nstruct TodoNotesView: View {\n    @State private var todos = [Todo(title: \"SwiftUI üben\"), Todo(title: \"Notizen ordnen\")]\n    @State private var newTitle = \"\"\n    @State private var showCompleted = true\n\n    private var visibleTodos: [Todo] {\n        showCompleted ? todos : todos.filter { !$0.isDone }\n    }\n\n    var body: some View {\n        NavigationStack {\n            List {\n                Section {\n                    TextField(\"Neue Aufgabe\", text: $newTitle)\n                        .onSubmit(addTodo)\n                    Toggle(\"Erledigte anzeigen\", isOn: $showCompleted)\n                }\n                Section(\"Aufgaben\") {\n                    ForEach(visibleTodos) { todo in\n                        Button { toggle(todo) } label: {\n                            Label(todo.title, systemImage: todo.isDone ? \"checkmark.circle.fill\" : \"circle\")\n                        }\n                        .buttonStyle(.plain)\n                    }\n                    .onDelete(perform: deleteVisibleTodos)\n                }\n            }\n            .navigationTitle(\"Meine Liste\")\n        }\n    }\n\n    private func addTodo() {\n        let title = newTitle.trimmingCharacters(in: .whitespacesAndNewlines)\n        guard !title.isEmpty else { return }\n        todos.append(Todo(title: title))\n        newTitle = \"\"\n    }\n\n    private func toggle(_ todo: Todo) {\n        guard let index = todos.firstIndex(where: { $0.id == todo.id }) else { return }\n        todos[index].isDone.toggle()\n    }\n\n    private func deleteVisibleTodos(at offsets: IndexSet) {\n        let ids = offsets.map { visibleTodos[$0].id }\n        todos.removeAll { ids.contains($0.id) }\n    }\n}\n\n#Preview { TodoNotesView() }",
             "category": "SwiftUI"
         }
     ]

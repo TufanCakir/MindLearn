@@ -1,0 +1,429 @@
+[
+    {
+        "id": "ai_drawer_001",
+        "title": {
+            "de": "Foundation Models Schnellstart",
+            "en": "Foundation Models quick start"
+        },
+        "description": {
+            "de":
+                "Die wichtigsten Typen für lokale Textgenerierung mit Apple Intelligence.",
+            "en":
+                "The essential types for local text generation with Apple Intelligence."
+        },
+        "steps": [
+            {
+                "de":
+                    "SystemLanguageModel.default referenziert das lokale Basismodell.",
+                "en":
+                    "SystemLanguageModel.default references the local base model."
+            },
+            {
+                "de":
+                    "LanguageModelSession verwaltet Instructions, Verlauf und Antworten.",
+                "en":
+                    "LanguageModelSession manages instructions, history, and responses."
+            },
+            {
+                "de": "respond(to:) liefert asynchron response.content.",
+                "en": "respond(to:) asynchronously returns response.content."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#050816",
+                "#7D5CFF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import FoundationModels\n\nlet model = SystemLanguageModel.default\nlet session = LanguageModelSession(\n    model: model,\n    instructions: \"Antworte kurz, korrekt und auf Deutsch.\"\n)\n\nlet response = try await session.respond(to: \"Erkläre @Binding.\")\nprint(response.content)",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_002",
+        "title": {
+            "de": "Modell-Verfügbarkeit",
+            "en": "Model availability"
+        },
+        "description": {
+            "de":
+                "Prüfe das lokale Modell immer vor dem Anzeigen oder Starten einer KI-Funktion.",
+            "en":
+                "Always check the local model before presenting or starting an AI feature."
+        },
+        "steps": [
+            {
+                "de": "available: Modell ist einsatzbereit.",
+                "en": "available: the model is ready."
+            },
+            {
+                "de":
+                    "deviceNotEligible: Hardware unterstützt Apple Intelligence nicht.",
+                "en":
+                    "deviceNotEligible: the hardware doesn't support Apple Intelligence."
+            },
+            {
+                "de":
+                    "modelNotReady oder appleIntelligenceNotEnabled: Alternative erklären.",
+                "en":
+                    "modelNotReady or appleIntelligenceNotEnabled: explain the alternative."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#08111F",
+                "#0A84FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "switch SystemLanguageModel.default.availability {\ncase .available:\n    showAssistant = true\ncase .unavailable(.deviceNotEligible):\n    status = \"Gerät nicht unterstützt\"\ncase .unavailable(.modelNotReady):\n    status = \"Modell noch nicht bereit\"\ncase .unavailable(.appleIntelligenceNotEnabled):\n    status = \"Apple Intelligence ist deaktiviert\"\ncase .unavailable:\n    status = \"KI nicht verfügbar\"\n}",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_003",
+        "title": {
+            "de": "@Generable und @Guide",
+            "en": "@Generable and @Guide"
+        },
+        "description": {
+            "de":
+                "Erzeuge typsichere Swift-Werte statt Freitext manuell zu parsen.",
+            "en":
+                "Generate type-safe Swift values instead of manually parsing free text."
+        },
+        "steps": [
+            {
+                "de": "@Generable beschreibt die gewünschte Ausgabestruktur.",
+                "en": "@Generable describes the desired output structure."
+            },
+            {
+                "de":
+                    "@Guide dokumentiert Bedeutung und Grenzen einer Property.",
+                "en": "@Guide documents a property's meaning and constraints."
+            },
+            {
+                "de": "respond(to:generating:) liefert den fertigen Typ.",
+                "en": "respond(to:generating:) returns the completed type."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#160B24",
+                "#BF5AF2",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import FoundationModels\n\n@Generable\nstruct Quiz {\n    @Guide(description: \"Eine klare Frage\")\n    let question: String\n\n    @Guide(description: \"Genau drei Antworten\", .count(3))\n    let answers: [String]\n\n    @Guide(description: \"Index der richtigen Antwort\", .range(0...2))\n    let correctIndex: Int\n}\n\nlet quiz = try await session.respond(\n    to: \"Erstelle ein SwiftUI-Quiz.\",\n    generating: Quiz.self\n).content",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_004",
+        "title": {
+            "de": "Chat-Streaming",
+            "en": "Chat streaming"
+        },
+        "description": {
+            "de":
+                "ResponseStream liefert aggregierte Zwischenstände für eine flüssige Chat-Blase.",
+            "en":
+                "ResponseStream produces aggregated snapshots for a fluid chat bubble."
+        },
+        "steps": [
+            {
+                "de": "streamResponse(to:) starten.",
+                "en": "Start streamResponse(to:)."
+            },
+            {
+                "de": "Mit for try await jeden Zwischenstand lesen.",
+                "en": "Read every snapshot with for try await."
+            },
+            {
+                "de": "Immer dieselbe Assistant-Nachricht aktualisieren.",
+                "en": "Keep updating the same assistant message."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#071722",
+                "#32ADE6",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "var displayedText = \"\"\n\ndo {\n    for try await partial in session.streamResponse(to: prompt) {\n        displayedText = partial.content\n    }\n} catch {\n    displayedText = \"Antwort fehlgeschlagen.\"\n}",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_005",
+        "title": {
+            "de": "Instructions, Prompt und Transcript",
+            "en": "Instructions, prompt, and transcript"
+        },
+        "description": {
+            "de":
+                "Trenne dauerhaftes Verhalten, aktuelle Aufgabe und Sitzungsverlauf.",
+            "en":
+                "Separate persistent behavior, the current task, and session history."
+        },
+        "steps": [
+            {
+                "de": "Instructions definieren Rolle und dauerhafte Regeln.",
+                "en": "Instructions define role and persistent rules."
+            },
+            {
+                "de":
+                    "Der Prompt enthält nur die aktuelle Aufgabe und nötigen Kontext.",
+                "en":
+                    "The prompt contains only the current task and required context."
+            },
+            {
+                "de":
+                    "session.transcript enthält die Interaktionen der Session.",
+                "en": "session.transcript contains the session interactions."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#111018",
+                "#5E5CE6",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "let session = LanguageModelSession(\n    instructions: \"Du bist ein Swift-Lerncoach. Erfinde keine APIs.\"\n)\n\nlet response = try await session.respond(\n    to: \"Fasse diese Lektion in drei Punkten zusammen: \\(lesson)\"\n)\n\nlet history = session.transcript.history",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_006",
+        "title": {
+            "de": "Tool Calling",
+            "en": "Tool calling"
+        },
+        "description": {
+            "de":
+                "Tools geben dem Modell kontrollierten Zugriff auf aktuelle App-Daten oder Funktionen.",
+            "en":
+                "Tools give the model controlled access to current app data or functions."
+        },
+        "steps": [
+            {
+                "de": "Tool-Name und Beschreibung eindeutig formulieren.",
+                "en": "Write an unambiguous tool name and description."
+            },
+            {
+                "de": "Arguments mit @Generable und @Guide begrenzen.",
+                "en": "Constrain arguments with @Generable and @Guide."
+            },
+            {
+                "de":
+                    "call(arguments:) Sendable, minimal und sicher implementieren.",
+                "en":
+                    "Implement call(arguments:) as Sendable, minimal, and safe."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#171107",
+                "#FF9F0A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "struct CurrentScoreTool: Tool {\n    let name = \"currentScore\"\n    let description = \"Liefert den aktuellen Punktestand.\"\n    let score: Int\n\n    @Generable\n    struct Arguments { }\n\n    func call(arguments: Arguments) async throws -> String {\n        \"Aktueller Punktestand: \\(score)\"\n    }\n}\n\nlet session = LanguageModelSession(tools: [CurrentScoreTool(score: 120)])",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_007",
+        "title": {
+            "de": "Image Playground Sheet",
+            "en": "Image Playground sheet"
+        },
+        "description": {
+            "de":
+                "Systemeigene Bildgenerierung mit Verfügbarkeitsprüfung und temporärer Ergebnisdatei.",
+            "en":
+                "System image generation with availability checking and a temporary result file."
+        },
+        "steps": [
+            {
+                "de": "supportsImagePlayground aus dem Environment lesen.",
+                "en": "Read supportsImagePlayground from the environment."
+            },
+            {
+                "de":
+                    "imagePlaygroundSheet mit Konzept und Binding präsentieren.",
+                "en": "Present imagePlaygroundSheet with a concept and binding."
+            },
+            {
+                "de":
+                    "Die temporäre URL kopieren, wenn das Bild erhalten bleiben soll.",
+                "en": "Copy the temporary URL if the image should persist."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#190B19",
+                "#FF2D55",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import ImagePlayground\nimport SwiftUI\n\n@Environment(\\.supportsImagePlayground) private var isSupported\n@State private var showPlayground = false\n@State private var resultURL: URL?\n\nButton(\"Bild erstellen\") { showPlayground = true }\n    .disabled(!isSupported)\n    .imagePlaygroundSheet(\n        isPresented: $showPlayground,\n        concept: \"Ein Roboter lernt Swift\"\n    ) { temporaryURL in\n        resultURL = temporaryURL\n    }",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_008",
+        "title": {
+            "de": "Lokale KI oder Core ML?",
+            "en": "Local AI or Core ML?"
+        },
+        "description": {
+            "de":
+                "Schnelle Entscheidung zwischen generativer Sprache und einem spezialisierten eigenen Modell.",
+            "en":
+                "A quick choice between generative language and a specialized custom model."
+        },
+        "steps": [
+            {
+                "de":
+                    "Foundation Models: Text, Zusammenfassung, Extraktion und Dialog.",
+                "en":
+                    "Foundation Models: text, summaries, extraction, and dialogue."
+            },
+            {
+                "de":
+                    "Core ML: eigene Klassifikation, Erkennung und numerische Vorhersage.",
+                "en":
+                    "Core ML: custom classification, recognition, and numerical prediction."
+            },
+            {
+                "de":
+                    "Beide können lokal arbeiten; Verfügbarkeit und Modellgröße bleiben wichtig.",
+                "en":
+                    "Both can work locally; availability and model size remain important."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#081A16",
+                "#00C7BE",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "// Foundation Models\nlet answer = try await LanguageModelSession().respond(to: prompt).content\n\n// Core ML\nlet model = try MLModel(contentsOf: modelURL)\nlet prediction = try await model.prediction(from: input)",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_009",
+        "title": {
+            "de": "Offline-First Fallback",
+            "en": "Offline-first fallback"
+        },
+        "description": {
+            "de":
+                "Halte die Oberfläche unabhängig vom Anbieter und biete bei fehlender KI eine klassische Funktion an.",
+            "en":
+                "Keep the interface independent of the provider and offer a classic feature when AI is unavailable."
+        },
+        "steps": [
+            {
+                "de": "Eine kleine Sendable-Schnittstelle definieren.",
+                "en": "Define a small Sendable interface."
+            },
+            {
+                "de": "Lokale KI hinter einer Implementierung kapseln.",
+                "en": "Encapsulate local AI behind one implementation."
+            },
+            {
+                "de": "Regelbasierten oder manuellen Fallback bereitstellen.",
+                "en": "Provide a rule-based or manual fallback."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#0A1710",
+                "#34C759",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "protocol Assistant: Sendable {\n    func answer(_ prompt: String) async throws -> String\n}\n\nlet assistant: any Assistant = model.isAvailable\n    ? OnDeviceAssistant()\n    : OfflineHelpAssistant()",
+        "category": "KI"
+    },
+    {
+        "id": "ai_drawer_010",
+        "title": {
+            "de": "KI-Datenschutz-Checkliste",
+            "en": "AI privacy checklist"
+        },
+        "description": {
+            "de":
+                "Kurze Prüfung vor jeder KI-Funktion mit Profilen, Tools oder persönlichen Inhalten.",
+            "en":
+                "A short review before every AI feature involving profiles, tools, or personal content."
+        },
+        "steps": [
+            {
+                "de":
+                    "Nur notwendige Daten verarbeiten und Speicherfristen erklären.",
+                "en": "Process only necessary data and explain retention."
+            },
+            {
+                "de":
+                    "Cloud-Fallback, Verlauf und Diagnosen als getrennte Opt-ins behandeln.",
+                "en":
+                    "Treat cloud fallback, history, and diagnostics as separate opt-ins."
+            },
+            {
+                "de":
+                    "Destruktive Tool-Aktionen bestätigen und generierte Ergebnisse überprüfbar machen.",
+                "en":
+                    "Confirm destructive tool actions and make generated results reviewable."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#190909",
+                "#FF453A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "struct AIPrivacySettings: Codable {\n    var saveHistory = false\n    var allowCloudFallback = false\n    var shareDiagnostics = false\n}\n\n// Sichere Voreinstellung: lokal, transparent, minimale Speicherung.",
+        "category": "KI"
+    }
+]
