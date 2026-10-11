@@ -30,25 +30,27 @@ struct ConceptListView: View {
             .sorted { $0.rawValue < $1.rawValue }
     }
 
-    private var filteredConcepts: [LearningConcept] {
-        concepts.filter { concept in
-            selectedLanguage == nil || concept.language == selectedLanguage
-        }
+    private func concepts(for language: ContentLanguage?) -> [LearningConcept] {
+        guard let language else { return concepts }
+        return concepts.filter { $0.language == language }
     }
 
     var body: some View {
-        ScrollView {
+        Group {
             switch loadState {
             case .loading:
                 ProgressView()
                     .frame(maxWidth: .infinity, minHeight: 300)
             case .loaded:
-                VStack(alignment: .leading, spacing: 18) {
+                VStack(spacing: 0) {
                     filterRow
-                    conceptRows
+                        .padding(.horizontal)
+                        .padding(.vertical, 12)
+
+                    Divider()
+
+                    conceptPager
                 }
-                .padding()
-                .padding(.bottom, 88)
             case .failed(let details):
                 ContentLoadingFailureView(
                     title: text.common.loadErrorTitle,
@@ -81,38 +83,64 @@ extension ConceptListView {
     }
 
     private var filterRow: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
-                ForEach(languageFilters, id: \.self) { language in
-                    Button {
-                        selectedLanguage = language
-                    } label: {
-                        Text(title(for: language))
-                            .font(.caption.weight(.semibold))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 8)
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(languageFilters, id: \.self) { language in
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                selectedLanguage = language
+                            }
+                        } label: {
+                            Text(title(for: language))
+                                .font(.caption.weight(.semibold))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(
+                            selectedLanguage == language ? .white : .primary
+                        )
+                        .background(
+                            Capsule(style: .continuous)
+                                .fill(
+                                    selectedLanguage == language
+                                        ? Color.accentColor
+                                        : Color(
+                                            .secondarySystemGroupedBackground
+                                        )
+                                )
+                        )
+                        .id(language)
                     }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(
-                        selectedLanguage == language ? .white : .primary
-                    )
-                    .background(
-                        Capsule(style: .continuous)
-                            .fill(
-                                selectedLanguage == language
-                                    ? Color.accentColor
-                                    : Color(.secondarySystemGroupedBackground)
-                            )
-                    )
+                }
+                .padding(.vertical, 2)
+            }
+            .onChange(of: selectedLanguage) { _, language in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    proxy.scrollTo(language, anchor: .center)
                 }
             }
-            .padding(.vertical, 2)
         }
     }
 
-    private var conceptRows: some View {
+    private var conceptPager: some View {
+        TabView(selection: $selectedLanguage) {
+            ForEach(languageFilters, id: \.self) { language in
+                ScrollView {
+                    conceptRows(concepts(for: language))
+                        .padding()
+                        .padding(.bottom, 88)
+                }
+                .tag(language)
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+    }
+
+    private func conceptRows(_ concepts: [LearningConcept]) -> some View {
         LazyVStack(spacing: 10) {
-            if filteredConcepts.isEmpty {
+            if concepts.isEmpty {
                 ContentUnavailableView(
                     text.learningList.emptyTitle,
                     systemImage: "magnifyingglass",
@@ -120,7 +148,7 @@ extension ConceptListView {
                 )
                 .frame(maxWidth: .infinity, minHeight: 220)
             } else {
-                ForEach(filteredConcepts) { concept in
+                ForEach(concepts) { concept in
                     NavigationLink {
                         ConceptDetailView(concept: concept)
                     } label: {

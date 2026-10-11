@@ -40,22 +40,15 @@ final class LearningListViewModel {
     // MARK: Filtering (⭐ BEST)
 
     var filteredTopics: [LearningTopic] {
+        topics(for: selectedCategory)
+    }
 
-        guard !topics.isEmpty else { return [] }
-
-        let query =
-            searchText
-            .trimmingCharacters(
-                in: .whitespacesAndNewlines
-            )
+    func topics(for category: ContentCategoryFilter) -> [LearningTopic] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return topics.filter { topic in
-
-            matchesCategory(topic)
-                && matchesSearch(
-                    topic,
-                    query: query
-                )
+            (category.category == nil || topic.category == category.category)
+                && matchesSearch(topic, query: query)
         }
     }
 }
@@ -131,7 +124,8 @@ extension LearningListViewModel {
 
         let unique = Set(topics.map(\.category))
 
-        return [.all] + unique.sorted { $0.rawValue < $1.rawValue }
+        return [.all]
+            + unique.sorted { $0.rawValue < $1.rawValue }
             .map(ContentCategoryFilter.category)
     }
 }

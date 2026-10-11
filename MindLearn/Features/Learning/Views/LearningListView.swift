@@ -40,12 +40,6 @@ struct LearningListView: View {
             Color(.systemGroupedBackground)
                 .ignoresSafeArea()
         )
-        .searchable(
-            text: $vm.searchText,
-            placement: .toolbar,
-            prompt: text.learningList.searchPlaceholder
-        )
-        .searchToolbarBehavior(.minimize)
         .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
     }
 }
@@ -75,27 +69,29 @@ extension LearningListView {
 extension LearningListView {
 
     private var contentScroll: some View {
+        TabView(selection: $vm.selectedCategory) {
+            ForEach(vm.categories, id: \.self) { category in
+                ScrollView {
+                    let topics = vm.topics(for: category)
 
-        ScrollView {
-
-            VStack {
-
-                if vm.filteredTopics.isEmpty {
-
-                    emptyState
-
-                } else {
-
-                    LearningGrid(
-                        topics: vm.filteredTopics,
-                        gridLayout: gridLayout
-                    )
+                    VStack {
+                        if topics.isEmpty {
+                            emptyState
+                        } else {
+                            LearningGrid(
+                                topics: topics,
+                                gridLayout: gridLayout
+                            )
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 16)
                 }
+                .scrollIndicators(.visible)
+                .tag(category)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.top, 16)
         }
-        .scrollIndicators(.visible)
+        .tabViewStyle(.page(indexDisplayMode: .never))
     }
 }
 
@@ -176,17 +172,21 @@ extension LearningListView {
 extension LearningListView {
 
     private var categoryTabs: some View {
-
-        ScrollView(.horizontal, showsIndicators: false) {
-
-            HStack(spacing: 10) {
-
-                ForEach(vm.categories, id: \.self) {
-
-                    categoryButton($0)
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(vm.categories, id: \.self) { category in
+                        categoryButton(category)
+                            .id(category)
+                    }
+                }
+                .padding(.vertical, 2)
+            }
+            .onChange(of: vm.selectedCategory) { _, category in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    proxy.scrollTo(category, anchor: .center)
                 }
             }
-            .padding(.vertical, 2)
         }
     }
 }

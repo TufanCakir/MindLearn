@@ -45,23 +45,15 @@ struct LearningDetailView: View {
 
         ScrollView {
 
-            VStack(spacing: 16) {
-
-                heroHeader
-
+            VStack(spacing: 12) {
                 progressSection
-
                 descriptionSection
-
                 stepsSection
-
                 codeSection
-
-                Spacer(minLength: 20)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 18)
-            .padding(.bottom, 80)
+            .padding(.vertical, 12)
+            .padding(.bottom, 40)
         }
         .background(background)
         .navigationTitle(localizedTitle)
@@ -81,63 +73,6 @@ extension LearningDetailView {
     }
 }
 
-//
-// MARK: HERO HEADER
-//
-
-extension LearningDetailView {
-
-    private var heroHeader: some View {
-
-        ZStack(alignment: .bottomLeading) {
-
-            RoundedRectangle(
-                cornerRadius: 28,
-                style: .continuous
-            )
-            .fill(.ultraThinMaterial)
-
-            LinearGradient(
-                colors: [
-                    .clear,
-                    .black.opacity(0.15),
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .clipShape(
-                RoundedRectangle(
-                    cornerRadius: 28,
-                    style: .continuous
-                )
-            )
-
-            VStack(alignment: .leading, spacing: 8) {
-
-                Text(localizedTitle)
-                    .font(
-                        .system(
-                            .title2,
-                            design: .rounded
-                        )
-                        .weight(.bold)
-                    )
-                    .accessibilityAddTraits(.isHeader)
-            }
-            .frame(
-                maxWidth: contentWidth
-            )
-            .frame(height: isPad ? 160 : 112)
-            .padding(.horizontal)
-            .shadow(
-                color: .black.opacity(0.12),
-                radius: 12,
-                y: 8
-            )
-        }
-    }
-}
-
 // MARK: Progress
 
 extension LearningDetailView {
@@ -150,15 +85,33 @@ extension LearningDetailView {
     }
 
     private var progressSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 10) {
             Text(text.progress.title)
                 .font(.headline)
                 .accessibilityAddTraits(.isHeader)
 
-            HStack(spacing: 10) {
-                progressButton(.read, title: text.progress.markRead)
-                progressButton(.understood, title: text.progress.markUnderstood)
-                progressButton(.review, title: text.progress.markReview)
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 8) {
+                    progressButton(.read, title: text.progress.markRead)
+                        .fixedSize(horizontal: true, vertical: false)
+                    progressButton(
+                        .understood,
+                        title: text.progress.markUnderstood
+                    )
+                    .fixedSize(horizontal: true, vertical: false)
+                    progressButton(.review, title: text.progress.markReview)
+                        .fixedSize(horizontal: true, vertical: false)
+                }
+                .frame(maxWidth: .infinity)
+
+                VStack(spacing: 8) {
+                    progressButton(.read, title: text.progress.markRead)
+                    progressButton(
+                        .understood,
+                        title: text.progress.markUnderstood
+                    )
+                    progressButton(.review, title: text.progress.markReview)
+                }
             }
 
             progressMetadata
@@ -197,7 +150,10 @@ extension LearningDetailView {
     ) -> some View {
         Label(title, systemImage: status.systemImage)
             .font(.caption.bold())
+            .lineLimit(1)
             .frame(maxWidth: .infinity)
+            .padding(.vertical, 2)
+            .layoutPriority(status == .understood ? 1 : 0)
     }
 
     @ViewBuilder
@@ -290,15 +246,14 @@ extension LearningDetailView {
 
         if !localizedDescription.isEmpty {
 
-            VStack(alignment: .leading, spacing: 10) {
-
+            VStack(alignment: .leading, spacing: 8) {
                 Text(text.detail.description)
                     .font(.headline)
                     .accessibilityAddTraits(.isHeader)
 
                 Text(localizedDescription)
                     .font(.body)
-                    .lineSpacing(6)
+                    .lineSpacing(3)
             }
             .sectionCard(width: contentWidth)
         }
@@ -316,48 +271,31 @@ extension LearningDetailView {
 
         if !localizedSteps.isEmpty {
 
-            VStack(
-                alignment: .leading,
-                spacing: 16
-            ) {
-
+            VStack(alignment: .leading, spacing: 10) {
                 Text(text.detail.steps)
                     .font(.headline)
                     .accessibilityAddTraits(.isHeader)
 
-                VStack(spacing: 14) {
-
+                VStack(spacing: 0) {
                     ForEach(
                         Array(localizedSteps.enumerated()),
                         id: \.offset
                     ) { index, step in
-
-                        HStack(
-                            alignment: .top,
-                            spacing: 16
-                        ) {
-
+                        HStack(alignment: .top, spacing: 12) {
                             stepNumber(index + 1)
 
                             Text(step)
-                                .fixedSize(
-                                    horizontal: false,
-                                    vertical: true
-                                )
+                                .font(.body)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        .padding(18)
+                        .padding(.vertical, 10)
                         .accessibilityElement(children: .combine)
-                        .background(
-                            RoundedRectangle(
-                                cornerRadius: 18,
-                                style: .continuous
-                            )
-                            .fill(
-                                Color(
-                                    .secondarySystemGroupedBackground
-                                )
-                            )
-                        )
+
+                        if index < localizedSteps.count - 1 {
+                            Divider()
+                                .padding(.leading, 36)
+                        }
                     }
                 }
             }
@@ -370,8 +308,8 @@ extension LearningDetailView {
     ) -> some View {
 
         Text("\(number)")
-            .font(.caption.bold())
-            .frame(width: 30, height: 30)
+            .font(.caption2.bold())
+            .frame(width: 24, height: 24)
             .background(
                 Circle()
                     .fill(.blue.gradient)
@@ -416,34 +354,16 @@ extension View {
     ) -> some View {
 
         self
-            .frame(
-                maxWidth: width,
-                alignment: .leading
-            )
-            .padding(.horizontal)
-            .padding(14)
+            .padding(12)
+            .frame(maxWidth: width, alignment: .leading)
             .background(
-
-                RoundedRectangle(
-                    cornerRadius: 20,
-                    style: .continuous
-                )
-                .fill(
-                    Color(
-                        .secondarySystemGroupedBackground
-                    )
-                )
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
             )
             .overlay(
-
-                RoundedRectangle(
-                    cornerRadius: 20,
-                    style: .continuous
-                )
-                .stroke(
-                    Color(.separator),
-                    lineWidth: 1
-                )
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(Color(.separator), lineWidth: 1)
             )
+            .padding(.horizontal, 16)
     }
 }

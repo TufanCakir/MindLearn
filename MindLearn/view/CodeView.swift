@@ -14,6 +14,7 @@ struct CodeView: View {
     @State private var highlighted = AttributedString("")
     @State private var highlightedPreview = AttributedString("")
     @State private var showCopied = false
+    @State private var copyFeedbackCount = 0
     @State private var showsFullCode = false
     @State private var copyFeedbackTask: Task<Void, Never>?
     @AppStorage("codeWrapLongLines") private var wrapsLongLines = true
@@ -139,9 +140,19 @@ struct CodeView: View {
                             Button {
                                 copyCode()
                             } label: {
-                                Image(systemName: "doc.on.doc")
+                                Label(
+                                    showCopied
+                                        ? text.common.copied : text.common.copy,
+                                    systemImage: showCopied
+                                        ? "checkmark.circle.fill"
+                                        : "doc.on.doc"
+                                )
                             }
-                            .accessibilityLabel(text.common.copy)
+                            .foregroundStyle(showCopied ? .green : .accentColor)
+                            .accessibilityLabel(
+                                showCopied
+                                    ? text.common.copied : text.common.copy
+                            )
                         }
 
                         ToolbarItem(placement: .primaryAction) {
@@ -150,6 +161,7 @@ struct CodeView: View {
                     }
             }
         }
+        .sensoryFeedback(.success, trigger: copyFeedbackCount)
         .task(id: code) {
             async let fullCode = SyntaxHighlighter.shared.highlight(code)
             async let preview = SyntaxHighlighter.shared.highlight(previewCode)
@@ -237,6 +249,11 @@ extension CodeView {
 
     private func copyCode() {
         UIPasteboard.general.string = code
+        copyFeedbackCount += 1
+        UIAccessibility.post(
+            notification: .announcement,
+            argument: text.common.copied
+        )
 
         withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
             showCopied = true
