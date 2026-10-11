@@ -1,0 +1,123 @@
+[
+    {
+        "id": "swiftui_navigation_values",
+        "title": {
+            "de": "NavigationStack mit typisierten Zielen",
+            "en": "NavigationStack with typed destinations"
+        },
+        "description": {
+            "de":
+                "NavigationLink übergibt Datenwerte; navigationDestination ordnet ihnen zentral eine Zielansicht zu.",
+            "en":
+                "NavigationLink passes data values and navigationDestination maps them to destination views."
+        },
+        "steps": [
+            {
+                "de": "Navigationswert Hashable machen.",
+                "en": "Make the navigation value Hashable."
+            },
+            {
+                "de": "NavigationLink(value:) in der Liste verwenden.",
+                "en": "Use NavigationLink(value:) in the list."
+            },
+            {
+                "de": "Ziel außerhalb der Zeile registrieren.",
+                "en": "Register the destination outside the row."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#07152A",
+                "#0A84FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct Lesson: Identifiable, Hashable { let id: UUID; let title: String }\n\nstruct LessonNavigationView: View {\n    let lessons: [Lesson]\n    var body: some View {\n        NavigationStack {\n            List(lessons) { lesson in\n                NavigationLink(value: lesson) { Label(lesson.title, systemImage: \"book\") }\n            }\n            .navigationTitle(\"Lektionen\")\n            .navigationDestination(for: Lesson.self) { lesson in\n                LessonDetailView(lesson: lesson)\n            }\n        }\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui_sheet_item",
+        "title": {
+            "de": "Sheet mit optionalem Datenelement",
+            "en": "Sheet with an optional data item"
+        },
+        "description": {
+            "de":
+                "sheet(item:) verbindet Auswahl und Präsentation in einer einzigen Source of Truth.",
+            "en":
+                "sheet(item:) combines selection and presentation in one source of truth."
+        },
+        "steps": [
+            {
+                "de": "Ausgewähltes Element optional speichern.",
+                "en": "Store the selected item as an optional."
+            },
+            {
+                "de": "Beim Tap das Element setzen.",
+                "en": "Set the item on tap."
+            },
+            {
+                "de": "Sheet erhält den sicher entpackten Wert.",
+                "en": "The sheet receives the safely unwrapped value."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#151025",
+                "#BF5AF2",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct LessonSheetView: View {\n    let lessons: [Lesson]\n    @State private var selectedLesson: Lesson?\n\n    var body: some View {\n        List(lessons) { lesson in\n            Button(lesson.title) { selectedLesson = lesson }\n        }\n        .sheet(item: $selectedLesson) { lesson in\n            NavigationStack {\n                LessonDetailView(lesson: lesson)\n                    .toolbar {\n                        ToolbarItem(placement: .confirmationAction) {\n                            Button(\"Fertig\") { selectedLesson = nil }\n                        }\n                    }\n            }\n        }\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui_fullscreen_game",
+        "title": {
+            "de": "Spiel als Full-Screen-Cover",
+            "en": "Game as a full-screen cover"
+        },
+        "description": {
+            "de":
+                "Präsentiere eine ausgewählte Spielkonfiguration bildschirmfüllend und schließe sie über dismiss.",
+            "en":
+                "Present a selected game configuration full screen and close it through dismiss."
+        },
+        "steps": [
+            {
+                "de":
+                    "Identifiable-Konfiguration als optionalen Zustand halten.",
+                "en": "Keep an identifiable configuration as optional state."
+            },
+            {
+                "de": "fullScreenCover(item:) verwenden.",
+                "en": "Use fullScreenCover(item:)."
+            },
+            {
+                "de": "Im Ziel @Environment(\\.dismiss) lesen.",
+                "en": "Read @Environment(\\.dismiss) in the destination."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#160700",
+                "#FF5A16",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct GameMode: Identifiable { let id: String; let title: String }\n\nstruct GameLauncher: View {\n    @State private var activeGame: GameMode?\n    var body: some View {\n        Button(\"Spiel starten\") { activeGame = GameMode(id: \"story\", title: \"Story\") }\n            .fullScreenCover(item: $activeGame) { mode in GameScreen(mode: mode) }\n    }\n}\n\nstruct GameScreen: View {\n    @Environment(\\.dismiss) private var dismiss\n    let mode: GameMode\n    var body: some View {\n        ZStack(alignment: .topLeading) {\n            Color.black.ignoresSafeArea()\n            Button(\"Beenden\", systemImage: \"xmark\") { dismiss() }.padding()\n            Text(mode.title).font(.largeTitle.bold()).frame(maxWidth: .infinity, maxHeight: .infinity)\n        }\n        .foregroundStyle(.white)\n    }\n}",
+        "category": "SwiftUI"
+    }
+]

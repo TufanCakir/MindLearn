@@ -12,7 +12,6 @@ struct ConceptListView: View {
 
     private var appLanguage: String { localization.language }
 
-    @State private var searchText = ""
     @State private var selectedLanguage: ContentLanguage?
     @State private var loadState: ContentLoadState<[LearningConcept]> = .loading
 
@@ -26,31 +25,14 @@ struct ConceptListView: View {
     }
 
     private var languageFilters: [ContentLanguage?] {
-        [nil] + Array(Set(concepts.map(\.language)))
+        [nil]
+            + Array(Set(concepts.map(\.language)))
             .sorted { $0.rawValue < $1.rawValue }
     }
 
     private var filteredConcepts: [LearningConcept] {
         concepts.filter { concept in
-            let matchesLanguage =
-                selectedLanguage == nil
-                || concept.language == selectedLanguage
-            let query = searchText.trimmingCharacters(
-                in: .whitespacesAndNewlines
-            ).lowercased()
-
-            guard !query.isEmpty else {
-                return matchesLanguage
-            }
-
-            return matchesLanguage
-                && (concept.title(language: appLanguage).lowercased().contains(
-                    query
-                )
-                    || concept.summary(language: appLanguage).lowercased()
-                        .contains(query)
-                    || concept.symbols.joined(separator: " ").lowercased()
-                        .contains(query))
+            selectedLanguage == nil || concept.language == selectedLanguage
         }
     }
 
@@ -62,11 +44,11 @@ struct ConceptListView: View {
                     .frame(maxWidth: .infinity, minHeight: 300)
             case .loaded:
                 VStack(alignment: .leading, spacing: 18) {
-                    header
                     filterRow
                     conceptRows
                 }
                 .padding()
+                .padding(.bottom, 88)
             case .failed(let details):
                 ContentLoadingFailureView(
                     title: text.common.loadErrorTitle,
@@ -79,12 +61,7 @@ struct ConceptListView: View {
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationTitle(text.concepts.title)
-        .searchable(
-            text: $searchText,
-            placement: .toolbar,
-            prompt: text.concepts.searchPlaceholder
-        )
-        .searchToolbarBehavior(.minimize)
+        .toolbarTitleDisplayMode(.inline)
         .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)
         .task {
             loadConcepts()
@@ -101,18 +78,6 @@ extension ConceptListView {
         } catch {
             loadState = .failed(error.localizedDescription)
         }
-    }
-
-    private var header: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(text.concepts.title)
-                .font(.title2.bold())
-
-            Text(text.concepts.subtitle)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
-        .accessibilityElement(children: .combine)
     }
 
     private var filterRow: some View {

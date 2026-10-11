@@ -16,6 +16,13 @@ final class Favorite {
 enum FavoritesRepository {
     static let legacyKey = "favoriteIDs"
 
+    static func matchingTopics(
+        in topics: [LearningTopic],
+        favoriteIDs: Set<String>
+    ) -> [LearningTopic] {
+        topics.filter { favoriteIDs.contains($0.id) }
+    }
+
     static func toggle(
         topicID: String,
         favorites: [Favorite],

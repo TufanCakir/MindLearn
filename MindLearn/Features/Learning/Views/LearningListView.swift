@@ -114,7 +114,7 @@ struct LearningGrid: View {
         LazyVGrid(
 
             columns: gridLayout,
-            spacing: 30
+            spacing: 14
 
         ) {
 
@@ -142,7 +142,7 @@ struct LearningGrid: View {
         )
 
         .padding(.horizontal, 16)
-        .padding(.bottom, 28)
+        .padding(.bottom, 96)
     }
 
     private func progressStatus(for topicID: String) -> LearningProgressStatus {

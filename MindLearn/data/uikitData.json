@@ -1,0 +1,123 @@
+[
+    {
+        "id": "uikit_27_glass_effect",
+        "title": {
+            "de": "Liquid Glass mit UIKit",
+            "en": "Liquid Glass with UIKit"
+        },
+        "description": {
+            "de":
+                "Verwende UIGlassEffect in einer UIVisualEffectView für modernes, systemgerechtes Glas.",
+            "en":
+                "Use UIGlassEffect in a UIVisualEffectView for modern, system-provided glass."
+        },
+        "steps": [
+            {
+                "de": "UIVisualEffectView mit UIGlassEffect erstellen.",
+                "en": "Create a UIVisualEffectView with UIGlassEffect."
+            },
+            {
+                "de": "Eigene Inhalte in contentView einfügen.",
+                "en": "Add custom content to contentView."
+            },
+            {
+                "de": "Auto Layout statt fester Frames verwenden.",
+                "en": "Use Auto Layout instead of fixed frames."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#07111F",
+                "#32ADE6",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import UIKit\n\n@available(iOS 27.0, *)\nfinal class GlassCardViewController: UIViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        let glassView = UIVisualEffectView(effect: UIGlassEffect())\n        glassView.translatesAutoresizingMaskIntoConstraints = false\n\n        let titleLabel = UILabel()\n        titleLabel.text = \"Heute lernen\"\n        titleLabel.font = .preferredFont(forTextStyle: .title2)\n        titleLabel.adjustsFontForContentSizeCategory = true\n        titleLabel.translatesAutoresizingMaskIntoConstraints = false\n\n        glassView.contentView.addSubview(titleLabel)\n        view.addSubview(glassView)\n\n        NSLayoutConstraint.activate([\n            glassView.centerXAnchor.constraint(equalTo: view.centerXAnchor),\n            glassView.centerYAnchor.constraint(equalTo: view.centerYAnchor),\n            glassView.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: -32),\n            titleLabel.leadingAnchor.constraint(equalTo: glassView.contentView.leadingAnchor, constant: 24),\n            titleLabel.trailingAnchor.constraint(equalTo: glassView.contentView.trailingAnchor, constant: -24),\n            titleLabel.topAnchor.constraint(equalTo: glassView.contentView.topAnchor, constant: 18),\n            titleLabel.bottomAnchor.constraint(equalTo: glassView.contentView.bottomAnchor, constant: -18)\n        ])\n    }\n}",
+        "category": "UIKit"
+    },
+    {
+        "id": "uikit_modern_tabs",
+        "title": {
+            "de": "Moderne UIKit-Tabs",
+            "en": "Modern UIKit tabs"
+        },
+        "description": {
+            "de":
+                "Baue Tabs mit UITab und einem lazy View-Controller-Provider auf.",
+            "en": "Build tabs with UITab and a lazy view-controller provider."
+        },
+        "steps": [
+            {
+                "de": "UITabBarController erstellen.",
+                "en": "Create a UITabBarController."
+            },
+            {
+                "de": "Tabs mit stabilen Identifiern definieren.",
+                "en": "Define tabs with stable identifiers."
+            },
+            {
+                "de":
+                    "Outline-SF-Symbole verwenden; das System wählt die gefüllte Variante.",
+                "en":
+                    "Use outline SF Symbols; the system selects the filled variant."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#101828",
+                "#0A84FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import UIKit\n\nfinal class RootTabController: UITabBarController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        tabs = [\n            UITab(title: \"Lernen\", image: UIImage(systemName: \"book\"), identifier: \"learn\") { _ in\n                UINavigationController(rootViewController: LearnViewController())\n            },\n            UITab(title: \"Favoriten\", image: UIImage(systemName: \"heart\"), identifier: \"favorites\") { _ in\n                FavoritesViewController()\n            }\n        ]\n    }\n}",
+        "category": "UIKit"
+    },
+    {
+        "id": "uikit_diffable_collection",
+        "title": {
+            "de": "Diffable Collection View",
+            "en": "Diffable collection view"
+        },
+        "description": {
+            "de":
+                "Moderne Listen mit UICollectionViewDiffableDataSource und Snapshots aktualisieren.",
+            "en":
+                "Update modern lists with UICollectionViewDiffableDataSource and snapshots."
+        },
+        "steps": [
+            {
+                "de": "Zellen per CellRegistration konfigurieren.",
+                "en": "Configure cells with CellRegistration."
+            },
+            {
+                "de": "Diffable Data Source erstellen.",
+                "en": "Create a diffable data source."
+            },
+            {
+                "de": "Änderungen als Snapshot anwenden.",
+                "en": "Apply changes as a snapshot."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#151515",
+                "#30D158",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import UIKit\n\nenum Section { case main }\n\nlet registration = UICollectionView.CellRegistration<UICollectionViewListCell, String> { cell, _, title in\n    var content = cell.defaultContentConfiguration()\n    content.text = title\n    cell.contentConfiguration = content\n}\n\nlet dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView) { collectionView, indexPath, item in\n    collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: item)\n}\n\nvar snapshot = NSDiffableDataSourceSnapshot<Section, String>()\nsnapshot.appendSections([.main])\nsnapshot.appendItems([\"SwiftUI\", \"UIKit\", \"AppKit\"])\ndataSource.apply(snapshot, animatingDifferences: true)",
+        "category": "UIKit"
+    }
+]

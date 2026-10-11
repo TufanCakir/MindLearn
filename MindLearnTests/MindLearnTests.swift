@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 import Testing
+
 @testable import MindLearn
 
 @MainActor
@@ -67,6 +68,26 @@ struct MindLearnTests {
         #expect(favorites.isEmpty)
     }
 
+    @Test("Favorite filtering never returns unfavorited topics")
+    func favoriteFilteringUsesStoredIDs() throws {
+        let topics = try LearningTopicLoader.shared.load(.swiftUI)
+
+        #expect(
+            FavoritesRepository.matchingTopics(
+                in: topics,
+                favoriteIDs: []
+            ).isEmpty
+        )
+
+        let firstTopic = try #require(topics.first)
+        let matches = FavoritesRepository.matchingTopics(
+            in: topics,
+            favoriteIDs: [firstTopic.id]
+        )
+
+        #expect(matches.map(\.id) == [firstTopic.id])
+    }
+
     @Test("Every learning topic file decodes and contains valid content")
     func learningTopicFilesDecode() throws {
         for file in LearningTopicFile.allCases {
@@ -86,7 +107,10 @@ struct MindLearnTests {
         for file in DrawerDataFile.allCases {
             let sections = try DrawerSectionLoader.shared.load(file)
 
-            #expect(!sections.isEmpty, "\(file.rawValue).json contains no sections")
+            #expect(
+                !sections.isEmpty,
+                "\(file.rawValue).json contains no sections"
+            )
             validate(sections, source: file.rawValue)
             validateColors(
                 sections.map(\.colors),
@@ -116,12 +140,17 @@ struct MindLearnTests {
         for language in ProgrammingLanguage.allCases {
             let tasks = try CodingTaskLoader.shared.loadTasks(for: language)
 
-            #expect(!tasks.isEmpty, "\(language.taskFile.rawValue).json contains no tasks")
+            #expect(
+                !tasks.isEmpty,
+                "\(language.taskFile.rawValue).json contains no tasks"
+            )
             for task in tasks {
                 #expect(!task.id.isEmpty)
                 #expect(task.language == language.contentLanguage)
                 #expect(!task.title.de.isEmpty && !task.title.en.isEmpty)
-                #expect(!task.instruction.de.isEmpty && !task.instruction.en.isEmpty)
+                #expect(
+                    !task.instruction.de.isEmpty && !task.instruction.en.isEmpty
+                )
                 #expect(!task.starterCode.isEmpty)
                 #expect(!task.solution.isEmpty)
                 #expect(!task.expectedKeywords.isEmpty)
@@ -144,7 +173,10 @@ struct MindLearnTests {
             #expect(!concept.language.rawValue.isEmpty)
             #expect(!concept.title.de.isEmpty && !concept.title.en.isEmpty)
             #expect(!concept.summary.de.isEmpty && !concept.summary.en.isEmpty)
-            #expect(!concept.explanation.de.isEmpty && !concept.explanation.en.isEmpty)
+            #expect(
+                !concept.explanation.de.isEmpty
+                    && !concept.explanation.en.isEmpty
+            )
             #expect(!concept.exampleCode.isEmpty)
             #expect(!concept.playgroundCode.isEmpty)
         }
@@ -154,7 +186,8 @@ struct MindLearnTests {
 
     @Test("Malformed content returns a typed decoding error")
     func malformedContentReturnsTypedError() {
-        let repository = BundleContentRepository<SampleContent, SampleFile> { _ in
+        let repository = BundleContentRepository<SampleContent, SampleFile> {
+            _ in
             Data("not-json".utf8)
         }
 
@@ -170,7 +203,8 @@ struct MindLearnTests {
 
     @Test("Empty content returns a typed error")
     func emptyContentReturnsTypedError() {
-        let repository = BundleContentRepository<SampleContent, SampleFile> { _ in
+        let repository = BundleContentRepository<SampleContent, SampleFile> {
+            _ in
             Data("[]".utf8)
         }
 
@@ -204,7 +238,8 @@ struct MindLearnTests {
     ) {
         for item in content {
             #expect(
-                !item.id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                !item.id.trimmingCharacters(in: .whitespacesAndNewlines)
+                    .isEmpty,
                 "Empty ID in \(source)"
             )
             #expect(
@@ -212,34 +247,46 @@ struct MindLearnTests {
                 "Empty category for \(item.id) in \(source)"
             )
             #expect(
-                !item.title.de.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                !item.title.de.trimmingCharacters(in: .whitespacesAndNewlines)
+                    .isEmpty,
                 "Missing German title for \(item.id) in \(source)"
             )
             #expect(
-                !item.title.en.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                !item.title.en.trimmingCharacters(in: .whitespacesAndNewlines)
+                    .isEmpty,
                 "Missing English title for \(item.id) in \(source)"
             )
             #expect(
-                !item.description.de.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                !item.description.de.trimmingCharacters(
+                    in: .whitespacesAndNewlines
+                ).isEmpty,
                 "Missing German description for \(item.id) in \(source)"
             )
             #expect(
-                !item.description.en.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                !item.description.en.trimmingCharacters(
+                    in: .whitespacesAndNewlines
+                ).isEmpty,
                 "Missing English description for \(item.id) in \(source)"
             )
-            #expect(!item.steps.isEmpty, "Missing steps for \(item.id) in \(source)")
+            #expect(
+                !item.steps.isEmpty,
+                "Missing steps for \(item.id) in \(source)"
+            )
             for step in item.steps {
                 #expect(
-                    !step.de.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                    !step.de.trimmingCharacters(in: .whitespacesAndNewlines)
+                        .isEmpty,
                     "Missing German step for \(item.id) in \(source)"
                 )
                 #expect(
-                    !step.en.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                    !step.en.trimmingCharacters(in: .whitespacesAndNewlines)
+                        .isEmpty,
                     "Missing English step for \(item.id) in \(source)"
                 )
             }
             #expect(
-                !item.code.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                !item.code.trimmingCharacters(in: .whitespacesAndNewlines)
+                    .isEmpty,
                 "Missing code example for \(item.id) in \(source)"
             )
         }
@@ -272,7 +319,10 @@ struct MindLearnTests {
         for value in values {
             let hex = value.trimmingCharacters(in: .whitespacesAndNewlines)
             #expect(
-                hex.range(of: "^#?[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$", options: .regularExpression) != nil,
+                hex.range(
+                    of: "^#?[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$",
+                    options: .regularExpression
+                ) != nil,
                 "Invalid color \(value) in \(source)"
             )
         }

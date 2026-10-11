@@ -1,3 +1,10 @@
+//
+//  LearningContent.swift
+//  MindLearn
+//
+//  Created by Tufan Cakir on 31.10.25.
+//
+
 import Foundation
 
 enum ContentCategory: String, Codable, CaseIterable, Hashable {
@@ -5,6 +12,8 @@ enum ContentCategory: String, Codable, CaseIterable, Hashable {
     case realityKit = "RealityKit"
     case spriteKit = "SpriteKit"
     case swiftUI = "SwiftUI"
+    case uiKit = "UIKit"
+    case appKit = "AppKit"
     case swift = "Swift"
     case swiftData = "SwiftData"
     case metal = "Metal"

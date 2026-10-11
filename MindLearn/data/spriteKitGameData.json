@@ -1,0 +1,165 @@
+[
+    {
+        "id": "spritekit_sheet_grid",
+        "title": {
+            "de": "Sprite-Sheet: Zeilen, Spalten und Abstand",
+            "en": "Sprite sheet: rows, columns, and spacing"
+        },
+        "description": {
+            "de":
+                "Schneide ein einzelnes Bild mit konfigurierbaren Zeilen, Spalten, Rand und Abstand in Animationsframes.",
+            "en":
+                "Slice one image into animation frames with configurable rows, columns, margin, and spacing."
+        },
+        "steps": [
+            {
+                "de": "Framegröße aus Bildgröße, Rand und Abstand berechnen.",
+                "en":
+                    "Calculate frame size from image size, margin, and spacing."
+            },
+            {
+                "de": "Pixelwerte in normierte Texturkoordinaten umrechnen.",
+                "en": "Convert pixels into normalized texture coordinates."
+            },
+            {
+                "de": "Frames mit SKAction.animate abspielen.",
+                "en": "Play frames with SKAction.animate."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#090B18",
+                "#FF375F",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SpriteKit\n\nfunc spriteSheetFrames(imageNamed name: String, rows: Int, columns: Int, margin: CGFloat = 0, spacing: CGFloat = 0) -> [SKTexture] {\n    let sheet = SKTexture(imageNamed: name)\n    let size = sheet.size()\n    let width = (size.width - 2 * margin - CGFloat(columns - 1) * spacing) / CGFloat(columns)\n    let height = (size.height - 2 * margin - CGFloat(rows - 1) * spacing) / CGFloat(rows)\n\n    return (0..<rows).flatMap { row in\n        (0..<columns).map { column in\n            let x = margin + CGFloat(column) * (width + spacing)\n            let top = margin + CGFloat(row) * (height + spacing)\n            let rect = CGRect(x: x / size.width, y: (size.height - top - height) / size.height, width: width / size.width, height: height / size.height)\n            return SKTexture(rect: rect, in: sheet)\n        }\n    }\n}\n\nlet frames = spriteSheetFrames(imageNamed: \"hero_sheet\", rows: 4, columns: 8, margin: 2, spacing: 2)\nlet hero = SKSpriteNode(texture: frames.first)\nlet walk = SKAction.animate(with: frames, timePerFrame: 0.08, resize: false, restore: false)\nhero.run(.repeatForever(walk), withKey: \"walk\")",
+        "category": "SpriteKit"
+    },
+    {
+        "id": "spritekit_particles_shapes",
+        "title": {
+            "de": "Partikel und Grafik ohne Bilddateien",
+            "en": "Particles and graphics without image files"
+        },
+        "description": {
+            "de":
+                "Erzeuge Partikel mit SKEmitterNode und zeichne Spielfiguren mit SKShapeNode und einer Node-Hierarchie.",
+            "en":
+                "Create particles with SKEmitterNode and draw game characters with SKShapeNode and a node hierarchy."
+        },
+        "steps": [
+            {
+                "de": "SKNode als beweglichen Container verwenden.",
+                "en": "Use SKNode as a movable container."
+            },
+            {
+                "de": "Formen mit fillColor, strokeColor und Pfaden zeichnen.",
+                "en": "Draw shapes with fillColor, strokeColor, and paths."
+            },
+            {
+                "de":
+                    "Partikel-Lebensdauer, Rate, Geschwindigkeit und Blending konfigurieren.",
+                "en": "Configure particle lifetime, rate, speed, and blending."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#071315",
+                "#30D158",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SpriteKit\n\nfunc makePlayer() -> SKNode {\n    let player = SKNode()\n    player.name = \"player\"\n    let body = SKShapeNode(rectOf: CGSize(width: 54, height: 72), cornerRadius: 14)\n    body.fillColor = .systemBlue\n    body.strokeColor = .white\n    body.lineWidth = 3\n    player.addChild(body)\n    let head = SKShapeNode(circleOfRadius: 24)\n    head.position.y = 58\n    head.fillColor = .systemOrange\n    player.addChild(head)\n    return player\n}\n\nfunc makeFire() -> SKEmitterNode {\n    let fire = SKEmitterNode()\n    fire.particleTexture = SKTexture(imageNamed: \"spark\")\n    fire.particleBirthRate = 90\n    fire.particleLifetime = 1.2\n    fire.particleSpeed = 130\n    fire.particleSpeedRange = 45\n    fire.emissionAngle = .pi / 2\n    fire.emissionAngleRange = .pi / 5\n    fire.particleColor = .orange\n    fire.particleColorBlendFactor = 1\n    fire.particleAlphaSpeed = -0.8\n    fire.particleBlendMode = .add\n    fire.advanceSimulationTime(0.8)\n    return fire\n}",
+        "category": "SpriteKit"
+    },
+    {
+        "id": "spritekit_health_gameover",
+        "title": {
+            "de": "Lebensleiste, Tap-Schaden und Game Over",
+            "en": "Health bar, tap damage, and game over"
+        },
+        "description": {
+            "de":
+                "Aktualisiere eine gezeichnete Lebensleiste bei jedem Tap und melde Game Over an SwiftUI.",
+            "en":
+                "Update a drawn health bar on every tap and report game over to SwiftUI."
+        },
+        "steps": [
+            {
+                "de":
+                    "Health Bar aus Hintergrund- und Füllknoten zusammensetzen.",
+                "en": "Compose the health bar from background and fill nodes."
+            },
+            {
+                "de": "In touchesBegan Lebenspunkte reduzieren.",
+                "en": "Reduce health in touchesBegan."
+            },
+            {
+                "de": "Balken animieren und Game Over einmal melden.",
+                "en": "Animate the bar and report game over once."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#170909",
+                "#FF453A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SpriteKit\n\nfinal class BattleScene: SKScene {\n    var onHealthChanged: ((Int) -> Void)?\n    var onGameOver: (() -> Void)?\n    private(set) var health = 100\n    private let fill = SKSpriteNode(color: .systemGreen, size: CGSize(width: 180, height: 18))\n\n    override func didMove(to view: SKView) {\n        let bar = SKSpriteNode(color: .darkGray, size: CGSize(width: 188, height: 26))\n        bar.position = CGPoint(x: size.width / 2, y: size.height - 60)\n        bar.zPosition = 100\n        addChild(bar)\n        fill.anchorPoint = CGPoint(x: 0, y: 0.5)\n        fill.position.x = -90\n        bar.addChild(fill)\n    }\n\n    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {\n        guard health > 0 else { return }\n        health = max(0, health - 10)\n        fill.run(.scaleX(to: CGFloat(health) / 100, duration: 0.18))\n        fill.color = health > 30 ? .systemGreen : .systemRed\n        onHealthChanged?(health)\n        if health == 0 { isPaused = true; onGameOver?() }\n    }\n}",
+        "category": "SpriteKit"
+    },
+    {
+        "id": "spritekit_swiftui_game",
+        "title": {
+            "de": "SpriteKit-Spiel mit SwiftUI-HUD",
+            "en": "SpriteKit game with SwiftUI HUD"
+        },
+        "description": {
+            "de":
+                "Bette die Szene mit SpriteView ein und lege Lebenspunkte, Pause und Game Over als SwiftUI-Overlay darüber.",
+            "en":
+                "Embed the scene with SpriteView and place health, pause, and game over in a SwiftUI overlay."
+        },
+        "steps": [
+            {
+                "de": "Szene einmal erzeugen und scaleMode setzen.",
+                "en": "Create the scene once and set scaleMode."
+            },
+            {
+                "de": "Callbacks in @State übertragen.",
+                "en": "Transfer callbacks into @State."
+            },
+            {
+                "de": "Game-Over-Karte mit Transition einblenden.",
+                "en": "Present a game-over card with a transition."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#05070D",
+                "#64D2FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SpriteKit\nimport SwiftUI\n\nstruct BattleGameView: View {\n    @State private var health = 100\n    @State private var isGameOver = false\n    private let scene = BattleScene(size: CGSize(width: 390, height: 844))\n\n    var body: some View {\n        SpriteView(scene: scene)\n            .ignoresSafeArea()\n            .overlay(alignment: .topLeading) {\n                Label(health.formatted(), systemImage: \"heart.fill\")\n                    .padding().background(.black.opacity(0.55), in: .capsule).padding()\n            }\n            .overlay {\n                if isGameOver {\n                    VStack(spacing: 16) {\n                        Text(\"Game Over\").font(.largeTitle.bold())\n                        Button(\"Neu starten\") { restart() }.buttonStyle(.borderedProminent)\n                    }\n                    .padding(32).background(.ultraThinMaterial, in: .rect(cornerRadius: 24))\n                    .transition(.scale.combined(with: .opacity))\n                }\n            }\n            .onAppear {\n                scene.scaleMode = .resizeFill\n                scene.onHealthChanged = { health = $0 }\n                scene.onGameOver = { withAnimation { isGameOver = true } }\n            }\n    }\n\n    private func restart() {\n        health = 100\n        isGameOver = false\n        scene.isPaused = false\n        // scene.reset() setzt Lebenspunkte und Gegner zurück.\n    }\n}",
+        "category": "SpriteKit"
+    }
+]

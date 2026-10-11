@@ -1,0 +1,70 @@
+[
+    {
+        "id": "help_uikit_glass",
+        "title": {
+            "de": "UIKit: Glass-Karte",
+            "en": "UIKit: Glass card"
+        },
+        "description": {
+            "de": "Kurzhilfe für UIGlassEffect in einer UIVisualEffectView.",
+            "en": "Quick help for UIGlassEffect in a UIVisualEffectView."
+        },
+        "steps": [
+            {
+                "de": "Effektansicht erstellen.",
+                "en": "Create the effect view."
+            },
+            {
+                "de": "Unteransichten immer in contentView einfügen.",
+                "en": "Always add subviews to contentView."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#07111F",
+                "#32ADE6",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "@available(iOS 27.0, *)\nfunc makeGlassCard() -> UIVisualEffectView {\n    let card = UIVisualEffectView(effect: UIGlassEffect())\n    card.accessibilityContainerType = .semanticGroup\n    return card\n}",
+        "category": "UIKit"
+    },
+    {
+        "id": "help_uikit_tabs",
+        "title": {
+            "de": "UIKit: UITab",
+            "en": "UIKit: UITab"
+        },
+        "description": {
+            "de": "Kurzhilfe für moderne, lazy erzeugte UIKit-Tabs.",
+            "en": "Quick help for modern, lazily created UIKit tabs."
+        },
+        "steps": [
+            {
+                "de": "Stabilen Identifier vergeben.",
+                "en": "Provide a stable identifier."
+            },
+            {
+                "de": "View Controller im Provider erzeugen.",
+                "en": "Create the view controller in the provider."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#101828",
+                "#0A84FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "let learnTab = UITab(\n    title: \"Lernen\",\n    image: UIImage(systemName: \"book\"),\n    identifier: \"learn\"\n) { _ in LearnViewController() }",
+        "category": "UIKit"
+    }
+]

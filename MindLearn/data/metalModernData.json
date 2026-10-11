@@ -1,0 +1,171 @@
+[
+    {
+        "id": "metal_swiftui_shader_background",
+        "title": {
+            "de": "Animierter Metal-Hintergrund in SwiftUI",
+            "en": "Animated Metal background in SwiftUI"
+        },
+        "description": {
+            "de":
+                "Ein stitchable Metal-Shader wird über ShaderLibrary als ShapeStyle für einen animierten Hintergrund verwendet.",
+            "en":
+                "A stitchable Metal shader is used through ShaderLibrary as a ShapeStyle for an animated background."
+        },
+        "steps": [
+            {
+                "de":
+                    "Metal-Funktion mit [[ stitchable ]] und position definieren.",
+                "en":
+                    "Define a Metal function with [[ stitchable ]] and position."
+            },
+            {
+                "de": "Zeit und Auflösung als Shader-Argumente übergeben.",
+                "en": "Pass time and size as shader arguments."
+            },
+            {
+                "de":
+                    "TimelineView nur bei aktivierter Animation aktualisieren.",
+                "en": "Update TimelineView only while animation is enabled."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#080100",
+                "#FF5A16",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "// Shader.metal\n#include <metal_stdlib>\nusing namespace metal;\n\n[[ stitchable ]] half4 hellfire(float2 position, float time, float2 size, float intensity) {\n    float2 uv = position / max(size, float2(1.0));\n    float wave = sin(uv.x * 18.0 + time * 2.2) * 0.08;\n    float heat = smoothstep(1.05, 0.05, uv.y + wave);\n    half3 cold = half3(0.05, 0.0, 0.0);\n    half3 hot = half3(1.0, 0.28, 0.02);\n    return half4(mix(cold, hot, half(heat * intensity)), 1.0);\n}\n\n// SwiftUI\nimport SwiftUI\n\nstruct HellfireBackground: View {\n    @State private var animates = true\n\n    var body: some View {\n        TimelineView(animates ? .animation : .periodic(from: .now, by: 60)) { timeline in\n            GeometryReader { proxy in\n                let time = timeline.date.timeIntervalSinceReferenceDate\n                Rectangle().fill(ShaderLibrary.hellfire(.float(Float(time)), .float2(proxy.size), .float(1.15)))\n            }\n        }\n        .overlay(alignment: .topTrailing) { Toggle(\"FX\", isOn: $animates).padding() }\n        .ignoresSafeArea()\n    }\n}",
+        "category": "Metal"
+    },
+    {
+        "id": "metal_swiftui_effect_modifiers",
+        "title": {
+            "de": "colorEffect, distortionEffect und layerEffect",
+            "en": "colorEffect, distortionEffect, and layerEffect"
+        },
+        "description": {
+            "de":
+                "Lerne, welcher SwiftUI-Metal-Modifier Farben verändert, Pixelpositionen verschiebt oder eine gerasterte Ebene abtastet.",
+            "en":
+                "Learn which SwiftUI Metal modifier changes colors, moves pixel positions, or samples a rasterized layer."
+        },
+        "steps": [
+            {
+                "de": "colorEffect für reine Farbtransformationen verwenden.",
+                "en": "Use colorEffect for color-only transformations."
+            },
+            {
+                "de": "distortionEffect für neue Sample-Positionen verwenden.",
+                "en": "Use distortionEffect for new sample positions."
+            },
+            {
+                "de":
+                    "layerEffect verwenden, wenn Nachbarpixel gelesen werden.",
+                "en": "Use layerEffect when reading neighboring pixels."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#07111F",
+                "#56D7FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct MetalModifierDemo: View {\n    @State private var enabled = true\n    @State private var strength = 12.0\n\n    var body: some View {\n        TimelineView(.animation) { timeline in\n            let time = Float(timeline.date.timeIntervalSinceReferenceDate)\n            Image(\"landscape\")\n                .resizable().scaledToFill()\n                .colorEffect(ShaderLibrary.heatTint(.float(time)), isEnabled: enabled)\n                .distortionEffect(ShaderLibrary.heatWave(.float(time), .float(Float(strength))), maxSampleOffset: CGSize(width: strength, height: strength), isEnabled: enabled)\n                .layerEffect(ShaderLibrary.glow(.float(Float(strength))), maxSampleOffset: CGSize(width: strength, height: strength), isEnabled: enabled)\n        }\n        .overlay(alignment: .bottom) {\n            VStack { Toggle(\"Shader aktiv\", isOn: $enabled); Slider(value: $strength, in: 0...30) }.padding().background(.ultraThinMaterial)\n        }\n    }\n}",
+        "category": "Metal"
+    },
+    {
+        "id": "metal_floor_distortion",
+        "title": {
+            "de": "Animierter Metal-Boden",
+            "en": "Animated Metal floor"
+        },
+        "description": {
+            "de":
+                "Verzerre ein Bodenraster perspektivisch und animiere Wellen über einen position-Shader.",
+            "en":
+                "Distort a floor grid in perspective and animate waves with a position shader."
+        },
+        "steps": [
+            {
+                "de":
+                    "Shader muss eine neue float2-Sampleposition zurückgeben.",
+                "en": "The shader must return a new float2 sample position."
+            },
+            {
+                "de": "Maximalen Pixelversatz korrekt angeben.",
+                "en": "Provide the correct maximum pixel offset."
+            },
+            {
+                "de": "Effekt per Toggle über isEnabled abschalten.",
+                "en": "Disable the effect through isEnabled and a Toggle."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#020711",
+                "#00F0FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "// Shader.metal\n[[ stitchable ]] float2 floorWave(float2 position, float time, float amplitude) {\n    float perspective = clamp(position.y / 700.0, 0.0, 1.0);\n    float offset = sin(position.x * 0.035 + time * 2.0) * amplitude * perspective;\n    return position + float2(0.0, offset);\n}\n\n// SwiftUI\nstruct MetalFloor: View {\n    @State private var enabled = true\n    var body: some View {\n        TimelineView(.animation) { context in\n            let t = Float(context.date.timeIntervalSinceReferenceDate)\n            GridPattern()\n                .distortionEffect(ShaderLibrary.floorWave(.float(t), .float(18)), maxSampleOffset: CGSize(width: 0, height: 18), isEnabled: enabled)\n        }\n        .overlay(alignment: .topTrailing) { Toggle(\"Boden-FX\", isOn: $enabled).padding() }\n    }\n}",
+        "category": "Metal"
+    },
+    {
+        "id": "metal_mtkview_fullscreen",
+        "title": {
+            "de": "Komplexe Fullscreen-Shader mit MTKView",
+            "en": "Complex fullscreen shaders with MTKView"
+        },
+        "description": {
+            "de":
+                "Für mehrere Fragmentfunktionen, Uniform-Strukturen und eigene Render-Pipelines bleibt MTKView die flexible Lösung.",
+            "en":
+                "For multiple fragment functions, uniform structures, and custom render pipelines, MTKView remains the flexible solution."
+        },
+        "steps": [
+            {
+                "de":
+                    "Swift- und Metal-Uniform-Strukturen bytegenau gleich halten.",
+                "en":
+                    "Keep Swift and Metal uniform structures byte-for-byte compatible."
+            },
+            {
+                "de": "Pipeline States je Fragmentfunktion cachen.",
+                "en": "Cache pipeline states per fragment function."
+            },
+            {
+                "de":
+                    "Animation über preferredFramesPerSecond und Pausenstatus steuern.",
+                "en":
+                    "Control animation through preferredFramesPerSecond and paused state."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#120300",
+                "#FF7A12",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import MetalKit\nimport SwiftUI\n\nstruct MetalBackground: UIViewRepresentable {\n    let renderer: Renderer\n    let animates: Bool\n\n    func makeUIView(context: Context) -> MTKView {\n        let view = MTKView()\n        view.device = MTLCreateSystemDefaultDevice()\n        view.delegate = renderer\n        view.preferredFramesPerSecond = 60\n        view.colorPixelFormat = .bgra8Unorm\n        return view\n    }\n\n    func updateUIView(_ view: MTKView, context: Context) {\n        view.isPaused = !animates\n        view.enableSetNeedsDisplay = !animates\n        if !animates { view.setNeedsDisplay() }\n    }\n}\n\nstruct GameMenu: View {\n    @State private var animates = true\n    private let renderer = Renderer()\n\n    var body: some View {\n        ZStack {\n            MetalBackground(renderer: renderer, animates: animates).ignoresSafeArea()\n            LinearGradient(colors: [.clear, .black.opacity(0.85)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()\n            VStack { Toggle(\"Shader Animation\", isOn: $animates); Spacer(); Text(\"VENGEANCE RIDER\").font(.largeTitle.bold()) }.padding()\n        }\n    }\n}",
+        "category": "Metal"
+    }
+]

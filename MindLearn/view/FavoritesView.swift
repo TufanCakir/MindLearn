@@ -54,15 +54,15 @@ struct FavoritesView: View {
 extension FavoritesView {
 
     private var favoriteTopics: [LearningTopic] {
+        let allTopics =
+            (try? LearningTopicLoader
+                .shared
+                .loadAllTopics()) ?? []
 
-        (try? LearningTopicLoader
-            .shared
-            .loadAllTopics()) ?? []
-
-            .filter {
-
-                favoriteIDs.contains($0.id)
-            }
+        return FavoritesRepository.matchingTopics(
+            in: allTopics,
+            favoriteIDs: favoriteIDs
+        )
     }
 
     private var favoriteIDs: Set<String> {
@@ -119,5 +119,6 @@ extension FavoritesView {
             maxWidth: .infinity,
             minHeight: 260
         )
+        .padding(.top, 40)
     }
 }

@@ -57,6 +57,22 @@ extension CategoryStyle {
                 color: Color(hex: "#0A84FF") ?? .blue
             )
 
+        // MARK: UIKit
+
+        case .uiKit:
+            return .init(
+                icon: "rectangle.3.group.fill",
+                color: Color(hex: "#00A7E1") ?? .cyan
+            )
+
+        // MARK: AppKit
+
+        case .appKit:
+            return .init(
+                icon: "macwindow",
+                color: Color(hex: "#8E8E93") ?? .gray
+            )
+
         // MARK: Swift
 
         case .swift:

@@ -1,0 +1,70 @@
+[
+    {
+        "id": "help_appkit_glass",
+        "title": {
+            "de": "AppKit: Glass-Ansicht",
+            "en": "AppKit: Glass view"
+        },
+        "description": {
+            "de": "Kurzhilfe für dynamisches Glas auf macOS.",
+            "en": "Quick help for dynamic glass on macOS."
+        },
+        "steps": [
+            {
+                "de": "NSGlassEffectView erstellen.",
+                "en": "Create NSGlassEffectView."
+            },
+            {
+                "de": "Eigene Ansicht als contentView setzen.",
+                "en": "Set your custom view as contentView."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#101014",
+                "#A8A8B3",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "@available(macOS 27.0, *)\nfunc makeGlassLabel() -> NSGlassEffectView {\n    let glass = NSGlassEffectView()\n    glass.contentView = NSTextField(labelWithString: \"MindLearn\")\n    return glass\n}",
+        "category": "AppKit"
+    },
+    {
+        "id": "help_appkit_sidebar",
+        "title": {
+            "de": "AppKit: Sidebar",
+            "en": "AppKit: Sidebar"
+        },
+        "description": {
+            "de": "Kurzhilfe für eine native Sidebar im Split View Controller.",
+            "en": "Quick help for a native sidebar in a split view controller."
+        },
+        "steps": [
+            {
+                "de": "Sidebar-Controller bereitstellen.",
+                "en": "Provide a sidebar controller."
+            },
+            {
+                "de": "Sidebar-Split-Item hinzufügen.",
+                "en": "Add a sidebar split item."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#111827",
+                "#BF5AF2",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "let sidebarItem = NSSplitViewItem(\n    sidebarWithViewController: TopicsViewController()\n)\nsidebarItem.minimumThickness = 220\naddSplitViewItem(sidebarItem)",
+        "category": "AppKit"
+    }
+]

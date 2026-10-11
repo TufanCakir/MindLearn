@@ -1,0 +1,76 @@
+[
+    {
+        "id": "help_spritekit_sheet",
+        "title": {
+            "de": "Sprite-Sheet schneiden",
+            "en": "Slice a sprite sheet"
+        },
+        "description": {
+            "de":
+                "Zeilen, Spalten, Rand und Abstand bestimmen die normierten Teiltexturen.",
+            "en":
+                "Rows, columns, margin, and spacing determine normalized subtextures."
+        },
+        "steps": [
+            {
+                "de":
+                    "Y-Koordinate von oben nach SpriteKit unten-links umrechnen.",
+                "en":
+                    "Convert the top-based Y coordinate to SpriteKit's bottom-left system."
+            },
+            {
+                "de": "Alle Frames gleich groß halten.",
+                "en": "Keep all frames the same size."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#090B18",
+                "#FF375F",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "let rect = CGRect(\n    x: pixelX / sheetWidth,\n    y: (sheetHeight - pixelY - frameHeight) / sheetHeight,\n    width: frameWidth / sheetWidth,\n    height: frameHeight / sheetHeight\n)\nlet frame = SKTexture(rect: rect, in: sheet)",
+        "category": "SpriteKit"
+    },
+    {
+        "id": "help_spritekit_health",
+        "title": {
+            "de": "Health Bar aktualisieren",
+            "en": "Update a health bar"
+        },
+        "description": {
+            "de":
+                "Die Füllung ist links verankert und wird proportional zu den Lebenspunkten skaliert.",
+            "en":
+                "The fill is left-anchored and scales proportionally to health."
+        },
+        "steps": [
+            {
+                "de": "anchorPoint.x auf 0 setzen.",
+                "en": "Set anchorPoint.x to 0."
+            },
+            {
+                "de": "scaleX zwischen 0 und 1 animieren.",
+                "en": "Animate scaleX between 0 and 1."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#170909",
+                "#FF453A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "health = max(0, health - damage)\nlet ratio = CGFloat(health) / CGFloat(maxHealth)\nhealthFill.run(.scaleX(to: ratio, duration: 0.18))\nif health == 0 { onGameOver?() }",
+        "category": "SpriteKit"
+    }
+]

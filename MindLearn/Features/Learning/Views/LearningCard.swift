@@ -19,8 +19,7 @@ struct LearningCard: View {
         progressStatus: LearningProgressStatus = .unread,
         isFavorite: Bool = false,
         onToggleFavorite: @escaping () -> Void = {}
-    )
-    {
+    ) {
         self.topic = topic
         self.progressStatus = progressStatus
         self.isFavorite = isFavorite
@@ -99,9 +98,8 @@ struct PressableCardStyle: ButtonStyle {
 extension LearningCard {
 
     private var content: some View {
-        return VStack(alignment: .leading, spacing: 14) {
+        return VStack(alignment: .leading, spacing: 10) {
             headerRow
-            Spacer()
             Text(localizedTitle)
                 .font(titleFont)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? 4 : 2)
@@ -110,9 +108,8 @@ extension LearningCard {
                 .font(descriptionFont)
                 .foregroundStyle(.secondary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
-            footerRow
         }
-        .padding(18)
+        .padding(16)
     }
 }
 
@@ -297,12 +294,12 @@ extension LearningCard {
 
     private var cardHeight: CGFloat {
         if dynamicTypeSize.isAccessibilitySize || largeLearningCards {
-            return sizeClass == .regular ? 330 : 300
+            return sizeClass == .regular ? 250 : 220
         }
 
         return sizeClass == .regular
-            ? 250
-            : 210
+            ? 190
+            : 165
     }
 
     private var iconSize: CGFloat {
@@ -338,7 +335,8 @@ extension LearningCard {
             return "\(localizedTitle). \(localizedDescription)"
         }
 
-        let favorite = isFavorite
+        let favorite =
+            isFavorite
             ? text.accessibility.favoriteStatus
             : text.accessibility.notFavoriteStatus
 

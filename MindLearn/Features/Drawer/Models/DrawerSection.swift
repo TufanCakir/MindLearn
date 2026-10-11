@@ -35,11 +35,16 @@ struct DrawerColor: Codable {
 enum DrawerDataFile: String, CaseIterable {
 
     case swiftUI = "drawerSwiftUIData"
+    case swiftUI27 = "drawerSwiftUI27Data"
+    case uiKit = "drawerUIKitData"
+    case appKit = "drawerAppKitData"
     case swiftData = "drawerSwiftData"
     case swiftDataModel = "drawerSwiftDataModel"
     case metal = "drawerMetalData"
+    case modernMetal = "drawerMetalModernData"
     case realityKit = "drawerRealityKitData"
     case spriteKit = "drawerSpriteKitData"
+    case spriteKitGames = "drawerSpriteKitGameData"
     case arKit = "drawerARKitData"
     case widgetKit = "drawerWidgetKitData"
     case healthKit = "drawerHealthKitData"
@@ -60,7 +65,8 @@ protocol DrawerSectionProviding {
 final class DrawerSectionLoader: DrawerSectionProviding {
     static let shared = DrawerSectionLoader()
 
-    private let repository: BundleContentRepository<DrawerSection, DrawerDataFile>
+    private let repository:
+        BundleContentRepository<DrawerSection, DrawerDataFile>
 
     convenience init() {
         self.init(repository: BundleContentRepository())

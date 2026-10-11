@@ -45,7 +45,7 @@ struct LearningDetailView: View {
 
         ScrollView {
 
-            VStack(spacing: 28) {
+            VStack(spacing: 16) {
 
                 heroHeader
 
@@ -61,6 +61,7 @@ struct LearningDetailView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 18)
+            .padding(.bottom, 80)
         }
         .background(background)
         .navigationTitle(localizedTitle)
@@ -116,7 +117,7 @@ extension LearningDetailView {
                 Text(localizedTitle)
                     .font(
                         .system(
-                            .title,
+                            .title2,
                             design: .rounded
                         )
                         .weight(.bold)
@@ -126,7 +127,7 @@ extension LearningDetailView {
             .frame(
                 maxWidth: contentWidth
             )
-            .frame(height: isPad ? 220 : 180)
+            .frame(height: isPad ? 160 : 112)
             .padding(.horizontal)
             .shadow(
                 color: .black.opacity(0.12),
@@ -420,7 +421,7 @@ extension View {
                 alignment: .leading
             )
             .padding(.horizontal)
-            .padding(18)
+            .padding(14)
             .background(
 
                 RoundedRectangle(

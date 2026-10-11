@@ -1,0 +1,74 @@
+[
+    {
+        "id": "help_metal_modifier",
+        "title": {
+            "de": "Welcher Shader-Modifier?",
+            "en": "Which shader modifier?"
+        },
+        "description": {
+            "de":
+                "colorEffect ändert Farben, distortionEffect Positionen und layerEffect darf Nachbarpixel lesen.",
+            "en":
+                "colorEffect changes colors, distortionEffect positions, and layerEffect can read neighboring pixels."
+        },
+        "steps": [
+            {
+                "de": "Kleinsten passenden Effekt wählen.",
+                "en": "Choose the smallest suitable effect."
+            },
+            {
+                "de": "maxSampleOffset realistisch begrenzen.",
+                "en": "Bound maxSampleOffset realistically."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#07111F",
+                "#56D7FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            ".colorEffect(shader, isEnabled: enabled)\n.distortionEffect(wave, maxSampleOffset: CGSize(width: 0, height: 18), isEnabled: enabled)\n.layerEffect(glow, maxSampleOffset: CGSize(width: 12, height: 12), isEnabled: enabled)",
+        "category": "Metal"
+    },
+    {
+        "id": "help_metal_toggle",
+        "title": {
+            "de": "Shader pausieren",
+            "en": "Pause a shader"
+        },
+        "description": {
+            "de":
+                "SwiftUI-Effekte über isEnabled abschalten oder ein MTKView vollständig pausieren.",
+            "en":
+                "Disable SwiftUI effects through isEnabled or pause an MTKView completely."
+        },
+        "steps": [
+            {
+                "de": "Für Modifier isEnabled verwenden.",
+                "en": "Use isEnabled for modifiers."
+            },
+            {
+                "de": "Bei MTKView isPaused und enableSetNeedsDisplay setzen.",
+                "en": "Set isPaused and enableSetNeedsDisplay for MTKView."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#120300",
+                "#FF7A12",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "view.isPaused = !animates\nview.enableSetNeedsDisplay = !animates\nif !animates { view.setNeedsDisplay() }",
+        "category": "Metal"
+    }
+]

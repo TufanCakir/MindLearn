@@ -46,8 +46,14 @@ enum LearningTopicFile: String, CaseIterable {
     case general = "generalData"
 
     case swiftUI = "SwiftUIData"
+    case swiftUI27 = "swiftUI27Data"
+    case swiftUINavigation = "swiftUINavigationData"
+    case uiKit = "uikitData"
+    case appKit = "appkitData"
 
     case metal = "metalData"
+    case modernMetal = "metalModernData"
+    case spriteKit = "spriteKitGameData"
 
     case reactNative = "reactNativeData"
 

@@ -1,0 +1,121 @@
+[
+    {
+        "id": "appkit_27_glass_effect",
+        "title": {
+            "de": "Liquid Glass mit AppKit",
+            "en": "Liquid Glass with AppKit"
+        },
+        "description": {
+            "de":
+                "NSGlassEffectView bettet macOS-Inhalte in einen dynamischen Glaseffekt ein.",
+            "en":
+                "NSGlassEffectView embeds macOS content in a dynamic glass effect."
+        },
+        "steps": [
+            {
+                "de": "NSGlassEffectView anlegen.",
+                "en": "Create an NSGlassEffectView."
+            },
+            {
+                "de": "Inhalt über contentView bereitstellen.",
+                "en": "Provide content through contentView."
+            },
+            {
+                "de": "Constraints für eine adaptive Oberfläche setzen.",
+                "en": "Set constraints for an adaptive interface."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#101014",
+                "#A8A8B3",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import AppKit\n\n@available(macOS 27.0, *)\nfinal class GlassPanelController: NSViewController {\n    override func loadView() {\n        let label = NSTextField(labelWithString: \"MindLearn\")\n        label.font = .preferredFont(forTextStyle: .title2)\n\n        let glassView = NSGlassEffectView()\n        glassView.contentView = label\n        glassView.translatesAutoresizingMaskIntoConstraints = false\n\n        let rootView = NSView()\n        rootView.addSubview(glassView)\n        NSLayoutConstraint.activate([\n            glassView.centerXAnchor.constraint(equalTo: rootView.centerXAnchor),\n            glassView.centerYAnchor.constraint(equalTo: rootView.centerYAnchor),\n            glassView.widthAnchor.constraint(greaterThanOrEqualToConstant: 240),\n            glassView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80)\n        ])\n        view = rootView\n    }\n}",
+        "category": "AppKit"
+    },
+    {
+        "id": "appkit_split_view",
+        "title": {
+            "de": "Sidebar mit NSSplitViewController",
+            "en": "Sidebar with NSSplitViewController"
+        },
+        "description": {
+            "de": "Erstelle eine native macOS-Sidebar und einen Detailbereich.",
+            "en": "Create a native macOS sidebar and detail area."
+        },
+        "steps": [
+            {
+                "de": "Sidebar- und Detail-Controller erstellen.",
+                "en": "Create sidebar and detail controllers."
+            },
+            {
+                "de":
+                    "NSSplitViewItem mit passenden Verhaltensweisen konfigurieren.",
+                "en": "Configure NSSplitViewItem with suitable behaviors."
+            },
+            {
+                "de": "Autosave-Namen für die Aufteilung setzen.",
+                "en": "Set an autosave name for the split layout."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#111827",
+                "#BF5AF2",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import AppKit\n\nfinal class WorkspaceController: NSSplitViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n\n        let sidebar = NSSplitViewItem(sidebarWithViewController: TopicsViewController())\n        sidebar.minimumThickness = 220\n        let detail = NSSplitViewItem(viewController: DetailViewController())\n\n        addSplitViewItem(sidebar)\n        addSplitViewItem(detail)\n        splitView.autosaveName = \"MindLearnWorkspace\"\n    }\n}",
+        "category": "AppKit"
+    },
+    {
+        "id": "appkit_diffable_outline",
+        "title": {
+            "de": "Outline View mit Diffable Data Source",
+            "en": "Outline view with diffable data source"
+        },
+        "description": {
+            "de":
+                "Hierarchische macOS-Inhalte mit NSOutlineViewDiffableDataSource darstellen.",
+            "en":
+                "Present hierarchical macOS content with NSOutlineViewDiffableDataSource."
+        },
+        "steps": [
+            {
+                "de": "Stabile Hashable-IDs modellieren.",
+                "en": "Model stable Hashable IDs."
+            },
+            {
+                "de": "Cell Provider konfigurieren.",
+                "en": "Configure the cell provider."
+            },
+            {
+                "de": "Section- und Hierarchie-Snapshots anwenden.",
+                "en": "Apply section and hierarchy snapshots."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#171717",
+                "#FF9F0A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import AppKit\n\nstruct Topic: Hashable {\n    let id: UUID\n    let title: String\n}\n\nlet dataSource = NSOutlineViewDiffableDataSource<String, Topic>(outlineView: outlineView) { outlineView, tableColumn, topic in\n    let identifier = NSUserInterfaceItemIdentifier(\"TopicCell\")\n    let cell = outlineView.makeView(withIdentifier: identifier, owner: nil) as? NSTableCellView ?? NSTableCellView()\n    cell.identifier = identifier\n    cell.textField?.stringValue = topic.title\n    return cell\n}\n\nvar snapshot = NSDiffableDataSourceSnapshot<String, Topic>()\nsnapshot.appendSections([\"main\"])\nsnapshot.appendItems(topics)\ndataSource.apply(snapshot, animatingDifferences: true)",
+        "category": "AppKit"
+    }
+]

@@ -9,9 +9,10 @@ import Observation
 
 enum AppTab: CaseIterable, Hashable {
     case home
+    case practice
     case help
     case favorites
-    case settings
+    case search
 }
 
 @MainActor

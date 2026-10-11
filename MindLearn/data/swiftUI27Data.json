@@ -1,0 +1,285 @@
+[
+    {
+        "id": "swiftui27_search_tab",
+        "title": {
+            "de": "Search-Tab in TabView",
+            "en": "Search tab in TabView"
+        },
+        "description": {
+            "de":
+                "Ein Tab mit TabRole.search integriert die Suche systemgerecht in die Tab-Leiste.",
+            "en":
+                "A tab with TabRole.search integrates search into the tab bar."
+        },
+        "steps": [
+            {
+                "de": "Auswahl als Hashable-Enum modellieren.",
+                "en": "Model selection as a Hashable enum."
+            },
+            {
+                "de": "Den Such-Tab mit role: .search definieren.",
+                "en": "Define the search tab with role: .search."
+            },
+            {
+                "de": "searchable an den Suchinhalt hängen.",
+                "en": "Attach searchable to the search content."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#06152D",
+                "#0A84FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\n@available(iOS 27.0, *)\nstruct SearchTabsView: View {\n    enum TabID: Hashable { case learn, favorites, search }\n    @State private var selection: TabID = .learn\n    @State private var query = \"\"\n\n    var body: some View {\n        TabView(selection: $selection) {\n            Tab(\"Lernen\", systemImage: \"book\", value: .learn) {\n                LearningView()\n            }\n            Tab(\"Favoriten\", systemImage: \"heart\", value: .favorites) {\n                FavoritesView()\n            }\n            Tab(value: .search, role: .search) {\n                SearchResultsView(query: query)\n                    .searchable(text: $query, prompt: \"Themen suchen\")\n            }\n        }\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui27_tab_minimize",
+        "title": {
+            "de": "Tab-Leiste beim Scrollen minimieren",
+            "en": "Minimize the tab bar while scrolling"
+        },
+        "description": {
+            "de":
+                "tabBarMinimizeBehavior steuert, ob die Tab-Leiste automatisch beim Scrollen kompakter wird.",
+            "en":
+                "tabBarMinimizeBehavior controls whether the tab bar becomes compact while scrolling."
+        },
+        "steps": [
+            {
+                "de": "Scrollbaren Tab-Inhalt bereitstellen.",
+                "en": "Provide scrollable tab content."
+            },
+            {
+                "de": ".onScrollDown für automatisches Minimieren verwenden.",
+                "en": "Use .onScrollDown for automatic minimization."
+            },
+            {
+                "de": "Mit .never das Verhalten manuell deaktivieren.",
+                "en": "Disable the behavior manually with .never."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#101020",
+                "#5E5CE6",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\n@available(iOS 27.0, *)\nstruct MinimizingTabsView: View {\n    @State private var minimizesTabs = true\n\n    var body: some View {\n        TabView {\n            Tab(\"Feed\", systemImage: \"rectangle.stack\") {\n                NavigationStack {\n                    List(1...100, id: \\.self) { Text(\"Lektion \\($0)\") }\n                        .toolbar {\n                            Toggle(\"Tabs minimieren\", isOn: $minimizesTabs)\n                        }\n                }\n            }\n        }\n        .tabBarMinimizeBehavior(minimizesTabs ? .onScrollDown : .never)\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui27_toolbar_minimize",
+        "title": {
+            "de": "Navigation Bar minimieren",
+            "en": "Minimize the navigation bar"
+        },
+        "description": {
+            "de":
+                "Die Toolbar kann beim Hoch- oder Herunterscrollen automatisch minimiert werden.",
+            "en":
+                "The toolbar can minimize automatically while scrolling up or down."
+        },
+        "steps": [
+            {
+                "de": "Modifier am scrollbaren Inhalt setzen.",
+                "en": "Apply the modifier to the scrollable content."
+            },
+            {
+                "de": "Navigation Bar als Platzierung angeben.",
+                "en": "Specify the navigation bar placement."
+            },
+            {
+                "de":
+                    "Zwischen automatic, never, onScrollDown und onScrollUp wählen.",
+                "en": "Choose automatic, never, onScrollDown, or onScrollUp."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#111820",
+                "#64D2FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\n@available(iOS 27.0, *)\nstruct CompactToolbarView: View {\n    @State private var query = \"\"\n\n    var body: some View {\n        NavigationStack {\n            List(1...80, id: \\.self) { Text(\"Ergebnis \\($0)\") }\n                .navigationTitle(\"Entdecken\")\n                .searchable(text: $query, placement: .toolbarPrincipal)\n                .toolbarMinimizationBehavior(.onScrollDown, for: .navigationBar)\n        }\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui27_bottom_accessory",
+        "title": {
+            "de": "TabView Bottom Accessory",
+            "en": "TabView bottom accessory"
+        },
+        "description": {
+            "de":
+                "Eine zusätzliche Ansicht über der Tab-Leiste passt sich zwischen inline und expanded an.",
+            "en":
+                "An accessory above the tab bar adapts between inline and expanded placement."
+        },
+        "steps": [
+            {
+                "de": "Accessory mit tabViewBottomAccessory hinzufügen.",
+                "en": "Add the accessory with tabViewBottomAccessory."
+            },
+            {
+                "de": "Placement aus der Environment lesen.",
+                "en": "Read placement from the environment."
+            },
+            {
+                "de": "Kompakte und erweiterte Darstellung anbieten.",
+                "en": "Provide compact and expanded presentations."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#111111",
+                "#FF375F",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\n@available(iOS 27.0, *)\nstruct PlayerTabsView: View {\n    var body: some View {\n        TabView {\n            Tab(\"Kurse\", systemImage: \"play.rectangle\") { CourseList() }\n            Tab(\"Bibliothek\", systemImage: \"books.vertical\") { LibraryView() }\n        }\n        .tabViewBottomAccessory { MiniPlayer() }\n    }\n}\n\n@available(iOS 27.0, *)\nstruct MiniPlayer: View {\n    @Environment(\\.tabViewBottomAccessoryPlacement) private var placement\n\n    var body: some View {\n        if placement == .inline {\n            Label(\"SwiftUI Basics\", systemImage: \"play.fill\")\n        } else {\n            VStack { Text(\"SwiftUI Basics\"); Slider(value: .constant(0.35)) }\n                .padding()\n        }\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui_binding_animation",
+        "title": {
+            "de": "Animation direkt am Binding",
+            "en": "Animation directly on a binding"
+        },
+        "description": {
+            "de":
+                "Binding.animation versieht Änderungen durch ein Control gezielt mit einer Animation.",
+            "en":
+                "Binding.animation applies an animation specifically to changes made by a control."
+        },
+        "steps": [
+            {
+                "de": "Lokalen Zustand mit @State halten.",
+                "en": "Keep local state with @State."
+            },
+            {
+                "de": "Dem Control ein animiertes Binding übergeben.",
+                "en": "Pass an animated binding to the control."
+            },
+            {
+                "de": "Abhängige Layoutänderungen bleiben deklarativ.",
+                "en": "Dependent layout changes remain declarative."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#17120A",
+                "#FF9F0A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct AnimatedBindingView: View {\n    @State private var expanded = false\n\n    var body: some View {\n        VStack(spacing: 24) {\n            RoundedRectangle(cornerRadius: expanded ? 32 : 12)\n                .fill(.blue.gradient)\n                .frame(height: expanded ? 260 : 100)\n\n            Toggle(\"Erweitert\", isOn: $expanded.animation(.spring(duration: 0.45)))\n        }\n        .padding()\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui_symbol_animation",
+        "title": {
+            "de": "SF-Symbol-Animation und Transition",
+            "en": "SF Symbol animation and transition"
+        },
+        "description": {
+            "de":
+                "symbolEffect animiert Aktionen; contentTransition ersetzt wechselnde Symbole flüssig.",
+            "en":
+                "symbolEffect animates actions; contentTransition smoothly replaces changing symbols."
+        },
+        "steps": [
+            {
+                "de": "Effekt über einen wechselnden value triggern.",
+                "en": "Trigger the effect through a changing value."
+            },
+            {
+                "de": "Für Symbolwechsel contentTransition verwenden.",
+                "en": "Use contentTransition for symbol changes."
+            },
+            {
+                "de":
+                    "Reduce Motion respektieren; SwiftUI passt Systemeffekte an.",
+                "en": "Respect Reduce Motion; SwiftUI adapts system effects."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#160B18",
+                "#BF5AF2",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct FavoriteSymbolView: View {\n    @State private var isFavorite = false\n    @State private var bounceTrigger = 0\n\n    var body: some View {\n        Button {\n            isFavorite.toggle()\n            bounceTrigger += 1\n        } label: {\n            Image(systemName: isFavorite ? \"heart.fill\" : \"heart\")\n                .font(.system(size: 52))\n                .foregroundStyle(isFavorite ? .pink : .secondary)\n                .contentTransition(.symbolEffect(.replace))\n                .symbolEffect(.bounce, value: bounceTrigger)\n        }\n    }\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "swiftui_modern_gradients",
+        "title": {
+            "de": "Lineare, radiale und Mesh-Verläufe",
+            "en": "Linear, radial, and mesh gradients"
+        },
+        "description": {
+            "de":
+                "Vergleiche LinearGradient, RadialGradient, AngularGradient und MeshGradient für moderne Hintergründe.",
+            "en":
+                "Compare LinearGradient, RadialGradient, AngularGradient, and MeshGradient for modern backgrounds."
+        },
+        "steps": [
+            {
+                "de": "Gradient passend zur räumlichen Wirkung wählen.",
+                "en": "Choose a gradient for the intended spatial effect."
+            },
+            {
+                "de": "Farben mit ausreichendem Textkontrast kombinieren.",
+                "en": "Combine colors with sufficient text contrast."
+            },
+            {
+                "de":
+                    "Mesh-Verläufe sparsam und mit stabilen Punkten einsetzen.",
+                "en": "Use mesh gradients sparingly with stable points."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#070B20",
+                "#30D158",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "import SwiftUI\n\nstruct GradientGallery: View {\n    var body: some View {\n        ScrollView {\n            VStack(spacing: 16) {\n                card(LinearGradient(colors: [.indigo, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing), title: \"Linear\")\n                card(RadialGradient(colors: [.yellow, .orange, .pink], center: .center, startRadius: 8, endRadius: 180), title: \"Radial\")\n                card(AngularGradient(colors: [.purple, .blue, .mint, .purple], center: .center), title: \"Angular\")\n                card(MeshGradient(width: 2, height: 2, points: [[0, 0], [1, 0], [0, 1], [1, 1]], colors: [.indigo, .cyan, .purple, .mint]), title: \"Mesh\")\n            }\n            .padding()\n        }\n    }\n\n    private func card<S: ShapeStyle>(_ style: S, title: String) -> some View {\n        Text(title).font(.title.bold()).foregroundStyle(.white)\n            .frame(maxWidth: .infinity, minHeight: 160)\n            .background(style, in: .rect(cornerRadius: 24))\n    }\n}",
+        "category": "SwiftUI"
+    }
+]

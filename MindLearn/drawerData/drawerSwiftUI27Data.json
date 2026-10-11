@@ -1,0 +1,141 @@
+[
+    {
+        "id": "help_swiftui27_search_tab",
+        "title": {
+            "de": "iOS 27: Search-Tab",
+            "en": "iOS 27: Search tab"
+        },
+        "description": {
+            "de": "Schnellhilfe für eine systemintegrierte Suche in TabView.",
+            "en": "Quick help for system-integrated search in TabView."
+        },
+        "steps": [
+            {
+                "de": "TabRole.search verwenden.",
+                "en": "Use TabRole.search."
+            },
+            {
+                "de": "searchable im Suchinhalt setzen.",
+                "en": "Apply searchable in the search content."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#06152D",
+                "#0A84FF",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "Tab(value: AppTab.search, role: .search) {\n    ResultsView(query: query)\n        .searchable(text: $query)\n}",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "help_swiftui27_minimize",
+        "title": {
+            "de": "iOS 27: Tabs minimieren",
+            "en": "iOS 27: Minimize tabs"
+        },
+        "description": {
+            "de":
+                "Automatisch beim Scrollen oder über einen Zustand deaktiviert.",
+            "en": "Automatic while scrolling or disabled through state."
+        },
+        "steps": [
+            {
+                "de": ".onScrollDown aktiviert das Minimieren.",
+                "en": ".onScrollDown enables minimization."
+            },
+            {
+                "de": ".never hält die Leiste sichtbar.",
+                "en": ".never keeps the bar visible."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#101020",
+                "#5E5CE6",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            ".tabBarMinimizeBehavior(\n    minimizesTabs ? .onScrollDown : .never\n)",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "help_swiftui_binding_animation",
+        "title": {
+            "de": "Binding animieren",
+            "en": "Animate a binding"
+        },
+        "description": {
+            "de": "Animiert nur Änderungen, die über dieses Binding entstehen.",
+            "en": "Animates only changes made through this binding."
+        },
+        "steps": [
+            {
+                "de": "Binding mit animation(_:) ableiten.",
+                "en": "Derive a binding with animation(_:)."
+            },
+            {
+                "de": "An Toggle, Picker oder Slider übergeben.",
+                "en": "Pass it to a Toggle, Picker, or Slider."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#17120A",
+                "#FF9F0A",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "Toggle(\"Erweitert\",\n       isOn: $expanded.animation(.spring()))",
+        "category": "SwiftUI"
+    },
+    {
+        "id": "help_swiftui_symbol_gradient",
+        "title": {
+            "de": "Symbol-Effekt und Verlauf",
+            "en": "Symbol effect and gradient"
+        },
+        "description": {
+            "de":
+                "Kompaktes Beispiel für SF-Symbol-Animation und radialen Verlauf.",
+            "en":
+                "Compact example for SF Symbol animation and a radial gradient."
+        },
+        "steps": [
+            {
+                "de": "Effekt mit value neu auslösen.",
+                "en": "Retrigger the effect with value."
+            },
+            {
+                "de": "RadialGradient als ShapeStyle einsetzen.",
+                "en": "Use RadialGradient as a ShapeStyle."
+            }
+        ],
+        "colors": {
+            "backgroundColors": [
+                "#160B18",
+                "#BF5AF2",
+                "#000000"
+            ],
+            "textColors": [
+                "#FFFFFF"
+            ]
+        },
+        "code":
+            "Image(systemName: \"sparkles\")\n    .symbolEffect(.bounce, value: trigger)\n    .foregroundStyle(\n        RadialGradient(colors: [.yellow, .pink], center: .center, startRadius: 0, endRadius: 40)\n    )",
+        "category": "SwiftUI"
+    }
+]

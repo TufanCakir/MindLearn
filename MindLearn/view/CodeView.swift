@@ -12,8 +12,12 @@ struct CodeView: View {
     let code: String
 
     @State private var highlighted = AttributedString("")
+    @State private var highlightedPreview = AttributedString("")
     @State private var showCopied = false
+    @State private var showsFullCode = false
     @State private var copyFeedbackTask: Task<Void, Never>?
+    @AppStorage("codeWrapLongLines") private var wrapsLongLines = true
+    @AppStorage("codeFontSize") private var codeFontSize = 16.0
     @Environment(LocalizationStore.self) private var localization
 
     private var appLanguage: String { localization.language }
@@ -26,29 +30,82 @@ struct CodeView: View {
         "\(text.common.codeExample), \(language.displayName)"
     }
 
+    private var codeLines: [Substring] {
+        code.split(separator: "\n", omittingEmptySubsequences: false)
+    }
+
+    private var previewCode: String {
+        codeLines.prefix(12).joined(separator: "\n")
+    }
+
+    private var hasMoreCode: Bool {
+        codeLines.count > 12
+    }
+
+    private var openCodeTitle: String {
+        appLanguage == "de" ? "Vollständig öffnen" : "Open full code"
+    }
+
+    private var closeTitle: String {
+        appLanguage == "de" ? "Schließen" : "Close"
+    }
+
+    private var lineCountTitle: String {
+        appLanguage == "de"
+            ? "\(codeLines.count) Zeilen"
+            : "\(codeLines.count) lines"
+    }
+
+    private var displayTitle: String {
+        appLanguage == "de" ? "Darstellung" : "Display"
+    }
+
+    private var wrapTitle: String {
+        appLanguage == "de" ? "Zeilenumbruch" : "Wrap lines"
+    }
+
+    private var smallerTextTitle: String {
+        appLanguage == "de" ? "Kleinere Schrift" : "Smaller text"
+    }
+
+    private var largerTextTitle: String {
+        appLanguage == "de" ? "Größere Schrift" : "Larger text"
+    }
+
     var body: some View {
 
         VStack(spacing: 0) {
 
             header
 
-            ScrollView(.vertical) {
+            codeScroll(highlightedPreview)
+                .frame(maxHeight: 270)
 
-                ScrollView(.horizontal, showsIndicators: true) {
-
-                    Text(highlighted)
-                        .font(.system(.body, design: .monospaced))
-                        .textSelection(.enabled)
-                        .copyable([code])
-                        .accessibilityLabel(codeLabel)
-                        .padding(18)
-                        .frame(
-                            maxWidth: .infinity,
-                            alignment: .leading
+            if hasMoreCode {
+                Button {
+                    showsFullCode = true
+                } label: {
+                    HStack {
+                        Label(
+                            openCodeTitle,
+                            systemImage: "arrow.up.left.and.arrow.down.right"
                         )
+                        Spacer()
+                        Text(lineCountTitle)
+                            .foregroundStyle(.secondary)
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.tertiary)
+                    }
+                    .font(.caption.weight(.semibold))
+                    .padding(.horizontal, 16)
+                    .frame(maxWidth: .infinity, minHeight: 48)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .overlay(alignment: .top) {
+                    Divider()
                 }
             }
-            .scrollIndicators(.visible)
         }
         .background(
             RoundedRectangle(
@@ -65,15 +122,133 @@ struct CodeView: View {
             .stroke(Color(.separator), lineWidth: 1)
         )
         .overlay(copyOverlay, alignment: .topTrailing)
-        .task(id: code) {
+        .sheet(isPresented: $showsFullCode) {
+            NavigationStack {
+                fullCodeScroll(highlighted)
+                    .background(Color(.systemGroupedBackground))
+                    .navigationTitle(language.displayName)
+                    .toolbarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(closeTitle) {
+                                showsFullCode = false
+                            }
+                        }
 
-            highlighted =
-                await SyntaxHighlighter
-                .shared
-                .highlight(code)
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button {
+                                copyCode()
+                            } label: {
+                                Image(systemName: "doc.on.doc")
+                            }
+                            .accessibilityLabel(text.common.copy)
+                        }
+
+                        ToolbarItem(placement: .primaryAction) {
+                            codeDisplayMenu
+                        }
+                    }
+            }
+        }
+        .task(id: code) {
+            async let fullCode = SyntaxHighlighter.shared.highlight(code)
+            async let preview = SyntaxHighlighter.shared.highlight(previewCode)
+            highlighted = await fullCode
+            highlightedPreview = await preview
         }
         .onDisappear {
             copyFeedbackTask?.cancel()
+        }
+    }
+}
+
+extension CodeView {
+    private func codeScroll(_ content: AttributedString) -> some View {
+        ScrollView(.horizontal) {
+            codeText(content)
+        }
+        .scrollIndicators(.visible)
+    }
+
+    @ViewBuilder
+    private func fullCodeScroll(_ content: AttributedString) -> some View {
+        if wrapsLongLines {
+            ScrollView(.vertical) {
+                fullCodeText(content)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .scrollIndicators(.visible)
+        } else {
+            ScrollView([.horizontal, .vertical]) {
+                fullCodeText(content)
+                    .fixedSize(horizontal: true, vertical: true)
+            }
+            .scrollIndicators(.visible)
+        }
+    }
+
+    private func codeText(_ content: AttributedString) -> some View {
+        Text(content)
+            .font(.system(.callout, design: .monospaced))
+            .textSelection(.enabled)
+            .copyable([code])
+            .accessibilityLabel(codeLabel)
+            .padding(16)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func fullCodeText(_ content: AttributedString) -> some View {
+        Text(content)
+            .font(.system(size: codeFontSize, design: .monospaced))
+            .multilineTextAlignment(.leading)
+            .textSelection(.enabled)
+            .copyable([code])
+            .accessibilityLabel(codeLabel)
+            .padding(16)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var codeDisplayMenu: some View {
+        Menu {
+            Button {
+                codeFontSize = max(12, codeFontSize - 1)
+            } label: {
+                Label(smallerTextTitle, systemImage: "textformat.size.smaller")
+            }
+            .disabled(codeFontSize <= 12)
+
+            Button {
+                codeFontSize = min(24, codeFontSize + 1)
+            } label: {
+                Label(largerTextTitle, systemImage: "textformat.size.larger")
+            }
+            .disabled(codeFontSize >= 24)
+
+            Divider()
+
+            Toggle(isOn: $wrapsLongLines) {
+                Label(wrapTitle, systemImage: "arrow.turn.down.right")
+            }
+        } label: {
+            Image(systemName: "textformat.size")
+        }
+        .accessibilityLabel(displayTitle)
+    }
+
+    private func copyCode() {
+        UIPasteboard.general.string = code
+
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+            showCopied = true
+        }
+
+        copyFeedbackTask?.cancel()
+        copyFeedbackTask = Task {
+            try? await Task.sleep(for: .seconds(1.3))
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeOut) {
+                showCopied = false
+            }
         }
     }
 }
@@ -94,28 +269,7 @@ extension CodeView {
             Spacer()
 
             Button {
-
-                UIPasteboard.general.string = code
-
-                withAnimation(
-                    .spring(
-                        response: 0.35,
-                        dampingFraction: 0.7
-                    )
-                ) {
-
-                    showCopied = true
-                }
-
-                copyFeedbackTask?.cancel()
-                copyFeedbackTask = Task {
-                    try? await Task.sleep(for: .seconds(1.3))
-                    guard !Task.isCancelled else { return }
-                    withAnimation(.easeOut) {
-                        showCopied = false
-                    }
-                }
-
+                copyCode()
             } label: {
 
                 Label(

@@ -11,7 +11,8 @@ import SwiftUI
 struct LanguageSelectionView: View {
     @Query private var progressRecords: [LearningProgress]
     @Environment(LocalizationStore.self) private var localization
-    @State private var loadState: ContentLoadState<LanguageOverviewContent> = .loading
+    @State private var loadState: ContentLoadState<LanguageOverviewContent> =
+        .loading
 
     private var language: String { localization.language }
 
@@ -37,10 +38,11 @@ struct LanguageSelectionView: View {
             case .loaded:
                 VStack(alignment: .leading, spacing: 20) {
                     header
-                    languageGrid
                     allCardsLink
+                    languageGrid
                 }
                 .padding()
+                .padding(.bottom, 80)
             case .failed(let details):
                 ContentLoadingFailureView(
                     title: text.common.loadErrorTitle,
@@ -62,14 +64,7 @@ extension LanguageSelectionView {
     private func loadOverview() {
         do {
             let topics = try LearningTopicLoader.shared.loadAllTopics()
-            var taskCounts: [ProgrammingLanguage: Int] = [:]
-            for language in ProgrammingLanguage.allCases {
-                taskCounts[language] = try CodingTaskLoader.shared
-                    .loadTasks(for: language).count
-            }
-            loadState = .loaded(
-                LanguageOverviewContent(topics: topics, taskCounts: taskCounts)
-            )
+            loadState = .loaded(LanguageOverviewContent(topics: topics))
         } catch {
             loadState = .failed(error.localizedDescription)
         }
@@ -102,7 +97,6 @@ extension LanguageSelectionView {
     private func languageCard(_ language: ProgrammingLanguage) -> some View {
         let style = CategoryStyle.style(for: language.topicCategory)
         let topics = topics(for: language)
-        let taskCount = overview?.taskCounts[language] ?? 0
         let completed = completedTopicCount(for: topics)
 
         return VStack(alignment: .leading, spacing: 12) {
@@ -120,7 +114,7 @@ extension LanguageSelectionView {
                     .font(.headline)
 
                 Text(
-                    "\(taskCount) \(text.learningMode.tasks) • \(topics.count) \(text.learningMode.cards)"
+                    "\(topics.count) \(text.learningMode.cards)"
                 )
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -137,7 +131,7 @@ extension LanguageSelectionView {
                 .foregroundStyle(.secondary)
         }
         .padding(14)
-        .frame(maxWidth: .infinity, minHeight: 170, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: 154, alignment: .leading)
         .background(Color(.secondarySystemGroupedBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -175,7 +169,6 @@ extension LanguageSelectionView {
 
 private struct LanguageOverviewContent {
     let topics: [LearningTopic]
-    let taskCounts: [ProgrammingLanguage: Int]
 }
 
 #Preview {
